@@ -20,7 +20,6 @@ My research focuses on **statistical machine learning theory, methods, and their
 
 ## Working Papers
 
-- Zeng, H., Liu, K., Jing, B., & Wei, H. (2025). "Parametric Scaling Law of Tuning Bias in Conformal Prediction." *arXiv*. [https://doi.org/10.48550/arXiv.2502.03023](https://doi.org/10.48550/arXiv.2502.03023)
 
 - Gao, H., Zhang, F., Zeng, H., Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037)
 
@@ -39,6 +38,11 @@ My research focuses on **statistical machine learning theory, methods, and their
 - Zeng, H., Wan, C., Zhong, W., & Liu, T. (2024). "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity." *Journal of Statistical Planning and Inference*, 234 (June): 106196. [https://doi.org/10.1016/j.jspi.2024.106196](https://doi.org/10.1016/j.jspi.2024.106196)
 
 - Wan, C., Zeng, H., Zhang, W., Zhong, W., & Zou, C. (2024). "Data‐driven Estimation for Multithreshold Accelerated Failure Time Model." *Scandinavian Journal of Statistics*, November, sjos.12758. [https://doi.org/10.1111/sjos.12758](https://doi.org/10.1111/sjos.12758)
+
+### Conference
+
+- Zeng, Hao, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. https://openreview.net/forum?id=jnJLZXSOin.
+
 
 ### Software
 
