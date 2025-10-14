@@ -13,17 +13,16 @@ I am currently a Postdoctoral in Statistics at the Southern University of Scienc
 My research focuses on **statistical machine learning theory, methods, and their applications on uncertainty quantification**, particularly developing novel methodologies that bridge statistical theory with practical applications. I am also interested in interdisciplinary research at the intersection of machine learning methodologies with **spatial statistics**, **econometrics**, and **biostatistics**.
 
 ## News
-
+- **2025/09**: Our paper "Robust Online Conformal Prediction under Uniform Label Noise" has been accepted to NeurIPS 2026!
 - **2025/05**: Our paper "Parametric Scaling Law of Tuning Bias in Conformal Prediction" has been accepted to ICML 2025!
 - **2024/07**: Started postdoctoral position at the Department of Statistics and Data Science, Southern University of Science and Technology (SUSTech) under the SUSTech-NUS Joint Research Program.
 - **2024/06**: Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University.
 
 ## Working Papers
 
+- Zeng, H., Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." *arXiv*. [https://doi.org/10.48550/arXiv.2510.09133](https://doi.org/10.48550/arXiv.2510.09133)
 
 - Gao, H., Zhang, F., Zeng, H., Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037)
-
-- Xi, H., Liu, K., Zeng, H., Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *arXiv*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
 
 - Zeng, H., Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://doi.org/10.48550/arXiv.2405.15600](https://doi.org/10.48550/arXiv.2405.15600)
 
@@ -41,6 +40,8 @@ My research focuses on **statistical machine learning theory, methods, and their
 
 ### Conference
 
+**2025**
+- Xi, H., Liu, K., Zeng, H., Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
 - Zeng, Hao, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. https://openreview.net/forum?id=jnJLZXSOin.
 
 
