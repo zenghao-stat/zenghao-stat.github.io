@@ -26,7 +26,7 @@ My research focuses on **statistical machine learning theory, methods, and their
 
 - Zeng, H., Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://doi.org/10.48550/arXiv.2405.15600](https://doi.org/10.48550/arXiv.2405.15600)
 
-## Publications
+## Selected Publications
 
 ### Journal Articles
 
