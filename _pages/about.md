@@ -42,8 +42,8 @@ My research focuses on **statistical machine learning theory, methods, and their
 
 **2025**
 - Xi, H., Liu, K., Zeng, H., Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
-- Zeng, Hao, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. https://openreview.net/forum?id=jnJLZXSOin.
-
+  
+- Zeng, H., Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. https://openreview.net/forum?id=jnJLZXSOin.
 
 ### Software
 
