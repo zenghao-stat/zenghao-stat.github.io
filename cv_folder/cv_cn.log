@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  29 OCT 2025 15:54
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  29 OCT 2025 16:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -410,8 +410,7 @@ Package: lastpagemodern 2023-10-14 v2.0e Refers to last page's name (HMM; JPG)
 ) 
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-No file cv_cn.aux.
+) (./cv_cn.aux)
 \openout1 = `cv_cn.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
@@ -435,11 +434,9 @@ LaTeX Font Info:    ... okay on input line 103.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 103.
 LaTeX Font Info:    ... okay on input line 103.
 Package hyperref Info: Link coloring OFF on input line 103.
+ (./cv_cn.out) (./cv_cn.out)
 \@outlinefile=\write3
 \openout3 = `cv_cn.out'.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
@@ -499,6 +496,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 103.
 
+
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
 (Font)              using `TU/lmr/bx/n' instead on input line 106.
 
@@ -523,7 +521,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 
 LaTeX Font Warning: Font shape `TU/STSong(0)/b/it' undefined
-(Font)              using `TU/STSong(0)/b/n' instead on input line 223.
+(Font)              using `TU/STSong(0)/b/n' instead on input line 208.
 
 [2] 
 enddocument/afterlastpage: lastpage setting LastPage.
@@ -545,18 +543,15 @@ Package rerunfilecheck Warning: File `cv_cn.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `cv_cn.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  075206AECF8E9EABD22CCBD742A74EA6;581.
-
-Package lastpage Warning: Rerun to get the references right on input line 250.
-
+(rerunfilecheck)             Before: 88B43A323AF061D6689187EEC7CBB4A0;581
+(rerunfilecheck)             After:  7E92959AD283DACE1F3DD2CCE338FD0D;581.
  ) 
 Here is how much of TeX's memory you used:
- 16966 strings out of 474773
- 359804 string characters out of 5757723
+ 16990 strings out of 474773
+ 360689 string characters out of 5757723
  1958839 words of memory out of 5000000
- 38868 multiletter control sequences out of 15000+600000
- 562688 words of font info for 83 fonts, out of 8000000 for 9000
+ 38885 multiletter control sequences out of 15000+600000
+ 562696 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,11n,97p,488b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
