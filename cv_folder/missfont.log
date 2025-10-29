@@ -121,3 +121,92 @@ mktextfm FontAwesome
 mktextfm FontAwesome/I
 mktextfm FontAwesome
 mktextfm FontAwesome
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong30
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong30
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 unisong7a
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome
+mktextfm FontAwesome/BI
+mktextfm FontAwesome
+mktextfm FontAwesome/B
+mktextfm FontAwesome
+mktextfm FontAwesome/I
+mktextfm FontAwesome
+mktextfm FontAwesome
