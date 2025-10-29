@@ -18,14 +18,21 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\usepackage{fontawesome}
-\input{glyphtounicode}
+% \usepackage{fontawesome} % Removed to avoid missing FontAwesome tfm issues
+% \input{glyphtounicode} % Optional for pdfLaTeX; XeLaTeX is Unicode-native
+\usepackage{fontawesome5}
+\usepackage{lastpage}
+\usepackage{ifthen}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+% Footer: show updated date on bottom-right only on last page
+\newcommand{\UpdatedOn}{\number\year-\ifnum\month<10 0\fi\number\month-\ifnum\day<10 0\fi\number\day}
+\setlength{\footskip}{12pt}
+\fancyfoot[R]{\scriptsize \ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{Updated: \UpdatedOn}{}}
 
 % Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
@@ -45,8 +52,10 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+% Ensure that generated PDF is machine readable/ATS parsable (pdfLaTeX only)
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -101,9 +110,9 @@
 \end{center}
 
 \begin{center}
-    \small \faEnvelope\ \href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
-    \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{\faGraduationCap\ Google Scholar} $|$
-    \href{https://zenghao-stat.github.io}{\faHome\ Homepage}
+    \small \faIcon{envelope}\ \href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
+    \faIcon{graduation-cap}\ \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{Google Scholar} $|$
+    \faIcon{home}\ \href{https://zenghao-stat.github.io}{Homepage: zenghao-stat.github.io}
 \end{center}
 
 %-----------EDUCATION-----------
@@ -250,8 +259,10 @@
 \resumeSubHeadingListEnd
 
 
-  \section{Academic Services}
-  Journal Reviewer: \textit{International Statistical Review}, \textit{Journal of Multivariate Analysis}, \textit{Spatial Economic Analysis}, and \textit{Quarterly Journal of Economics and Management}.\\
- Conference Reviewer: \textit{International Conference on Artificial Intelligence and Statistics (AISTATS), Association for the Advancement of Artificial Intelligence (AAAI), International Conference on Machine Learning (ICML), International Conference on Learning Representations (ICLR)}
+\section{Academic Services}
+ \textbf{ Journal Reviewer} \\
+ {International Statistical Review}, {Journal of Multivariate Analysis}, {Spatial Economic Analysis}, and {Quarterly Journal of Economics and Management}.\\
+ \textbf{Conference Reviewer} \\
+ {International Conference on Artificial Intelligence and Statistics (AISTATS), Association for the Advancement of Artificial Intelligence (AAAI), International Conference on Machine Learning (ICML), International Conference on Learning Representations (ICLR)}
 
 \end{document}

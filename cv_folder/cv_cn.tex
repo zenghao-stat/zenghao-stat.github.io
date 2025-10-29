@@ -20,12 +20,20 @@
 % \usepackage{fontawesome} % 移除避免 XeLaTeX 字体问题
 % \input{glyphtounicode} % XeLaTeX 不需要，且可能缺失
 \usepackage[UTF8]{ctex}
+\usepackage{fontawesome5}
+\usepackage{lastpage}
+\usepackage{ifthen}
 
 \pagestyle{fancy}
 \fancyhf{} % 清空页眉页脚
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+% 页脚设置：仅在最后一页右下角显示更新时间
+\newcommand{\UpdatedOn}{\number\year-\ifnum\month<10 0\fi\number\month-\ifnum\day<10 0\fi\number\day}
+\setlength{\footskip}{12pt}
+\fancyfoot[R]{\scriptsize \ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{Updated：\UpdatedOn}{}}
 
 % 页边距调整
 \addtolength{\oddsidemargin}{-0.5in}
@@ -101,9 +109,9 @@
 \end{center}
 
 \begin{center}
-    \small 邮箱：\href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
-    \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{Google Scholar} $|$
-    \href{https://zenghao-stat.github.io}{个人主页：zenghao-stat.github.io}
+    \small \faIcon{envelope}\ \href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
+    \faIcon{graduation-cap}\ \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{Google Scholar} $|$
+    \faIcon{home}\ \href{https://zenghao-stat.github.io}{个人主页：zenghao-stat.github.io}
 \end{center}
 
 %-----------教育经历-----------
@@ -216,7 +224,7 @@
     \resumeSubSubheading
         {{2021年厦门大学现代统计学研讨会} \textbf{邀请报告}}{2021年12月，厦门}
     \resumeSubSubheading
-        {{NSFC“计量建模与经济政策研究”基础科学中心项目2023博士生年度论坛} \textbf{邀请报告}}{2023年11月，北京}
+        {{NSFC计量建模与经济政策研究基础科学中心项目2023博士生年度论坛} \textbf{邀请报告}}{2023年11月，北京}
     \resumeSubSubheading
         {{全国工业统计学教学研究会青年统计学家协会 2024 年年会暨第二届中国青年统计学家论坛} \textbf{海报展示}}{2024年3月，徐州}
     \resumeSubSubheading
@@ -228,7 +236,7 @@
     \resumeSubSubheading
         {{第三届全国统计与数据科学联合会议} \textbf{海报展示}}{2025年7月，杭州}
     \resumeSubSubheading
-        {{第42届国际机器学习大会（ICML）} \textbf{海报展示}}{2025年7月，加拿大温哥华}
+        {{第42届国际机器学习大会(ICML)} \textbf{海报展示}}{2025年7月，加拿大温哥华}
 \resumeSubHeadingListEnd
 
 
