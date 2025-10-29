@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  29 OCT 2025 16:56
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.15)  29 OCT 2025 22:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -534,17 +534,8 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `cv_cn.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `cv_cn.out':
-(rerunfilecheck)             Before: 88B43A323AF061D6689187EEC7CBB4A0;581
-(rerunfilecheck)             After:  7E92959AD283DACE1F3DD2CCE338FD0D;581.
+Package rerunfilecheck Info: File `cv_cn.out' has not changed.
+(rerunfilecheck)             Checksum: 7E92959AD283DACE1F3DD2CCE338FD0D;581.
  ) 
 Here is how much of TeX's memory you used:
  16990 strings out of 474773
