@@ -1,12 +1,12 @@
 ---
-title: "Real Analysis (Undergraduate)"
+title: "Real Analysis"
 collection: teaching
 type: "Undergraduate course"
 role: "Teaching asisteance"
 permalink: /teaching/2022-spring-real-analysis
 venue: "School of Economics, Xiamen University"
 date: 2022-03-01
-excerpt: "Real Analysis course covering limits, continuity, differentiation, sequences and series, metric spaces, and the foundations of rigorous proof."
+excerpt: "Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference."
 ---
 
 This course provides a rigorous introduction to real functions and measure theory.  
