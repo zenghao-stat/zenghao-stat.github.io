@@ -19,12 +19,15 @@ My research focuses on **statistical machine learning theory, methods, and their
 - **2024/06**: Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University.
 
 ## Working Papers
+- **Zeng, H.**, Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(R&R for Journal of Business & Economic Statistics)**
 
-- Zeng, H., Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(R&R for Journal of Business \& Economic Statistics)**
-
-- Zeng, H., Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." *arXiv*. [https://doi.org/10.48550/arXiv.2510.09133](https://doi.org/10.48550/arXiv.2510.09133) **(Submitted to ICLR 2026)**
-
-- Gao, H., Zhang, F., Zeng, H., Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037) **(Submitted to ICLR 2026)**
+- **Zeng, H.**, Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." *arXiv*. [https://doi.org/10.48550/arXiv.2510.09133](https://doi.org/10.48550/arXiv.2510.09133) **(Submitted to ICLR 2026)**
+- Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037) **(Submitted to ICLR 2026)**
+- Huang, H., Liao, W., Xi, H., **Zeng, H.**, Zhao, M., & Wei, H. (2025). "Selective Labeling with False Discovery Rate Control." **(Submitted to ICLR 2026)**
+- Liu, Z., **Zeng, H.**, Huang, W., & Wei, H. (2025). "High-Power Training Data Identification with Provable Statistical Guarantees." **(Submitted to ICLR 2026)**
+- **Zeng, H.**, Jing, B., & Wei, H. (2025). "Conditional Tuning in Conformal Prediction."
+- **Zeng, H.**, Jing, B., & Wei, H. (2025). "The Double Descent of Conformal Prediction."
+- **Zeng, H.**, Liu, K., Jing, B., & Wei, H. (2025). "On Tuning Bias in Conformal Prediction."
 
 
 ## Selected Publications
@@ -32,24 +35,24 @@ My research focuses on **statistical machine learning theory, methods, and their
 ### Journal Articles
 
 **2025**
-- Liu, K., Sun, T., Zeng, H., Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
+- Liu, K., Sun, T., **Zeng, H.**, Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
 
 **2024**
-- Zeng, H., Wan, C., Zhong, W., & Liu, T. (2024). "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity." *Journal of Statistical Planning and Inference*, 234 (June): 106196. [https://doi.org/10.1016/j.jspi.2024.106196](https://doi.org/10.1016/j.jspi.2024.106196)
+- **Zeng, H.**, Wan, C., Zhong, W., & Liu, T. (2024). "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity." *Journal of Statistical Planning and Inference*, 234 (June): 106196. [https://doi.org/10.1016/j.jspi.2024.106196](https://doi.org/10.1016/j.jspi.2024.106196)
 
-- Wan, C., Zeng, H., Zhang, W., Zhong, W., & Zou, C. (2024). "Data‐driven Estimation for Multithreshold Accelerated Failure Time Model." *Scandinavian Journal of Statistics*, November, sjos.12758. [https://doi.org/10.1111/sjos.12758](https://doi.org/10.1111/sjos.12758)
+- Wan, C., **Zeng, H.**, Zhang, W., Zhong, W., & Zou, C. (2024). "Data‐driven Estimation for Multithreshold Accelerated Failure Time Model." *Scandinavian Journal of Statistics*, November, sjos.12758. [https://doi.org/10.1111/sjos.12758](https://doi.org/10.1111/sjos.12758)
 
 ### Conference
 
 **2025**
-- Xi, H., Liu, K., Zeng, H., Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
+- Xi, H., Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
   
-- Zeng, H., Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
+- **Zeng, H.**, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
 
 ### Software
 
 **2023**
-- Wan, C., Zeng, H., Zhong, W., & Zou, C. (2023). "MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model." [https://cran.r-project.org/web/packages/MTAFT/index.html](https://cran.r-project.org/web/packages/MTAFT/index.html)
+- Wan, C., **Zeng, H.**, Zhong, W., & Zou, C. (2023). "MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model." [https://cran.r-project.org/web/packages/MTAFT/index.html](https://cran.r-project.org/web/packages/MTAFT/index.html)
 
---- 
+---
 See my [Google Scholar](https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en) for the latest publications.
