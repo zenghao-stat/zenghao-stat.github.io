@@ -1,7 +1,8 @@
 ---
-title: "Probability Introduction (Undergraduate)"
+title: "Probability Introduction"
 collection: teaching
-type: "Teaching Assistant"
+type: "Undergraduate course"
+role: "Teaching asisteance"
 permalink: /teaching/2022-fall-probability-introduction
 venue: "School of Economics, Xiamen University"
 date: 2022-09

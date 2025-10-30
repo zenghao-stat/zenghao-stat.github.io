@@ -1,7 +1,8 @@
 ---
-title: "Advanced Econometrics I (Postgraduate)"
+title: "Advanced Econometrics I"
 collection: teaching
-type: "Teaching Assistant"
+type: "Postgraduate course"
+role: "Teaching asisteance"
 permalink: /teaching/2019-fall-advanced-econometrics-i
 venue: "School of Economics, Xiamen University"
 date: 2019-09

@@ -1,7 +1,8 @@
 ---
-title: "Advanced Probability Theory (Postgraduate)"
+title: "Advanced Probability Theory"
 collection: teaching
-type: "Teaching Assistant"
+type: "Postgraduate course"
+role: "Teaching asisteance"
 permalink: /teaching/2021-fall-advanced-probability-theory
 venue: "School of Economics, Xiamen University"
 date: 2021-09

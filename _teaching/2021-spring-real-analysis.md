@@ -1,7 +1,8 @@
 ---
-title: "Real Analysis (Undergraduate)"
+title: "Real Analysis"
 collection: teaching
-type: "Teaching Assistant"
+type: "Postgraduate course"
+role: "Teaching asisteance"
 permalink: /teaching/2021-spring-real-analysis
 venue: "School of Economics, Xiamen University"
 date: 2021-03
