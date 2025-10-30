@@ -12,3 +12,5 @@ excerpt: "Graduate-level econometrics covering linear models, estimation and inf
 This course provides a rigorous treatment of econometric theory and practice.
 Topics include the classical linear regression model, properties of estimators, hypothesis testing, heteroskedasticity and autocorrelation corrections, endogeneity and instrumental variables, generalized method of moments, and panel data techniques.
 Applications and empirical implementation are emphasized through examples and assignments.
+
+As a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.

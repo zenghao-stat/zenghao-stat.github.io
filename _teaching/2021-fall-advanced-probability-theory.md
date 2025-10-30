@@ -12,3 +12,5 @@ excerpt: "Measure-theoretic probability covering sigma-algebras, integration, mo
 This course builds a measure-theoretic foundation for probability.
 Topics include sigma-algebras and probability measures, random variables as measurable functions, Lebesgue integration and expectations, various modes of convergence (almost sure, in probability, in Lp, in distribution), and convergence theorems.
 Martingale theory and key limit theorems are covered with emphasis on their use in statistics and stochastic processes.
+
+As a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.
