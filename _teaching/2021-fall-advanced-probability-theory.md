@@ -1,0 +1,13 @@
+---
+title: "Advanced Probability Theory (Postgraduate)"
+collection: teaching
+type: "Teaching Assistant"
+permalink: /teaching/2021-fall-advanced-probability-theory
+venue: "School of Economics, Xiamen University"
+date: 2021-09
+excerpt: "Measure-theoretic probability covering sigma-algebras, integration, modes of convergence, martingales, and limit theorems with statistical applications."
+---
+
+This course builds a measure-theoretic foundation for probability.
+Topics include sigma-algebras and probability measures, random variables as measurable functions, Lebesgue integration and expectations, various modes of convergence (almost sure, in probability, in Lp, in distribution), and convergence theorems.
+Martingale theory and key limit theorems are covered with emphasis on their use in statistics and stochastic processes.
