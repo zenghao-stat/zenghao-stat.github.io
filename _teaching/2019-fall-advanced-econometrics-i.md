@@ -5,7 +5,7 @@ type: "Postgraduate course"
 role: "Teaching asisteance"
 permalink: /teaching/2019-fall-advanced-econometrics-i
 venue: "School of Economics, Xiamen University"
-date: 2019-09
+date: 2019-09-01
 excerpt: "Graduate-level econometrics covering linear models, estimation and inference, heteroskedasticity and autocorrelation, endogeneity and instrumental variables, and panel data methods."
 ---
 

@@ -5,7 +5,7 @@ type: "Postgraduate course"
 role: "Teaching asisteance"
 permalink: /teaching/2021-spring-real-analysis
 venue: "School of Economics, Xiamen University"
-date: 2021-03
+date: 2021-03-01
 excerpt: "Rigorous treatment of real analysis including sequences, continuity, differentiation, Riemann integration, and an introduction to metric spaces."
 ---
 This course provides a rigorous introduction to real functions and measure theory.  

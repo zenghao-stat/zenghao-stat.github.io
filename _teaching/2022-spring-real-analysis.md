@@ -5,7 +5,7 @@ type: "Undergraduate course"
 role: "Teaching asisteance"
 permalink: /teaching/2022-spring-real-analysis
 venue: "School of Economics, Xiamen University"
-date: 2022-03
+date: 2022-03-01
 excerpt: "Real Analysis course covering limits, continuity, differentiation, sequences and series, metric spaces, and the foundations of rigorous proof."
 ---
 

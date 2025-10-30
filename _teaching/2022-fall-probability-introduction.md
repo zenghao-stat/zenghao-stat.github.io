@@ -5,7 +5,7 @@ type: "Undergraduate course"
 role: "Teaching asisteance"
 permalink: /teaching/2022-fall-probability-introduction
 venue: "School of Economics, Xiamen University"
-date: 2022-09
+date: 2022-09-01
 excerpt: "Introductory probability course covering sample spaces, random variables, distributions, expectation, limit theorems, and basic statistical inference."
 ---
 
