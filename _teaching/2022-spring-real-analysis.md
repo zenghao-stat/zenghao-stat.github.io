@@ -9,6 +9,6 @@ date: 2022-03
 excerpt: "Real Analysis course covering limits, continuity, differentiation, sequences and series, metric spaces, and the foundations of rigorous proof."
 ---
 
-This course introduces the rigorous foundations of analysis, emphasizing precise definitions and proofs.
-Core topics include limits and continuity for functions of one variable, differentiation and the mean value theorem, sequences and series of real numbers, uniform convergence, and an introduction to metric spaces.
-Students develop skills in constructing and understanding mathematical proofs, which are essential for advanced courses in probability, statistics, and functional analysis.
+This course provides a rigorous introduction to real functions and measure theory.  
+It covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.  
+The focus is on developing the theoretical foundation essential for modern probability, stochastic processes, and advanced statistical inference.
