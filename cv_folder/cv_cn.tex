@@ -1,0 +1,247 @@
+% !TEX TS-program = xelatex
+
+%-------------------------
+% 中文简历（基于英文版）
+% Author : Hao Zeng
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+% \usepackage{fontawesome} % 移除避免 XeLaTeX 字体问题
+% \input{glyphtounicode} % XeLaTeX 不需要，且可能缺失
+\usepackage[UTF8]{ctex}
+\usepackage{fontawesome5}
+\usepackage{lastpage}
+\usepackage{ifthen}
+
+\pagestyle{fancy}
+\fancyhf{} % 清空页眉页脚
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% 页脚设置：仅在最后一页右下角显示更新时间
+\newcommand{\UpdatedOn}{\number\year-\ifnum\month<10 0\fi\number\month-\ifnum\day<10 0\fi\number\day}
+\setlength{\footskip}{12pt}
+\fancyfoot[R]{\scriptsize \ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{Updated：\UpdatedOn}{}}
+
+% 页边距调整
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% 章节格式
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% PDF可机读/ATS可解析（pdfLaTeX 专用；XeLaTeX 不需要）
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+%-------------------------
+% 自定义命令（沿用英文版的结构）
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  简历从这里开始  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape 曾浩}
+    \vspace{0.5em}\\
+    {\small 博士后，南方科技大学统计与数据科学系}
+\end{center}
+
+\begin{center}
+    \small \faIcon{envelope}\ \href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
+    \faIcon{graduation-cap}\ \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{Google Scholar} $|$
+    \faIcon{home}\ \href{https://zenghao-stat.github.io}{个人主页：zenghao-stat.github.io}
+\end{center}
+
+%-----------教育经历-----------
+\section{教育经历}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {邹至庄经济研究院，厦门大学}{2020年9月 -- 2024年6月}
+      {统计学，理学博士，导师：钟威, 许杏柏, 刘拓}{}
+    
+    \resumeSubheading
+      {王亚南经济研究院，厦门大学}{2018年9月 -- 2020年6月}
+      {数量经济学，经济学硕士，导师：钟威}{转博至统计学博士}
+    
+    \resumeSubheading
+      {数学学院，山东大学}{2014年9月 -- 2018年6月}
+      {数学学士（彭实戈班：金融数学与金融工程基地班）}{}
+  \resumeSubHeadingListEnd
+
+
+%-----------研究兴趣-----------
+\section{研究领域}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+     \textbf{统计机器学习}{：机器学习不确定性量化、共型预测、迁移学习} \\
+     \textbf{交叉学科研究}{：计量经济学、空间统计、生物统计}
+    }
+ \end{itemize}
+
+%-----------经历-----------
+\section{工作与教学经历}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {南方科技大学、新加坡国立大学联合博士后项目}{2024年7月 -- 至今}
+      {统计学博士后，导师：荆炳义，魏鸿鑫，周望}{}
+    \resumeSubheading
+      {统计与数据科学系, 新加坡国立大学}{2023年5月 -- 2023年10月}
+      {访问学生，导师：余涛}{}
+    \resumeSubheading
+      {经济学院，厦门大学}{2019年 秋季 -- 2022年 秋季}
+      {助教：高级计量经济学 I（研）、高级概率论（研）、实变函数（本）两次、概率论导论（本）}{}
+  \resumeSubHeadingListEnd
+
+
+%-----------论文与出版-----------
+\section{学术成果}
+(* 表示通讯作者，$^\dagger$ 表示共同贡献。)
+  \resumeSubHeadingListStart
+  \resumeProjectHeading{\textbf{期刊文章}}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Zeng, H.}, Zhong, W., \& Xu, X. (2024). ``Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction.'' (已接收，\textit{\textbf{Journal of Business \& Economic Statistics}})} 
+        \resumeItem{Liu, K., Sun, T., \textbf{Zeng, H.}, Zhang, Y., Pun, C.-M., \& Vong, C.-M. (2025). ``Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification.'' \textit{\textbf{IEEE Transactions on Circuits and Systems for Video Technology}}. (中科院一区，计算机最优期刊)}
+        \resumeItem{\textbf{Zeng, H.}, Wan, C., Zhong, W., \& Liu, T. (2024). ``Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity.'' \textit{\textbf{Journal of Statistical Planning and Inference}}.}
+        \resumeItem{Wan, C.$^\dagger$, \textbf{Zeng, H.*$^\dagger$}, Zhang, W.$^\dagger$, Zhong, W.$^\dagger$, \& Zou, C.$^\dagger$. (2024). ``Data‐driven Estimation for Multithreshold Accelerated Failure Time Model.'' \textit{\textbf{Scandinavian Journal of Statistics}}.}
+      \resumeItemListEnd
+      
+    \resumeProjectHeading{\textbf{会议文章}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Zeng, H.$^\dagger$}, Liu, K.$^\dagger$, Jing, B., \& Wei, H. (2025). ``Parametric Scaling Law of Tuning Bias in Conformal Prediction.'' \textit{\textbf{42nd International Conference on Machine Learning}}. (人工智能顶级会议)}
+        \resumeItem{Xi, H., Liu, K., \textbf{Zeng, H.}, Sun, W., \& Wei, H. (2025).``Robust Online Conformal Prediction under Uniform Label Noise.'' \textit{\textbf{39th Annual Conference on Neural Information Processing Systems}}. (人工智能顶级会议)} 
+        \resumeItem{Liu, K., \textbf{Zeng, H.}, Huang, J., Zhuang, H., Vong, C.-M., \& Wei, H. (2025). ``C-Adapter: Adapting Deep Classifiers for Efficient Conformal Prediction Sets.'' \textit{\textbf{28th European Conference on Artificial Intelligence}}.}
+    \resumeItemListEnd
+    \newpage
+    \resumeProjectHeading
+      {\textbf{工作论文}}{}
+      \resumeItemListStart
+        \resumeItem{Huang, H., Liao, W., Xi, H., \textbf{Zeng, H.}, Zhao, M., \& Wei, H. (2025). ``Selective Labeling with False Discovery Rate Control.'' (提交至 ICLR 2026)}
+        \resumeItem{Liu, Z., \textbf{Zeng, H.}, Huang, W., \& Wei, H. (2025). ``High-Power Training Data Identification with Provable Statistical Guarantees.''(提交至 ICLR 2026)}
+        \resumeItem{\textbf{Zeng, H.}$^\dagger$, Huang, J.$^\dagger$, Jing, B., Wei, H., \& An, B. (2025). ``PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning.''(提交至 ICLR 2026)}
+        \resumeItem{Gao, H., Zhang, F., \textbf{Zeng, H.}, Meng, D., Jing, B., \& Wei, H. (2025). ``Exploring Imbalanced Annotations for Effective In-Context Learning.''(提交至 ICLR 2026)}
+        \resumeItem{\textbf{Zeng, H.}, Jing, B., \& Wei, H. (2025). ``Conditional Tuning in Conformal Prediction.''}
+        \resumeItem{\textbf{Zeng, H.}, Jing, B., \& Wei, H. (2025). ``The Double Descent of Conformal Prediction.''}
+        \resumeItem{\textbf{Zeng, H.}, Liu, K., Jing, B., \& Wei, H. (2025). ``On Tuning Bias in Conformal Prediction.''}
+      \resumeItemListEnd
+    
+    \resumeProjectHeading
+      {\textbf{开源软件}}{}
+      \resumeItemListStart
+        \resumeItem{Wan, C., \textbf{Zeng, H.}, Zhong, W., \& Zou, C. (2023). ``MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model.'' \href{https://cran.r-project.org/web/packages/MTAFT/index.html}{https://cran.r-project.org/web/packages/MTAFT/index.html}}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+
+
+\section{学术报告与会议}
+\resumeSubHeadingListStart
+    \resumeSubSubheading
+        {{2021年全国数量经济学博士生学术论坛} \textbf{报告}}{2021年12月，厦门}
+    \resumeSubSubheading
+        {{2021年厦门大学现代统计学研讨会} \textbf{邀请报告}}{2021年12月，厦门}
+    \resumeSubSubheading
+        {{NSFC计量建模与经济政策研究基础科学中心项目2023博士生年度论坛} \textbf{邀请报告}}{2023年11月，北京}
+    \resumeSubSubheading
+        {{全国工业统计学教学研究会青年统计学家协会 2024 年年会暨第二届中国青年统计学家论坛} \textbf{海报展示}}{2024年3月，徐州}
+    \resumeSubSubheading
+        {{首届国科大与厦大经济管理统计优秀博士毕业生论坛} \textbf{邀请报告}}{2024年6月，厦门}
+    \resumeSubSubheading
+        {{第二届全国统计与数据科学联合会议} \textbf{邀请报告}}{2024年7月，昆明}
+    \resumeSubSubheading
+        {{第十三届全国概率统计会议} \textbf{作报告}}{2024年11月，厦门}
+    \resumeSubSubheading
+        {{第三届全国统计与数据科学联合会议} \textbf{海报展示}}{2025年7月，杭州}
+    \resumeSubSubheading
+        {{第42届国际机器学习大会(ICML)} \textbf{海报展示}}{2025年7月，加拿大温哥华}
+\resumeSubHeadingListEnd
+
+
+  \section{学术服务}
+  \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item \textbf{期刊审稿人} \textit{International Statistical Review}，\textit{Journal of Multivariate Analysis}，\textit{Spatial Economic Analysis}，\textit{Quarterly Journal of Economics and Management}
+    \item \textbf{会议审稿人} \textit{International Conference on Artificial Intelligence and Statistics (AISTATS)}，\textit{Association for the Advancement of Artificial Intelligence (AAAI)}，\textit{International Conference on Machine Learning (ICML)}，\textit{International Conference on Learning Representations (ICLR)}
+    }
+  \end{itemize}
+
+
+
+  \section{荣誉与奖项}
+  \resumeSubHeadingListStart
+    \resumeSubSubheading
+      {厦门大学经济学院2022-2023学年秋季优秀助教}{2024}
+    \resumeSubSubheading
+      {Meritorious Winner, Interdisciplinary Contest in Modeling, USA}{2016}
+    \resumeSubSubheading
+      {中国大学生数学竞赛省级三等奖}{2016}
+    \resumeSubSubheading
+      {中国大学生数学建模竞赛省级二等奖}{2015}
+    \resumeSubSubheading
+      {山东大学优秀学生一等奖}{2015}
+    \resumeSubSubheading
+      {山东大学“三好学生”}{2015}
+  \resumeSubHeadingListEnd
+\end{document}

@@ -1,0 +1,274 @@
+% !TEX TS-program = xelatex
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% \usepackage{fontawesome} % Removed to avoid missing FontAwesome tfm issues
+% \input{glyphtounicode} % Optional for pdfLaTeX; XeLaTeX is Unicode-native
+\usepackage{fontawesome5}
+\usepackage{lastpage}
+\usepackage{ifthen}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+% Footer: show updated date on bottom-right only on last page
+\newcommand{\UpdatedOn}{\number\year-\ifnum\month<10 0\fi\number\month-\ifnum\day<10 0\fi\number\day}
+\setlength{\footskip}{12pt}
+\fancyfoot[R]{\scriptsize \ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{Updated: \UpdatedOn}{}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable (pdfLaTeX only)
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Hao Zeng}
+    \vspace{0.5em}\\
+    {\small Postdoc, Department of Statistics and Data Science, Southern University of Science and Technology}
+    % \small "Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal."
+\end{center}
+
+\begin{center}
+    \small \faIcon{envelope}\ \href{mailto:zenghao.acmail@gmail.com}{zenghao.acmail@gmail.com} $|$
+    \faIcon{graduation-cap}\ \href{https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en}{Google Scholar} $|$
+    \faIcon{home}\ \href{https://zenghao-stat.github.io}{Homepage: zenghao-stat.github.io}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Gregory and Paula Chow Institute for Studies in Economics, Xiamen University}{Sept. 2020 -- Jun. 2024}
+      {Ph.D. in Statistics, Supervised by Wei Zhong, Xingbai Xu, and Tuo Liu}{}
+    
+    \resumeSubheading
+      {Wang Yanan Institute for Studies in Economics, Xiamen University}{Sept. 2018 -- Jun. 2020}
+      {M.S. in Quantitative Economics}{Transfer to Ph.D. in Statistics}
+    
+    \resumeSubheading
+      {School of Mathematics, Shandong University}{Sept. 2014 -- Jun. 2018}
+      {B.S. in Mathematics (Peng's Class: Base of Financial Mathematics \& Financial Engineering)}{}
+  \resumeSubHeadingListEnd
+
+
+%-----------RESEARCH INTERESTS-----------
+\section{Research Area}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Statistical Machine Learning}{: Theory and Methods, Uncertainty Quantification in Machine Learning, Conformal Prediction, Transfer Learning} \\
+     \textbf{Interdisciplinary Research}{: Spatial Statistics, Econometrics, and Biostatistics}
+    }}
+\end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Southern University of Science and Technology \& National University of Singapore}{Jul. 2024 -- Present}
+      {Postdoctoral Researcher in Statistics, Supervised by Bingyi Jing, Hongxin Wei, and Wang Zhou}{}
+    
+    \resumeSubheading
+      {Department of Statistics, National University of Singapore}{May 2023 -- Oct. 2023}
+      {Visiting Researcher, Cooperated with Tao Yu}{}
+    
+    \resumeSubheading
+      {School of Economics, Xiamen University}{Fall 2022}
+      {Teaching Assistant in Probability Introduction (Undergraduate)}{}
+    
+    \resumeSubheading
+      {School of Economics, Xiamen University}{Spring 2022}
+      {Teaching Assistant in Real Analysis (Undergraduate)}{}
+    \resumeSubheading
+      {School of Economics, Xiamen University}{Fall 2021}
+      {Teaching Assistant in Advanced Probability Theory (Postgraduate)}{}
+    
+    \resumeSubheading
+      {School of Economics, Xiamen University}{Spring 2021}
+      {Teaching Assistant in Real Analysis (Undergraduate)}{}
+    
+    \resumeSubheading
+      {School of Economics, Xiamen University}{Fall 2019}
+      {Teaching Assistant in Advanced Econometrics I (Postgraduate)}{}
+  \resumeSubHeadingListEnd
+
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+(* means corresponding author, $^\dagger$ means equal contribution.)
+  \resumeSubHeadingListStart
+  \resumeProjectHeading{\textbf{Journal Articles}}{}
+      \resumeItemListStart
+        % \resumeItem{\textbf{2025}}
+        \resumeItem{\textbf{Zeng, H.}, Zhong, W., \& Xu, X. (2024). ``Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction.'' (Accepted for \textit{\textbf{Journal of Business \& Economic Statistics}})} 
+        \resumeItem{Liu, K., Sun, T., \textbf{Zeng, H.}, Zhang, Y., Pun, C.-M., \& Vong, C.-M. (2025). ``Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification.'' \textit{\textbf{IEEE Transactions on Circuits and Systems for Video Technology}}. (CAS Q1 journal, Top)
+        }
+        % \resumeItem{\textbf{2024}}
+        \resumeItem{\textbf{Zeng, H.}, Wan, C., Zhong, W., \& Liu, T. (2024). ``Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity.'' \textit{\textbf{Journal of Statistical Planning and Inference}}.
+        }
+        \resumeItem{Wan, C.$^\dagger$, \textbf{Zeng, H.*$^\dagger$}, Zhang, W.$^\dagger$, Zhong, W.$^\dagger$, \& Zou, C.$^\dagger$. (2024). ``Data‐driven Estimation for Multithreshold Accelerated Failure Time Model.'' \textit{\textbf{Scandinavian Journal of Statistics}}.}
+      \resumeItemListEnd
+      
+    \resumeProjectHeading{\textbf{Conference Papers}}{}
+    \resumeItemListStart
+        \resumeItem{\textbf{Zeng, H.$^\dagger$}, Liu, K.$^\dagger$, Jing, B., \& Wei, H. (2025). ``Parametric Scaling Law of Tuning Bias in Conformal Prediction.'' \textit{\textbf{42nd International Conference on Machine Learning}}. (AI Top conference)}
+        \resumeItem{Xi, H., Liu, K., \textbf{Zeng, H.}, Sun, W., \& Wei, H. (2025).``Robust Online Conformal Prediction under Uniform Label Noise.'' \textit{\textbf{39th Annual Conference on Neural Information Processing Systems}}. (AI Top conference)
+        } 
+        \resumeItem{Liu, K., \textbf{Zeng, H.}, Huang, J., Zhuang, H., Vong, C.-M., \& Wei, H. (2025). ``C-Adapter: Adapting Deep Classifiers for Efficient Conformal Prediction Sets.'' \textit{\textbf{28th European Conference on Artificial Intelligence}}.}
+    \resumeItemListEnd
+    
+    \resumeProjectHeading
+      {\textbf{Working Papers}}{}
+      \resumeItemListStart
+        \resumeItem{Huang, H., Liao, W., Xi, H., \textbf{Zeng, H.}, Zhao, M., \& Wei, H. (2025). ``Selective Labeling with False Discovery Rate Control.'' (Submitted to ICLR 2026)}
+        \resumeItem{Liu, Z., \textbf{Zeng, H.}, Huang, W., \& Wei, H. (2025). ``High-Power Training Data Identification with Provable Statistical Guarantees.''(Submitted to ICLR 2026)}
+        \resumeItem{\textbf{Zeng, H.}$^\dagger$, Huang, J.$^\dagger$, Jing, B., Wei, H., \& An, B. (2025). ``PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning.''(Submitted to ICLR 2026)}
+        \resumeItem{Gao, H., Zhang, F., \textbf{Zeng, H.}, Meng, D., Jing, B., \& Wei, H. (2025). ``Exploring Imbalanced Annotations for Effective In-Context Learning.''(Submitted to ICLR 2026)}
+        \resumeItem{\textbf{Zeng, H.}, Jing, B., \& Wei, H. (2025). ``Conditional Tuning in Conformal Prediction.''}
+        \resumeItem{\textbf{Zeng, H.}, Jing, B., \& Wei, H. (2025). ``The Double Descent of Conformal Prediction.''}
+        \resumeItem{\textbf{Zeng, H.}, Liu, K., Jing, B., \& Wei, H. (2025). ``On Tuning Bias in Conformal Prediction.''}
+      \resumeItemListEnd
+    
+    \resumeProjectHeading
+      {\textbf{Software}}{}
+      \resumeItemListStart
+        \resumeItem{Wan, C., \textbf{Zeng, H.}, Zhong, W., \& Zou, C. (2023). ``MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model.'' \href{https://cran.r-project.org/web/packages/MTAFT/index.html}{https://cran.r-project.org/web/packages/MTAFT/index.html}}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+
+
+
+
+\section{Conference Presentations}
+\resumeSubHeadingListStart
+    \resumeSubSubheading
+        {Talk in \textbf{The 2021 Forum for Doctoral Students in Quantitative Economics}}{Dec. 2021, Xiamen}
+    \resumeSubSubheading
+        {Invited Talk in \textbf{Xiamen University 2021 Symposium on Modern Statistics}}{Dec. 2021, Xiamen}
+    \resumeSubSubheading
+        {Invited Talk in \textbf{2023 PhD Forum on Econometric Modeling and Economic Policy Research}}{Nov. 2023, Beijing}
+    \resumeSubSubheading
+        {Poster in \textbf{Conference of the Youth Association of the Chinese Association for Industrial Statistics}}{Mar. 2024, Xuzhou}
+    \resumeSubSubheading
+        {Invited Talk in \textbf{The 1st Outstanding PhD Forum in Economics and Management Statistics}}{Jun. 2024, Xiamen}
+    \resumeSubSubheading
+        {Invited Talk in \textbf{The 2nd Joint Conference on Statistics and Data Science}}{Jul. 2024, Kunming}
+    \resumeSubSubheading
+        {Talk in \textbf{The 13th Conference on Probability and Statistics}}{Nov. 2024, Xiamen}
+    \resumeSubSubheading
+        {Poster in \textbf{The 3rd Joint Conference on Statistics and Data Science}}{Jul. 2025, Hangzhou}
+    \resumeSubSubheading
+        {Poster in \textbf{Forty-Second International Conference on Machine Learning}}{Jul. 2025, Vancouver, Canada}
+\resumeSubHeadingListEnd
+
+
+\section{Academic Services}
+\begin{itemize}[leftmargin=0.15in, label={}]
+   \item \textbf{Journal Reviewer} 
+ {International Statistical Review}, {Journal of Multivariate Analysis}, {Spatial Economic Analysis}, and {Quarterly Journal of Economics and Management}.\\
+  \item \textbf{Conference Reviewer} 
+ {International Conference on Artificial Intelligence and Statistics (AISTATS), Association for the Advancement of Artificial Intelligence (AAAI), International Conference on Machine Learning (ICML), International Conference on Learning Representations (ICLR)}
+\end{itemize}
+
+
+
+  \section{Awards}
+  \resumeSubHeadingListStart
+    \resumeSubSubheading
+      {Excellent Teaching Assistant in Fall 2022-2023, Xiamen University}{2024}
+    \resumeSubSubheading
+      {Meritorious Winner, Interdisciplinary Contest in Modeling, USA}{2016}
+    \resumeSubSubheading
+      {3rd Prize at the Provincial Level, Mathematics Competition for Chinese College Students}{2016}
+    \resumeSubSubheading
+      {2nd Prize at the Provincial Level, China Undergraduate Mathematical Contest in Modeling}{2015}
+    \resumeSubSubheading
+      {1st Prize for Outstanding Students, Shandong University}{2015}
+    \resumeSubSubheading
+      {Merit Student, Shandong University}{2015} % 三好学生
+  \resumeSubHeadingListEnd
+
+\end{document}
