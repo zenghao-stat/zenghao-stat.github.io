@@ -1,56 +1,58 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Hao Zeng"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+> Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+I am currently a Postdoctoral in Statistics at the Southern University of Science and Technology (SUSTech) and National University of Singapore (NUS), Department of Statistics and Data Science, supported by the SUSTech-NUS Joint Research Program, supervised by **[Prof. Bingyi Jing](https://www.sustech.edu.cn/zh/faculties/jingbing-yi.html)**, **[Prof. Hongxin Wei](https://hongxin001.github.io/)**, and **[Prof. Wang Zhou](https://www.stat.nus.edu.cn/wang-zhou/)**. I obtained my PhD in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University in 2024, where I was advised by **[Prof. Wei Zhong](https://faculty.xmu.edu.cn/wzhong/zh_CN/index/559037/list/index.htm)**, with **[Prof. Xingbai Xu](https://faculty.xmu.edu.cn/XXB/zh_CN/index.htm)** and **[Prof. Tuo Liu](https://faculty.xmu.edu.cn/LT1234/zh_CN/index/582397/list/index.htm)** as co-advisors. During 2018-2020, I completed my academic master's courses in Quantitative Economics at Wang Yanan Institute for Studies in Economics before transferring to the PhD program in Statistics. I was a visiting researcher at the Department of Statistics, National University of Singapore (NUS) from May to October 2023. I obtained my Bachelor of Science in Mathematics ([Peng's Class: Base of Financial Mathematics&Financial Engineering](https://www.math.sdu.edu.cn/info/1026/1612.htm)) at Shandong University in 2018. 
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+My research focuses on **statistical machine learning theory, methods, and their applications on uncertainty quantification**, particularly developing novel methodologies that bridge statistical theory with practical applications. I am also interested in interdisciplinary research at the intersection of machine learning methodologies with **spatial statistics**, **econometrics**, and **biostatistics**.
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+## News
+- **2025/09**: Our paper "Robust Online Conformal Prediction under Uniform Label Noise" has been accepted to top-tier AI conference NeurIPS 2026!
+- **2025/05**: Our paper "Parametric Scaling Law of Tuning Bias in Conformal Prediction" has been accepted to top-tier AI conference ICML 2025!
+- **2024/07**: Started postdoctoral position at the Department of Statistics and Data Science, Southern University of Science and Technology (SUSTech) under the SUSTech-NUS Joint Research Program.
+- **2024/06**: Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+## Working Papers
+- **Zeng, H.**, Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(R&R for Journal of Business & Economic Statistics)**
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+- **Zeng, H.**, Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." *arXiv*. [https://doi.org/10.48550/arXiv.2510.09133](https://doi.org/10.48550/arXiv.2510.09133) **(Submitted to ICLR 2026)**
+- Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037) **(Submitted to ICLR 2026)**
+- Huang, H., Liao, W., Xi, H., **Zeng, H.**, Zhao, M., & Wei, H. (2025). "Selective Labeling with False Discovery Rate Control." **(Submitted to ICLR 2026)**
+- Liu, Z., **Zeng, H.**, Huang, W., & Wei, H. (2025). "High-Power Training Data Identification with Provable Statistical Guarantees." **(Submitted to ICLR 2026)**
+- **Zeng, H.**, Jing, B., & Wei, H. (2025). "Conditional Tuning in Conformal Prediction."
+- **Zeng, H.**, Jing, B., & Wei, H. (2025). "The Double Descent of Conformal Prediction."
+- **Zeng, H.**, Liu, K., Jing, B., & Wei, H. (2025). "On Tuning Bias in Conformal Prediction."
 
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](https://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+## Selected Publications
 
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+### Journal Articles
 
-**Markdown generator**
+**2025**
+- Liu, K., Sun, T., **Zeng, H.**, Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
 
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
+**2024**
+- **Zeng, H.**, Wan, C., Zhong, W., & Liu, T. (2024). "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity." *Journal of Statistical Planning and Inference*, 234 (June): 106196. [https://doi.org/10.1016/j.jspi.2024.106196](https://doi.org/10.1016/j.jspi.2024.106196)
 
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
+- Wan, C., **Zeng, H.**, Zhang, W., Zhong, W., & Zou, C. (2024). "Data‐driven Estimation for Multithreshold Accelerated Failure Time Model." *Scandinavian Journal of Statistics*, November, sjos.12758. [https://doi.org/10.1111/sjos.12758](https://doi.org/10.1111/sjos.12758)
 
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
+### Conference
 
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+**2025**
+- Xi, H., Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
+  
+- **Zeng, H.**, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
+
+### Software
+
+**2023**
+- Wan, C., **Zeng, H.**, Zhong, W., & Zou, C. (2023). "MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model." [https://cran.r-project.org/web/packages/MTAFT/index.html](https://cran.r-project.org/web/packages/MTAFT/index.html)
+
+---
+See my [Google Scholar](https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en) for the latest publications.

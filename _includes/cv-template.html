@@ -212,8 +212,10 @@
         </div>
         <div class="cv-item-content">
           <div class="cv-item-subtitle">{{ teaching.institution }}</div>
-          {% if teaching.role %}
-          <div class="cv-item-detail">Role: {{ teaching.role }}</div>
+          {% if teaching.role or teaching.type %}
+          <div class="cv-item-detail">
+            {% if teaching.role %}Role: {{ teaching.role }}{% endif %}{% if teaching.role and teaching.type %} · {% endif %}{% if teaching.type %}Type: {{ teaching.type }}{% endif %}
+          </div>
           {% endif %}
           {% if teaching.description %}
           <div class="cv-item-detail">{{ teaching.description }}</div>

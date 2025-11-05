@@ -327,7 +327,10 @@ def parse_teaching(teaching_dir):
                 "course": front_matter.get('title', ''),
                 "institution": front_matter.get('venue', ''),
                 "date": front_matter.get('date', ''),
-                "role": front_matter.get('type', ''),
+                # 优先使用 role 字段；兼容旧数据使用 type
+                "role": front_matter.get('role', front_matter.get('type', '')),
+                # 重命名：课程类型统一用 type
+                "type": front_matter.get('type', ''),
                 "description": front_matter.get('excerpt', '')
             }
             
