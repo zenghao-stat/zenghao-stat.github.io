@@ -29,7 +29,7 @@ author:
   bio              : "Postdoctoral"
   location         : "Shenzhen, China"
   employer         : "Southern University of <br> Science and Technology"
-  uri              : "https://zenghao-stat.github.io"
+  # uri              : "https://zenghao-stat.github.io"
   email            : "zenghao.stat@gmail.com" 
 
   # Academic websites
