@@ -36,7 +36,7 @@ My research focuses on **distribution-free statistical machine learning theory, 
 
 **2025**
 
-- **Zeng, H.**, Zhong, W., & Xu, X. (2024). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(Accepted for *Journal of Business & Economic Statistics*)**
+- **Zeng, H.**, Zhong, W., & Xu, X. (2025). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(Accepted for *Journal of Business & Economic Statistics*)**
 - Liu, K., Sun, T., **Zeng, H.**, Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
 
 **2024**
