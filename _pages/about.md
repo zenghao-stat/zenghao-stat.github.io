@@ -21,9 +21,8 @@ My research focuses on **model free statistical machine learning theory, methods
 - **2024/06**: Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University.
 
 ## Working Papers
-
-- **Zeng, H.**, Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." *arXiv*. [https://doi.org/10.48550/arXiv.2510.09133](https://doi.org/10.48550/arXiv.2510.09133) **(Submitted to *ICLR 2026*)**
-- Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." *arXiv*. [https://doi.org/10.48550/arXiv.2502.04037](https://doi.org/10.48550/arXiv.2502.04037) **(Submitted to *ICLR 2026*)**
+- **Zeng, H.**, Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." **(Submitted to *ICLR 2026*)**
+- Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." **(Submitted to *ICLR 2026*)**
 - Huang, H., Liao, W., Xi, H., **Zeng, H.**, Zhao, M., & Wei, H. (2025). "Selective Labeling with False Discovery Rate Control." **(Submitted to *ICLR 2026*)**
 - Liu, Z., **Zeng, H.**, Huang, W., & Wei, H. (2025). "High-Power Training Data Identification with Provable Statistical Guarantees." **(Submitted to *ICLR 2026*)**
 - **Zeng, H.**, Jing, B., & Wei, H. (2025). "Conditional Tuning in Conformal Prediction."
