@@ -21,6 +21,7 @@ My research focuses on **model free statistical machine learning theory, methods
 - **2024/06**: Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University.
 
 ## Working Papers
+
 - **Zeng, H.**, Huang, J., Jing, B., Wei, H., & An, B. (2025). "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning." **(Submitted to *ICLR 2026*)**
 - Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." **(Submitted to *ICLR 2026*)**
 - Huang, H., Liao, W., Xi, H., **Zeng, H.**, Zhao, M., & Wei, H. (2025). "Selective Labeling with False Discovery Rate Control." **(Submitted to *ICLR 2026*)**
@@ -31,26 +32,17 @@ My research focuses on **model free statistical machine learning theory, methods
 
 ## Selected Publications
 
-### Journal Articles
-
 **2025**
 
 - **Zeng, H.**, Zhong, W., & Xu, X. (2025). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(Accepted for *Journal of Business & Economic Statistics*)**
 - Liu, K., Sun, T., **Zeng, H.**, Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
+- Xi, H., Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
+- **Zeng, H.**, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.” *Forty-Second International Conference on Machine Learning.* [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
 
 **2024**
 
 - **Zeng, H.**, Wan, C., Zhong, W., & Liu, T. (2024). "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity." *Journal of Statistical Planning and Inference*, 234 (June): 106196. [https://doi.org/10.1016/j.jspi.2024.106196](https://doi.org/10.1016/j.jspi.2024.106196)
 - Wan, C., **Zeng, H.**, Zhang, W., Zhong, W., & Zou, C. (2024). "Data‐driven Estimation for Multithreshold Accelerated Failure Time Model." *Scandinavian Journal of Statistics*, November, sjos.12758. [https://doi.org/10.1111/sjos.12758](https://doi.org/10.1111/sjos.12758)
-
-### Conference
-
-**2025**
-
-- Xi, H., Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
-- **Zeng, H.**, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.”  Forty-Second International Conference on Machine Learning. [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
-
-### Software
 
 **2023**
 
