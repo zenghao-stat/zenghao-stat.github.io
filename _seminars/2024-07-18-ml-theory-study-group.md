@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Theory Study Group"
+title: "Machine Learning Theory"
 date: 2024-07-18
 type: "Seminar"
 talk_type: "Seminar"
@@ -7,6 +7,8 @@ venue: "Online meeting & Business School 312"
 location: "Southern University of Science and Technology, Shenzhen, China"
 author_profile: true
 ---
+When do machine learning algorithms work and why? How do we formalize what it means for an algorithm to learn from data? How do we use mathematical thinking to design better machine learning methods? This course focuses on developing a theoretical understanding of the statistical properties of learning algorithms.
+
 ## Overview
 
 - Time: Thursdays at 7:00 PM
