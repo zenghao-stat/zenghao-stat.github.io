@@ -32,12 +32,11 @@
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    {# 不显示 seminar 字段（type/talk_type），将 venue、location、date 合并为一行 #}
     {% if post.venue or post.location or post.date %}
       <p class="archive__item-excerpt" itemprop="description">
-        {% if post.venue %}{{ post.venue }}{% endif %}{% if post.venue and (post.location or post.date) %}, {% endif %}
-        {% if post.location %}{{ post.location }}{% endif %}{% if post.location and post.date %}, {% endif %}
-        {% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}
+        {% if post.date %}<i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}{% endif %}{% if post.date and (post.venue or post.location) %}, {% endif %}
+        {% if post.venue %}<i class="fa fa-university" aria-hidden="true"></i> {{ post.venue }}{% endif %}{% if post.venue and post.location %}, {% endif %}
+        {% if post.location %}<i class="fa fa-map-marker" aria-hidden="true"></i> {{ post.location }}{% endif %}
       </p>
     {% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
