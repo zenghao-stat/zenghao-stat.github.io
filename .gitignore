@@ -26,3 +26,8 @@ cv_folder/cv.bbl
 cv_folder/cv.out
 cv_folder/cv.synctex.gz
 .gitignore
+cv_folder/publication list.aux
+cv_folder/publication list.bbl
+cv_folder/publication list.log
+cv_folder/publication list.out
+cv_folder/publication list.synctex.gz
