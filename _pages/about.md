@@ -36,7 +36,7 @@ My research focuses on **model free statistical machine learning** theory, metho
 
 - **Zeng, H.**, Zhong, W., & Xu, X. (2025). "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction." *arXiv*. [https://arxiv.org/abs/2405.15600](https://arxiv.org/abs/2405.15600) **(Accepted for *Journal of Business & Economic Statistics*)**
 - Liu, K., Sun, T., **Zeng, H.**, Zhang, Y., Pun, C.-M., & Vong, C.-M. (2025). "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification." *IEEE Transactions on Circuits and Systems for Video Technology*. [https://ieeexplore.ieee.org/abstract/document/10960721/](https://ieeexplore.ieee.org/abstract/document/10960721/)
-- Xi, H., Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). "Robust Online Conformal Prediction under Uniform Label Noise." *NeurIPS 2026*. [https://doi.org/10.48550/arXiv.2501.18363](https://doi.org/10.48550/arXiv.2501.18363)
+- Xi, HuaJun, Liu, K., **Zeng, H.**, Sun, W., & Wei, H. (2025). “Exploring the Noise Robustness of Online Conformal Prediction.” *NeurIPS 2025*. [https://openreview.net/forum?id=3veDGO9KiK](https://openreview.net/forum?id=3veDGO9KiK)
 - **Zeng, H.**, Kangdao Liu, Bingyi Jing, and Hongxin Wei. 2025. “Parametric Scaling Law of Tuning Bias in Conformal Prediction.” *Forty-Second International Conference on Machine Learning.* [https://openreview.net/forum?id=jnJLZXSOin](https://openreview.net/forum?id=jnJLZXSOin).
 
 **2024**
