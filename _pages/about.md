@@ -26,7 +26,7 @@ My research focuses on **model free statistical machine learning** theory, metho
 - Gao, H., Zhang, F., **Zeng, H.**, Meng, D., Jing, B., & Wei, H. (2025). "Exploring Imbalanced Annotations for Effective In-Context Learning." [arXiv:2502.04037](https://arxiv.org/abs/2502.04037) **(Submitted to *ICLR 2026*)** 
 - Huang, H., Liao, W., Xi, H., **Zeng, H.**, Zhao, M., & Wei, H. (2025). "Selective Labeling with False Discovery Rate Control." [arXiv:2510.14581](https://arxiv.org/abs/2510.14581) **(Submitted to *ICLR 2026*)**
 - Liu, Z., **Zeng, H.**, Huang, W., & Wei, H. (2025). "High-Power Training Data Identification with Provable Statistical Guarantees." [arXiv:2510.09717](https://arxiv.org/abs/2510.09717) **(Submitted to *ICLR 2026*)**
-- **Zeng, H.**, Jing, B., & Wei, H. (2025). "Conditional Tuning in Conformal Prediction."
+- **Zeng, H.**, Huipeng Huang, Jing, B., & Wei, H. (2025). "Conditional Tuning in Conformal Prediction."
 - **Zeng, H.**, Jing, B., & Wei, H. (2025). "The Double Descent of Conformal Prediction."
 - **Zeng, H.**, Liu, K., Jing, B., & Wei, H. (2025). "On Tuning Bias in Conformal Prediction."
 
