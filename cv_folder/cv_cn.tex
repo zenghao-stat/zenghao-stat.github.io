@@ -25,6 +25,9 @@
 \usepackage{lastpage}
 \usepackage{ifthen}
 
+\newif\ifzh
+\zhtrue
+
 \pagestyle{fancy}
 \fancyhf{} % 清空页眉页脚
 \fancyfoot{}
@@ -115,148 +118,12 @@
     \faIcon{home}\ \href{https://zenghao-stat.github.io}{个人主页：zenghao-stat.github.io}
 \end{center}
 
-%-----------教育经历-----------
-\section{教育经历}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {邹至庄经济研究院，厦门大学}{2020年9月 -- 2024年6月}
-      {统计学，理学博士，导师：钟威, 许杏柏, 刘拓}{}
-    
-    \resumeSubheading
-      {王亚南经济研究院，厦门大学}{2018年9月 -- 2020年6月}
-      {数量经济学，经济学硕士，导师：钟威}{转博至统计学博士}
-    
-    \resumeSubheading
-      {数学学院，山东大学}{2014年9月 -- 2018年6月}
-      {数学学士（彭实戈班：金融数学与金融工程基地班）}{}
-  \resumeSubHeadingListEnd
+\input{sections/education.tex}
+\input{sections/research_area.tex}
+\input{sections/experience.tex}
+\input{sections/publications.tex}
+\input{sections/presentations.tex}
+\input{sections/services.tex}
+\input{sections/awards.tex}
 
-
-%-----------研究兴趣-----------
-\section{研究领域}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \item{
-     \textbf{统计机器学习}{：模型无关统计推断、共型预测、迁移学习} \\
-     \textbf{交叉学科研究}{：大型语言模型、空间统计、计量经济学、生物统计}
-    }
- \end{itemize}
-
-%-----------经历-----------
-\section{工作与教学经历}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {南方科技大学、新加坡国立大学联合博士后项目}{2024年7月 -- 至今}
-      {统计学博士后，导师：荆炳义，魏鸿鑫，周望}{}
-    \resumeSubheading
-      {统计与数据科学系, 新加坡国立大学}{2023年5月 -- 2023年10月}
-      {访问学生，导师：余涛}{}
-    \resumeSubheading
-      {经济学院，厦门大学}{2019年9月 -- 2022年6月}
-      {助教：高级计量经济学 \textup{I}（研）、高级概率论（研）、实变函数（本）两次、概率论导论（本）}{}
-    \resumeSubheading
-      {埃森哲（中国）}{2018年4月 -- 2018年8月}
-      {电力企业管理咨询项目}{}
-  \resumeSubHeadingListEnd
-
-
-%-----------论文与出版-----------
-\section{学术成果}
-(* 表示通讯作者，$^\dagger$ 表示共同贡献，$^\diamond$ 表示指导学生。)
-  \resumeSubHeadingListStart
-  \resumeProjectHeading{\textbf{期刊文章}}{}
-      \resumeItemListStart
-        \resumeItem{\textbf{Hao Zeng}, Wei Zhong, \& Xingbai Xu (2025). ``Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction.'' \textbf{Journal of Business \& Economic Statistics}. (已接收，统计学、计量经济学顶级期刊)} 
-        \resumeItem{Kangdao Liu, Tianhao Sun, \textbf{Hao Zeng}, Yongshan Zhang, Chi-Man Pun, \& Chi-Man Vong (2025). ``Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification.'' \textbf{IEEE Transactions on Circuits and Systems for Video Technology} 35 (9): 8754–8766. (中科院一区，计算机顶级期刊)}
-        \resumeItem{\textbf{Hao Zeng}, Chuang Wan, Wei Zhong, \& Tuo Liu (2024). ``Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity.'' \textbf{Journal of Statistical Planning and Inference} 234 (January): 106196.}
-        \resumeItem{Chuang Wan$^\dagger$, \textbf{Hao Zeng$^\dagger$*}, Wenyang Zhang$^\dagger$, Wei Zhong$^\dagger$, \& Changliang Zou$^\dagger$ (2024). ``Data‐driven Estimation for Multithreshold Accelerated Failure Time Model.'' \textbf{Scandinavian Journal of Statistics} 52 (1): 447-468.}
-        \resumeItem{Wenqian Chen, \textbf{Hao Zeng}, Xiaoya Wang, Qiuping Xu, Panpan Liu, Liwei Zhang, Yingyue Hou, Qing Luo, Xueye Liu, Zhe Jiang, Zhiyuan Zhou, Jiang Chen, \& Jing Guo (2022). ``A Structural Equation Modeling Approach to Determine the Correlation between the Vertical and Sagittal Skeletal Patterns and Posterior Basal Bones Mismatching in Patients with Skeletal Class III Malocclusion.'' \textbf{American Journal of Orthodontics and Dentofacial Orthopedics} 162 (6): e277–294. (封面文章)}
-        \resumeItem{Wenqian Chen, \textbf{Hao Zeng}, Luna Sun, Qiuping Xu, Zhenxue Chen, Yunhan Sun, Qi Jia, Chengyun Liu, \& Jing Guo (2021). ``Match of the Bimaxillary Basal Bone Arches and Its Variations among Individuals.'' \textbf{Scanning} 2021 (1): 9625893.}
-      \resumeItemListEnd
-      
-    \resumeProjectHeading{\textbf{会议文章}}{}
-    \resumeItemListStart
-        \resumeItem{\textbf{Hao Zeng$^\dagger$}, Kangdao Liu$^\dagger$, Bingyi Jing, \& Hongxin Wei (2025). ``Parametric Scaling Law of Tuning Bias in Conformal Prediction.'' \textbf{42nd International Conference on Machine Learning (ICML 2025)}. (AI/ML 顶级会议)}
-        \resumeItem{Huajun Xi$^\diamond$, Kangdao Liu, \textbf{Hao Zeng}, Wenguang Sun, \& Hongxin Wei (2025). ``Exploring the Noise Robustness of Online Conformal Prediction.'' \textbf{39th Annual Conference on Neural Information Processing Systems (NeurIPS 2026)}. (AI/ML 顶级会议)}
-        \resumeItem{Kangdao Liu, \textbf{Hao Zeng}, Jianguo Huang, Huiping Zhuang, Chi-Man Vong, \& Hongxin Wei (2025). ``C-Adapter: Adapting Deep Classifiers for Efficient Conformal Prediction Sets.'' \textbf{28th European Conference on Artificial Intelligence}.}
-    \resumeItemListEnd
-    % \newpage
-    \resumeProjectHeading
-      {\textbf{工作论文}}{}
-      \resumeItemListStart
-        \resumeItem{张静怡$^\diamond$，岳阳，钟威，曾浩* (2025). ``分组网络向量自回归的稳健估计——以全国空气质量数据分析为例.'' (已提交至 \textbf{统计研究})}
-        \resumeItem{Huipeng Huang$^\diamond$, Wenbo Liao, Huajun Xi, \textbf{Hao Zeng}, Mengchen Zhao, \& Hongxin Wei (2025). ``Selective Labeling with False Discovery Rate Control.'' (提交至 \textbf{The 14th International Conference on Learning Representations (ICLR 2026)})}
-        \resumeItem{Zhenlong Liu$^\diamond$, \textbf{Hao Zeng}, Weiran Huang, \& Hongxin Wei (2025). ``High-Power Training Data Identification with Provable Statistical Guarantees.'' (提交至 \textbf{The 14th International Conference on Learning Representations (ICLR 2026)})}
-        \resumeItem{\textbf{Hao Zeng}$^\dagger$, Jianguo Huang$^\dagger$\(^\diamond\), Bingyi Jing, Hongxin Wei, \& Bo An (2025). ``PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning.'' (提交至 \textbf{The 14th International Conference on Learning Representations (ICLR 2026)})}
-        \resumeItem{Hongfu Gao, Feipeng Zhang, \textbf{Hao Zeng}, Deyu Meng, Bingyi Jing, \& Hongxin Wei (2025). ``Exploring Imbalanced Annotations for Effective In-Context Learning.''(提交至 \textbf{The 14th International Conference on Learning Representations (ICLR 2026)})}
-        \resumeItem{Xuanning Zhou$^\diamond$, Zihao Shi$^\diamond$, \textbf{Hao Zeng}, Xiaobo Xia, Bingyi Jing, \& Hongxin Wei (2025). ``Semi-Supervised Conformal Prediction with Unlabeled Nonconformity Score.'' (已提交至 \textbf{The IEEE/CVF Conference on Computer Vision and Pattern Recognition 2026 (CVPR 2026)})}
-        \resumeItem{\textbf{Hao Zeng}, Bingyi Jing, \& Hongxin Wei (2025). ``Conditional Tuning in Conformal Prediction.''}
-        \resumeItem{\textbf{Hao Zeng}, Bingyi Jing, \& Hongxin Wei (2025). ``The Double Descent of Conformal Prediction.''}
-        \resumeItem{\textbf{Hao Zeng}, Kangdao Liu, Bingyi Jing, \& Hongxin Wei (2025). ``On Tuning Bias in Conformal Prediction.''}
-        \resumeItem{\textbf{Hao Zeng}, \& Jianguo Huang$^\diamond$ (2025). ``PAC Accelerate: A Statistically Guaranteed Acceleration Method for Large Generative Models.''}
-        \resumeItem{\textbf{Hao Zeng} (2025). ``A Note on the Impossibility of Conditional PAC-Efficient Reasoning.''}
-        \resumeItem{\textbf{Hao Zeng}, \& Jianguo Huang$^\diamond$ (2025). ``Group-Conditional PAC Reasoning: Groupwise Efficient Reasoning with Statistical Guarantees.''}
-        \resumeItem{\textbf{Hao Zeng}, Jiajun Sun$^\diamond$, Bingyi Jing, \& Wei Zhong (2025). ``Test-time Valid Selection of Conformal Sets via Gaussian Stability.''}
-        \resumeItem{\textbf{Hao Zeng}, Junxian Liu$^\diamond$, Bingyi Jing, \& Hongxin Wei (2025). ``Efficient Backward Conformal Prediction.''} 
-        \resumeItem{\textbf{Hao Zeng}, Wei Zhong, Chuang Wan (2025). "Selective Inference for the Identified Groups in Network Vector Autoregressive Model."}
-        \resumeItem{\textbf{Hao Zeng}, Huipeng Huang, Jianguo Huang, Bingyi Jing, \& Hongxin Wei (2025). "Hybrid Labeling for LLMs via Multi-level PAC Reasoning."}
-      \resumeItemListEnd
-    
-    \resumeProjectHeading
-      {\textbf{开源软件}}{}
-      \resumeItemListStart
-        \resumeItem{Chuang Wan, \textbf{Hao Zeng}, Wei Zhong, \& Changliang Zou (2023). ``MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model.'' \href{https://cran.r-project.org/web/packages/MTAFT/index.html}{https://cran.r-project.org/web/packages/MTAFT/index.html}}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
-
-
-
-
-\section{学术报告与会议}
-\resumeSubHeadingListStart
-    \resumeSubSubheading
-        {{2021年全国数量经济学博士生学术论坛} \textbf{报告}}{2021年12月，厦门}
-    \resumeSubSubheading
-        {{2021年厦门大学现代统计学研讨会} \textbf{邀请报告}}{2021年12月，厦门}
-    \resumeSubSubheading
-        {{NSFC计量建模与经济政策研究基础科学中心项目2023博士生年度论坛} \textbf{邀请报告}}{2023年11月，北京}
-    \resumeSubSubheading
-        {{全国工业统计学教学研究会青年统计学家协会 2024 年年会暨第二届中国青年统计学家论坛} \textbf{海报展示}}{2024年3月，徐州}
-    \resumeSubSubheading
-        {{首届国科大与厦大经济管理统计优秀博士毕业生论坛} \textbf{邀请报告}}{2024年6月，厦门}
-    \resumeSubSubheading
-        {{第二届全国统计与数据科学联合会议} \textbf{邀请报告}}{2024年7月，昆明}
-    \resumeSubSubheading
-        {{第十三届全国概率统计会议} \textbf{作报告}}{2024年11月，厦门}
-    \resumeSubSubheading
-        {{第三届全国统计与数据科学联合会议} \textbf{海报展示}}{2025年7月，杭州}
-    \resumeSubSubheading
-        {{第42届国际机器学习大会(ICML)} \textbf{海报展示}}{2025年7月，加拿大温哥华}
-\resumeSubHeadingListEnd
-
-
-  \section{学术服务}
-  \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{
-    \item \textbf{期刊审稿人} \textit{International Statistical Review}，\textit{Journal of Multivariate Analysis}，\textit{Spatial Economic Analysis}，\textit{Quarterly Journal of Economics and Management}
-    \item \textbf{会议审稿人} \textit{International Conference on Artificial Intelligence and Statistics (AISTATS), AAAI Conference on Artificial Intelligence(AAAI), International Conference on Machine Learning (ICML), International Conference on Learning Representations (ICLR), IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
-    }
-  \end{itemize}
-
-
-
-  \section{荣誉与奖项}
-  \resumeSubHeadingListStart
-    \resumeSubSubheading
-      {厦门大学经济学院2022-2023学年秋季优秀助教}{2024}
-    \resumeSubSubheading
-      {Meritorious Winner, Interdisciplinary Contest in Modeling, USA}{2016}
-    \resumeSubSubheading
-      {中国大学生数学竞赛省级三等奖}{2016}
-    \resumeSubSubheading
-      {中国大学生数学建模竞赛省级二等奖}{2015}
-    \resumeSubSubheading
-      {山东大学优秀学生一等奖 (前5\%)}{2015}
-    \resumeSubSubheading
-      {山东大学“三好学生” (前5\%)}{2015}
-  \resumeSubHeadingListEnd
 \end{document}
