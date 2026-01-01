@@ -20,6 +20,7 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{etaremune}
+\usepackage{ragged2e}
 % \usepackage{fontawesome} % Removed to avoid missing FontAwesome tfm issues
 % \input{glyphtounicode} % Optional for pdfLaTeX; XeLaTeX is Unicode-native
 \usepackage{fontawesome5}
@@ -68,8 +69,8 @@
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[1]{%
-  \item\small{%
-    {#1 \vspace{-2pt}}%
+  \item\small\justifying{%
+    #1 \vspace{-2pt}%
   }%
 }
 

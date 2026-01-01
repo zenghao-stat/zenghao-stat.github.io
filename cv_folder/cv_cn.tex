@@ -18,8 +18,7 @@
 \usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{etaremune}
-% \usepackage{fontawesome} % 移除避免 XeLaTeX 字体问题
-% \input{glyphtounicode} % XeLaTeX 不需要，且可能缺失
+\usepackage{ragged2e}
 \usepackage[UTF8]{ctex}
 \usepackage{fontawesome5}
 \usepackage{lastpage}
@@ -66,10 +65,10 @@
 \fi
 
 %-------------------------
-% 自定义命令（沿用英文版的结构）
+% 自定义命令 
 \newcommand{\resumeItem}[1]{%
-  \item\small{%
-    {#1 \vspace{-2pt}}%
+  \item\small\justifying{%
+    #1 \vspace{-2pt}%
   }%
 }
 
