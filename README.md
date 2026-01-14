@@ -2,6 +2,17 @@
 
 一个基于 Vite + React 的学术个人主页单页项目，内容数据从 `src/*.json` 读取并在页面中渲染，支持主题切换与 Publications 多维筛选。
 
+## 分支说明
+
+- `master`：线上站点分支（GitHub Pages 自动部署）
+- `academic_page`：历史版本备份分支（原 Jekyll 站点）
+
+## 部署
+
+- 网站地址：https://zenghao-stat.github.io/
+- 部署方式：push 到 `master` 后，GitHub Actions 会自动构建并发布到 GitHub Pages
+- 工作流文件：`.github/workflows/pages.yml`
+
 ## 目录结构
 
 - `src/App.tsx`: 主页面组件（布局、筛选逻辑、渲染）
@@ -49,9 +60,3 @@ npm run preview
   - 按 `year` 降序，其次 `id` 降序
   - 标题在有 `url` 时可点击并显示外链图标
   - 只在有数据时显示 PDF/Code
-
-## TODO
-
-- add abs 字段支持（在 `publications.json` 增加摘要字段并在页面展示/筛选）
-- add keywords 字段支持（在 `publications.json` 增加关键字字段并在页面展示/筛选）
-
