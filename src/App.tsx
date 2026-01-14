@@ -261,6 +261,64 @@ export default function App() {
     return publications;
   }, [selectedOnly, activeTypeFilter, activeYearFilter]);
 
+  const publicationsAfterYearAndTopics = useMemo(() => {
+    let publications = HAO_DATA.publications;
+
+    if (activeYearFilter) {
+      if (activeYearFilter === 'before 2024') {
+        publications = publications.filter(p => Number(p.year) < 2024);
+      } else {
+        publications = publications.filter(p => p.year === activeYearFilter);
+      }
+    }
+
+    if (activeKeywords.length > 0) {
+      publications = publications.filter(p => {
+        if (!p.keywords || p.keywords.length === 0) return false;
+        if (keywordMatchMode === 'all') {
+          return activeKeywords.every(k => p.keywords!.includes(k));
+        }
+        return p.keywords.some(k => activeKeywords.includes(k));
+      });
+    }
+
+    return publications;
+  }, [activeYearFilter, activeKeywords, keywordMatchMode]);
+
+  const selectedAllCounts = useMemo(() => {
+    let publications = publicationsAfterYearAndTopics;
+
+    if (activeTypeFilter) {
+      publications = publications.filter(p => p.type === activeTypeFilter);
+    }
+
+    return {
+      selected: publications.filter(p => p.selected).length,
+      all: publications.length,
+    };
+  }, [publicationsAfterYearAndTopics, activeTypeFilter]);
+
+  const typeCounts = useMemo(() => {
+    let publications = publicationsAfterYearAndTopics;
+
+    if (selectedOnly) {
+      publications = publications.filter(p => p.selected);
+    }
+
+    const counts: Record<'Journal' | 'Conference' | 'Preprint' | 'Software', number> = {
+      Journal: 0,
+      Conference: 0,
+      Preprint: 0,
+      Software: 0,
+    };
+
+    publications.forEach(p => {
+      counts[p.type] += 1;
+    });
+
+    return counts;
+  }, [publicationsAfterYearAndTopics, selectedOnly]);
+
   const availableKeywords = useMemo(() => {
     const set = new Set<string>();
     publicationsAfterRightFilters.forEach(p => (p.keywords ?? []).forEach(k => set.add(k)));
@@ -661,12 +719,12 @@ export default function App() {
                         <span
                           className={`px-4 py-1.5 text-xs font-bold tracking-wide uppercase transition-colors ${selectedOnly ? `${theme.accentBg} text-white` : theme.textMuted}`}
                         >
-                          Selected
+                          Selected ({selectedAllCounts.selected})
                         </span>
                         <span
                           className={`px-4 py-1.5 text-xs font-bold tracking-wide uppercase transition-colors ${selectedOnly ? theme.textMuted : `${theme.accentBg} text-white`}`}
                         >
-                          All
+                          All ({selectedAllCounts.all})
                         </span>
                       </button>
 
@@ -680,7 +738,7 @@ export default function App() {
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
                         >
-                          {filter}
+                          {filter} ({typeCounts[filter]})
                         </button>
                       ))}
 
