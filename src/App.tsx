@@ -96,6 +96,7 @@ export default function App() {
   const [selectedOnly, setSelectedOnly] = useState(true);
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
   const [activeYearFilter, setActiveYearFilter] = useState<YearFilter | null>(null);
+  const [activeKeywords, setActiveKeywords] = useState<string[]>([]);
 
   const theme = THEMES[currentTheme];
   const preferredLightThemeRef = useRef(preferredLightTheme);
@@ -150,8 +151,15 @@ export default function App() {
       }
     }
 
+    if (activeKeywords.length > 0) {
+      publications = publications.filter(p => {
+        if (!p.keywords || p.keywords.length === 0) return false;
+        return p.keywords.some(k => activeKeywords.includes(k));
+      });
+    }
+
     return publications;
-  }, [selectedOnly, activeTypeFilter, activeYearFilter]);
+  }, [selectedOnly, activeTypeFilter, activeYearFilter, activeKeywords]);
 
   // 显示的论文列表 - 显示所有符合筛选条件的论文
   const displayedPublications = useMemo(() => {
@@ -161,6 +169,11 @@ export default function App() {
       return b.id - a.id;
     });
   }, [filteredPublications]);
+  const allKeywords = useMemo(() => {
+    const set = new Set<string>();
+    HAO_DATA.publications.forEach(p => (p.keywords ?? []).forEach(k => set.add(k)));
+    return Array.from(set).sort();
+  }, []);
 
   // 导航项
   const navItems = [
@@ -472,6 +485,26 @@ export default function App() {
                         </button>
                       ))}
                     </div>
+                    <div className="flex flex-wrap gap-2 font-sans items-center">
+                      {allKeywords.map(k => {
+                        const active = activeKeywords.includes(k);
+                        return (
+                          <button
+                            key={k}
+                            type="button"
+                            onClick={() =>
+                              setActiveKeywords(prev =>
+                                active ? prev.filter(x => x !== k) : [...prev, k]
+                              )
+                            }
+                            className={`px-3 py-1.5 rounded-full text-xs transition-all
+                              ${active ? `${theme.accentBg} text-white shadow-md` : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
+                          >
+                            {k}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
 
@@ -519,6 +552,15 @@ export default function App() {
                         </span>
                         <span className={`font-medium italic ${theme.textMuted}`}>{pub.venue}</span>
                         <span className={theme.textMuted}>({pub.year})</span>
+                        {pub.keywords && pub.keywords.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {pub.keywords.map(k => (
+                              <span key={k} className={`px-2 py-0.5 rounded text-xs ${theme.cardBg} border ${theme.border} ${theme.textMuted}`}>
+                                {k}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                         
                         {/* 链接按钮 */}
                         <div className="flex gap-2 ml-auto">
@@ -544,6 +586,13 @@ export default function App() {
                           )}
                         </div>
                       </div>
+                      {pub.abs && (
+                        <div className={`hidden group-hover:block mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
+                          <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                            {pub.abs}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

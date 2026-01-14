@@ -7,6 +7,7 @@
     "type": "Journal",
     "year": "2025",
     "url": "https://arxiv.org/abs/2405.15600",
+    "abs": "We study transfer learning for spatial autoregressive models and propose a method with theory and an application to U.S. presidential election prediction.",
     "selected": true
   },
   {
@@ -17,6 +18,8 @@
     "type": "Journal",
     "year": "2025",
     "url": "https://ieeexplore.ieee.org/abstract/document/10960721/",
+    "keywords": ["Conformal Prediction"],
+    "abs": "We develop a spatial-aware conformal prediction method for hyperspectral image classification with stronger reliability under spatial structure.",
     "selected": true
   },
   {
@@ -27,6 +30,7 @@
     "type": "Conference",
     "year": "2025",
     "url": "https://openreview.net/forum?id=3veDGO9KiK",
+    "keywords": ["Conformal Prediction"],
     "selected": true
   },
   {
@@ -37,6 +41,7 @@
     "type": "Conference",
     "year": "2025",
     "url": "https://openreview.net/forum?id=jnJLZXSOin",
+    "keywords": ["Conformal Prediction"],
     "selected": true
   },
   {
@@ -125,6 +130,7 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
+    "keywords": ["Conformal Prediction"],
     "selected": false
   },
   {
@@ -134,6 +140,7 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
+    "keywords": ["Conformal Prediction"],
     "selected": false
   },
   {
@@ -143,6 +150,7 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
+    "keywords": ["Conformal Prediction"],
     "selected": false
   }
 ]

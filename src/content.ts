@@ -27,6 +27,8 @@ export interface Publication {
   venue: string;
   type: 'Conference' | 'Journal' | 'Preprint' | 'Software';
   year: string;
+  abs?: string;
+  keywords?: string[];
   pdf?: string;
   code?: string;
   url?: string; // arxiv 或其他链接
