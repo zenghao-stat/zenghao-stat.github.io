@@ -41,6 +41,8 @@ npm run preview
 
 - `title`/`authors`/`venue`/`type`/`year`：基础信息
 - `selected`：是否为精选论文（用于 Selected/All 切换）
+- `abs`：可选摘要；鼠标悬停在该论文条目时展开显示
+- `keywords`：可选关键字数组；会在论文条目中展示，并可用于筛选
 - `url`：如果存在且不为 `#`，标题会变为可点击的超链接
 - `pdf`：如果存在且不为 `#`，会显示 PDF 链接按钮
 - `code`：如果存在且不为 `#`，会显示 Code 链接按钮
