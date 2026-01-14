@@ -140,11 +140,11 @@ export const HAO_DATA: Content = {
     {
       type: 'Conference Reviewer',
       items: [
-        'International Conference on Artificial Intelligence and Statistics (AISTATS)',
-        'AAAI Conference on Artificial Intelligence (AAAI)',
-        'International Conference on Machine Learning (ICML)',
-        'International Conference on Learning Representations (ICLR)',
-        'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)',
+        'International Conference on Artificial Intelligence and Statistics (AISTATS) 2026',
+        'AAAI Conference on Artificial Intelligence (AAAI) 2026',
+        'International Conference on Machine Learning (ICML) 2026',
+        'International Conference on Learning Representations (ICLR) 2026',
+        'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2026',
       ],
     },
   ],
