@@ -430,12 +430,25 @@ export default function App() {
               {/* 论文列表 */}
               <div className="space-y-8">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <h2 className={`text-3xl font-bold font-serif ${theme.text}`}>
-                    Publications
-                  </h2>
-                  <p className={`text-xs ${theme.textMuted} font-sans`}>
-                    注：† 表示一作；✉ 表示通讯作者；🎓 表示指导学生
-                  </p>
+                  <div className="space-y-1">
+                    <h2 className={`text-3xl font-bold font-serif ${theme.text}`}>
+                      Publications
+                    </h2>
+                    <p className={`text-xs ${theme.textMuted} font-sans`}>
+                      Notes:{' '}
+                      <span className="inline-flex items-center gap-1" title="First author">
+                        <span>†</span> first author/equal contribution
+                      </span>
+                      ;{' '}
+                      <span className="inline-flex items-center gap-1" title="Corresponding author">
+                        <Mail size={12} className="inline-block" aria-label="Corresponding author" /> corresponding author
+                      </span>
+                      ;{' '}
+                      <span className="inline-flex items-center gap-1" title="Supervised student">
+                        <GraduationCap size={12} className="inline-block" aria-label="Supervised student" /> supervised student
+                      </span>
+                    </p>
+                  </div>
                   
                   {/* 筛选器 */}
                   <div className="flex flex-col gap-2">
@@ -547,16 +560,16 @@ export default function App() {
                             <span key={`${author}-${i}`}>
                               {isMe ? <span className={`font-bold ${theme.text}`}>{author}</span> : author}
                               {isFirstAuthor && (
-                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="一作">†</sup>
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="First author">†</sup>
                               )}
                               {isGuidedStudent && (
-                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="指导学生">
-                                  <GraduationCap size={12} className="inline-block" aria-label="指导学生" />
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="Supervised student">
+                                  <GraduationCap size={12} className="inline-block" aria-label="Supervised student" />
                                 </sup>
                               )}
                               {isCorrespondingAuthor && (
-                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="通讯作者">
-                                  <Mail size={12} className="inline-block" aria-label="通讯作者" />
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`} title="Corresponding author">
+                                  <Mail size={12} className="inline-block" aria-label="Corresponding author" />
                                 </sup>
                               )}
                               {i < arr.length - 1 ? ', ' : ''}
