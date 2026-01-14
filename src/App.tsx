@@ -97,6 +97,8 @@ export default function App() {
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
   const [activeYearFilter, setActiveYearFilter] = useState<YearFilter | null>(null);
   const [activeKeywords, setActiveKeywords] = useState<string[]>([]);
+  const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
+  const topicsMenuRef = useRef<HTMLDivElement | null>(null);
 
   const theme = THEMES[currentTheme];
   const preferredLightThemeRef = useRef(preferredLightTheme);
@@ -117,6 +119,19 @@ export default function App() {
     const id = window.setInterval(maybeSwitchTheme, 60 * 1000);
     return () => window.clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    if (!topicsMenuOpen) return;
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (!topicsMenuRef.current) return;
+      if (topicsMenuRef.current.contains(target)) return;
+      setTopicsMenuOpen(false);
+    };
+    window.addEventListener('pointerdown', onPointerDown);
+    return () => window.removeEventListener('pointerdown', onPointerDown);
+  }, [topicsMenuOpen]);
 
   const applyTheme = (nextTheme: ThemeKey) => {
     setCurrentTheme(nextTheme);
@@ -186,10 +201,6 @@ export default function App() {
     { label: 'Service', href: '#service' },
   ];
 
-  const externalLinks = [
-    { label: 'CV', href: HAO_DATA.profile.cvUrl },
-  ];
-
   return (
     <div className={`min-h-screen ${theme.bg} ${theme.text} ${theme.font} transition-colors duration-500`}>
       {/* 导航栏 - 参考项目的简洁风格 */}
@@ -211,18 +222,6 @@ export default function App() {
                 className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors`}
               >
                 {item.label}
-              </a>
-            ))}
-            {externalLinks.map((item) => (
-              <a 
-                key={item.label} 
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors flex items-center gap-1`}
-              >
-                {item.label}
-                <ExternalLink size={12} />
               </a>
             ))}
             
@@ -282,17 +281,6 @@ export default function App() {
                 key={item.label} 
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block py-2 ${theme.textMuted} hover:${theme.text}`}
-              >
-                {item.label}
-              </a>
-            ))}
-            {externalLinks.map((item) => (
-              <a 
-                key={item.label} 
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`block py-2 ${theme.textMuted} hover:${theme.text}`}
               >
                 {item.label}
@@ -381,15 +369,15 @@ export default function App() {
                   <h3 className={`text-sm font-semibold ${theme.textMuted} uppercase tracking-wider mb-4 font-sans`}>
                     Research Interests
                   </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Conformal Prediction', 'Transfer Learning', 'Spatial Statistics', 'LLM Reasoning'].map((interest) => (
-                      <span 
-                        key={interest}
-                        className={`px-3 py-1.5 ${theme.cardBg} border ${theme.border} rounded-full text-sm ${theme.textMuted}`}
-                      >
-                        {interest}
-                      </span>
-                    ))}
+                  <div className="space-y-2 font-sans">
+                    <div className={`text-sm ${theme.textMuted}`}>
+                      <span className={`font-semibold ${theme.text}`}>Statistical Machine Learning:</span>{' '}
+                      Model Free Predictive Inference, Conformal Prediction, Transfer Learning
+                    </div>
+                    <div className={`text-sm ${theme.textMuted}`}>
+                      <span className={`font-semibold ${theme.text}`}>Interdisciplinary Research:</span>{' '}
+                      Large Language Models, Spatial Statistics, Econometrics, and Biostatistics
+                    </div>
                   </div>
                 </div>
               </div>
@@ -435,9 +423,8 @@ export default function App() {
                       Publications
                     </h2>
                     <p className={`text-xs ${theme.textMuted} font-sans`}>
-                      Notes:{' '}
                       <span className="inline-flex items-center gap-1" title="First author">
-                        <span>†</span> first author
+                        <span>†</span> first author/equal contribution
                       </span>
                       ;{' '}
                       <span className="inline-flex items-center gap-1" title="Corresponding author">
@@ -448,6 +435,54 @@ export default function App() {
                         <GraduationCap size={12} className="inline-block" aria-label="Supervised student" /> supervised student
                       </span>
                     </p>
+                    <div className="pt-2">
+                      <div ref={topicsMenuRef} className="relative inline-block">
+                        <button
+                          type="button"
+                          onClick={() => setTopicsMenuOpen(prev => !prev)}
+                          className={`px-3 py-1.5 rounded-full text-xs transition-all border ${theme.border} ${theme.textMuted} ${theme.cardBg} hover:border-slate-400 inline-flex items-center gap-2`}
+                        >
+                          <span>
+                            {activeKeywords.length === 0
+                              ? 'select topics'
+                              : activeKeywords.length === 1
+                                ? activeKeywords[0]
+                                : `${activeKeywords.length} topics`}
+                          </span>
+                          <span className="text-[10px]">▾</span>
+                        </button>
+
+                        {topicsMenuOpen && (
+                          <div
+                            className={`absolute left-0 mt-2 w-72 max-w-[80vw] rounded-xl border ${theme.border} ${theme.cardBg} shadow-lg p-2 z-50`}
+                          >
+                            <div className="max-h-64 overflow-auto">
+                              {allKeywords.map(k => {
+                                const checked = activeKeywords.includes(k);
+                                return (
+                                  <label
+                                    key={k}
+                                    className={`flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer hover:bg-slate-500/10 ${theme.textMuted}`}
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      checked={checked}
+                                      onChange={() =>
+                                        setActiveKeywords(prev =>
+                                          checked ? prev.filter(x => x !== k) : [...prev, k]
+                                        )
+                                      }
+                                      className="h-3.5 w-3.5"
+                                    />
+                                    <span className="text-xs">{k}</span>
+                                  </label>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   
                   {/* 筛选器 */}
@@ -500,26 +535,6 @@ export default function App() {
                           {year}
                         </button>
                       ))}
-                    </div>
-                    <div className="flex flex-wrap gap-2 font-sans items-center">
-                      {allKeywords.map(k => {
-                        const active = activeKeywords.includes(k);
-                        return (
-                          <button
-                            key={k}
-                            type="button"
-                            onClick={() =>
-                              setActiveKeywords(prev =>
-                                active ? prev.filter(x => x !== k) : [...prev, k]
-                              )
-                            }
-                            className={`px-3 py-1.5 rounded-full text-xs transition-all
-                              ${active ? `${theme.accentBg} text-white shadow-md` : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
-                          >
-                            {k}
-                          </button>
-                        );
-                      })}
                     </div>
                   </div>
                 </div>
