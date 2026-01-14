@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Learning Theory — Hao Zeng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+      :root { --font-sans: 'Inter', -apple-system, sans-serif; }
+      body { font-family: var(--font-sans); }
+      .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+      .prose p { margin: 0.75rem 0; line-height: 1.7; text-align: justify; hyphens: auto; overflow-wrap: anywhere; }
+      .prose ul, .prose ol { margin: 0.75rem 0 0.75rem 1.25rem; }
+      .prose li { margin: 0.25rem 0; }
+      .prose blockquote { border-left: 3px solid #e2e8f0; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+      .prose a { color: #1d4ed8; text-decoration: underline; }
+      .meta-row { display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem; padding: 0.25rem 0; }
+      .meta-row .k { color: #64748b; font-weight: 600; font-size: 0.875rem; }
+      .meta-row .v { color: #0f172a; font-size: 0.95rem; }
+    </style>
+  </head>
+  <body class="bg-[#FFFCF5] text-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <a class="text-sm font-semibold text-slate-600 hover:text-slate-900" href="/test-zenghao-stat/">← Back</a>
+      <h1 class="text-3xl sm:text-4xl font-bold mt-6">Machine Learning Theory</h1>
+      <div class="mt-6 border border-slate-200 rounded-xl bg-white p-6">
+        <div class="meta-row"><div class="k">Category</div><div class="v">Seminar</div></div>
+<div class="meta-row"><div class="k">Type</div><div class="v">Seminar</div></div>
+<div class="meta-row"><div class="k">Venue</div><div class="v">Online meeting &amp; Business School 312</div></div>
+<div class="meta-row"><div class="k">Location</div><div class="v">Southern University of Science and Technology, Shenzhen, China</div></div>
+<div class="meta-row"><div class="k">Date</div><div class="v">2024-07-18</div></div>
+      </div>
+      <div class="prose mt-8">
+        <p>When do machine learning algorithms work and why? How do we formalize what it means for an algorithm to learn from data? How do we use mathematical thinking to design better machine learning methods? This course focuses on developing a theoretical understanding of the statistical properties of learning algorithms.</p>
+<h2>Overview</h2>
+<ul>
+<li>Time: Thursdays at 7:00 PM</li>
+<li>Location: Business School 312 with Online Meeting</li>
+<li>Hosts: Hao Zeng, Huajun Xi</li>
+<li>Course website: <a href="https://web.stanford.edu/class/stats214/" target="_blank" rel="noopener noreferrer">STATS214 / CS229M: Machine Learning Theory</a></li>
+<li>Course videos: <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rP8nAmISxFINlGKSK4rbLKh" target="_blank" rel="noopener noreferrer">Stanford CS229M: Machine Learning Theory - Fall 2021 - YouTube</a></li>
+<li>Reference notes: <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/tengyuma/cs229m_notes/main/master.pdf" target="_blank" rel="noopener noreferrer">CS229M</a></li>
+</ul>
+<h2>Dial-in</h2>
+<ul>
+<li>Tencent Meeting: 479-9733-5495</li>
+<li>Meeting room: Business School 314</li>
+</ul>
+<h2>Schedule</h2>
+<h3>Jul 18, Hao Zeng, Lecture 1</h3>
+<p>Overview; supervised learning; empirical risk minimization (Section 1 of the notes); asymptotic analysis (subset of Section 2); concentration inequalities (Sec 3.1).</p>
+<h3>Jul 25, Zicheng Xie, Lecture 2</h3>
+<p>Uniform convergence; finite hypothesis class; discretizing infinite hypothesis spaces (Sections 4.1–4.3); Hoeffding inequality (Sections 3.2–3.4).</p>
+<blockquote>
+<p>- Cao, Y., Chen, Z., Belkin, M., &amp; Gu, Q. (2022). Benign Overfitting in Two-layer Convolutional Neural Networks. NeurIPS 2022. <a href="https://openreview.net/forum?id=pF8btdPVTL_" target="_blank" rel="noopener noreferrer">https://openreview.net/forum?id=pF8btdPVTL_</a></p>
+<p>- Chaudhuri, K., &amp; Hsu, D. (2011). Sample Complexity Bounds for Differentially Private Learning. COLT 2011. <a href="https://proceedings.mlr.press/v19/chaudhuri11a.html" target="_blank" rel="noopener noreferrer">https://proceedings.mlr.press/v19/chaudhuri11a.html</a></p>
+<p>- Hopkins, M., Kane, D. M., Lovett, S., &amp; Mahajan, G. (2022). Realizable Learning is All You Need. COLT 2022. <a href="https://proceedings.mlr.press/v178/hopkins22a.html" target="_blank" rel="noopener noreferrer">https://proceedings.mlr.press/v178/hopkins22a.html</a></p>
+</blockquote>
+<h3>Aug 1, Huajun Xi, Lecture 3</h3>
+<p>Rademacher complexity; empirical Rademacher complexity (Sections 4.4 and 4.5); McDiarmid&#039;s inequality (Section 3.5).</p>
+<blockquote>
+<p>* Bartlett, P. L., &amp; Mendelson, S. (2002). Rademacher and Gaussian Complexities: Risk Bounds and Structural Results. JMLR 3:463–482.</p>
+<p>* Mohri, M., &amp; Rostamizadeh, A. (2008). Rademacher Complexity Bounds for Non-I.I.D. Processes. NeurIPS 21.</p>
+<p>  Sachs, S., van Erven, T., Hodgkinson, L., Khanna, R., &amp; Şimşekli, U. (2023). Generalization Guarantees via Algorithm-Dependent Rademacher Complexity. COLT 2023.</p>
+<p>* Zhu, J., Gibson, B., &amp; Rogers, T. T. (2009). Human Rademacher Complexity. NeurIPS 22.</p>
+<p>* Li, S., &amp; Liu, Y. (2023). Distribution-Dependent McDiarmid-Type Inequalities for Functions of Unbounded Interaction. ICML 2023.</p>
+<p>* Maurer, A., &amp; Pontil, M. (2021). Concentration Inequalities under Sub-Gaussian and Sub-Exponential Conditions. NeurIPS 34.</p>
+</blockquote>
+<h3>Aug 8, Hao Zeng, Lecture 4</h3>
+<p>Generalization bounds for neural networks; refined generalization bounds; connections to kernel methods (Sections 5.3–5.4).</p>
+<h3>Aug 15, Zicheng Xie, Lecture 5</h3>
+<p>Covering number approach; Dudley theorem (and implications) (Section 4.6).</p>
+<h3>Aug 29, Huajun Xi, Lecture 6</h3>
+<p>Generalization bounds for deep nets (Section 5.5).</p>
+      </div>
+    </div>
+  </body>
+</html>

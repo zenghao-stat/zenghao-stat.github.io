@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2022-fall-probability-introduction",
+    "category": "Teaching",
+    "title": "Probability Introduction",
+    "type": "Undergraduate course",
+    "role": "Teaching asisteance",
+    "venue": "School of Economics, Xiamen University",
+    "date": "2022-09-01",
+    "semester": "",
+    "excerpt": "Introductory probability course covering sample spaces, random variables, distributions, expectation, limit theorems, and basic statistical inference.",
+    "location": "",
+    "body": "This course introduces fundamental concepts of probability, including sample spaces and events, conditional probability, independence, and Bayes’ theorem.\nIt covers discrete and continuous random variables, common distributions (Bernoulli, Binomial, Poisson, Normal), joint distributions, expectation, variance, covariance, and moment generating functions.\nFoundational limit theorems such as the Law of Large Numbers and Central Limit Theorem are discussed, with applications to basic statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching/2022-fall-probability-introduction"
+  },
+  {
+    "id": "2022-spring-real-analysis",
+    "category": "Teaching",
+    "title": "Real Analysis",
+    "type": "Undergraduate course",
+    "role": "Teaching asisteance",
+    "venue": "School of Economics, Xiamen University",
+    "date": "2022-03-01",
+    "semester": "",
+    "excerpt": "Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference.",
+    "location": "",
+    "body": "This course provides a rigorous introduction to real functions and measure theory.  \nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.  \nThe focus is on developing the theoretical foundation essential for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching/2022-spring-real-analysis"
+  },
+  {
+    "id": "2021-fall-advanced-probability-theory",
+    "category": "Teaching",
+    "title": "Advanced Probability Theory",
+    "type": "Postgraduate course",
+    "role": "Teaching asisteance",
+    "venue": "School of Economics, Xiamen University",
+    "date": "2021-09-01",
+    "semester": "",
+    "excerpt": "Measure-theoretic probability covering sigma-algebras, integration, modes of convergence, martingales, and limit theorems with statistical applications.",
+    "location": "",
+    "body": "This course builds a measure-theoretic foundation for probability.\nTopics include sigma-algebras and probability measures, random variables as measurable functions, Lebesgue integration and expectations, various modes of convergence (almost sure, in probability, in Lp, in distribution), and convergence theorems.\nMartingale theory and key limit theorems are covered with emphasis on their use in statistics and stochastic processes.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching/2021-fall-advanced-probability-theory"
+  },
+  {
+    "id": "2021-spring-real-analysis",
+    "category": "Teaching",
+    "title": "Real Analysis",
+    "type": "Undergraduate course",
+    "role": "Teaching asisteance",
+    "venue": "School of Economics, Xiamen University",
+    "date": "2021-03-01",
+    "semester": "",
+    "excerpt": "Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference.",
+    "location": "",
+    "body": "This course provides a rigorous introduction to real functions and measure theory.  \nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.  \nThe focus is on developing the theoretical foundation essential for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching/2021-spring-real-analysis"
+  },
+  {
+    "id": "2019-fall-advanced-econometrics-i",
+    "category": "Teaching",
+    "title": "Advanced Econometrics I",
+    "type": "Postgraduate course",
+    "role": "Teaching asisteance",
+    "venue": "School of Economics, Xiamen University",
+    "date": "2019-09-01",
+    "semester": "",
+    "excerpt": "Graduate-level econometrics covering linear models, estimation and inference, heteroskedasticity and autocorrelation, endogeneity and instrumental variables, and panel data methods.",
+    "location": "",
+    "body": "This course provides a rigorous treatment of econometric theory and practice.\nTopics include the classical linear regression model, properties of estimators, hypothesis testing, heteroskedasticity and autocorrelation corrections, endogeneity and instrumental variables, generalized method of moments, and panel data techniques.\nApplications and empirical implementation are emphasized through examples and assignments.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching/2019-fall-advanced-econometrics-i"
+  }
+]

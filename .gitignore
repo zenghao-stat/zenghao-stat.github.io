@@ -1,37 +1,24 @@
-# Ignore the contents of the _site directory and other cache directories
-_site/
-.sass-cache/
-
-# Ignore the directory for local files during development
-local/
-
-# Ignore the Gemfile that is generated
-Gemfile.lock
-
-# Ignore files created by npm
+# 依赖目录
 node_modules
-package-lock.json
 
-# Ignore the vendor file and bundle for alternative installation
-vendor/
-.bundle/
-cv_folder/cv.log
-cv_folder/cv_cn.aux
-cv_folder/cv_cn.log
-cv_folder/cv_cn.out
-cv_folder/cv_cn.synctex.gz
-cv_folder/cv_cn.xdv
-cv_folder/cv.aux
-cv_folder/cv.bbl
-cv_folder/cv.out
-cv_folder/cv.synctex.gz
-.gitignore
-cv_folder/publication list.aux
-cv_folder/publication list.bbl
-cv_folder/publication list.log
-cv_folder/publication list.out
-cv_folder/publication list.synctex.gz
-cv_folder/cv_business.aux
-cv_folder/cv_business.log
-cv_folder/cv_business.out
-cv_folder/cv_business.synctex.gz
+# 构建输出
+dist
+
+# 本地环境文件
+.env
+.env.local
+.env.*.local
+
+# 编辑器配置
+.vscode
+.idea
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+npm-debug.log*
