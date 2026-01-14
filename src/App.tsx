@@ -15,7 +15,9 @@ import {
   ExternalLink,
   Combine,
   Merge,
-  RotateCcw
+  RotateCcw,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 import { HAO_DATA } from './content';
@@ -158,6 +160,8 @@ export default function App() {
   const [keywordMatchMode, setKeywordMatchMode] = useState<'any' | 'all'>('any');
   const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
+  const [expandedAbstractIds, setExpandedAbstractIds] = useState<number[]>([]);
+  const [canHover, setCanHover] = useState<boolean>(false);
 
   const theme = THEMES[currentTheme];
   const preferredLightThemeRef = useRef(preferredLightTheme);
@@ -210,6 +214,18 @@ export default function App() {
     setTopicsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const mql = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const lg = window.matchMedia('(min-width: 1024px)');
+    const update = () => setCanHover(mql.matches && lg.matches);
+    update();
+    mql.addEventListener('change', update);
+    lg.addEventListener('change', update);
+    return () => {
+      mql.removeEventListener('change', update);
+      lg.removeEventListener('change', update);
+    };
+  }, []);
   const applyTheme = (nextTheme: ThemeKey) => {
     setCurrentTheme(nextTheme);
     if (nextTheme !== 'night') {
@@ -588,6 +604,19 @@ export default function App() {
                                     All
                                   </span>
                                 </button>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setActiveKeywords([]);
+                                    setKeywordMatchMode('any');
+                                  }}
+                                  disabled={activeKeywords.length === 0 && keywordMatchMode === 'any'}
+                                  className={`px-2 py-1 rounded-full text-[11px] border ${theme.border} ${theme.cardBg} ${theme.textMuted} inline-flex items-center gap-1 transition-opacity ${activeKeywords.length === 0 && keywordMatchMode === 'any' ? 'opacity-40 cursor-not-allowed' : 'hover:border-slate-400'}`}
+                                  title="Clean topics"
+                                >
+                                  <RotateCcw size={12} />
+                                  Clean
+                                </button>
                               </div>
                             </div>
 
@@ -706,7 +735,7 @@ export default function App() {
                             className={`inline-flex items-center gap-1 hover:${theme.accent} transition-colors`}
                           >
                             <span>{pub.title}</span>
-                            <ExternalLink size={16} />
+                            {canHover && <ExternalLink size={16} />}
                           </a>
                         ) : (
                           pub.title
@@ -763,6 +792,17 @@ export default function App() {
                         
                         {/* 链接按钮 */}
                         <div className="flex gap-2 ml-auto">
+                          {pub.url && pub.url !== '#' && (
+                            <a
+                              href={pub.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${canHover ? 'hidden' : ''} inline-flex items-center gap-1 px-3 py-1.5 rounded border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:${theme.accent} transition-colors`}
+                            >
+                              <ExternalLink size={16} />
+                              Link
+                            </a>
+                          )}
                           {pub.pdf && pub.pdf !== '#' && (
                             <a 
                               href={pub.pdf}
@@ -783,14 +823,38 @@ export default function App() {
                               <Code size={14} /> Code
                             </a>
                           )}
+                          {pub.abs && (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setExpandedAbstractIds(prev =>
+                                  prev.includes(pub.id) ? prev.filter(x => x !== pub.id) : [...prev, pub.id]
+                                )
+                              }
+                              className={`${canHover ? 'hidden' : ''} inline-flex items-center gap-1 px-2 py-1 rounded border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:${theme.accent} transition-colors`}
+                            >
+                              <BookOpen size={16} />
+                              <span>Abstract</span>
+                              {expandedAbstractIds.includes(pub.id) ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+                          )}
                         </div>
                       </div>
                       {pub.abs && (
-                        <div className={`hidden group-hover:block mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
-                          <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
-                            {pub.abs}
-                          </p>
-                        </div>
+                        <>
+                          <div className={`hidden ${canHover ? 'group-hover:block' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
+                            <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                              {pub.abs}
+                            </p>
+                          </div>
+                          {expandedAbstractIds.includes(pub.id) && (
+                            <div className={`${canHover ? 'hidden' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
+                              <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                                {pub.abs}
+                              </p>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   ))}
