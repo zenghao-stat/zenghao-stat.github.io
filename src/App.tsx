@@ -12,7 +12,9 @@ import {
   Award,
   Palette,
   Check,
-  ExternalLink
+  ExternalLink,
+  Combine,
+  Merge
 } from 'lucide-react';
 
 import { HAO_DATA } from './content';
@@ -97,6 +99,7 @@ export default function App() {
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
   const [activeYearFilter, setActiveYearFilter] = useState<YearFilter | null>(null);
   const [activeKeywords, setActiveKeywords] = useState<string[]>([]);
+  const [keywordMatchMode, setKeywordMatchMode] = useState<'any' | 'all'>('any');
   const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -146,8 +149,7 @@ export default function App() {
     applyTheme(nextTheme);
   };
 
-  // 筛选论文
-  const filteredPublications = useMemo(() => {
+  const publicationsAfterRightFilters = useMemo(() => {
     let publications = HAO_DATA.publications;
 
     if (selectedOnly) {
@@ -166,15 +168,38 @@ export default function App() {
       }
     }
 
+    return publications;
+  }, [selectedOnly, activeTypeFilter, activeYearFilter]);
+
+  const availableKeywords = useMemo(() => {
+    const set = new Set<string>();
+    publicationsAfterRightFilters.forEach(p => (p.keywords ?? []).forEach(k => set.add(k)));
+    return Array.from(set).sort();
+  }, [publicationsAfterRightFilters]);
+
+  useEffect(() => {
+    setActiveKeywords(prev => {
+      const next = prev.filter(k => availableKeywords.includes(k));
+      return next.length === prev.length ? prev : next;
+    });
+  }, [availableKeywords]);
+
+  // 筛选论文（包含 topic 筛选）
+  const filteredPublications = useMemo(() => {
+    let publications = publicationsAfterRightFilters;
+
     if (activeKeywords.length > 0) {
       publications = publications.filter(p => {
         if (!p.keywords || p.keywords.length === 0) return false;
+        if (keywordMatchMode === 'all') {
+          return activeKeywords.every(k => p.keywords!.includes(k));
+        }
         return p.keywords.some(k => activeKeywords.includes(k));
       });
     }
 
     return publications;
-  }, [selectedOnly, activeTypeFilter, activeYearFilter, activeKeywords]);
+  }, [publicationsAfterRightFilters, activeKeywords, keywordMatchMode]);
 
   // 显示的论文列表 - 显示所有符合筛选条件的论文
   const displayedPublications = useMemo(() => {
@@ -184,11 +209,6 @@ export default function App() {
       return b.id - a.id;
     });
   }, [filteredPublications]);
-  const allKeywords = useMemo(() => {
-    const set = new Set<string>();
-    HAO_DATA.publications.forEach(p => (p.keywords ?? []).forEach(k => set.add(k)));
-    return Array.from(set).sort();
-  }, []);
 
   // 导航项
   const navItems = [
@@ -456,8 +476,36 @@ export default function App() {
                           <div
                             className={`absolute left-0 mt-2 w-72 max-w-[80vw] rounded-xl border ${theme.border} ${theme.cardBg} shadow-lg p-2 z-50`}
                           >
+                            <div className="flex items-center justify-between gap-2 px-1 pb-2">
+                              <div className={`text-[11px] ${theme.textMuted}`}>Match mode</div>
+                              <div className="flex items-center gap-1">
+                                <button
+                                  type="button"
+                                  onClick={() => setKeywordMatchMode('any')}
+                                  className={`px-2 py-1 rounded-full text-[11px] border ${theme.border} ${keywordMatchMode === 'any' ? `${theme.accentBg} text-white` : `${theme.cardBg} ${theme.textMuted}`}`}
+                                  title="Any (union)"
+                                >
+                                  <span className="inline-flex items-center gap-1">
+                                    <Combine size={12} />
+                                    Any
+                                  </span>
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setKeywordMatchMode('all')}
+                                  className={`px-2 py-1 rounded-full text-[11px] border ${theme.border} ${keywordMatchMode === 'all' ? `${theme.accentBg} text-white` : `${theme.cardBg} ${theme.textMuted}`}`}
+                                  title="All (intersection)"
+                                >
+                                  <span className="inline-flex items-center gap-1">
+                                    <Merge size={12} />
+                                    All
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+
                             <div className="max-h-64 overflow-auto">
-                              {allKeywords.map(k => {
+                              {availableKeywords.map((k: string) => {
                                 const checked = activeKeywords.includes(k);
                                 return (
                                   <label

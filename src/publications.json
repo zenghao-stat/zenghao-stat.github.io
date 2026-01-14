@@ -10,7 +10,7 @@
     "abs": "It is important to incorporate spatial geographic information into U.S. presidential election analysis, especially for swing states. The state-level analysis also faces significant challenges of limited spatial data availability. To address the challenges of spatial dependence and small sample sizes in predicting U.S. presidential election results using spatially dependent data, we propose a novel transfer learning framework within the SAR model, called as tranSAR. Classical SAR model estimation often loses accuracy with small target data samples. Our framework enhances estimation and prediction by leveraging information from similar source data. We introduce a two-stage algorithm, consisting of a transferring stage and a debiasing stage, to estimate parameters and establish theoretical convergence rates for the estimators. Additionally, if the informative source data are unknown, we propose a transferable source detection algorithm using spatial residual bootstrap to maintain spatial dependence and derive its detection consistency. Simulation studies show our algorithm substantially improves the classical two-stage least squares estimator. We demonstrate our method's effectiveness in predicting outcomes in U.S. presidential swing states, where it outperforms traditional methods. In addition, our tranSAR model predicts that the Democratic party will win the 2024 U.S. presidential election.",
     "pdf": "/papers/2405.15600.pdf",
     "selected": true,
-    "keywords": ["Transfer learning", "Spatial Autoregressive Model"]
+    "keywords": ["Transfer Learning", "Spatial Autoregressive Model"]
   },
   {
     "id": 2025998,
@@ -76,7 +76,7 @@
     "url": "https://doi.org/10.1016/j.jspi.2024.106196",
     "abs": "Integrative analysis is important for combining heterogeneous data across multiple datasets. However, outliers and heavy-tailed data can make least squares unreliable. We propose Robust Integrative Analysis via Quantile Regression (RIAQ) that accounts for homogeneity and sparsity across datasets. RIAQ identifies latent homogeneous coefficient structures and recovers sparsity in high-dimensional covariates via double penalty terms. Integrating samples improves efficiency, and sparsity improves interpretability. Quantile regression also reveals subgroup structures across quantile levels. We develop an efficient ADMM algorithm, study its convergence, and establish parameter selection consistency. Numerical studies show good finite-sample performance, especially for heavy-tailed cases.",
     "selected": true,
-    "keywords": ["High dimensional statistics"]
+    "keywords": ["High Dimensional Statistics"]
   },
   {
     "id": 2024998,
@@ -90,7 +90,7 @@
     "url": "https://doi.org/10.1111/sjos.12758",
     "abs": "This article develops a new estimation framework for the multithreshold accelerated failure time model, which has different linear forms across subdomains. A key challenge is to determine the number of threshold effects. We show selection consistency of a modified BIC under mild conditions, but it can depend on the penalty magnitude. We propose a fully data-driven approach using a cross-validation criterion with an order-preserved sample-splitting scheme, which is robust to model settings and data distributions. We establish asymptotic properties for parameter estimates and propose an efficient score-type test for the existence of threshold effects. Numerical experiments validate the finite-sample performance.",
     "selected": true,
-    "keywords": ["High dimensional statistics"]
+    "keywords": ["High Dimensional Statistics"]
   },
   {
     "id": 2022999,
@@ -101,8 +101,8 @@
     "year": "2023",
     "url": "https://cran.r-project.org/web/packages/MTAFT/index.html",
     "abs": "Developed a data-driven estimation framework for the multi-threshold accelerate failure time (MTAFT) model. The model has different linear forms in different subdomains, and a key challenge is determining the number of threshold effects. The package provides a data-driven approach using a Schwarz' information criterion, and a cross-validation criterion with an order-preserved sample-splitting scheme for consistent estimation without extra tuning parameters. It also includes asymptotic theory for estimates and an efficient score-type test for threshold effects, supported by numerical experiments.",
-    "selected": true,
-    "keywords": ["High dimensional statistics"]
+    "selected": false,
+    "keywords": ["High Dimensional Statistics"]
   },
   {
     "id": 2022998,
@@ -136,7 +136,7 @@
     "type": "Preprint",
     "year": "2025",
     "selected": false,
-    "keywords":["Spatial Autoregressive Model"]
+    "keywords": ["Spatial Autoregressive Model"]
   },
   {
     "id": 2025098,
@@ -146,7 +146,7 @@
     "type": "Preprint",
     "year": "2025",
     "selected": false,
-    "keywords":["Spatial Autoregressive Model", "Transfer learning"]
+    "keywords": ["Spatial Autoregressive Model", "Transfer Learning"]
   },
   {
     "id": 2025097,
@@ -156,7 +156,8 @@
     "venue": "Submitted to Journal of Dentistry",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": false,
+    "keywords": ["Medicine"]
   },
   {
     "id": 2025096,
@@ -171,7 +172,7 @@
     "abs": "Large reasoning models can solve hard tasks but are expensive at test time. A common idea is to switch between thinking and nonthinking modes, but it can introduce errors and lacks statistical guarantees. We propose Probably Approximately Correct (PAC) reasoning, which controls performance loss under a user-specified tolerance. We build an upper confidence bound for the performance loss as a monotone function of an uncertainty score, and use it to pick a switching threshold. This yields distribution-free guarantees on bounded performance loss. Experiments show the method saves compute while controlling performance loss.",
     "pdf": "/papers/2510.09133.pdf",
     "selected": true,
-    "keywords":["Large langeuage model"]
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025095,
@@ -183,7 +184,8 @@
     "url": "https://arxiv.org/abs/2502.04037",
     "abs": "In-context learning relies on demonstrations selected from annotated datasets. We show that imbalanced class distributions in annotated datasets can strongly hurt in-context learning across tasks and selection methods. Standard rebalancing methods do not fix this issue. We propose a method based on decomposing distribution differences between annotated and test datasets into class-wise weights and a conditional bias term. We estimate the conditional bias using a balanced validation set and use the two-component weights to adjust scoring functions during selection. This avoids selecting too many demonstrations from one class while keeping the strengths of existing selection methods. Experiments improve average accuracy on common benchmarks with imbalanced datasets.",
     "pdf": "/papers/2502.04037.pdf",
-    "selected": false
+    "selected": false,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025094,
@@ -196,7 +198,8 @@
     "url": "https://arxiv.org/abs/2510.14581",
     "abs": "High-quality labels for large datasets are expensive. Using model predictions can save cost but introduces label errors. Selective labeling methods let AI label some items and humans label the rest, but they often lack guarantees on the error rate in the AI-labeled subset. We propose Conformal Labeling, which finds instances where model predictions can be trusted by controlling the false discovery rate (FDR), the fraction of incorrect labels in the selected subset. We build a conformal p-value for each test instance and select items using a data-dependent threshold. We provide theory showing FDR control at the target level, and experiments show tight control with high power across image, text, and LLM QA tasks.",
     "pdf": "/papers/2510.14581.pdf",
-    "selected": false
+    "selected": false,
+    "keywords": ["Conformal Prediction", "Large Language Models"]
   },
   {
     "id": 2025093,
@@ -209,7 +212,8 @@
     "url": "https://arxiv.org/abs/2510.09717",
     "abs": "Identifying training data in large models matters for copyright, privacy auditing, and fair evaluation. Existing methods often treat it as a binary classification task without statistical guarantees. We propose Provable Training Data Identification (PTDI), which identifies a set of training data with strict false discovery rate (FDR) control. PTDI computes p-values using known unseen data, builds a conservative estimator for the data usage proportion, scales p-values accordingly, and selects points below a data-dependent threshold. This yields strict FDR control with higher power. Experiments across LLMs, VLMs, and datasets show strong FDR control and improved power.",
     "pdf": "/papers/2510.09717.pdf",
-    "selected": false
+    "selected": false,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025092,
@@ -262,7 +266,8 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": false,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025087,
@@ -272,7 +277,8 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": false,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025086,
@@ -284,7 +290,8 @@
     "url": "https://arxiv.org/abs/2512.03057",
     "abs": "We prove an impossibility result for conditional PAC-efficient reasoning in large language models. While marginal PAC efficiency guarantees can be achieved by composite methods that switch between an expensive expert model and a cheaper fast model, we show conditional (pointwise) guarantees are impossible in the distribution-free setting. For non-atomic input spaces, any method that achieves conditional PAC efficiency must be trivial: it must defer to the expert model with probability at least 1-α for almost every input.",
     "pdf": "/papers/2512.03057.pdf",
-    "selected": false
+    "selected": true,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025085,
@@ -315,7 +322,8 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": false,
+    "keywords": ["High Dimensional Statistics"]
   },
   {
     "id": 2025082,
@@ -325,7 +333,8 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": true,
+    "keywords": ["Large Language Models"]
   },
   {
     "id": 2025081,
@@ -336,6 +345,7 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
-    "selected": false
+    "selected": true,
+    "keywords": ["Large Language Models"]
   }
 ]
