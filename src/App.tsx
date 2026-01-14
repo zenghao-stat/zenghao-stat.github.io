@@ -533,14 +533,33 @@ export default function App() {
                         )}
                       </h3>
                       <div className={`mt-1 ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'}`}>
-                        {pub.authors.split(',').map((author, i, arr) => (
-                          <span key={i}>
-                            {author.includes("Hao Zeng") 
-                              ? <span className={`font-bold ${theme.text}`}>{author.trim()}</span> 
-                              : author.trim()}
-                            {i < arr.length - 1 ? ', ' : ''}
-                          </span>
-                        ))}
+                        {pub.authors.split(',').map((rawAuthor, i, arr) => {
+                          const author = rawAuthor.trim();
+                          const isMe = author === 'Hao Zeng';
+                          const isFirstAuthor = pub.firstAuthors?.includes(author);
+                          const isGuidedStudent = pub.guidedStudents?.includes(author);
+                          const isCorrespondingAuthor = pub.correspondingAuthors?.includes(author);
+
+                          return (
+                            <span key={`${author}-${i}`}>
+                              {isMe ? <span className={`font-bold ${theme.text}`}>{author}</span> : author}
+                              {isFirstAuthor && (
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`}>†</sup>
+                              )}
+                              {isGuidedStudent && (
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`}>
+                                  <GraduationCap size={12} className="inline-block" />
+                                </sup>
+                              )}
+                              {isCorrespondingAuthor && (
+                                <sup className={`ml-0.5 align-super ${theme.textMuted}`}>
+                                  <Mail size={12} className="inline-block" />
+                                </sup>
+                              )}
+                              {i < arr.length - 1 ? ', ' : ''}
+                            </span>
+                          );
+                        })}
                       </div>
                       <div className="flex flex-wrap items-center gap-3 mt-2 text-sm font-sans">
                         <span className={`px-2 py-0.5 rounded text-xs font-bold ${

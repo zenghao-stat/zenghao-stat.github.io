@@ -1,8 +1,8 @@
 [
   {
-    "id": 1,
+    "id": 2025999,
     "title": "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction",
-    "authors": "Hao Zeng, W Zhong, X Xu",
+    "authors": "Hao Zeng, Wei Zhong, Xingbai Xu",
     "venue": "Journal of Business & Economic Statistics",
     "type": "Journal",
     "year": "2025",
@@ -11,10 +11,10 @@
     "selected": true
   },
   {
-    "id": 2,
+    "id": 2025998,
     "title": "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification",
-    "authors": "K Liu, T Sun, Hao Zeng, Y Zhang, C-M Pun, C-M Vong",
-    "venue": "IEEE TCSVT",
+    "authors": "Kangdao Liu, Tianhao Sun, Hao Zeng, Yongshan Zhang, Chi-Man Pun, Chi-Man Vong",
+    "venue": "IEEE Transactions on Circuits and Systems for Video Technology",
     "type": "Journal",
     "year": "2025",
     "url": "https://ieeexplore.ieee.org/abstract/document/10960721/",
@@ -23,9 +23,10 @@
     "selected": true
   },
   {
-    "id": 3,
+    "id": 2025899,
     "title": "Exploring the Noise Robustness of Online Conformal Prediction",
-    "authors": "H Xi, K Liu, Hao Zeng, W Sun, H Wei",
+    "authors": "Huajun Xi, Kangdao Liu, Hao Zeng, Wenguang Sun, Hongxin Wei",
+    "guidedStudents": ["Huajun Xi"],
     "venue": "NeurIPS 2025",
     "type": "Conference",
     "year": "2025",
@@ -34,9 +35,10 @@
     "selected": true
   },
   {
-    "id": 4,
+    "id": 2025898,
     "title": "Parametric Scaling Law of Tuning Bias in Conformal Prediction",
-    "authors": "Hao Zeng, K Liu, B Jing, H Wei",
+    "authors": "Hao Zeng, Kangdao Liu, Bingyi Jing, Hongxin Wei",
+    "firstAuthors": ["Hao Zeng", "Kangdao Liu"],
     "venue": "ICML 2025",
     "type": "Conference",
     "year": "2025",
@@ -45,9 +47,20 @@
     "selected": true
   },
   {
-    "id": 5,
+    "id": 2025897,
+    "title": "C-Adapter: Adapting Deep Classifiers for Efficient Conformal Prediction Sets",
+    "authors": "Kangdao Liu, Hao Zeng, Jianguo Huang, Huiping Zhuang, Chi-Man Vong, Hongxin Wei",
+    "guidedStudents": ["Kangdao Liu"],
+    "venue": "28th European Conference on Artificial Intelligence (ECAI 2025)",
+    "type": "Conference",
+    "year": "2025",
+    "keywords": ["Conformal Prediction"],
+    "selected": false
+  },
+  {
+    "id": 2024999,
     "title": "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity",
-    "authors": "Hao Zeng, C Wan, W Zhong, T Liu",
+    "authors": "Hao Zeng, Chuang Wan, Wei Zhong, Tuo Liu",
     "venue": "Journal of Statistical Planning and Inference",
     "type": "Journal",
     "year": "2024",
@@ -55,9 +68,11 @@
     "selected": true
   },
   {
-    "id": 6,
+    "id": 2024998,
     "title": "Data-driven Estimation for Multithreshold Accelerated Failure Time Model",
-    "authors": "C Wan, Hao Zeng, W Zhang, W Zhong, C Zou",
+    "authors": "Chuang Wan, Hao Zeng, Wenyang Zhang, Wei Zhong, Changliang Zou",
+    "correspondingAuthors": ["Hao Zeng"],
+    "firstAuthors": ["Chuang Wan", "Hao Zeng", "Wenyang Zhang", "Wei Zhong", "Changliang Zou"],
     "venue": "Scandinavian Journal of Statistics",
     "type": "Journal",
     "year": "2024",
@@ -65,9 +80,9 @@
     "selected": true
   },
   {
-    "id": 7,
+    "id": 2022999,
     "title": "MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model",
-    "authors": "C Wan, Hao Zeng, W Zhong, C Zou",
+    "authors": "Chuang Wan, Hao Zeng, Wei Zhong, Changliang Zou",
     "venue": "CRAN R Package",
     "type": "Software",
     "year": "2023",
@@ -75,18 +90,59 @@
     "selected": true
   },
   {
-    "id": 8,
+    "id": 2022998,
+    "title": "A Structural Equation Modeling Approach to Determine the Correlation between the Vertical and Sagittal Skeletal Patterns and Posterior Basal Bones Mismatching in Patients with Skeletal Class III Malocclusion",
+    "authors": "Wenqian Chen, Hao Zeng, Xiaoya Wang, Qiuping Xu, Panpan Liu, Liwei Zhang, Yingyue Hou, Qing Luo, Xueye Liu, Zhe Jiang, Zhiyuan Zhou, Jiang Chen, Jing Guo",
+    "venue": "American Journal of Orthodontics and Dentofacial Orthopedics",
+    "type": "Journal",
+    "year": "2022",
+    "selected": false
+  },
+  {
+    "id": 2021999,
+    "title": "Match of the Bimaxillary Basal Bone Arches and Its Variations among Individuals",
+    "authors": "Wenqian Chen, Hao Zeng, Luna Sun, Qiuping Xu, Zhenxue Chen, Yunhan Sun, Qi Jia, Chengyun Liu, Jing Guo",
+    "venue": "Scanning",
+    "type": "Journal",
+    "year": "2021",
+    "selected": false
+  },
+  {
+    "id": 2025099,
     "title": "Robust Estimation of Grouped Network Vector Autoregression: An Empirical Analysis Based on China Air Quality Data",
-    "authors": "J Zhang, Y Yue, W Zhong, Hao Zeng",
+    "authors": "Jingyi Zhang, Yang Yue, Wei Zhong, Hao Zeng",
+    "correspondingAuthors": ["Hao Zeng"],
+    "guidedStudents": ["Jingyi Zhang"],
     "venue": "Submitted to Statistical Research",
     "type": "Preprint",
     "year": "2025",
     "selected": false
   },
   {
-    "id": 9,
+    "id": 2025098,
+    "title": "TL-FCSAR: A Transfer Learning Model for Heterogeneous Spatial Effects in U.S. Presidential Elections",
+    "authors": "Hao Zeng, Chao Liu",
+    "venue": "Submitted to Spatial Statistics",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025097,
+    "title": "Sex-specific Associations between Craniofacial Skeletal Patterns and Condylar Morphology and Position in Temporomandibular Joint Osteoarthritis: A Three-dimensional Latent Variable Analysis",
+    "authors": "Wenqian Chen, Hao Zeng, Jiawen Lei, Yuanning Hou, Chunchun Du, Yiyao Zhang, Yi Lin, Xinan Chen, Tianrong He",
+    "firstAuthors": ["Wenqian Chen", "Hao Zeng"],
+    "venue": "Submitted to Journal of Dentistry",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025096,
     "title": "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning",
-    "authors": "Hao Zeng, J Huang, B Jing, H Wei, B An",
+    "authors": "Hao Zeng, Jianguo Huang, Bingyi Jing, Hongxin Wei, Bo An",
+    "firstAuthors": ["Hao Zeng", "Jianguo Huang"],
+    "guidedStudents": ["Jianguo Huang"],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -94,9 +150,9 @@
     "selected": true
   },
   {
-    "id": 10,
+    "id": 2025095,
     "title": "Exploring Imbalanced Annotations for Effective In-Context Learning",
-    "authors": "H Gao, F Zhang, Hao Zeng, D Meng, B Jing, H Wei",
+    "authors": "Hongfu Gao, Feipeng Zhang, Hao Zeng, Deyu Meng, Bingyi Jing, Hongxin Wei",
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -104,9 +160,10 @@
     "selected": false
   },
   {
-    "id": 11,
+    "id": 2025094,
     "title": "Selective Labeling with False Discovery Rate Control",
-    "authors": "H Huang, W Liao, H Xi, Hao Zeng, M Zhao, H Wei",
+    "authors": "Huipeng Huang, Wenbo Liao, Huajun Xi, Hao Zeng, Mengchen Zhao, Hongxin Wei",
+    "guidedStudents": ["Huipeng Huang"],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -114,9 +171,10 @@
     "selected": false
   },
   {
-    "id": 12,
+    "id": 2025093,
     "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
-    "authors": "Z Liu, Hao Zeng, W Huang, H Wei",
+    "authors": "Zhenlong Liu, Hao Zeng, Weiran Huang, Hongxin Wei",
+    "guidedStudents": ["Zhenlong Liu"],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -124,9 +182,20 @@
     "selected": false
   },
   {
-    "id": 13,
+    "id": 2025092,
+    "title": "Semi-Supervised Conformal Prediction with Unlabeled Nonconformity Score",
+    "authors": "Xuanning Zhou, Zihao Shi, Hao Zeng, Xiaobo Xia, Bingyi Jing, Hongxin Wei",
+    "guidedStudents": ["Xuanning Zhou", "Zihao Shi"],
+    "venue": "Submitted to CVPR 2026",
+    "type": "Preprint",
+    "year": "2025",
+    "keywords": ["Conformal Prediction"],
+    "selected": false
+  },
+  {
+    "id": 2025091,
     "title": "Conditional Tuning in Conformal Prediction",
-    "authors": "Hao Zeng, H Huang, B Jing, H Wei",
+    "authors": "Hao Zeng, Huipeng Huang, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
@@ -134,9 +203,9 @@
     "selected": false
   },
   {
-    "id": 14,
+    "id": 2025090,
     "title": "The Double Descent of Conformal Prediction",
-    "authors": "Hao Zeng, B Jing, H Wei",
+    "authors": "Hao Zeng, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
@@ -144,13 +213,94 @@
     "selected": false
   },
   {
-    "id": 15,
+    "id": 2025089,
     "title": "On Tuning Bias in Conformal Prediction",
-    "authors": "Hao Zeng, K Liu, B Jing, H Wei",
+    "authors": "Hao Zeng, Kangdao Liu, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "keywords": ["Conformal Prediction"],
+    "selected": false
+  },
+  {
+    "id": 2025088,
+    "title": "PAC Accelerate: A Statistically Guaranteed Acceleration Method for Large Generative Models",
+    "authors": "Hao Zeng, Jianguo Huang",
+    "guidedStudents": ["Jianguo Huang"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025087,
+    "title": "Group-Conditional PAC Reasoning: Groupwise Efficient Reasoning with Statistical Guarantees",
+    "authors": "Hao Zeng, Jianguo Huang",
+    "guidedStudents": ["Jianguo Huang"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025086,
+    "title": "A Note on the Impossibility of Conditional PAC-Efficient Reasoning",
+    "authors": "Hao Zeng",
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025085,
+    "title": "Test-time Valid Selection of Conformal Sets via Gaussian Stability",
+    "authors": "Hao Zeng, Jiajun Sun, Bingyi Jing, Wei Zhong",
+    "guidedStudents": ["Jiajun Sun"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "keywords": ["Conformal Prediction"],
+    "selected": false
+  },
+  {
+    "id": 2025084,
+    "title": "Efficient Backward Conformal Prediction",
+    "authors": "Hao Zeng, Junxian Liu, Bingyi Jing, Hongxin Wei",
+    "guidedStudents": ["Junxian Liu"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "keywords": ["Conformal Prediction"],
+    "selected": false
+  },
+  {
+    "id": 2025083,
+    "title": "Selective Inference for the Identified Groups in Network Vector Autoregressive Model",
+    "authors": "Hao Zeng, Wei Zhong, Chuang Wan",
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025082,
+    "title": "HyPAC: Cost-Efficient LLM-Human Hybrid Annotation with PAC Error Guarantees",
+    "authors": "Hao Zeng, Huipeng Huang, Jianguo Huang, Bingyi Jing, Hongxin Wei",
+    "guidedStudents": ["Huipeng Huang", "Jianguo Huang"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
+    "selected": false
+  },
+  {
+    "id": 2025081,
+    "title": "LLM Provenance Testing via Constrained Model Confidence Sets",
+    "authors": "Xiaoqi Qiu, Hao Zeng, Bingyi Jing, Hongxin Wei",
+    "firstAuthors": ["Xiaoqi Qiu", "Hao Zeng"],
+    "guidedStudents": ["Xiaoqi Qiu"],
+    "venue": "In preparation",
+    "type": "Preprint",
+    "year": "2025",
     "selected": false
   }
 ]

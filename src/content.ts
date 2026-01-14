@@ -24,6 +24,9 @@ export interface Publication {
   id: number;
   title: string;
   authors: string;
+  correspondingAuthors?: string[];
+  firstAuthors?: string[];
+  guidedStudents?: string[];
   venue: string;
   type: 'Conference' | 'Journal' | 'Preprint' | 'Software';
   year: string;
