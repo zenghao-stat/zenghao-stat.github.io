@@ -14,7 +14,8 @@ import {
   Check,
   ExternalLink,
   Combine,
-  Merge
+  Merge,
+  RotateCcw
 } from 'lucide-react';
 
 import { HAO_DATA } from './content';
@@ -59,6 +60,44 @@ const THEMES = {
     badgePre: 'bg-amber-100 text-amber-800',
     badgeSoft: 'bg-purple-100 text-purple-800',
   },
+  mint: {
+    id: 'mint',
+    name: 'Mint',
+    bg: 'bg-[#FFF7EF]',
+    bgAlt: 'bg-[#EDF3FF]',
+    text: 'text-slate-900',
+    textMuted: 'text-slate-600',
+    font: 'font-sans',
+    navBg: 'bg-[#FFF7EF]/95',
+    border: 'border-slate-200',
+    accent: 'text-emerald-600',
+    accentBg: 'bg-emerald-500',
+    cardBg: 'bg-white',
+    highlight: 'bg-emerald-100',
+    badgeConf: 'bg-slate-900 text-white',
+    badgeJournal: 'bg-emerald-600 text-white',
+    badgePre: 'bg-amber-500 text-white',
+    badgeSoft: 'bg-indigo-600 text-white',
+  },
+  brutal: {
+    id: 'brutal',
+    name: 'Brutal',
+    bg: 'bg-white',
+    bgAlt: 'bg-[#F5F5F5]',
+    text: 'text-slate-950',
+    textMuted: 'text-slate-700',
+    font: 'font-sans',
+    navBg: 'bg-white/90',
+    border: 'border-black',
+    accent: 'text-yellow-500',
+    accentBg: 'bg-black',
+    cardBg: 'bg-white',
+    highlight: 'bg-yellow-200',
+    badgeConf: 'bg-yellow-300 text-black',
+    badgeJournal: 'bg-emerald-500 text-black',
+    badgePre: 'bg-red-500 text-white',
+    badgeSoft: 'bg-blue-600 text-white',
+  },
   night: {
     id: 'night',
     name: 'Night',
@@ -91,9 +130,26 @@ export default function App() {
     return hour >= 19 || hour < 7;
   };
 
+  const loadInitialTheme = (): { currentTheme: ThemeKey; preferredLightTheme: ThemeKey } => {
+    try {
+      const stored = window.localStorage.getItem('haozeng_theme');
+      if (!stored) {
+        const preferredLightTheme: ThemeKey = 'brutal';
+        return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+      }
+      const parsed = JSON.parse(stored) as Partial<{ preferredLightTheme: ThemeKey }>;
+      const preferredLightTheme: ThemeKey = parsed.preferredLightTheme && parsed.preferredLightTheme in THEMES ? parsed.preferredLightTheme : 'brutal';
+      return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+    } catch {
+      const preferredLightTheme: ThemeKey = 'brutal';
+      return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+    }
+  };
+
   const themeIds = Object.keys(THEMES) as ThemeKey[];
-  const [preferredLightTheme, setPreferredLightTheme] = useState<ThemeKey>('paper');
-  const [currentTheme, setCurrentTheme] = useState<ThemeKey>(() => (isNightByTime() ? 'night' : 'paper'));
+  const initial = loadInitialTheme();
+  const [preferredLightTheme, setPreferredLightTheme] = useState<ThemeKey>(initial.preferredLightTheme);
+  const [currentTheme, setCurrentTheme] = useState<ThemeKey>(initial.currentTheme);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [selectedOnly, setSelectedOnly] = useState(true);
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
@@ -110,6 +166,15 @@ export default function App() {
   useEffect(() => {
     preferredLightThemeRef.current = preferredLightTheme;
   }, [preferredLightTheme]);
+
+  useEffect(() => {
+    if (currentTheme === 'night') return;
+    try {
+      window.localStorage.setItem('haozeng_theme', JSON.stringify({ preferredLightTheme: currentTheme }));
+    } catch {
+      // ignore
+    }
+  }, [currentTheme]);
 
   useEffect(() => {
     const maybeSwitchTheme = () => {
@@ -135,6 +200,15 @@ export default function App() {
     window.addEventListener('pointerdown', onPointerDown);
     return () => window.removeEventListener('pointerdown', onPointerDown);
   }, [topicsMenuOpen]);
+
+  const clearFilters = () => {
+    setSelectedOnly(true);
+    setActiveTypeFilter(null);
+    setActiveYearFilter(null);
+    setActiveKeywords([]);
+    setKeywordMatchMode('any');
+    setTopicsMenuOpen(false);
+  };
 
   const applyTheme = (nextTheme: ThemeKey) => {
     setCurrentTheme(nextTheme);
@@ -206,6 +280,8 @@ export default function App() {
     return [...filteredPublications].sort((a, b) => {
       const yearDiff = Number(b.year) - Number(a.year);
       if (yearDiff !== 0) return yearDiff;
+      const monthDiff = Number(b.month ?? 0) - Number(a.month ?? 0);
+      if (monthDiff !== 0) return monthDiff;
       return b.id - a.id;
     });
   }, [filteredPublications]);
@@ -318,7 +394,18 @@ export default function App() {
               {/* 头像列 */}
               <div className="w-full lg:w-1/3 flex justify-center lg:justify-start">
                 <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-                  <div className={`absolute inset-0 ${theme.bgAlt} rounded-2xl rotate-3 transform`}></div>
+                  {currentTheme === 'brutal' ? (
+                    <>
+                      <div className="absolute inset-0 bg-blue-600 border-4 border-black rounded-2xl -rotate-6 transform translate-x-2 translate-y-2"></div>
+                      <div className="absolute inset-0 bg-red-500 border-4 border-black rounded-2xl rotate-3 transform -translate-x-2 translate-y-1"></div>
+                      <div className="absolute inset-0 bg-yellow-300 border-4 border-black rounded-2xl -rotate-1 transform"></div>
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span className="text-4xl font-black text-black">*</span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className={`absolute inset-0 ${theme.bgAlt} rounded-2xl rotate-3 transform`}></div>
+                  )}
                   <img 
                     src={HAO_DATA.profile.avatarUrl} 
                     alt={HAO_DATA.profile.name}
@@ -412,7 +499,7 @@ export default function App() {
             <div className={`space-y-0 border-l ${theme.border} ml-3`}>
               {HAO_DATA.news.map((item, i) => (
                 <div key={i} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : 'ring-[#F5F3ED]'}`}></div>
+                  <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                     <span className={`text-sm font-bold ${theme.textMuted} min-w-[80px] font-sans`}>{item.date}</span>
                     <p 
@@ -567,6 +654,16 @@ export default function App() {
                           {filter}
                         </button>
                       ))}
+
+                      <button
+                        type="button"
+                        onClick={clearFilters}
+                        className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 inline-flex items-center gap-2`}
+                        title="Clear filters"
+                      >
+                        <RotateCcw size={14} />
+                        Clear
+                      </button>
                     </div>
 
                     <div className="flex flex-wrap gap-2 font-sans items-center justify-end">
@@ -594,7 +691,11 @@ export default function App() {
                       className={`group relative pl-4 border-l-2 ${theme.border} hover:border-current transition-colors duration-300`}
                     >
                       <h3 className={`text-xl font-semibold ${theme.text} group-hover:${theme.accent} transition-colors`}>
-                        <span className={`${theme.textMuted} font-sans font-bold mr-2`}>
+                        <span
+                          className={`font-sans font-bold mr-2 ${
+                            !selectedOnly && pub.selected ? 'text-[#8B0000]' : theme.textMuted
+                          }`}
+                        >
                           {displayedPublications.length - idx}.
                         </span>
                         {pub.url && pub.url !== '#' ? (
@@ -789,7 +890,7 @@ export default function App() {
             <div className={`space-y-0 border-l ${theme.border} ml-3`}>
               {HAO_DATA.talks.filter(talk => talk.show !== false).map((talk) => (
                 <div key={talk.id} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : 'ring-[#F5F3ED]'}`}></div>
+                  <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                     <span className={`text-sm font-bold ${theme.textMuted} min-w-[100px] font-sans`}>{talk.date.substring(0, 7)}</span>
                     <div>
@@ -811,7 +912,7 @@ export default function App() {
         <section id="service" className={`py-16 ${theme.bgAlt} transition-colors duration-300`}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className={`text-3xl font-bold font-serif ${theme.text} mb-10`}>Academic Service</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {HAO_DATA.services.map((s, i) => (
                 <div key={i} className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm transition-colors duration-300`}>
                   <h3 className={`font-sans font-bold ${theme.text} mb-4 flex items-center gap-2`}>

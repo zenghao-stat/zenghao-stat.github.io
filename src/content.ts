@@ -30,6 +30,7 @@ export interface Publication {
   venue: string;
   type: 'Conference' | 'Journal' | 'Preprint' | 'Software';
   year: string;
+  month?: string;
   abs?: string;
   keywords?: string[];
   pdf?: string;
@@ -128,12 +129,22 @@ export const HAO_DATA: Content = {
   talks: talksData as Talk[],
   services: [
     {
+      type: 'Journal Reviewer',
+      items: [
+        'International Statistical Review',
+        'Journal of Multivariate Analysis',
+        'Spatial Economic Analysis',
+        'Quarterly Journal of Economics and Management',
+      ],
+    },
+    {
       type: 'Conference Reviewer',
       items: [
-        'NeurIPS (2024, 2025)',
-        'ICML (2024, 2025)',
-        'ICLR (2025, 2026)',
-        'AISTATS (2024)',
+        'International Conference on Artificial Intelligence and Statistics (AISTATS)',
+        'AAAI Conference on Artificial Intelligence (AAAI)',
+        'International Conference on Machine Learning (ICML)',
+        'International Conference on Learning Representations (ICLR)',
+        'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)',
       ],
     },
   ],
