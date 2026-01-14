@@ -437,7 +437,7 @@ export default function App() {
                     <p className={`text-xs ${theme.textMuted} font-sans`}>
                       Notes:{' '}
                       <span className="inline-flex items-center gap-1" title="First author">
-                        <span>†</span> first author/equal contribution
+                        <span>†</span> first author
                       </span>
                       ;{' '}
                       <span className="inline-flex items-center gap-1" title="Corresponding author">
