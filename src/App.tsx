@@ -10,6 +10,7 @@ import {
   MapPin,
   GraduationCap,
   Award,
+  Tag,
   Palette,
   Check,
   ExternalLink,
@@ -124,6 +125,62 @@ const THEMES = {
 type ThemeKey = keyof typeof THEMES;
 type PubType = 'Conference' | 'Journal' | 'Preprint' | 'Software';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
+
+const TOP_TAG_STYLES: Record<
+  ThemeKey,
+  { ai: { pill: string; icon: string }; econometrics: { pill: string; icon: string } }
+> = {
+  paper: {
+    ai: {
+      pill: 'bg-gradient-to-r from-blue-100 via-indigo-100 to-cyan-100 border-blue-300/70 text-slate-900 ring-1 ring-blue-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-blue-700',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-blue-100 via-sky-100 to-teal-100 border-blue-300/70 text-slate-900 ring-1 ring-blue-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-blue-700',
+    },
+  },
+  lab: {
+    ai: {
+      pill: 'bg-gradient-to-r from-blue-100 via-indigo-100 to-cyan-100 border-blue-300/70 text-slate-900 ring-1 ring-blue-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-blue-700',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-blue-100 via-sky-100 to-teal-100 border-blue-300/70 text-slate-900 ring-1 ring-blue-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-blue-700',
+    },
+  },
+  mint: {
+    ai: {
+      pill: 'bg-gradient-to-r from-emerald-100 via-sky-100 to-indigo-100 border-emerald-300/70 text-slate-900 ring-1 ring-emerald-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-emerald-700',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-emerald-100 via-lime-100 to-amber-100 border-emerald-300/70 text-slate-900 ring-1 ring-emerald-200/50 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-emerald-700',
+    },
+  },
+  brutal: {
+    ai: {
+      pill: 'bg-yellow-300 border-black text-black shadow-[2px_2px_0_#000] ring-0 animate-pulse motion-reduce:animate-none hover:shadow-[4px_4px_0_#000] hover:-translate-y-0.5',
+      icon: 'text-black',
+    },
+    econometrics: {
+      pill: 'bg-yellow-200 border-black text-black shadow-[2px_2px_0_#000] ring-0 animate-pulse motion-reduce:animate-none hover:shadow-[4px_4px_0_#000] hover:-translate-y-0.5',
+      icon: 'text-black',
+    },
+  },
+  night: {
+    ai: {
+      pill: 'bg-gradient-to-r from-sky-500/25 via-indigo-500/25 to-emerald-500/25 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-sky-300',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-sky-500/25 via-teal-500/25 to-indigo-500/25 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-sky-300',
+    },
+  },
+};
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -838,6 +895,36 @@ export default function App() {
                         </span>
                         <span className={`font-medium italic ${theme.textMuted}`}>{pub.venue}</span>
                         <span className={theme.textMuted}>({pub.year})</span>
+                        {pub.tag && pub.tag.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {pub.tag
+                              .map(t => t.trim())
+                              .filter(Boolean)
+                              .map(tag => {
+                                const upper = tag.toUpperCase();
+                                const isTop = upper.startsWith('TOP');
+                                const isAi =
+                                  isTop && (upper.includes('TOP AI') || upper.endsWith(' AI') || upper.endsWith('AI'));
+                                const topStyle = isTop
+                                  ? (isAi ? TOP_TAG_STYLES[currentTheme].ai : TOP_TAG_STYLES[currentTheme].econometrics)
+                                  : null;
+
+                                return (
+                                  <span
+                                    key={tag}
+                                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border transition-all duration-200 ${
+                                      topStyle
+                                        ? topStyle.pill
+                                        : `${theme.cardBg} ${theme.textMuted} ${theme.border} hover:${theme.accent} hover:border-current hover:shadow-sm hover:-translate-y-0.5`
+                                    }`}
+                                  >
+                                    <Tag size={12} className={topStyle ? topStyle.icon : undefined} />
+                                    <span>{tag}</span>
+                                  </span>
+                                );
+                              })}
+                          </div>
+                        )}
                         {pub.keywords && pub.keywords.length > 0 && (
                           <div className="flex flex-wrap gap-2">
                             {pub.keywords.map(k => (

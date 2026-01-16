@@ -32,6 +32,7 @@ export interface Publication {
   year: string;
   month?: string;
   abs?: string;
+  tag?: string[];
   keywords?: string[];
   pdf?: string;
   code?: string;
@@ -122,8 +123,14 @@ export const HAO_DATA: Content = {
       content: "Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University."
     }
   ],
-  // 从 publications.json 导入论文数据
-  publications: publicationsData as Publication[],
+  publications: (
+    publicationsData as unknown as Array<
+      Omit<Publication, 'tag'> & { tag?: string | string[] }
+    >
+  ).map(pub => ({
+    ...pub,
+    tag: Array.isArray(pub.tag) ? pub.tag : pub.tag ? [pub.tag] : [],
+  })),
   teaching: teachingData as Teaching[],
   seminars: seminarsData as Seminar[],
   talks: talksData as Talk[],

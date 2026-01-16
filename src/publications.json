@@ -11,6 +11,7 @@
     "abs": "It is important to incorporate spatial geographic information into U.S. presidential election analysis, especially for swing states. The state-level analysis also faces significant challenges of limited spatial data availability. To address the challenges of spatial dependence and small sample sizes in predicting U.S. presidential election results using spatially dependent data, we propose a novel transfer learning framework within the SAR model, called as tranSAR. Classical SAR model estimation often loses accuracy with small target data samples. Our framework enhances estimation and prediction by leveraging information from similar source data. We introduce a two-stage algorithm, consisting of a transferring stage and a debiasing stage, to estimate parameters and establish theoretical convergence rates for the estimators. Additionally, if the informative source data are unknown, we propose a transferable source detection algorithm using spatial residual bootstrap to maintain spatial dependence and derive its detection consistency. Simulation studies show our algorithm substantially improves the classical two-stage least squares estimator. We demonstrate our method's effectiveness in predicting outcomes in U.S. presidential swing states, where it outperforms traditional methods. In addition, our tranSAR model predicts that the Democratic party will win the 2024 U.S. presidential election.",
     "pdf": "/papers/2405.15600.pdf",
     "selected": true,
+    "tag": ["TOP Econometrics", "theory", "method"],
     "keywords": ["Transfer Learning", "Spatial Autoregressive Model"]
   },
   {
@@ -26,7 +27,8 @@
     "keywords": ["Conformal Prediction"],
     "abs": "Hyperspectral image (HSI) classification involves assigning unique labels to each pixel to identify various land cover categories. While deep classifiers have achieved high predictive accuracy in this field, they lack the ability to rigorously quantify confidence in their predictions. This limitation restricts their application in critical contexts where the cost of prediction errors is significant, as quantifying the uncertainty of model predictions is crucial for the safe deployment of predictive models. To address this limitation, a rigorous theoretical proof is presented first, which demonstrates the validity of Conformal Prediction, an emerging uncertainty quantification technique, in the context of HSI classification. Building on this foundation, a conformal procedure is designed to equip any pre-trained HSI classifier with trustworthy prediction sets, ensuring that the true labels are included with a user-defined probability (e.g., 95%). Furthermore, a novel framework of Conformal Prediction specifically designed for HSI data, called Spatial-Aware Conformal Prediction (SACP), is proposed. This framework integrates essential spatial information of HSI by aggregating the non-conformity scores of pixels with high spatial correlation, effectively improving the statistical efficiency of prediction sets. Both theoretical and empirical results validate the effectiveness of the proposed approaches.",
     "pdf": "/papers/2409.01236.pdf",
-    "selected": true
+    "selected": true,
+    "tag": "TOP AI"
   },
   {
     "id": 2025899,
@@ -41,7 +43,8 @@
     "keywords": ["Conformal Prediction"],
     "abs": "Conformal prediction is an uncertainty quantification technique that constructs prediction sets guaranteed to contain the true label with a predefined probability. Recent work develops online conformal prediction methods that adaptively construct prediction sets to accommodate distribution shifts. However, existing algorithms typically assume perfect label accuracy, which rarely holds in practice. We investigate the robustness of online conformal prediction under uniform label noise with a known noise rate. We show that label noise causes a persistent gap between the actual mis-coverage rate and the desired rate alpha, leading to either overestimated or underestimated coverage guarantees. To address this issue, we propose a robust pinball loss, which provides an unbiased estimate of clean pinball loss without requiring ground-truth labels. We prove robust pinball loss eliminates the coverage gap under uniform label noise with a convergence rate of O(T^{-1/2}) for both empirical and expected coverage errors. Extensive experiments show improved noise robustness with precise coverage guarantees.",
     "pdf": "/papers/2501.18363.pdf",
-    "selected": true
+    "selected": true,
+    "tag": "TOP AI"
   },
   {
     "id": 2025898,
@@ -56,7 +59,8 @@
     "keywords": ["Conformal Prediction"],
     "abs": "Conformal prediction constructs prediction sets with coverage guarantees. To uphold the exchangeability assumption, many conformal prediction methods need an additional hold-out set for parameter tuning. Yet the impact of violating this principle on coverage is unclear in practice. We empirically find the tuning bias, the coverage gap introduced by using the same dataset for tuning and calibration, is small for simple tuning in many methods. We observe a scaling law: the tuning bias increases with parameter space complexity and decreases with calibration set size. We provide a theoretical framework that quantifies tuning bias and derive an upper bound that explains this scaling law. We also discuss how to reduce tuning bias guided by the theory.",
     "pdf": "/papers/openreview-jnJLZXSOin.pdf",
-    "selected": true
+    "selected": true,
+    "tag": "TOP AI"
   },
   {
     "id": 2025897,

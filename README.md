@@ -9,7 +9,7 @@
 
 ## 部署
 
-- 网站地址：https://zenghao-stat.github.io/
+- 网站地址：[https://zenghao-stat.github.io/](https://zenghao-stat.github.io)
 - 部署方式：push 到 `master` 后，GitHub Actions 会自动构建并发布到 GitHub Pages
 - 工作流文件：`.github/workflows/pages.yml`
 
