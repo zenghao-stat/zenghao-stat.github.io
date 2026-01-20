@@ -99,7 +99,7 @@ export const HAO_DATA: Content = {
     cvUrl: "https://zenghao-stat.github.io/cv_folder/cv.pdf",
     teachingUrl: "#teaching",
     seminarsUrl: "#seminar",
-    avatarUrl: "./images/profile.jpg"
+    avatarUrl: "./images/profile.jpeg"
   },
   news: [
     {

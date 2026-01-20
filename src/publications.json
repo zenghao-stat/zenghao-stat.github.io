@@ -85,6 +85,7 @@
     "month": "06",
     "url": "https://doi.org/10.1016/j.jspi.2024.106196",
     "abs": "Integrative analysis is important for combining heterogeneous data across multiple datasets. However, outliers and heavy-tailed data can make least squares unreliable. We propose Robust Integrative Analysis via Quantile Regression (RIAQ) that accounts for homogeneity and sparsity across datasets. RIAQ identifies latent homogeneous coefficient structures and recovers sparsity in high-dimensional covariates via double penalty terms. Integrating samples improves efficiency, and sparsity improves interpretability. Quantile regression also reveals subgroup structures across quantile levels. We develop an efficient ADMM algorithm, study its convergence, and establish parameter selection consistency. Numerical studies show good finite-sample performance, especially for heavy-tailed cases.",
+    "pdf": "/papers/2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf",
     "selected": true,
     "keywords": ["High Dimensional Statistics"]
   },
@@ -100,8 +101,10 @@
     "month": "11",
     "url": "https://doi.org/10.1111/sjos.12758",
     "abs": "This article develops a new estimation framework for the multithreshold accelerated failure time model, which has different linear forms across subdomains. A key challenge is to determine the number of threshold effects. We show selection consistency of a modified BIC under mild conditions, but it can depend on the penalty magnitude. We propose a fully data-driven approach using a cross-validation criterion with an order-preserved sample-splitting scheme, which is robust to model settings and data distributions. We establish asymptotic properties for parameter estimates and propose an efficient score-type test for the existence of threshold effects. Numerical experiments validate the finite-sample performance.",
+    "pdf": "/papers/2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf",
     "selected": true,
-    "keywords": ["High Dimensional Statistics"]
+    "keywords": ["High Dimensional Statistics"],
+    "code": "https://cran.r-project.org/web/packages/MTAFT/index.html"
   },
   {
     "id": 2022999,
