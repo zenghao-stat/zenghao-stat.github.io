@@ -18,6 +18,125 @@
 
 ---
 
+## 自动同步区块（请勿手改）
+
+下面区块由脚本根据当前代码与数据自动生成，用于“用 git 检查新增功能”和“自动同步 README”：
+
+- 更新命令：`npm run readme:update`
+- 一致性检查：`npm run readme:check`
+
+<!-- TRAE:README:AUTO:START -->
+
+由 `scripts/update-readme.mjs` 自动生成。
+
+### 站点结构（从 src/App.tsx 提取）
+- 导航：About(#about) / News(#news) / Publications(#publications) / Teaching(#teaching) / Seminar(#seminar) / Talks(#talks) / Service(#service)
+- 主题：paper(Paper) / lab(Lab) / mint(Mint) / brutal(Brutal) / night(Night)
+- Night 自动切换：19:00–07:00（本地时间）
+- Publications Type：Journal / Conference / Preprint / Software
+- Publications Year：2026 / 2025 / 2024 / before 2024
+- Publications Topics：Any（并集）/ All（交集）
+
+### 数据文件（统计条目数）
+- src/publications.json：29 条
+- src/teaching.json：5 条
+- src/seminars.json：1 条
+- src/talks.json：9 条
+- src/academic_service.json：2 个分组
+- src/content.ts：Profile/News 的内容入口 + 全站类型定义
+
+### 静态资源（public/）
+- public/images：1 个文件（例：profile.jpeg）
+- public/papers：12 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
+- public/teaching-and-seminar：7 个文件（例：2019-fall-advanced-econometrics-i.html, 2021-fall-advanced-probability-theory.html, 2021-spring-real-analysis.html, 2022-fall-probability-introduction.html, 2022-spring-real-analysis.html, 2024-07-18-ml-theory-study-group.html）
+
+### 字段速查（从 src/content.ts 的 interface 提取）
+
+#### Profile
+- name: string
+- cnName?: string
+- title: string
+- university: string
+- location: string
+- description: string
+- email: string
+- googleScholar: string
+- github: string
+- siteUrl?: string
+- cvUrl?: string
+- teachingUrl?: string
+- seminarsUrl?: string
+- avatarUrl?: string
+
+#### Publication
+- id: number
+- title: string
+- authors: string
+- correspondingAuthors?: string[]
+- firstAuthors?: string[]
+- guidedStudents?: string[]
+- venue: string
+- type: 'Conference' | 'Journal' | 'Preprint' | 'Software'
+- year: string
+- month?: string
+- abs?: string
+- tag?: string[]
+- keywords?: string[]
+- pdf?: string
+- code?: string
+- url?: string
+- selected?: boolean
+
+#### Teaching
+- id: string
+- title: string
+- type: string
+- role: string
+- venue: string
+- date: string
+- semester?: string
+- excerpt?: string
+- body?: string
+- permalink?: string
+
+#### Seminar
+- id: string
+- title: string
+- type: string
+- venue: string
+- date: string
+- location?: string
+- excerpt?: string
+- body?: string
+- permalink?: string
+
+#### Talk
+- id: string
+- title: string
+- type: string
+- venue: string
+- date: string
+- location: string
+- show?: boolean
+
+#### AcademicServiceItem
+- name: string
+- note?: string
+- year?: string[]
+
+#### AcademicServiceGroup
+- type: string
+- items: AcademicServiceItem[]
+
+### 依赖（从 package.json 提取）
+
+- dependencies：lucide-react, react, react-dom
+- devDependencies：@types/react, @types/react-dom, typescript, vite
+
+<!-- TRAE:README:AUTO:END -->
+
+---
+
 ## 网站包含哪些页面/区块（以及实现效果）
 
 站点顶部导航是锚点跳转（`#about/#news/#publications/#teaching/#seminar/#talks/#service`），移动端有折叠菜单。

@@ -2,6 +2,7 @@ import publicationsData from './publications.json';
 import teachingData from './teaching.json';
 import seminarsData from './seminars.json';
 import talksData from './talks.json';
+import academicServiceData from './academic_service.json';
 
 export interface Profile {
   name: string;
@@ -75,6 +76,17 @@ export interface Talk {
   show?: boolean;
 }
 
+export interface AcademicServiceItem {
+  name: string;
+  note?: string;
+  year?: string[];
+}
+
+export interface AcademicServiceGroup {
+  type: string;
+  items: AcademicServiceItem[];
+}
+
 export interface Content {
   profile: Profile;
   news: { date: string; content: string }[];
@@ -82,7 +94,7 @@ export interface Content {
   teaching: Teaching[];
   seminars: Seminar[];
   talks: Talk[];
-  services: { type: string; items: string[] }[];
+  services: AcademicServiceGroup[];
 }
 
 export const HAO_DATA: Content = {
@@ -134,25 +146,5 @@ export const HAO_DATA: Content = {
   teaching: teachingData as Teaching[],
   seminars: seminarsData as Seminar[],
   talks: talksData as Talk[],
-  services: [
-    {
-      type: 'Journal Reviewer',
-      items: [
-        'International Statistical Review',
-        'Journal of Multivariate Analysis',
-        'Spatial Economic Analysis',
-        'Quarterly Journal of Economics and Management',
-      ],
-    },
-    {
-      type: 'Conference Reviewer',
-      items: [
-        'International Conference on Artificial Intelligence and Statistics (AISTATS) 2026',
-        'AAAI Conference on Artificial Intelligence (AAAI) 2026',
-        'International Conference on Machine Learning (ICML) 2026',
-        'International Conference on Learning Representations (ICLR) 2026',
-        'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2026',
-      ],
-    },
-  ],
+  services: academicServiceData as AcademicServiceGroup[],
 };

@@ -1,0 +1,67 @@
+[
+  {
+    "type": "Journal Reviewer",
+    "items": [
+      {
+        "name": "International Statistical Review",
+        "note": ""
+      },
+      {
+        "name": "Journal of Business & Economic Statistics",
+        "note": ""
+      },
+      {
+        "name": "Journal of Multivariate Analysis",
+        "note": ""
+      },
+      {
+        "name": "Spatial Economic Analysis",
+        "note": ""
+      },
+      {
+        "name": "Quarterly Journal of Economics and Management",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "type": "Conference Reviewer",
+    "items": [
+      {
+        "name": "AISTATS",
+        "note": "International Conference on Artificial Intelligence and Statistics",
+        "year": [
+          "2026"
+        ]
+      },
+      {
+        "name": "AAAI",
+        "note": "AAAI Conference on Artificial Intelligence",
+        "year": [
+          "2026"
+        ]
+      },
+      {
+        "name": "ICML",
+        "note": "International Conference on Machine Learning",
+        "year": [
+          "2026"
+        ]
+      },
+      {
+        "name": "ICLR",
+        "note": "International Conference on Learning Representations",
+        "year": [
+          "2026"
+        ]
+      },
+      {
+        "name": "CVPR",
+        "note": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+        "year": [
+          "2026"
+        ]
+      }
+    ]
+  }
+]

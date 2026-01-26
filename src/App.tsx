@@ -219,6 +219,7 @@ export default function App() {
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
   const [expandedAbstractIds, setExpandedAbstractIds] = useState<number[]>([]);
   const [canHover, setCanHover] = useState<boolean>(false);
+  const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
 
   const theme = THEMES[currentTheme];
   const preferredLightThemeRef = useRef(preferredLightTheme);
@@ -283,6 +284,12 @@ export default function App() {
       lg.removeEventListener('change', update);
     };
   }, []);
+
+  useEffect(() => {
+    if (canHover) {
+      setOpenServiceNoteKey(null);
+    }
+  }, [canHover]);
   const applyTheme = (nextTheme: ThemeKey) => {
     setCurrentTheme(nextTheme);
     if (nextTheme !== 'night') {
@@ -1129,9 +1136,51 @@ export default function App() {
                   </h3>
                   <ul className="space-y-2">
                     {s.items.map((item, idx) => (
-                      <li key={idx} className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'} flex items-start gap-2`}>
-                        <span className={`${theme.textMuted} mt-1`}>•</span> 
-                        <span>{item}</span>
+                      <li key={idx} className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'}`}>
+                        <div className="flex items-start gap-2">
+                          <span className={`${theme.textMuted} mt-1`}>•</span>
+                          {canHover || !item.note?.trim() ? (
+                            <span className={item.note?.trim() ? 'group relative inline-flex' : undefined}>
+                              <span
+                                className={
+                                  item.note?.trim()
+                                    ? `underline decoration-dashed underline-offset-4 ${theme.textMuted} hover:${theme.accent} transition-colors`
+                                    : undefined
+                                }
+                              >
+                                {item.name}
+                                {item.year?.length ? ` ${item.year.join(', ')}` : ''}
+                              </span>
+                              {item.note?.trim() && (
+                                <span
+                                  className={`pointer-events-none absolute left-0 top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[240px] max-w-md whitespace-normal`}
+                                >
+                                  {item.note}
+                                </span>
+                              )}
+                            </span>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const key = `${i}-${idx}`;
+                                setOpenServiceNoteKey(prev => (prev === key ? null : key));
+                              }}
+                              aria-expanded={openServiceNoteKey === `${i}-${idx}`}
+                              className={`text-left underline decoration-dashed underline-offset-4 ${theme.textMuted} hover:${theme.accent} transition-colors`}
+                            >
+                              <span className={`${theme.text} font-medium`}>
+                                {item.name}
+                                {item.year?.length ? ` ${item.year.join(', ')}` : ''}
+                              </span>
+                            </button>
+                          )}
+                        </div>
+                        {!canHover && item.note?.trim() && openServiceNoteKey === `${i}-${idx}` && (
+                          <div className={`ml-5 mt-1 text-xs leading-relaxed ${theme.textMuted}`}>
+                            {item.note}
+                          </div>
+                        )}
                       </li>
                     ))}
                   </ul>
