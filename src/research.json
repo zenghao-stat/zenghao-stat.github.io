@@ -1,0 +1,90 @@
+{
+  "intro": [
+    {
+      "text": "Our research aims to bring **usable, reliable, and verifiable statistical guarantees** to modern machine learning, especially **large models**."
+    },
+    {
+      "text": "We focus on **distribution-free predictive inference**: under weak assumptions, we build prediction sets and confidence outputs with **finite-sample coverage and risk control**. We also study the theory of **conformal prediction**, including tuning bias and test-time validity."
+    },
+    {
+      "text": "On the system side, we connect distribution-free inference with large models for **fast inference** and **hybrid labeling**, to get reliable uncertainty and quality control. We also work on **high-dimensional statistics**, **transfer learning**, **survival modeling with structural change**, and **reliable inference** in **spatial statistics**."
+    }
+  ],
+  "areas": [
+    {
+      "id": "predictive-inference",
+      "title": "Distribution-Free Predictive Inference",
+      "summary": "We design prediction sets with finite-sample guarantees, and study key effects in conformal prediction such as tuning bias and test-time validity.",
+      "imageUrl": "/images/research/predictive_inference_banner_8k_1770692357200.png",
+      "narrative": [
+        {
+          "text": "We study why conformal prediction can drift when tuning and calibration are not separated, and we build theory that explains a clear scaling pattern in tuning bias.",
+          "citations": [2025898]
+        },
+        {
+          "text": "We also design conformal methods that stay valid in harder settings, such as online prediction with label noise and spatially correlated data.",
+          "citations": [2025899, 2025998]
+        },
+        {
+          "text": "More broadly, we work on test-time valid selection and efficient conformal procedures.",
+          "citations": [2025085, 2025084, 2025092]
+        }
+      ]
+    },
+    {
+      "id": "llm-systems",
+      "title": "Reliable LLM Systems",
+      "summary": "We connect distribution-free inference with large-model systems for fast reasoning and cost-efficient data work, with clear statistical guarantees on risk and quality.",
+      "imageUrl": "/images/research/llm_systems_v2_1770691694175.png",
+      "narrative": [
+        {
+          "text": "For fast reasoning, we design switching rules that save compute while controlling performance loss, and we study the limits of conditional guarantees in the distribution-free setting.",
+          "citations": [2025096, 2025088, 2025086, 2025087]
+        },
+        {
+          "text": "For data work, we build LLM–human hybrid pipelines with strict error-rate control, and we design auditing tools (such as FDR control) for labeling and training data identification.",
+          "citations": [2025082, 2025094, 2025093, 2025081]
+        }
+      ]
+    },
+    {
+      "id": "high-dim-transfer-survival",
+      "title": "High-Dimensional Statistics",
+      "summary": "We develop robust and efficient methods for high-dimensional and heterogeneous data, including transfer learning, quantile-based tools, and survival models with structural change.",
+      "imageUrl": "/images/research/high_dim_stats_1770690590318.png",
+      "narrative": [
+        {
+          "text": "We develop robust tools for heterogeneous and heavy-tailed data, including quantile-based integrative analysis and robust estimation for dependent time series.",
+          "citations": [2024999, 2025099]
+        },
+        {
+          "text": "We also build data-driven methods for survival models with threshold effects, and we release practical software for these models.",
+          "citations": [2024998, 2022999]
+        },
+        {
+          "text": "We study how to borrow strength under spatial dependence to improve prediction with limited target data in transfer learning.",
+          "citations": [2025999]
+        },
+        {
+          "text": "We also study selective inference for identified group structures.",
+          "citations": [2025083]
+        }
+      ]
+    },
+    {
+      "id": "spatial-statistics",
+      "title": "Spatial Statistics",
+      "summary": "We work on spatial dependence and heterogeneity, with a focus on reliable inference for real prediction tasks.",
+      "imageUrl": "/images/research/spatial_statistics_1770690646742.png",
+      "narrative": [
+        {
+          "text": "We develop methods that combine spatial dependence with modern learning goals, and we focus on reliability and finite-sample guarantees.",
+          "citations": [2025999, 2025098, 2025099]
+        },
+        {
+          "text": "A key theme is to handle heterogeneous spatial effects and limited target data in real prediction problems."
+        }
+      ]
+    }
+  ]
+}

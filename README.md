@@ -30,7 +30,7 @@
 由 `scripts/update-readme.mjs` 自动生成。
 
 ### 站点结构（从 src/App.tsx 提取）
-- 导航：About(#about) / News(#news) / Publications(#publications) / Teaching(#teaching) / Seminar(#seminar) / Talks(#talks) / Service(#service)
+- 导航：About(#about) / News(#news) / Research(#research) / Publications(#publications) / Teaching(#teaching) / Seminar(#seminar) / Talks(#talks) / Service(#service)
 - 主题：paper(Paper) / lab(Lab) / mint(Mint) / brutal(Brutal) / night(Night)
 - Night 自动切换：19:00–07:00（本地时间）
 - Publications Type：Journal / Conference / Preprint / Software
@@ -39,6 +39,7 @@
 
 ### 数据文件（统计条目数）
 - src/publications.json：29 条
+- src/research.json：1 条 (Intro + Areas)
 - src/teaching.json：5 条
 - src/seminars.json：1 条
 - src/talks.json：9 条
@@ -46,7 +47,7 @@
 - src/content.ts：Profile/News 的内容入口 + 全站类型定义
 
 ### 静态资源（public/）
-- public/images：1 个文件（例：profile.jpeg）
+- public/images：2 个文件（例：profile.jpeg, research）
 - public/papers：12 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
 - public/teaching-and-seminar：7 个文件（例：2019-fall-advanced-econometrics-i.html, 2021-fall-advanced-probability-theory.html, 2021-spring-real-analysis.html, 2022-fall-probability-introduction.html, 2022-spring-real-analysis.html, 2024-07-18-ml-theory-study-group.html）
 
@@ -67,6 +68,21 @@
 - teachingUrl?: string
 - seminarsUrl?: string
 - avatarUrl?: string
+
+#### ResearchNarrativeItem
+- text: string
+- citations?: number[]
+
+#### ResearchContent
+- intro: ResearchNarrativeItem[]
+- areas: ResearchArea[]
+
+#### ResearchArea
+- id: string
+- title: string
+- summary: string
+- narrative: ResearchNarrativeItem[]
+- imageUrl?: string
 
 #### Publication
 - id: number

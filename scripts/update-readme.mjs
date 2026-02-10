@@ -124,6 +124,7 @@ const generateAutoMarkdown = async () => {
   const nightWindow = extractNightWindow(appText);
 
   const publicationsCount = await listJsonCount(path.join('src', 'publications.json'));
+  const researchCount = await listJsonCount(path.join('src', 'research.json'));
   const teachingCount = await listJsonCount(path.join('src', 'teaching.json'));
   const seminarsCount = await listJsonCount(path.join('src', 'seminars.json'));
   const talksCount = await listJsonCount(path.join('src', 'talks.json'));
@@ -134,6 +135,9 @@ const generateAutoMarkdown = async () => {
   const teachingPages = await listDirSample(path.join('public', 'teaching-and-seminar'));
 
   const profileFields = extractInterfaceFields(contentText, 'Profile');
+  const researchNarrativeItemFields = extractInterfaceFields(contentText, 'ResearchNarrativeItem');
+  const researchContentFields = extractInterfaceFields(contentText, 'ResearchContent');
+  const researchAreaFields = extractInterfaceFields(contentText, 'ResearchArea');
   const publicationFields = extractInterfaceFields(contentText, 'Publication');
   const teachingFields = extractInterfaceFields(contentText, 'Teaching');
   const seminarFields = extractInterfaceFields(contentText, 'Seminar');
@@ -171,6 +175,7 @@ const generateAutoMarkdown = async () => {
   lines.push('');
   lines.push('### 数据文件（统计条目数）');
   lines.push(`- src/publications.json：${publicationsCount ?? 'unknown'} 条`);
+  lines.push(`- src/research.json：${researchCount ?? 'unknown'} 条 (Intro + Areas)`);
   lines.push(`- src/teaching.json：${teachingCount ?? 'unknown'} 条`);
   lines.push(`- src/seminars.json：${seminarsCount ?? 'unknown'} 条`);
   lines.push(`- src/talks.json：${talksCount ?? 'unknown'} 条`);
@@ -195,6 +200,9 @@ const generateAutoMarkdown = async () => {
     });
   };
   renderFields('Profile', profileFields);
+  renderFields('ResearchNarrativeItem', researchNarrativeItemFields);
+  renderFields('ResearchContent', researchContentFields);
+  renderFields('ResearchArea', researchAreaFields);
   renderFields('Publication', publicationFields);
   renderFields('Teaching', teachingFields);
   renderFields('Seminar', seminarFields);

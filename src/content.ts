@@ -1,4 +1,5 @@
 import publicationsData from './publications.json';
+import researchData from './research.json';
 import teachingData from './teaching.json';
 import seminarsData from './seminars.json';
 import talksData from './talks.json';
@@ -87,9 +88,28 @@ export interface AcademicServiceGroup {
   items: AcademicServiceItem[];
 }
 
+export interface ResearchNarrativeItem {
+  text: string;
+  citations?: number[];
+}
+
+export interface ResearchArea {
+  id: string;
+  title: string;
+  summary: string;
+  narrative: ResearchNarrativeItem[];
+  imageUrl?: string;
+}
+
+export interface ResearchContent {
+  intro: ResearchNarrativeItem[];
+  areas: ResearchArea[];
+}
+
 export interface Content {
   profile: Profile;
   news: { date: string; content: string }[];
+  research: ResearchContent;
   publications: Publication[];
   teaching: Teaching[];
   seminars: Seminar[];
@@ -135,6 +155,7 @@ export const HAO_DATA: Content = {
       content: "Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University."
     }
   ],
+  research: researchData as ResearchContent,
   publications: (
     publicationsData as unknown as Array<
       Omit<Publication, 'tag'> & { tag?: string | string[] }

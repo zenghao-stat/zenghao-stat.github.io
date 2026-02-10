@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { 
-  BookOpen, 
-  Code, 
-  Mail, 
-  Github, 
-  FileText, 
+import {
+  BookOpen,
+  Code,
+  Mail,
+  Github,
+  FileText,
   Menu,
   X,
   MapPin,
@@ -424,10 +424,207 @@ export default function App() {
     });
   }, [filteredPublications]);
 
+  const pubById = useMemo(() => {
+    return new Map(HAO_DATA.publications.map(p => [p.id, p] as const));
+  }, [HAO_DATA.publications]);
+
+  const allPublicationsSorted = useMemo(() => {
+    return [...HAO_DATA.publications].sort((a, b) => {
+      const yearDiff = Number(b.year) - Number(a.year);
+      if (yearDiff !== 0) return yearDiff;
+      const monthDiff = Number(b.month ?? 0) - Number(a.month ?? 0);
+      if (monthDiff !== 0) return monthDiff;
+      return b.id - a.id;
+    });
+  }, [HAO_DATA.publications]);
+
+  const pubNoById = useMemo(() => {
+    const out = new Map<number, number>();
+    const total = allPublicationsSorted.length;
+    allPublicationsSorted.forEach((p, idx) => {
+      out.set(p.id, total - idx);
+    });
+    return out;
+  }, [allPublicationsSorted]);
+
+  const pubIdByNo = useMemo(() => {
+    const out = new Map<number, number>();
+    const total = allPublicationsSorted.length;
+    allPublicationsSorted.forEach((p, idx) => {
+      out.set(total - idx, p.id);
+    });
+    return out;
+  }, [allPublicationsSorted]);
+
+  const jumpToPublication = (publicationId: number) => {
+    setSelectedOnly(false);
+    setActiveTypeFilter(null);
+    setActiveYearFilter(null);
+    setActiveKeywords([]);
+    setKeywordMatchMode('any');
+    setTopicsMenuOpen(false);
+    setMobileMenuOpen(false);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const id = `pub-${publicationId}`;
+        window.location.hash = id;
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  };
+
+  const renderTextWithBold = (text: string, lowerCaseFirst = false) => {
+    const parts: Array<string | JSX.Element> = [];
+    const re = /\*\*(.*?)\*\*/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    // 如果需要首字母小写，先处理整个字符串（假设 ** 不在首位）
+    // 但如果有 ** 在首位，需要小心。简单起见，如果 lowerCaseFirst 为 true，
+    // 我们只把第一个字符小写化（如果它是字母）。
+    // 更安全的做法：解析完 parts 后，把 parts[0] 的第一个字符小写。
+    // 这里采用：先替换 text 的第一个字符，再做 bold 解析。
+    let processedText = text;
+    if (lowerCaseFirst && text.length > 0) {
+      processedText = text.charAt(0).toLowerCase() + text.slice(1);
+    }
+
+    while ((match = re.exec(processedText))) {
+      if (match.index > lastIndex) {
+        parts.push(processedText.slice(lastIndex, match.index));
+      }
+      parts.push(
+        <strong key={`b-${match.index}`} className="font-semibold">
+          {match[1]}
+        </strong>
+      );
+      lastIndex = re.lastIndex;
+    }
+    if (lastIndex < processedText.length) {
+      parts.push(processedText.slice(lastIndex));
+    }
+    return parts;
+  };
+
+  const renderCitations = (publicationIds: number[], leading?: boolean) => {
+    const pubs = publicationIds
+      .map((pid) => {
+        const pub = pubById.get(pid);
+        const no = pubNoById.get(pid);
+        if (!pub || !no) return null;
+        return { pid, no, pub };
+      })
+      .filter(Boolean) as Array<{ pid: number; no: number; pub: NonNullable<ReturnType<typeof pubById.get>> }>;
+
+    if (pubs.length === 0) return null;
+
+    pubs.sort((a, b) => a.no - b.no);
+
+    const segments: Array<{ startNo: number; endNo: number; pubs: typeof pubs }> = [];
+    for (const item of pubs) {
+      const last = segments[segments.length - 1];
+      if (!last) {
+        segments.push({ startNo: item.no, endNo: item.no, pubs: [item] });
+        continue;
+      }
+      if (item.no === last.endNo + 1) {
+        last.endNo = item.no;
+        last.pubs.push(item);
+        continue;
+      }
+      segments.push({ startNo: item.no, endNo: item.no, pubs: [item] });
+    }
+
+    return (
+      <span className={`${leading ? '' : 'ml-2 '}inline-flex flex-wrap items-baseline`}>
+        <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>[</span>
+        {segments.map((seg, i) => {
+          const label = seg.startNo === seg.endNo ? `${seg.startNo}` : `${seg.startNo}-${seg.endNo}`;
+          const targetId = pubIdByNo.get(seg.startNo) ?? seg.pubs[0]?.pid;
+          if (!targetId) return null;
+
+          const fallbackTitle = seg.pubs.map((x) => `${x.no}. ${x.pub.title} (${x.pub.venue}, ${x.pub.year})`).join('\n');
+
+          return (
+            <span key={`${seg.startNo}-${seg.endNo}`} className="inline-flex items-baseline">
+              {i > 0 && <span className={`text-sm font-semibold ${theme.textMuted} font-sans mr-1`}>,</span>}
+              <span
+                className={canHover ? 'group relative inline-flex' : undefined}
+                title={!canHover ? fallbackTitle : undefined}
+              >
+                <button
+                  type="button"
+                  onClick={() => jumpToPublication(targetId)}
+                  className={`text-sm font-semibold ${theme.textMuted} hover:${theme.accent} transition-colors font-sans`}
+                >
+                  {label}
+                </button>
+                {canHover && (
+                  <span
+                    className={`pointer-events-none absolute left-0 top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[280px] max-w-md whitespace-normal`}
+                  >
+                    {seg.pubs.map((x) => (
+                      <div key={x.pid} className="space-y-0.5">
+                        <div className="font-semibold">
+                          [{x.no}] {x.pub.title}
+                        </div>
+                        <div className={theme.textMuted}>
+                          {x.pub.venue} ({x.pub.year})
+                        </div>
+                        <div className={`${theme.textMuted} text-xs`}>{x.pub.authors}</div>
+                        <div className="h-2" />
+                      </div>
+                    ))}
+                  </span>
+                )}
+              </span>
+            </span>
+          );
+        })}
+        <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>]</span>
+      </span>
+    );
+  };
+
+  const renderNarrativeInline = (items: Array<{ text: string; citations?: number[] }>) => {
+    return (
+      <>
+        {items.map((p, idx) => (
+          <span key={idx}>
+            {idx === 0 ? '' : ' '}
+            {renderTextWithBold(p.text)}
+            {p.citations?.length ? renderCitations(p.citations) : null}
+          </span>
+        ))}
+      </>
+    );
+  };
+
+  const renderNarrativeLeadingCitations = (items: Array<{ text: string; citations?: number[] }>) => {
+    return (
+      <>
+        {items.map((p, idx) => (
+          <span key={idx}>
+            {idx === 0 ? '' : ' '}
+            {p.citations?.length ? (
+              <>
+                In {renderCitations(p.citations, true)}, {renderTextWithBold(p.text, true)}
+              </>
+            ) : (
+              renderTextWithBold(p.text)
+            )}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   // 导航项
   const navItems = [
     { label: 'About', href: '#about' },
     { label: 'News', href: '#news' },
+    { label: 'Research', href: '#research' },
     { label: 'Publications', href: '#publications' },
     { label: 'Teaching', href: '#teaching' },
     { label: 'Seminar', href: '#seminar' },
@@ -450,22 +647,22 @@ export default function App() {
           {/* 桌面导航 */}
           <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
-              <a 
-                key={item.label} 
+              <a
+                key={item.label}
                 href={item.href}
                 className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors`}
               >
                 {item.label}
               </a>
             ))}
-            
+
             {/* 主题切换 */}
             <div
               className="relative ml-4"
               onMouseEnter={() => setThemeMenuOpen(true)}
               onMouseLeave={() => setThemeMenuOpen(false)}
             >
-              <button 
+              <button
                 onClick={cycleTheme}
                 className={`p-2 rounded-full hover:bg-slate-500/10 transition-colors ${theme.textMuted}`}
                 title="切换样式"
@@ -492,13 +689,13 @@ export default function App() {
 
           {/* 移动端菜单按钮 */}
           <div className="md:hidden flex items-center gap-2">
-            <button 
+            <button
               onClick={cycleTheme}
               className={`p-2 ${theme.textMuted}`}
             >
               <Palette size={20} />
             </button>
-            <button 
+            <button
               className={`p-2 ${theme.textMuted}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -511,8 +708,8 @@ export default function App() {
         {mobileMenuOpen && (
           <div className={`md:hidden ${theme.bg} border-b ${theme.border} px-4 py-4 space-y-2`}>
             {navItems.map((item) => (
-              <a 
-                key={item.label} 
+              <a
+                key={item.label}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block py-2 ${theme.textMuted} hover:${theme.text}`}
@@ -544,8 +741,8 @@ export default function App() {
                   ) : (
                     <div className={`absolute inset-0 ${theme.bgAlt} rounded-2xl rotate-3 transform`}></div>
                   )}
-                  <img 
-                    src={HAO_DATA.profile.avatarUrl} 
+                  <img
+                    src={HAO_DATA.profile.avatarUrl}
                     alt={HAO_DATA.profile.name}
                     className={`relative w-full h-full object-cover rounded-2xl shadow-lg border ${theme.border}`}
                   />
@@ -585,7 +782,7 @@ export default function App() {
 
                 {/* 社交链接按钮 */}
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <a 
+                  <a
                     href={HAO_DATA.profile.googleScholar}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -593,7 +790,7 @@ export default function App() {
                   >
                     <BookOpen size={16} /> Google Scholar
                   </a>
-                  <a 
+                  <a
                     href={HAO_DATA.profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -601,7 +798,7 @@ export default function App() {
                   >
                     <Github size={16} /> GitHub
                   </a>
-                  <a 
+                  <a
                     href={`mailto:${HAO_DATA.profile.email}`}
                     className={`inline-flex items-center gap-2 px-4 py-2 ${theme.cardBg} border ${theme.border} rounded-lg text-sm font-medium ${theme.textMuted} hover:${theme.text} hover:border-slate-400 transition-all`}
                   >
@@ -640,16 +837,61 @@ export default function App() {
                   <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                     <span className={`text-sm font-bold ${theme.textMuted} min-w-[80px] font-sans`}>{item.date}</span>
-                    <p 
+                    <p
                       className={`text-base ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}
                       dangerouslySetInnerHTML={{
                         __html: item.content.replace(
-                          /\*\*(.*?)\*\*/g, 
+                          /\*\*(.*?)\*\*/g,
                           `<strong class="font-bold ${theme.text} ${theme.highlight} px-1 rounded-sm">$1</strong>`
                         )
-                      }} 
+                      }}
                     />
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="research" className={`py-16 ${theme.bg} transition-colors duration-300`}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+              <h2 className={`text-3xl font-bold font-serif ${theme.text}`}>Research</h2>
+              <a
+                href="#publications"
+                className={`text-sm font-medium ${theme.textMuted} hover:${theme.accent} transition-colors font-sans`}
+              >
+                See full list in Publications →
+              </a>
+            </div>
+            <p className={`text-base leading-relaxed max-w-5xl ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+              {renderNarrativeInline(HAO_DATA.research.intro)}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mt-10">
+              {HAO_DATA.research.areas.map(area => (
+                <div
+                  key={area.id}
+                  className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
+                >
+                  {area.imageUrl && (
+                    <div className="mb-4 overflow-hidden rounded-lg border border-slate-200/50">
+                      <img
+                        src={area.imageUrl}
+                        alt={area.title}
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <h3 className={`text-xl font-bold ${theme.text} leading-tight`}>{area.title}</h3>
+                  <p className={`mt-3 text-sm leading-relaxed ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                    {area.summary}
+                  </p>
+
+                  <p className={`mt-4 text-sm leading-relaxed ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                    {renderNarrativeLeadingCitations(area.narrative)}
+                  </p>
+
                 </div>
               ))}
             </div>
@@ -770,7 +1012,7 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* 筛选器 */}
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-wrap gap-2 font-sans items-center">
@@ -837,15 +1079,15 @@ export default function App() {
 
                 <div className="space-y-6">
                   {displayedPublications.map((pub, idx) => (
-                    <div 
-                      key={pub.id} 
+                    <div
+                      key={pub.id}
+                      id={`pub-${pub.id}`}
                       className={`group relative pl-4 border-l-2 ${theme.border} hover:border-current transition-colors duration-300`}
                     >
                       <h3 className={`text-xl font-semibold ${theme.text} group-hover:${theme.accent} transition-colors`}>
                         <span
-                          className={`font-sans font-bold mr-2 ${
-                            !selectedOnly && pub.selected ? 'text-[#8B0000]' : theme.textMuted
-                          }`}
+                          className={`font-sans font-bold mr-2 ${!selectedOnly && pub.selected ? 'text-[#8B0000]' : theme.textMuted
+                            }`}
                         >
                           {displayedPublications.length - idx}.
                         </span>
@@ -893,11 +1135,10 @@ export default function App() {
                         })}
                       </div>
                       <div className="flex flex-wrap items-center gap-3 mt-2 text-sm font-sans">
-                        <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                          pub.type === 'Conference' ? theme.badgeConf : 
-                          pub.type === 'Journal' ? theme.badgeJournal : 
-                          pub.type === 'Software' ? theme.badgeSoft : theme.badgePre
-                        }`}>
+                        <span className={`px-2 py-0.5 rounded text-xs font-bold ${pub.type === 'Conference' ? theme.badgeConf :
+                          pub.type === 'Journal' ? theme.badgeJournal :
+                            pub.type === 'Software' ? theme.badgeSoft : theme.badgePre
+                          }`}>
                           {pub.type}
                         </span>
                         <span className={`font-medium italic ${theme.textMuted}`}>{pub.venue}</span>
@@ -919,11 +1160,10 @@ export default function App() {
                                 return (
                                   <span
                                     key={tag}
-                                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border transition-all duration-200 ${
-                                      topStyle
-                                        ? topStyle.pill
-                                        : `${theme.cardBg} ${theme.textMuted} ${theme.border} hover:${theme.accent} hover:border-current hover:shadow-sm hover:-translate-y-0.5`
-                                    }`}
+                                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border transition-all duration-200 ${topStyle
+                                      ? topStyle.pill
+                                      : `${theme.cardBg} ${theme.textMuted} ${theme.border} hover:${theme.accent} hover:border-current hover:shadow-sm hover:-translate-y-0.5`
+                                      }`}
                                   >
                                     <Tag size={12} className={topStyle ? topStyle.icon : undefined} />
                                     <span>{tag}</span>
@@ -941,7 +1181,7 @@ export default function App() {
                             ))}
                           </div>
                         )}
-                        
+
                         {/* 链接按钮 */}
                         <div className="flex gap-2 ml-auto">
                           {pub.url && pub.url !== '#' && (
@@ -956,7 +1196,7 @@ export default function App() {
                             </a>
                           )}
                           {pub.pdf && pub.pdf !== '#' && (
-                            <a 
+                            <a
                               href={pub.pdf}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -966,7 +1206,7 @@ export default function App() {
                             </a>
                           )}
                           {pub.code && pub.code !== '#' && (
-                            <a 
+                            <a
                               href={pub.code}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -1046,7 +1286,7 @@ export default function App() {
                       )}
                     </div>
                     <div className={`text-sm ${theme.textMuted} font-sans flex items-center gap-1`}>
-                       <MapPin size={14} /> {teach.venue}
+                      <MapPin size={14} /> {teach.venue}
                     </div>
                   </div>
                   {(teach.excerpt || teach.body) && (
@@ -1132,7 +1372,7 @@ export default function App() {
               {HAO_DATA.services.map((s, i) => (
                 <div key={i} className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm transition-colors duration-300`}>
                   <h3 className={`font-sans font-bold ${theme.text} mb-4 flex items-center gap-2`}>
-                    <Award size={18} className={theme.accent}/> {s.type}
+                    <Award size={18} className={theme.accent} /> {s.type}
                   </h3>
                   <ul className="space-y-2">
                     {s.items.map((item, idx) => (
