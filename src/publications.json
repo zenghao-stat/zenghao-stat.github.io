@@ -257,6 +257,25 @@
     ]
   },
   {
+    "id": "liu-st-bcp-2026",
+    "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+    "authors": "Junxian Liu, Hao Zeng, Hongxin Wei",
+    "venue": "Submitted to ICML 2026",
+    "type": "Preprint",
+    "year": "2026",
+    "month": "02",
+    "url": "https://arxiv.org/abs/2602.01733",
+    "abs": "Conformal Prediction (CP) provides a statistical framework for uncertainty quantification that constructs prediction sets with coverage guarantees. While CP yields uncontrolled prediction set sizes, Backward Conformal Prediction (BCP) inverts this paradigm by enforcing a predefined upper bound on set size and estimating the resulting coverage guarantee. However, the looseness induced by Markov's inequality within the BCP framework causes a significant gap between the estimated coverage bound and the empirical coverage. In this work, we introduce ST-BCP, a novel method that introduces a data-dependent transformation of nonconformity scores to narrow the coverage gap. In particular, we develop a computable transformation and prove that it outperforms the baseline identity transformation. Extensive experiments demonstrate the effectiveness of our method, reducing the average coverage gap from 4.20% to 1.12% on common benchmarks.",
+    "pdf": "/papers/2602.01733.pdf",
+    "selected": false,
+    "keywords": [
+      "Conformal Prediction"
+    ],
+    "guidedStudents": [
+      "Junxian Liu"
+    ]
+  },
+  {
     "id": "gao-exploring-imbalanced-2025",
     "title": "Exploring Imbalanced Annotations for Effective In-Context Learning",
     "authors": "Hongfu Gao, Feipeng Zhang, Hao Zeng, Deyu Meng, Bingyi Jing, Hongxin Wei",
@@ -274,7 +293,7 @@
   },
   {
     "id": "huang-selective-labeling-2025",
-    "title": "Selective Labeling with False Discovery Rate Control",
+    "title": "Model-agnostic selective labeling with provable statistical guarantees",
     "authors": "Huipeng Huang, Wenbo Liao, Huajun Xi, Hao Zeng, Mengchen Zhao, Hongxin Wei",
     "guidedStudents": [
       "Huipeng Huang"
@@ -387,16 +406,23 @@
   },
   {
     "id": "huang-group-conditional-pac-2025",
-    "title": "Group-Conditional PAC Reasoning: Groupwise Efficient Reasoning with Statistical Guarantees",
-    "authors": "Jianguo Huang, Hao Zeng",
+    "title": "Conditional Performance Guarantee for Large Reasoning Models",
+    "authors": "Jianguo Huang, Hao Zeng, Bingyi Jing, Hongxin Wei, Bo An",
+    "firstAuthors": [
+      "Jianguo Huang",
+      "Hao Zeng"
+    ],
     "guidedStudents": [
       "Jianguo Huang"
     ],
-    "venue": "In preparation",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "selected": false,
+    "year": "2026",
+    "month": "01",
+    "url": "https://arxiv.org/abs/2601.22790",
+    "abs": "Large reasoning models have shown strong performance through extended chain-of-thought reasoning, yet their computational cost remains significant. Probably approximately correct (PAC) reasoning provides statistical guarantees for efficient reasoning by adaptively switching between thinking and non-thinking models, but the guarantee holds only in the marginal case and does not provide exact conditional coverage. We propose G-PAC reasoning, a practical framework that provides PAC-style guarantees at the group level by partitioning the input space. We develop two instantiations: Group PAC (G-PAC) reasoning for known group structures and Clustered PAC (C-PAC) reasoning for unknown groupings. We prove that both G-PAC and C-PAC achieve group-conditional risk control, and that grouping can strictly improve efficiency over marginal PAC reasoning in heterogeneous settings. Our experiments on diverse reasoning benchmarks demonstrate that G-PAC and C-PAC successfully achieve group-conditional risk control while maintaining substantial computational savings.",
+    "pdf": "/papers/2601.22790.pdf",
+    "selected": true,
     "keywords": [
       "Large Language Models"
     ]
@@ -477,15 +503,18 @@
     "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2026",
-    "month": "01",
-    "selected": false,
+    "month": "02",
+    "url": "https://arxiv.org/abs/2602.02550",
+    "abs": "Data annotation often involves multiple sources with different cost-quality trade-offs, such as fast large language models (LLMs), slow reasoning models, and human experts. In this work, we study the problem of routing inputs to the most cost-efficient annotation source while controlling the labeling error on test instances. We propose \\textbf{HyPAC}, a method that adaptively labels inputs to the most cost-efficient annotation source while providing distribution-free guarantees on annotation error. HyPAC calibrates two decision thresholds using importance sampling and upper confidence bounds, partitioning inputs into three regions based on uncertainty and routing each to the appropriate annotation source. We prove that HyPAC achieves the minimum expected cost with a probably approximately correct (PAC) guarantee on the annotation error, free of data distribution and pre-trained models. Experiments on common benchmarks demonstrate the effectiveness of our method, reducing the annotation cost by 78.51\\% while tightly controlling the annotation error.",
+    "pdf": "/papers/2602.02550.pdf",
+    "selected": true,
     "keywords": [
       "Large Language Models"
     ]
   },
   {
     "id": "qiu-llm-provenance-2026",
-    "title": "LLM Provenance Testing via Constrained Model Confidence Sets",
+    "title": "Provable model provenance set for large language models",
     "authors": "Xiaoqi Qiu, Hao Zeng, Bingyi Jing, Hongxin Wei",
     "firstAuthors": [
       "Xiaoqi Qiu",
@@ -497,7 +526,10 @@
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2026",
-    "month": "01",
+    "month": "02",
+    "url": "https://arxiv.org/abs/2602.00772",
+    "abs": "The growing prevalence of unauthorized model usage and misattribution has increased the need for reliable model provenance analysis. Existing methods often rely on heuristic fingerprint rules without provable error control and may ignore multiple sources. We formalize the model provenance problem with a coverage guarantee at a target confidence level. We propose Model Provenance Set (MPS), a sequential test-and-exclusion method that builds a small set with provable asymptotic guarantees. Experiments show MPS reaches target coverage while limiting unrelated models.",
+    "pdf": "/papers/2602.00772.pdf",
     "selected": false,
     "keywords": [
       "Large Language Models"
@@ -510,7 +542,10 @@
     "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2026",
-    "month": "02",
+    "month": "01",
+    "url": "https://arxiv.org/abs/2601.23128",
+    "abs": "Quantifying uncertainty is critical for the safe deployment of ranking models in real-world applications. Recent work offers a rigorous solution using conformal prediction in a full ranking scenario, which aims to construct prediction sets for the absolute ranks of test items based on the relative ranks of calibration items. However, relying on upper bounds of non-conformity scores renders the method overly conservative, resulting in substantially large prediction sets. To address this, we propose Distribution-informed Conformal Ranking (DCR), which produces efficient prediction sets by deriving the exact distribution of non-conformity scores. In particular, we find that the absolute ranks of calibration items follow Negative Hypergeometric distributions, conditional on their relative ranks. DCR thus uses the rank distribution to derive non-conformity score distribution and determine conformal thresholds. We provide theoretical guarantees that DCR achieves improved efficiency over the baseline while ensuring valid coverage under mild assumptions. Extensive experiments demonstrate the superiority of DCR, reducing average prediction set size by up to 36%, while maintaining valid coverage.",
+    "pdf": "/papers/2601.23128.pdf",
     "selected": false,
     "keywords": [
       "Conformal Prediction"
@@ -524,11 +559,17 @@
       "Chengyao Yu",
       "Hao Zeng"
     ],
+    "guidedStudents": [
+      "Chengyao Yu"
+    ],
     "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2026",
     "month": "02",
-    "selected": false,
+    "url": "https://arxiv.org/abs/2601.22446",
+    "abs": "Large Reasoning Models (LRMs) have demonstrated remarkable performance on complex tasks but suffer from high computational costs and latency. While selective thinking strategies improve efficiency by routing easy queries to non-thinking models, existing approaches often incur uncontrollable errors, especially in online settings where the performance loss of a non-thinking model is only partially observed and data are non-stationary. To address this, we propose Betting Probably Approximately Correct (B-PAC) reasoning, a principled method that enables anytime safe and efficient online reasoning under partial feedback. Specifically, we utilize inverse propensity scoring estimators to construct test supermartingales for candidate thresholds, and then dynamically adjust the routing threshold based on the accumulated statistical evidence of safety. Theoretically, we establish the anytime-valid performance loss control and the efficiency of B-PAC reasoning. Extensive experiments demonstrate that B-PAC reasoning significantly reduces computational overhead, decreasing thinking model usage by up to 81.01%, while controlling the performance loss below the user-specified level.",
+    "pdf": "/papers/2601.22446.pdf",
+    "selected": true,
     "keywords": [
       "Large Language Models"
     ]
