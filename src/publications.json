@@ -235,7 +235,7 @@
   },
   {
     "id": "zeng-pac-reasoning-2025",
-    "title": "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning",
+    "title": "On the Provable Performance Guarantee of Efficient Reasoning Models",
     "authors": "Hao Zeng, Jianguo Huang, Bingyi Jing, Hongxin Wei, Bo An",
     "firstAuthors": [
       "Hao Zeng",
@@ -244,10 +244,10 @@
     "guidedStudents": [
       "Jianguo Huang"
     ],
-    "venue": "Submitted to ICLR 2026",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
-    "year": "2025",
-    "month": "10",
+    "year": "2026",
+    "month": "02",
     "url": "https://arxiv.org/abs/2510.09133",
     "abs": "Large reasoning models can solve hard tasks but are expensive at test time. A common idea is to switch between thinking and nonthinking modes, but it can introduce errors and lacks statistical guarantees. We propose Probably Approximately Correct (PAC) reasoning, which controls performance loss under a user-specified tolerance. We build an upper confidence bound for the performance loss as a monotone function of an uncertainty score, and use it to pick a switching threshold. This yields distribution-free guarantees on bounded performance loss. Experiments show the method saves compute while controlling performance loss.",
     "pdf": "/papers/2510.09133.pdf",
@@ -464,13 +464,13 @@
   },
   {
     "id": "zeng-hypac-cost-efficient-2026",
-    "title": "HyPAC: Cost-Efficient LLM-Human Hybrid Annotation with PAC Error Guarantees",
+    "title": "HyPAC: Cost-Efficient LLMs-Human Hybrid Annotation with PAC Error Guarantees",
     "authors": "Hao Zeng, Huipeng Huang, Jianguo Huang, Bingyi Jing, Hongxin Wei",
     "guidedStudents": [
       "Huipeng Huang",
       "Jianguo Huang"
     ],
-    "venue": "In preparation",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2026",
     "month": "01",
@@ -494,6 +494,32 @@
     "type": "Preprint",
     "year": "2026",
     "month": "01",
+    "selected": false,
+    "keywords": [
+      "Large Language Models"
+    ]
+  },
+  {
+    "id": "liao-distribution-informed-2026",
+    "title": "Distribution-Informed Efficient Conformal Prediction for Full Ranking",
+    "authors": "Wenbo Liao, Hao Zeng, Hongxin Wei",
+    "venue": "Submitted to ICML 2026",
+    "type": "Preprint",
+    "year": "2026",
+    "month": "02",
+    "selected": false,
+    "keywords": [
+      "Conformal Prediction"
+    ]
+  },
+  {
+    "id": "yu-anytime-safe-2026",
+    "title": "Anytime Safe PAC Efficient Reasoning",
+    "authors": "Guanting Yu, Hao Zeng, Hongxin Wei",
+    "venue": "Submitted to ICML 2026",
+    "type": "Preprint",
+    "year": "2026",
+    "month": "02",
     "selected": false,
     "keywords": [
       "Large Language Models"

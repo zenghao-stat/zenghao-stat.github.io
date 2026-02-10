@@ -38,7 +38,7 @@
 - Publications Topics：Any（并集）/ All（交集）
 
 ### 数据文件（统计条目数）
-- src/publications.json：29 条
+- src/publications.json：31 条
 - src/research.json：1 条 (Intro + Areas)
 - src/teaching.json：5 条
 - src/seminars.json：1 条
