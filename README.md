@@ -18,6 +18,60 @@
 
 ---
 
+## 本地预览项目（开发/生产两种方式）
+
+### 1) 开发模式（推荐日常编辑时使用）
+
+```bash
+npm install
+npm run dev -- --host 0.0.0.0 --port 5173
+```
+
+- 打开浏览器访问：`http://localhost:5173`
+- 特点：保存代码后自动热更新（HMR）
+
+### 2) 生产模式预览（接近 GitHub Pages 实际效果）
+
+```bash
+npm install
+npm run build
+npm run preview -- --host 0.0.0.0 --port 5173
+```
+
+- 打开浏览器访问：`http://localhost:5173`
+- 特点：先构建 `dist/`，再以生产静态资源方式启动
+
+### 3) 端口占用时的替代方案
+
+如果 5173 端口被占用，可改为 4173（或其他空闲端口）：
+
+```bash
+npm run dev -- --host 0.0.0.0 --port 4173
+```
+
+---
+
+## 设备运算能力检查（Linux）
+
+可用以下命令快速确认当前机器是否足够支撑本项目开发与构建：
+
+```bash
+uname -a
+lscpu
+free -h
+df -h /
+node -v && npm -v
+nvidia-smi
+```
+
+- CPU：`lscpu` 查看核心数/频率/指令集
+- 内存：`free -h` 查看总内存与可用内存
+- 磁盘：`df -h /` 查看系统盘剩余空间
+- Node 环境：`node -v && npm -v` 检查前端工具链版本
+- GPU：`nvidia-smi`（若提示命令不存在，通常表示当前环境未暴露 NVIDIA GPU）
+
+---
+
 ## 自动同步区块（请勿手改）
 
 下面区块由脚本根据当前代码与数据自动生成，用于“用 git 检查新增功能”和“自动同步 README”：
@@ -38,7 +92,7 @@
 - Publications Topics：Any（并集）/ All（交集）
 
 ### 数据文件（统计条目数）
-- src/publications.json：31 条
+- src/publications.json：32 条
 - src/research.json：1 条 (Intro + Areas)
 - src/teaching.json：5 条
 - src/seminars.json：1 条
@@ -48,7 +102,7 @@
 
 ### 静态资源（public/）
 - public/images：2 个文件（例：profile.jpeg, research）
-- public/papers：12 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
+- public/papers：18 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
 - public/teaching-and-seminar：7 个文件（例：2019-fall-advanced-econometrics-i.html, 2021-fall-advanced-probability-theory.html, 2021-spring-real-analysis.html, 2022-fall-probability-introduction.html, 2022-spring-real-analysis.html, 2024-07-18-ml-theory-study-group.html）
 
 ### 字段速查（从 src/content.ts 的 interface 提取）
