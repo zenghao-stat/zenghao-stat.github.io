@@ -466,6 +466,10 @@
     "id": "zeng-hypac-cost-efficient-2026",
     "title": "HyPAC: Cost-Efficient LLMs-Human Hybrid Annotation with PAC Error Guarantees",
     "authors": "Hao Zeng, Huipeng Huang, Xinhao Qu, Jianguo Huang, Bingyi Jing, Hongxin Wei",
+    "firstAuthors": [
+      "Hao Zeng",
+      "Huipeng Huang"
+    ],
     "guidedStudents": [
       "Huipeng Huang",
       "Jianguo Huang"
