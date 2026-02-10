@@ -217,7 +217,7 @@ export default function App() {
   const [keywordMatchMode, setKeywordMatchMode] = useState<'any' | 'all'>('any');
   const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
-  const [expandedAbstractIds, setExpandedAbstractIds] = useState<number[]>([]);
+  const [expandedAbstractIds, setExpandedAbstractIds] = useState<string[]>([]);
   const [canHover, setCanHover] = useState<boolean>(false);
   const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
 
@@ -420,7 +420,7 @@ export default function App() {
       if (yearDiff !== 0) return yearDiff;
       const monthDiff = Number(b.month ?? 0) - Number(a.month ?? 0);
       if (monthDiff !== 0) return monthDiff;
-      return b.id - a.id;
+      return b.id.localeCompare(a.id);
     });
   }, [filteredPublications]);
 
@@ -434,12 +434,13 @@ export default function App() {
       if (yearDiff !== 0) return yearDiff;
       const monthDiff = Number(b.month ?? 0) - Number(a.month ?? 0);
       if (monthDiff !== 0) return monthDiff;
-      return b.id - a.id;
+      // String comparison for ID as fallback
+      return b.id.localeCompare(a.id);
     });
   }, [HAO_DATA.publications]);
 
   const pubNoById = useMemo(() => {
-    const out = new Map<number, number>();
+    const out = new Map<string, number>();
     const total = allPublicationsSorted.length;
     allPublicationsSorted.forEach((p, idx) => {
       out.set(p.id, total - idx);
@@ -448,7 +449,7 @@ export default function App() {
   }, [allPublicationsSorted]);
 
   const pubIdByNo = useMemo(() => {
-    const out = new Map<number, number>();
+    const out = new Map<number, string>();
     const total = allPublicationsSorted.length;
     allPublicationsSorted.forEach((p, idx) => {
       out.set(total - idx, p.id);
@@ -456,7 +457,7 @@ export default function App() {
     return out;
   }, [allPublicationsSorted]);
 
-  const jumpToPublication = (publicationId: number) => {
+  const jumpToPublication = (publicationId: string) => {
     setSelectedOnly(false);
     setActiveTypeFilter(null);
     setActiveYearFilter(null);
@@ -507,7 +508,7 @@ export default function App() {
     return parts;
   };
 
-  const renderCitations = (publicationIds: number[], leading?: boolean) => {
+  const renderCitations = (publicationIds: string[], leading?: boolean) => {
     const pubs = publicationIds
       .map((pid) => {
         const pub = pubById.get(pid);
@@ -515,7 +516,7 @@ export default function App() {
         if (!pub || !no) return null;
         return { pid, no, pub };
       })
-      .filter(Boolean) as Array<{ pid: number; no: number; pub: NonNullable<ReturnType<typeof pubById.get>> }>;
+      .filter(Boolean) as Array<{ pid: string; no: number; pub: NonNullable<ReturnType<typeof pubById.get>> }>;
 
     if (pubs.length === 0) return null;
 
@@ -587,7 +588,7 @@ export default function App() {
     );
   };
 
-  const renderNarrativeInline = (items: Array<{ text: string; citations?: number[] }>) => {
+  const renderNarrativeInline = (items: Array<{ text: string; citations?: string[] }>) => {
     return (
       <>
         {items.map((p, idx) => (
@@ -601,7 +602,7 @@ export default function App() {
     );
   };
 
-  const renderNarrativeLeadingCitations = (items: Array<{ text: string; citations?: number[] }>) => {
+  const renderNarrativeLeadingCitations = (items: Array<{ text: string; citations?: string[] }>) => {
     return (
       <>
         {items.map((p, idx) => (

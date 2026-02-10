@@ -23,7 +23,7 @@ export interface Profile {
 }
 
 export interface Publication {
-  id: number;
+  id: string;
   title: string;
   authors: string;
   correspondingAuthors?: string[];
@@ -90,7 +90,7 @@ export interface AcademicServiceGroup {
 
 export interface ResearchNarrativeItem {
   text: string;
-  citations?: number[];
+  citations?: string[];
 }
 
 export interface ResearchArea {

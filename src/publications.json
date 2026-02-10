@@ -1,6 +1,6 @@
 [
   {
-    "id": 2025999,
+    "id": "zeng-transfer-learning-2025",
     "title": "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction",
     "authors": "Hao Zeng, Wei Zhong, Xingbai Xu",
     "venue": "Journal of Business & Economic Statistics",
@@ -11,11 +11,18 @@
     "abs": "It is important to incorporate spatial geographic information into U.S. presidential election analysis, especially for swing states. The state-level analysis also faces significant challenges of limited spatial data availability. To address the challenges of spatial dependence and small sample sizes in predicting U.S. presidential election results using spatially dependent data, we propose a novel transfer learning framework within the SAR model, called as tranSAR. Classical SAR model estimation often loses accuracy with small target data samples. Our framework enhances estimation and prediction by leveraging information from similar source data. We introduce a two-stage algorithm, consisting of a transferring stage and a debiasing stage, to estimate parameters and establish theoretical convergence rates for the estimators. Additionally, if the informative source data are unknown, we propose a transferable source detection algorithm using spatial residual bootstrap to maintain spatial dependence and derive its detection consistency. Simulation studies show our algorithm substantially improves the classical two-stage least squares estimator. We demonstrate our method's effectiveness in predicting outcomes in U.S. presidential swing states, where it outperforms traditional methods. In addition, our tranSAR model predicts that the Democratic party will win the 2024 U.S. presidential election.",
     "pdf": "/papers/2405.15600.pdf",
     "selected": true,
-    "tag": ["TOP Econometrics", "theory", "method"],
-    "keywords": ["Transfer Learning", "Spatial Autoregressive Model"]
+    "tag": [
+      "TOP Econometrics",
+      "theory",
+      "method"
+    ],
+    "keywords": [
+      "Transfer Learning",
+      "Spatial Autoregressive Model"
+    ]
   },
   {
-    "id": 2025998,
+    "id": "liu-spatial-aware-conformal-2025",
     "title": "Spatial-Aware Conformal Prediction for Trustworthy Hyperspectral Image Classification",
     "authors": "Kangdao Liu, Tianhao Sun, Hao Zeng, Yongshan Zhang, Chi-Man Pun, Chi-Man Vong",
     "venue": "IEEE Transactions on Circuits and Systems for Video Technology",
@@ -24,59 +31,74 @@
     "month": "09",
     "url": "https://ieeexplore.ieee.org/abstract/document/10960721/",
     "code": "https://github.com/J4ckLiu/SACP",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "abs": "Hyperspectral image (HSI) classification involves assigning unique labels to each pixel to identify various land cover categories. While deep classifiers have achieved high predictive accuracy in this field, they lack the ability to rigorously quantify confidence in their predictions. This limitation restricts their application in critical contexts where the cost of prediction errors is significant, as quantifying the uncertainty of model predictions is crucial for the safe deployment of predictive models. To address this limitation, a rigorous theoretical proof is presented first, which demonstrates the validity of Conformal Prediction, an emerging uncertainty quantification technique, in the context of HSI classification. Building on this foundation, a conformal procedure is designed to equip any pre-trained HSI classifier with trustworthy prediction sets, ensuring that the true labels are included with a user-defined probability (e.g., 95%). Furthermore, a novel framework of Conformal Prediction specifically designed for HSI data, called Spatial-Aware Conformal Prediction (SACP), is proposed. This framework integrates essential spatial information of HSI by aggregating the non-conformity scores of pixels with high spatial correlation, effectively improving the statistical efficiency of prediction sets. Both theoretical and empirical results validate the effectiveness of the proposed approaches.",
     "pdf": "/papers/2409.01236.pdf",
     "selected": true,
     "tag": "TOP AI"
   },
   {
-    "id": 2025899,
+    "id": "xi-exploring-the-2025",
     "title": "Exploring the Noise Robustness of Online Conformal Prediction",
     "authors": "Huajun Xi, Kangdao Liu, Hao Zeng, Wenguang Sun, Hongxin Wei",
-    "guidedStudents": ["Huajun Xi"],
+    "guidedStudents": [
+      "Huajun Xi"
+    ],
     "venue": "NeurIPS 2025",
     "type": "Conference",
     "year": "2025",
     "month": "09",
     "url": "https://openreview.net/forum?id=3veDGO9KiK",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "abs": "Conformal prediction is an uncertainty quantification technique that constructs prediction sets guaranteed to contain the true label with a predefined probability. Recent work develops online conformal prediction methods that adaptively construct prediction sets to accommodate distribution shifts. However, existing algorithms typically assume perfect label accuracy, which rarely holds in practice. We investigate the robustness of online conformal prediction under uniform label noise with a known noise rate. We show that label noise causes a persistent gap between the actual mis-coverage rate and the desired rate alpha, leading to either overestimated or underestimated coverage guarantees. To address this issue, we propose a robust pinball loss, which provides an unbiased estimate of clean pinball loss without requiring ground-truth labels. We prove robust pinball loss eliminates the coverage gap under uniform label noise with a convergence rate of O(T^{-1/2}) for both empirical and expected coverage errors. Extensive experiments show improved noise robustness with precise coverage guarantees.",
     "pdf": "/papers/2501.18363.pdf",
     "selected": true,
     "tag": "TOP AI"
   },
   {
-    "id": 2025898,
+    "id": "zeng-parametric-scaling-2025",
     "title": "Parametric Scaling Law of Tuning Bias in Conformal Prediction",
     "authors": "Hao Zeng, Kangdao Liu, Bingyi Jing, Hongxin Wei",
-    "firstAuthors": ["Hao Zeng", "Kangdao Liu"],
+    "firstAuthors": [
+      "Hao Zeng",
+      "Kangdao Liu"
+    ],
     "venue": "ICML 2025",
     "type": "Conference",
     "year": "2025",
     "month": "06",
     "url": "https://openreview.net/forum?id=jnJLZXSOin",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "abs": "Conformal prediction constructs prediction sets with coverage guarantees. To uphold the exchangeability assumption, many conformal prediction methods need an additional hold-out set for parameter tuning. Yet the impact of violating this principle on coverage is unclear in practice. We empirically find the tuning bias, the coverage gap introduced by using the same dataset for tuning and calibration, is small for simple tuning in many methods. We observe a scaling law: the tuning bias increases with parameter space complexity and decreases with calibration set size. We provide a theoretical framework that quantifies tuning bias and derive an upper bound that explains this scaling law. We also discuss how to reduce tuning bias guided by the theory.",
     "pdf": "/papers/openreview-jnJLZXSOin.pdf",
     "selected": true,
     "tag": "TOP AI"
   },
   {
-    "id": 2025897,
+    "id": "liu-c-adapter-adapting-2025",
     "title": "C-Adapter: Adapting Deep Classifiers for Efficient Conformal Prediction Sets",
     "authors": "Kangdao Liu, Hao Zeng, Jianguo Huang, Huiping Zhuang, Chi-Man Vong, Hongxin Wei",
-    "guidedStudents": ["Kangdao Liu"],
+    "guidedStudents": [
+      "Kangdao Liu"
+    ],
     "venue": "28th European Conference on Artificial Intelligence (ECAI 2025)",
     "type": "Conference",
     "year": "2025",
     "month": "07",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "abs": "Conformal prediction is typically a post-hoc processing step for trained classifiers. Conformal Training adds a regularization term to reduce the average prediction set size at a target error rate, but it can hurt classification accuracy and lead to suboptimal efficiency. We propose C-Adapter, an adapter-based tuning method that improves the efficiency of conformal predictors without sacrificing accuracy. We implement the adapter as a class of intra order-preserving functions and tune it with a loss that increases the separation of nonconformity scores between correct and randomly matched data-label pairs. C-Adapter pushes incorrect labels to have very large nonconformity scores, improving efficiency across coverage levels. Experiments show C-Adapter works well across classifiers and also improves conformal training.",
     "selected": false
   },
   {
-    "id": 2024999,
+    "id": "zeng-robust-integrative-2024",
     "title": "Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity",
     "authors": "Hao Zeng, Chuang Wan, Wei Zhong, Tuo Liu",
     "venue": "Journal of Statistical Planning and Inference",
@@ -87,14 +109,24 @@
     "abs": "Integrative analysis is important for combining heterogeneous data across multiple datasets. However, outliers and heavy-tailed data can make least squares unreliable. We propose Robust Integrative Analysis via Quantile Regression (RIAQ) that accounts for homogeneity and sparsity across datasets. RIAQ identifies latent homogeneous coefficient structures and recovers sparsity in high-dimensional covariates via double penalty terms. Integrating samples improves efficiency, and sparsity improves interpretability. Quantile regression also reveals subgroup structures across quantile levels. We develop an efficient ADMM algorithm, study its convergence, and establish parameter selection consistency. Numerical studies show good finite-sample performance, especially for heavy-tailed cases.",
     "pdf": "/papers/2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf",
     "selected": true,
-    "keywords": ["High Dimensional Statistics"]
+    "keywords": [
+      "High Dimensional Statistics"
+    ]
   },
   {
-    "id": 2024998,
+    "id": "wan-data-driven-estimation-2024",
     "title": "Data-driven Estimation for Multithreshold Accelerated Failure Time Model",
     "authors": "Chuang Wan, Hao Zeng, Wenyang Zhang, Wei Zhong, Changliang Zou",
-    "correspondingAuthors": ["Hao Zeng"],
-    "firstAuthors": ["Chuang Wan", "Hao Zeng", "Wenyang Zhang", "Wei Zhong", "Changliang Zou"],
+    "correspondingAuthors": [
+      "Hao Zeng"
+    ],
+    "firstAuthors": [
+      "Chuang Wan",
+      "Hao Zeng",
+      "Wenyang Zhang",
+      "Wei Zhong",
+      "Changliang Zou"
+    ],
     "venue": "Scandinavian Journal of Statistics",
     "type": "Journal",
     "year": "2024",
@@ -103,11 +135,13 @@
     "abs": "This article develops a new estimation framework for the multithreshold accelerated failure time model, which has different linear forms across subdomains. A key challenge is to determine the number of threshold effects. We show selection consistency of a modified BIC under mild conditions, but it can depend on the penalty magnitude. We propose a fully data-driven approach using a cross-validation criterion with an order-preserved sample-splitting scheme, which is robust to model settings and data distributions. We establish asymptotic properties for parameter estimates and propose an efficient score-type test for the existence of threshold effects. Numerical experiments validate the finite-sample performance.",
     "pdf": "/papers/2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf",
     "selected": true,
-    "keywords": ["High Dimensional Statistics"],
+    "keywords": [
+      "High Dimensional Statistics"
+    ],
     "code": "https://cran.r-project.org/web/packages/MTAFT/index.html"
   },
   {
-    "id": 2022999,
+    "id": "wan-mtaft-data-driven-2023",
     "title": "MTAFT: Data-Driven Estimation for Multi-Threshold Accelerate Failure Time Model",
     "authors": "Chuang Wan, Hao Zeng, Wei Zhong, Changliang Zou",
     "venue": "CRAN R Package",
@@ -117,10 +151,12 @@
     "url": "https://cran.r-project.org/web/packages/MTAFT/index.html",
     "abs": "Developed a data-driven estimation framework for the multi-threshold accelerate failure time (MTAFT) model. The model has different linear forms in different subdomains, and a key challenge is determining the number of threshold effects. The package provides a data-driven approach using a Schwarz' information criterion, and a cross-validation criterion with an order-preserved sample-splitting scheme for consistent estimation without extra tuning parameters. It also includes asymptotic theory for estimates and an efficient score-type test for threshold effects, supported by numerical experiments.",
     "selected": false,
-    "keywords": ["High Dimensional Statistics"]
+    "keywords": [
+      "High Dimensional Statistics"
+    ]
   },
   {
-    "id": 2022998,
+    "id": "chen-a-structural-2022",
     "title": "A Structural Equation Modeling Approach to Determine the Correlation between the Vertical and Sagittal Skeletal Patterns and Posterior Basal Bones Mismatching in Patients with Skeletal Class III Malocclusion",
     "authors": "Wenqian Chen, Hao Zeng, Xiaoya Wang, Qiuping Xu, Panpan Liu, Liwei Zhang, Yingyue Hou, Qing Luo, Xueye Liu, Zhe Jiang, Zhiyuan Zhou, Jiang Chen, Jing Guo",
     "venue": "American Journal of Orthodontics and Dentofacial Orthopedics",
@@ -129,10 +165,12 @@
     "month": "12",
     "abs": "Matching the maxillomandibular basal bone width is important for orthodontic stability. We study the relationship between basal bone width mismatching and vertical and sagittal skeletal patterns in skeletal Class III malocclusion using shape analysis and structural equation modeling. Cone-beam CT images were collected from 45 men and 51 women. Mismatch occurred at the second molar and retromolar regions. Factor analysis and SEM show vertical factors are positively associated with width differences in posterior regions, with some sex-specific effects. Sagittal factors show negative correlations with some posterior width mismatch measures. Basal bone width mismatching is more likely in low-angle cases and severe skeletal Class III malocclusion.",
     "selected": false,
-    "keywords": ["Medicine"]
+    "keywords": [
+      "Medicine"
+    ]
   },
   {
-    "id": 2021999,
+    "id": "chen-match-of-2021",
     "title": "Match of the Bimaxillary Basal Bone Arches and Its Variations among Individuals",
     "authors": "Wenqian Chen, Hao Zeng, Luna Sun, Qiuping Xu, Zhenxue Chen, Yunhan Sun, Qi Jia, Chengyun Liu, Jing Guo",
     "venue": "Scanning",
@@ -141,23 +179,31 @@
     "month": "11",
     "abs": "This study illustrates bimaxillary basal bone contours and examines how upper and lower basal bone arches match, especially in posterior segments including the second molar and retromolar regions. Using 100 CBCT images, basal bone arches were extracted and analyzed with generalized Procrustes analysis and principal component analysis. Results show width discrepancies at the 7-7 segment and retromolar region, with some gender differences. With 2 mm overjet, the upper basal bone arch is about 2 mm wider than the lower on both sides except at the second molar and retromolar region. Variations mainly appear at terminal segments.",
     "selected": false,
-    "keywords": ["Medicine"]
+    "keywords": [
+      "Medicine"
+    ]
   },
   {
-    "id": 2025099,
+    "id": "zhang-robust-estimation-2025",
     "title": "Robust Estimation of Grouped Network Vector Autoregression: An Empirical Analysis Based on China Air Quality Data",
     "authors": "Jingyi Zhang, Yang Yue, Wei Zhong, Hao Zeng",
-    "correspondingAuthors": ["Hao Zeng"],
-    "guidedStudents": ["Jingyi Zhang"],
+    "correspondingAuthors": [
+      "Hao Zeng"
+    ],
+    "guidedStudents": [
+      "Jingyi Zhang"
+    ],
     "venue": "Submitted to Statistical Research",
     "type": "Preprint",
     "year": "2025",
     "month": "00",
     "selected": false,
-    "keywords": ["Spatial Autoregressive Model"]
+    "keywords": [
+      "Spatial Autoregressive Model"
+    ]
   },
   {
-    "id": 2025098,
+    "id": "zeng-tl-fcsar-a-2026",
     "title": "TL-FCSAR: A Transfer Learning Model for Heterogeneous Spatial Effects in U.S. Presidential Elections",
     "authors": "Hao Zeng, Chao Liu",
     "venue": "Under major revision at Spatial Statistics",
@@ -165,26 +211,39 @@
     "year": "2026",
     "month": "02",
     "selected": false,
-    "keywords": ["Spatial Autoregressive Model", "Transfer Learning"]
+    "keywords": [
+      "Spatial Autoregressive Model",
+      "Transfer Learning"
+    ]
   },
   {
-    "id": 2025097,
+    "id": "chen-sex-specific-associations-2025",
     "title": "Sex-specific Associations between Craniofacial Skeletal Patterns and Condylar Morphology and Position in Temporomandibular Joint Osteoarthritis: A Three-dimensional Latent Variable Analysis",
     "authors": "Wenqian Chen, Hao Zeng, Jiawen Lei, Yuanning Hou, Chunchun Du, Yiyao Zhang, Yi Lin, Xinan Chen, Tianrong He",
-    "firstAuthors": ["Wenqian Chen", "Hao Zeng"],
+    "firstAuthors": [
+      "Wenqian Chen",
+      "Hao Zeng"
+    ],
     "venue": "Submitted to Journal of Dentistry",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
     "selected": false,
-    "keywords": ["Medicine"]
+    "keywords": [
+      "Medicine"
+    ]
   },
   {
-    "id": 2025096,
+    "id": "zeng-pac-reasoning-2025",
     "title": "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning",
     "authors": "Hao Zeng, Jianguo Huang, Bingyi Jing, Hongxin Wei, Bo An",
-    "firstAuthors": ["Hao Zeng", "Jianguo Huang"],
-    "guidedStudents": ["Jianguo Huang"],
+    "firstAuthors": [
+      "Hao Zeng",
+      "Jianguo Huang"
+    ],
+    "guidedStudents": [
+      "Jianguo Huang"
+    ],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -193,10 +252,12 @@
     "abs": "Large reasoning models can solve hard tasks but are expensive at test time. A common idea is to switch between thinking and nonthinking modes, but it can introduce errors and lacks statistical guarantees. We propose Probably Approximately Correct (PAC) reasoning, which controls performance loss under a user-specified tolerance. We build an upper confidence bound for the performance loss as a monotone function of an uncertainty score, and use it to pick a switching threshold. This yields distribution-free guarantees on bounded performance loss. Experiments show the method saves compute while controlling performance loss.",
     "pdf": "/papers/2510.09133.pdf",
     "selected": true,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025095,
+    "id": "gao-exploring-imbalanced-2025",
     "title": "Exploring Imbalanced Annotations for Effective In-Context Learning",
     "authors": "Hongfu Gao, Feipeng Zhang, Hao Zeng, Deyu Meng, Bingyi Jing, Hongxin Wei",
     "venue": "Submitted to ICLR 2026",
@@ -207,13 +268,17 @@
     "abs": "In-context learning relies on demonstrations selected from annotated datasets. We show that imbalanced class distributions in annotated datasets can strongly hurt in-context learning across tasks and selection methods. Standard rebalancing methods do not fix this issue. We propose a method based on decomposing distribution differences between annotated and test datasets into class-wise weights and a conditional bias term. We estimate the conditional bias using a balanced validation set and use the two-component weights to adjust scoring functions during selection. This avoids selecting too many demonstrations from one class while keeping the strengths of existing selection methods. Experiments improve average accuracy on common benchmarks with imbalanced datasets.",
     "pdf": "/papers/2502.04037.pdf",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025094,
+    "id": "huang-selective-labeling-2025",
     "title": "Selective Labeling with False Discovery Rate Control",
     "authors": "Huipeng Huang, Wenbo Liao, Huajun Xi, Hao Zeng, Mengchen Zhao, Hongxin Wei",
-    "guidedStudents": ["Huipeng Huang"],
+    "guidedStudents": [
+      "Huipeng Huang"
+    ],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -222,13 +287,18 @@
     "abs": "High-quality labels for large datasets are expensive. Using model predictions can save cost but introduces label errors. Selective labeling methods let AI label some items and humans label the rest, but they often lack guarantees on the error rate in the AI-labeled subset. We propose Conformal Labeling, which finds instances where model predictions can be trusted by controlling the false discovery rate (FDR), the fraction of incorrect labels in the selected subset. We build a conformal p-value for each test instance and select items using a data-dependent threshold. We provide theory showing FDR control at the target level, and experiments show tight control with high power across image, text, and LLM QA tasks.",
     "pdf": "/papers/2510.14581.pdf",
     "selected": false,
-    "keywords": ["Conformal Prediction", "Large Language Models"]
+    "keywords": [
+      "Conformal Prediction",
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025093,
+    "id": "liu-high-power-training-2025",
     "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
     "authors": "Zhenlong Liu, Hao Zeng, Weiran Huang, Hongxin Wei",
-    "guidedStudents": ["Zhenlong Liu"],
+    "guidedStudents": [
+      "Zhenlong Liu"
+    ],
     "venue": "Submitted to ICLR 2026",
     "type": "Preprint",
     "year": "2025",
@@ -237,81 +307,102 @@
     "abs": "Identifying training data in large models matters for copyright, privacy auditing, and fair evaluation. Existing methods often treat it as a binary classification task without statistical guarantees. We propose Provable Training Data Identification (PTDI), which identifies a set of training data with strict false discovery rate (FDR) control. PTDI computes p-values using known unseen data, builds a conservative estimator for the data usage proportion, scales p-values accordingly, and selects points below a data-dependent threshold. This yields strict FDR control with higher power. Experiments across LLMs, VLMs, and datasets show strong FDR control and improved power.",
     "pdf": "/papers/2510.09717.pdf",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025092,
+    "id": "zhou-semi-supervised-conformal-2025",
     "title": "Semi-Supervised Conformal Prediction with Unlabeled Nonconformity Score",
     "authors": "Xuanning Zhou, Zihao Shi, Hao Zeng, Xiaobo Xia, Bingyi Jing, Hongxin Wei",
-    "guidedStudents": ["Xuanning Zhou", "Zihao Shi"],
+    "guidedStudents": [
+      "Xuanning Zhou",
+      "Zihao Shi"
+    ],
     "venue": "Submitted to CVPR 2026",
     "type": "Preprint",
     "year": "2025",
     "month": "05",
     "url": "https://arxiv.org/abs/2505.21147",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "pdf": "/papers/2505.21147.pdf",
     "selected": false
   },
   {
-    "id": 2025091,
+    "id": "zeng-conditional-tuning-2025",
     "title": "Conditional Tuning in Conformal Prediction",
     "authors": "Hao Zeng, Huipeng Huang, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "selected": false
   },
   {
-    "id": 2025090,
+    "id": "zeng-the-double-2025",
     "title": "The Double Descent of Conformal Prediction",
     "authors": "Hao Zeng, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "selected": false
   },
   {
-    "id": 2025089,
+    "id": "zeng-on-tuning-2025",
     "title": "On Tuning Bias in Conformal Prediction",
     "authors": "Hao Zeng, Kangdao Liu, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "selected": false
   },
   {
-    "id": 2025088,
+    "id": "zeng-pac-accelerate-2025",
     "title": "PAC Accelerate: A Statistically Guaranteed Acceleration Method for Large Generative Models",
     "authors": "Hao Zeng, Jianguo Huang",
-    "guidedStudents": ["Jianguo Huang"],
+    "guidedStudents": [
+      "Jianguo Huang"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025087,
+    "id": "huang-group-conditional-pac-2025",
     "title": "Group-Conditional PAC Reasoning: Groupwise Efficient Reasoning with Statistical Guarantees",
     "authors": "Jianguo Huang, Hao Zeng",
-    "guidedStudents": ["Jianguo Huang"],
+    "guidedStudents": [
+      "Jianguo Huang"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025086,
+    "id": "zeng-a-note-2025",
     "title": "A Note on the Impossibility of Conditional PAC-Efficient Reasoning in Large Language Models",
     "authors": "Hao Zeng",
     "venue": "In preparation",
@@ -322,34 +413,44 @@
     "abs": "We prove an impossibility result for conditional PAC-efficient reasoning in large language models. While marginal PAC efficiency guarantees can be achieved by composite methods that switch between an expensive expert model and a cheaper fast model, we show conditional (pointwise) guarantees are impossible in the distribution-free setting. For non-atomic input spaces, any method that achieves conditional PAC efficiency must be trivial: it must defer to the expert model with probability at least 1-α for almost every input.",
     "pdf": "/papers/2512.03057.pdf",
     "selected": true,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025085,
+    "id": "zeng-test-time-valid-2025",
     "title": "Test-time Valid Selection of Conformal Sets via Gaussian Stability",
     "authors": "Hao Zeng, Jiajun Sun, Bingyi Jing, Wei Zhong",
-    "guidedStudents": ["Jiajun Sun"],
+    "guidedStudents": [
+      "Jiajun Sun"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "selected": false
   },
   {
-    "id": 2025084,
+    "id": "zeng-efficient-backward-2025",
     "title": "Efficient Backward Conformal Prediction",
     "authors": "Hao Zeng, Junxian Liu, Bingyi Jing, Hongxin Wei",
-    "guidedStudents": ["Junxian Liu"],
+    "guidedStudents": [
+      "Junxian Liu"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2025",
     "month": "12",
-    "keywords": ["Conformal Prediction"],
+    "keywords": [
+      "Conformal Prediction"
+    ],
     "selected": false
   },
   {
-    "id": 2025083,
+    "id": "zeng-selective-inference-2025",
     "title": "Selective Inference for the Identified Groups in Network Vector Autoregressive Model",
     "authors": "Hao Zeng, Wei Zhong, Chuang Wan",
     "venue": "In preparation",
@@ -357,31 +458,45 @@
     "year": "2025",
     "month": "12",
     "selected": false,
-    "keywords": ["High Dimensional Statistics"]
+    "keywords": [
+      "High Dimensional Statistics"
+    ]
   },
   {
-    "id": 2025082,
+    "id": "zeng-hypac-cost-efficient-2026",
     "title": "HyPAC: Cost-Efficient LLM-Human Hybrid Annotation with PAC Error Guarantees",
     "authors": "Hao Zeng, Huipeng Huang, Jianguo Huang, Bingyi Jing, Hongxin Wei",
-    "guidedStudents": ["Huipeng Huang", "Jianguo Huang"],
+    "guidedStudents": [
+      "Huipeng Huang",
+      "Jianguo Huang"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2026",
     "month": "01",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   },
   {
-    "id": 2025081,
+    "id": "qiu-llm-provenance-2026",
     "title": "LLM Provenance Testing via Constrained Model Confidence Sets",
     "authors": "Xiaoqi Qiu, Hao Zeng, Bingyi Jing, Hongxin Wei",
-    "firstAuthors": ["Xiaoqi Qiu", "Hao Zeng"],
-    "guidedStudents": ["Xiaoqi Qiu"],
+    "firstAuthors": [
+      "Xiaoqi Qiu",
+      "Hao Zeng"
+    ],
+    "guidedStudents": [
+      "Xiaoqi Qiu"
+    ],
     "venue": "In preparation",
     "type": "Preprint",
     "year": "2026",
     "month": "01",
     "selected": false,
-    "keywords": ["Large Language Models"]
+    "keywords": [
+      "Large Language Models"
+    ]
   }
 ]

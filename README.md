@@ -71,7 +71,7 @@
 
 #### ResearchNarrativeItem
 - text: string
-- citations?: number[]
+- citations?: string[]
 
 #### ResearchContent
 - intro: ResearchNarrativeItem[]
@@ -85,7 +85,7 @@
 - imageUrl?: string
 
 #### Publication
-- id: number
+- id: string
 - title: string
 - authors: string
 - correspondingAuthors?: string[]
