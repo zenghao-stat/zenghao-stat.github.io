@@ -235,7 +235,7 @@
   },
   {
     "id": "zeng-pac-reasoning-2025",
-    "title": "On the Provable Performance Guarantee of Efficient Reasoning Models",
+    "title": "On the provable performance guarantee of efficient reasoning models",
     "authors": "Hao Zeng, Jianguo Huang, Bingyi Jing, Hongxin Wei, Bo An",
     "firstAuthors": [
       "Hao Zeng",
@@ -279,7 +279,7 @@
     "id": "gao-exploring-imbalanced-2025",
     "title": "Exploring Imbalanced Annotations for Effective In-Context Learning",
     "authors": "Hongfu Gao, Feipeng Zhang, Hao Zeng, Deyu Meng, Bingyi Jing, Hongxin Wei",
-    "venue": "Submitted to ICLR 2026",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2025",
     "month": "02",
@@ -298,7 +298,7 @@
     "guidedStudents": [
       "Huipeng Huang"
     ],
-    "venue": "Submitted to ICLR 2026",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2025",
     "month": "10",
@@ -318,7 +318,7 @@
     "guidedStudents": [
       "Zhenlong Liu"
     ],
-    "venue": "Submitted to ICLR 2026",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2025",
     "month": "10",
@@ -338,10 +338,10 @@
       "Xuanning Zhou",
       "Zihao Shi"
     ],
-    "venue": "Submitted to CVPR 2026",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "05",
+    "venue": "CVPR 2026",
+    "type": "Conference",
+    "year": "2026",
+    "month": "03",
     "url": "https://arxiv.org/abs/2505.21147",
     "keywords": [
       "Conformal Prediction"
@@ -490,7 +490,7 @@
   },
   {
     "id": "zeng-hypac-cost-efficient-2026",
-    "title": "HyPAC: Cost-Efficient LLMs-Human Hybrid Annotation with PAC Error Guarantees",
+    "title": "HyPAC: Cost-efficient LLMs-human hybrid annotation with PAC error guarantees",
     "authors": "Hao Zeng, Huipeng Huang, Xinhao Qu, Jianguo Huang, Bingyi Jing, Hongxin Wei",
     "firstAuthors": [
       "Hao Zeng",
@@ -515,7 +515,7 @@
   {
     "id": "qiu-llm-provenance-2026",
     "title": "Provable model provenance set for large language models",
-    "authors": "Xiaoqi Qiu, Hao Zeng, Bingyi Jing, Hongxin Wei",
+    "authors": "Xiaoqi Qiu, Hao Zeng, Zhiyu Hou, Hongxin Wei",
     "firstAuthors": [
       "Xiaoqi Qiu",
       "Hao Zeng"
@@ -523,7 +523,7 @@
     "guidedStudents": [
       "Xiaoqi Qiu"
     ],
-    "venue": "In preparation",
+    "venue": "Submitted to ICML 2026",
     "type": "Preprint",
     "year": "2026",
     "month": "02",
