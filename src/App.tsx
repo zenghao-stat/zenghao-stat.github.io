@@ -23,6 +23,8 @@ import {
 
 import { HAO_DATA } from './content';
 
+const SHOW_BLOG_ENTRY = false;
+
 // 主题配置 - 保留原有的三种主题
 const THEMES = {
   paper: {
@@ -566,16 +568,16 @@ export default function App() {
                     className={`pointer-events-none absolute left-0 top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[280px] max-w-md whitespace-normal`}
                   >
                     {seg.pubs.map((x) => (
-                      <div key={x.pid} className="space-y-0.5">
-                        <div className="font-semibold">
+                      <span key={x.pid} className="block space-y-0.5">
+                        <span className="block font-semibold">
                           [{x.no}] {x.pub.title}
-                        </div>
-                        <div className={theme.textMuted}>
+                        </span>
+                        <span className={`block ${theme.textMuted}`}>
                           {x.pub.venue} ({x.pub.year})
-                        </div>
-                        <div className={`${theme.textMuted} text-xs`}>{x.pub.authors}</div>
-                        <div className="h-2" />
-                      </div>
+                        </span>
+                        <span className={`block ${theme.textMuted} text-xs`}>{x.pub.authors}</span>
+                        <span className="block h-2" />
+                      </span>
                     ))}
                   </span>
                 )}
@@ -621,6 +623,8 @@ export default function App() {
     );
   };
 
+  const featuredBlogPost = SHOW_BLOG_ENTRY ? HAO_DATA.blog[0] : undefined;
+
   // 导航项
   const navItems = [
     { label: 'About', href: '#about' },
@@ -646,20 +650,22 @@ export default function App() {
           </a>
 
           {/* 桌面导航 */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors`}
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
 
             {/* 主题切换 */}
             <div
-              className="relative ml-4"
+              className="relative"
               onMouseEnter={() => setThemeMenuOpen(true)}
               onMouseLeave={() => setThemeMenuOpen(false)}
             >
@@ -686,6 +692,19 @@ export default function App() {
                 </div>
               )}
             </div>
+
+            {featuredBlogPost && (
+              <>
+                <span className={`h-5 w-px border-l ${theme.border} opacity-70`} aria-hidden="true" />
+                <a
+                  href={`${import.meta.env.BASE_URL}blog/list.html`}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold ${theme.border} ${theme.cardBg} ${theme.text} hover:${theme.accent} transition-colors`}
+                >
+                  Blog
+                  <ExternalLink size={14} />
+                </a>
+              </>
+            )}
           </div>
 
           {/* 移动端菜单按钮 */}
@@ -702,6 +721,15 @@ export default function App() {
             >
               {mobileMenuOpen ? <X /> : <Menu />}
             </button>
+            {featuredBlogPost && (
+              <a
+                href={`${import.meta.env.BASE_URL}blog/list.html`}
+                className={`ml-1 inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-semibold ${theme.border} ${theme.cardBg} ${theme.text}`}
+              >
+                Blog
+                <ExternalLink size={12} />
+              </a>
+            )}
           </div>
         </div>
 
