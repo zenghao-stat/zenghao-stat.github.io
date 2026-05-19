@@ -1632,7 +1632,10 @@ export default function App() {
       {/* Footer */}
       <footer className={`${theme.cardBg} border-t ${theme.border} py-12 transition-colors duration-300`}>
         <div className={`container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-sm ${theme.textMuted} font-sans`}>
-          <p>&copy; 2025 Hao Zeng. All rights reserved.</p>
+          <div className="text-center md:text-left space-y-1">
+            <p>&copy; 2026 Hao Zeng. All rights reserved.</p>
+            <p>Updated at 2026-05-19.</p>
+          </div>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href={HAO_DATA.profile.googleScholar} target="_blank" rel="noopener noreferrer" className={`hover:${theme.text} transition-colors`}>Google Scholar</a>
             <a href={HAO_DATA.profile.github} target="_blank" rel="noopener noreferrer" className={`hover:${theme.text} transition-colors`}>GitHub</a>
