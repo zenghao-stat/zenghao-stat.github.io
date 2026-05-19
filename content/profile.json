@@ -1,0 +1,15 @@
+{
+  "name": "Hao Zeng",
+  "cnName": "曾浩",
+  "title": "Postdoctoral Researcher in Statistics",
+  "university": "Southern University of Science and Technology (SUSTech) and National University of Singapore (NUS)",
+  "email": "zenghao.acmail@gmail.com",
+  "googleScholar": "https://scholar.google.com/citations?user=-EiBHeIAAAAJ&hl=en",
+  "github": "https://github.com/zenghao-stat",
+  "location": "Shenzhen, China",
+  "description": "I am currently a **Postdoctoral in Statistics** at the Southern University of Science and Technology (**SUSTech**) and National University of Singapore (**NUS**), Department of Statistics and Data Science, supported by the **SUSTech-NUS Joint Research Program**, supervised by Prof. Bingyi Jing, Prof. Hongxin Wei, and Prof. Wang Zhou. I obtained my **PhD in Statistics** from Gregory and Paula Chow Institute for Studies in Economics, **Xiamen University** in 2024. My research focuses on **model free statistical machine learning** theory, methods, and their applications on **predictive inference**. I am also interested in interdisciplinary research at the intersection of machine learning methodologies with **large language model**, **spatial statistics**, **econometrics**, and **biostatistics**.",
+  "cvUrl": "https://zenghao-stat.github.io/cv_folder/cv.pdf",
+  "teachingUrl": "#teaching",
+  "seminarsUrl": "#seminar",
+  "avatarUrl": "./images/profile.jpeg"
+}
