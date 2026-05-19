@@ -1,6 +1,6 @@
 # zenghao-stat.github.io
 
-一个基于 Vite + React 的学术个人主页项目（单页为主，Teaching/Seminar 另有静态详情页）。页面内容由少量 TypeScript + 多个 JSON 元数据驱动渲染，适合“改数据即更新网站”。
+一个基于 Vite + React 的学术个人主页项目。站点主体是单页结构；所有推荐人工维护的内容都集中在 `content/` 文件夹，其中 `profile / news / publications / research / academic_service` 以 JSON 为源码，`blog / teaching / seminars / talks` 以 Markdown 为源码并自动生成 JSON 与静态页面。
 
 - 在线地址：https://zenghao-stat.github.io/
 - 部署方式：push 到 `master` 后，GitHub Actions 自动构建并发布到 GitHub Pages（见 `.github/workflows/pages.yml`）
@@ -12,7 +12,7 @@
 - 构建：Vite + TypeScript
 - 框架：React 18
 - UI：Tailwind CSS（通过 `index.html` 引入 CDN 版本），图标来自 `lucide-react`
-- 数据入口：`src/content.ts` 导出 `HAO_DATA`，并从 `src/*.json` 导入内容供页面渲染
+- 数据入口：`src/content.ts` 导出 `HAO_DATA`；它会聚合 `content/` 下的手工内容源，并读取由 Markdown 自动生成的 `src/blog.json`、`src/teaching.json`、`src/seminars.json`、`src/talks.json`
 
 核心渲染逻辑集中在 [App.tsx](file:///Users/zengh/PAR/Resource/L04%20Profile%20%E4%B8%AA%E4%BA%BA%E6%A1%A3%E6%A1%88/academic_personal_website/zenghao-stat.github.io/src/App.tsx)。
 
@@ -41,37 +41,6 @@ npm run preview -- --host 0.0.0.0 --port 5173
 - 打开浏览器访问：`http://localhost:5173`
 - 特点：先构建 `dist/`，再以生产静态资源方式启动
 
-### 3) 端口占用时的替代方案
-
-如果 5173 端口被占用，可改为 4173（或其他空闲端口）：
-
-```bash
-npm run dev -- --host 0.0.0.0 --port 4173
-```
-
----
-
-## 设备运算能力检查（Linux）
-
-可用以下命令快速确认当前机器是否足够支撑本项目开发与构建：
-
-```bash
-uname -a
-lscpu
-free -h
-df -h /
-node -v && npm -v
-nvidia-smi
-```
-
-- CPU：`lscpu` 查看核心数/频率/指令集
-- 内存：`free -h` 查看总内存与可用内存
-- 磁盘：`df -h /` 查看系统盘剩余空间
-- Node 环境：`node -v && npm -v` 检查前端工具链版本
-- GPU：`nvidia-smi`（若提示命令不存在，通常表示当前环境未暴露 NVIDIA GPU）
-
----
-
 ## 自动同步区块（请勿手改）
 
 下面区块由脚本根据当前代码与数据自动生成，用于“用 git 检查新增功能”和“自动同步 README”：
@@ -92,17 +61,21 @@ nvidia-smi
 - Publications Topics：Any（并集）/ All（交集）
 
 ### 数据文件（统计条目数）
-- src/publications.json：32 条
-- src/research.json：1 条 (Intro + Areas)
+- content/profile.json：1 条
+- content/news.json：5 条
+- content/publications.json：32 条
+- src/blog.json：1 条
+- content/research.json：1 条 (Intro + Areas)
 - src/teaching.json：5 条
 - src/seminars.json：1 条
 - src/talks.json：9 条
-- src/academic_service.json：2 个分组
-- src/content.ts：Profile/News 的内容入口 + 全站类型定义
+- content/academic_service.json：2 个分组
+- src/content.ts：全站类型定义 + 数据聚合入口
 
 ### 静态资源（public/）
 - public/images：2 个文件（例：profile.jpeg, research）
 - public/papers：18 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
+- public/blog：2 个文件（例：harness-on-ai.html, list.html）
 - public/teaching-and-seminar：7 个文件（例：2019-fall-advanced-econometrics-i.html, 2021-fall-advanced-probability-theory.html, 2021-spring-real-analysis.html, 2022-fall-probability-introduction.html, 2022-spring-real-analysis.html, 2024-07-18-ml-theory-study-group.html）
 
 ### 字段速查（从 src/content.ts 的 interface 提取）
@@ -138,6 +111,18 @@ nvidia-smi
 - narrative: ResearchNarrativeItem[]
 - imageUrl?: string
 
+#### BlogPost
+- id: string
+- title: string
+- createdAt: string
+- updatedAt: string
+- topic?: string
+- tags?: string[]
+- readTime?: string
+- excerpt: string
+- highlights?: string[]
+- permalink?: string
+
 #### Publication
 - id: string
 - title: string
@@ -159,6 +144,7 @@ nvidia-smi
 
 #### Teaching
 - id: string
+- category?: string
 - title: string
 - type: string
 - role: string
@@ -166,17 +152,23 @@ nvidia-smi
 - date: string
 - semester?: string
 - excerpt?: string
+- location?: string
+- tags?: string[]
 - body?: string
 - permalink?: string
 
 #### Seminar
 - id: string
+- category?: string
 - title: string
 - type: string
+- role?: string
 - venue: string
 - date: string
 - location?: string
 - excerpt?: string
+- semester?: string
+- tags?: string[]
 - body?: string
 - permalink?: string
 
@@ -187,6 +179,8 @@ nvidia-smi
 - venue: string
 - date: string
 - location: string
+- summary?: string
+- tags?: string[]
 - show?: boolean
 
 #### AcademicServiceItem
@@ -200,7 +194,7 @@ nvidia-smi
 
 ### 依赖（从 package.json 提取）
 
-- dependencies：lucide-react, react, react-dom
+- dependencies：gray-matter, lucide-react, markdown-it, react, react-dom
 - devDependencies：@types/react, @types/react-dom, typescript, vite
 
 <!-- TRAE:README:AUTO:END -->
@@ -259,31 +253,87 @@ nvidia-smi
 
 ### Talks and Presentations（时间线）
 
-- 按时间线展示 `src/talks.json`
+- 按时间线展示 `src/talks.json`（由 `content/talks/*.md` 自动生成）
 - `show: false` 的条目不会显示（默认显示）
 
 ### Academic Service（服务列表）
 
-- 从 `src/academic_service.json` 读取分组（按 `type` 分两列）
+- 从 `content/academic_service.json` 读取分组（按 `type` 分两列）
 - 每条 item 展示为：`name + year(可选)`；`note` 会作为鼠标悬停提示（title）
 
 ---
 
 ## 你可以修改哪些“元数据”（以及改了会发生什么）
 
-### 快速索引：改哪个文件影响哪个区块
+### 快速索引：哪些建议自己改，哪些不要直接改
 
 | 位置 | 影响的区块/效果 |
 | --- | --- |
-| `src/content.ts` | About（姓名/学校/简介/头像/联系方式）、News（时间线内容） |
-| `src/publications.json` | Publications 列表、排序、筛选、链接按钮、作者标记、标签、Topic 关键词 |
-| `src/teaching.json` | Teaching 卡片列表（标题/类型/角色/地点/时间/摘要）、详情页链接（由 `id` 决定） |
-| `src/seminars.json` | Seminar 卡片列表（标题/类型/地点/时间/摘要）、详情页链接（由 `id` 决定） |
-| `src/talks.json` | Talks 时间线（显示与否、标题、地点、月份展示） |
-| `src/academic_service.json` | Academic Service 分组与条目文案（含年份与悬停备注） |
+| `content/profile.json` | About 的姓名/学校/简介/头像/联系方式 |
+| `content/news.json` | News 时间线内容 |
+| `content/publications.json` | Publications 列表、排序、筛选、链接按钮、作者标记、标签、Topic 关键词 |
+| `content/research.json` | Research 区块文案、图片与引用关系 |
+| `content/academic_service.json` | Academic Service 分组与条目文案（含年份与悬停备注） |
+| `content/blog/*.md` | Blog 文章源码、标签、`createdAt` / `updatedAt`、摘要、正文 |
+| `content/teaching/*.md` | Teaching 卡片内容与对应详情页源码 |
+| `content/seminars/*.md` | Seminar 卡片内容与对应详情页源码 |
+| `content/talks/*.md` | Talks 时间线源码 |
 | `public/images/*` | 头像等静态图片（通过 URL 引用） |
 | `public/papers/*` | 论文 PDF 静态资源（配合 `pdf: "/papers/xxx.pdf"`） |
-| `public/teaching-and-seminar/*.html` | Teaching/Seminar 的静态详情页内容（与 `id` 同名） |
+
+### 建议自己改的
+
+- `content/profile.json`
+  - About 的推荐编辑入口
+- `content/news.json`
+  - News 的推荐编辑入口
+- `content/publications.json`
+  - 论文列表主数据源，建议直接维护
+- `content/research.json`
+  - Research 主数据源，建议直接维护
+- `content/academic_service.json`
+  - Academic Service 主数据源，建议直接维护
+- `content/blog/*.md`
+  - Blog 的推荐编辑入口
+- `content/teaching/*.md`
+  - Teaching 的推荐编辑入口
+- `content/seminars/*.md`
+  - Seminar 的推荐编辑入口
+- `content/talks/*.md`
+  - Talks 的推荐编辑入口
+
+### 最好不要直接改的
+
+- `src/blog.json`
+- `src/teaching.json`
+- `src/seminars.json`
+- `src/talks.json`
+- `public/blog/*.html`
+- `public/teaching-and-seminar/*.html`
+
+这些文件现在都是 Markdown 构建产物。
+
+每次运行下面这些命令前，都会先自动执行一次 `npm run blog:build`：
+
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
+- `npm run readme:update`
+- `npm run readme:check`
+
+所以如果手改上面的 JSON 或 HTML，后续很容易被自动覆盖。
+
+### 现在的推荐维护方式
+
+- Blog：改 `content/blog/*.md`
+- Teaching：改 `content/teaching/*.md`
+- Seminar：改 `content/seminars/*.md`
+- Talks：改 `content/talks/*.md`
+- Publications：改 `content/publications.json`
+- Research：改 `content/research.json`
+- Academic Service：改 `content/academic_service.json`
+- About：改 `content/profile.json`
+- News：改 `content/news.json`
 
 ### 不在“元数据”里的内容（需要改代码）
 
@@ -294,7 +344,7 @@ nvidia-smi
 - Publications 的 Year 筛选按钮（2026/2025/2024/before 2024）是写死的
 - 顶部导航项的顺序与标题（About/News/...）是写死的
 
-### Profile 与 News（`src/content.ts`）
+### Profile（`content/profile.json`）与 News（`content/news.json`）
 
 Profile 位于 `HAO_DATA.profile`，常用字段：
 
@@ -310,7 +360,7 @@ News 位于 `HAO_DATA.news: { date, content }[]`：
 - `date`：时间线左侧日期（展示为原字符串）
 - `content`：新闻内容，支持 `**加粗**`（会带高亮底色）
 
-### Publications（`src/publications.json`）
+### Publications（`content/publications.json`）
 
 每条论文记录常用字段（与页面效果对应）：
 
@@ -338,11 +388,30 @@ News 位于 `HAO_DATA.news: { date, content }[]`：
 
 作者标记的一个关键点：页面会对 `authors` 中逗号分割得到的作者名 `trim()` 后，直接与 `firstAuthors/correspondingAuthors/guidedStudents` 内的字符串做全等比较，所以名字必须完全一致（空格、大小写都要一致）。
 
-### Teaching（`src/teaching.json`）与 Seminar（`src/seminars.json`）
+### Research（`content/research.json`）
 
-卡片展示依赖字段：
+Research 区块现在推荐直接维护 `content/research.json`。
+
+- `intro`：顶部研究介绍段落数组
+- `areas`：研究方向卡片数组
+- `areas[].id`：卡片稳定标识
+- `areas[].title`：方向标题
+- `areas[].summary`：方向摘要
+- `areas[].imageUrl`：配图路径
+- `areas[].narrative`：研究叙述数组
+- `areas[].narrative[].text`：正文
+- `areas[].narrative[].citations`：关联到 Publications 的 `id`
+
+如果你修改了 `citations`，要确保其中的论文 `id` 能在 `content/publications.json` 中找到。
+
+### Teaching（`content/teaching/*.md` → `src/teaching.json`）与 Seminar（`content/seminars/*.md` → `src/seminars.json`）
+
+请优先修改 Markdown 源文件，不要直接手改生成后的 `src/teaching.json`、`src/seminars.json` 或 `public/teaching-and-seminar/*.html`。
+
+卡片展示依赖字段（来自 Markdown front matter）：
 
 - `id`：详情页文件名（必须与 `public/teaching-and-seminar/{id}.html` 对应）
+- `category`：生成时用于区分 Teaching / Seminar
 - `title`：卡片标题与详情页标题
 - `type`：卡片信息行
 - `role`：Teaching 卡片会展示（Seminar 卡片目前不展示 role）
@@ -351,19 +420,24 @@ News 位于 `HAO_DATA.news: { date, content }[]`：
 - `date`：卡片右上角只展示年份（取 `date.split('-')[0]`）
 - `excerpt`：卡片摘要（优先）
 - `body`：当 `excerpt` 为空时，用 `body` 的第一段作为卡片摘要
+- `tags`：详情页侧边标签
 
-新增 Teaching/Seminar 条目时，除了写 JSON，还需要补齐静态详情页 HTML（否则点进去会 404）：
+新增 Teaching/Seminar 条目时，只需要补 Markdown；JSON 和静态详情页会自动生成：
 
-- 位置：`public/teaching-and-seminar/{id}.html`
-- 说明：仓库里当前只保留了生成后的 HTML（未包含生成脚本）。如果你有外部生成流程，可以继续用；否则最简单的方式是复制一个现有 HTML 改内容，并把文件名改成新的 `id`.html
+- Markdown 源：`content/teaching/*.md` 或 `content/seminars/*.md`
+- 生成 JSON：`src/teaching.json`、`src/seminars.json`
+- 生成详情页：`public/teaching-and-seminar/{id}.html`
 
-### Talks（`src/talks.json`）
+### Talks（`content/talks/*.md` → `src/talks.json`）
+
+请优先修改 `content/talks/*.md`，不要直接手改 `src/talks.json`。
 
 - `show`：`false` 时不展示（缺省或 `true` 会展示）
 - `date`：时间线左侧展示为 `YYYY-MM`（取 `date.substring(0, 7)`）
 - 其余字段：`title/type/venue/location` 直接展示
+- `summary`、`tags`：当前主要作为内容元数据保留，便于后续扩展
 
-### Academic Service（`src/academic_service.json`）
+### Academic Service（`content/academic_service.json`）
 
 结构是分组数组：
 
