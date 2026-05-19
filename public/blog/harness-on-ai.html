@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced Econometrics I — Hao Zeng</title>
+    <title>A statistical Harness for AI: Keeping Models Inside a Safe Frame — Hao Zeng</title>
     <style>
 
       @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,700&display=swap');
@@ -294,56 +294,132 @@
   </head>
   <body>
     <div class="shell">
-      <a class="back" href="../">← Back to home</a>
+      <a class="back" href="./list.html">← Back to blog</a>
       <header class="hero">
-        <div class="eyebrow">Teaching</div>
-        <h1>Advanced Econometrics I</h1>
-        <p class="lede">Graduate-level econometrics covering linear models, estimation and inference, heteroskedasticity and autocorrelation, endogeneity and instrumental variables, and panel data methods.</p>
+        <div class="eyebrow">Blog · AI Safety · updated 2026-03-31</div>
+        <h1>A statistical Harness for AI: Keeping Models Inside a Safe Frame</h1>
+        <p class="lede">A short note on how to place AI inside a checked action space, with abstention, review gates, and statistical guarantees on bad events.</p>
+        <div class="meta">
+          <span>Created: 2026-03-31</span>
+          <span>Updated: 2026-03-31</span>
+          <span>Read size: 3,550 chars</span>
+          <span>Topic: AI Safety</span>
+        </div>
       </header>
       <div class="grid">
         <article class="article">
           <div class="prose">
-<p>This course provides a rigorous treatment of econometric theory and practice.</p>
-<p>Topics include the classical linear regression model, properties of estimators, hypothesis testing, heteroskedasticity and autocorrelation corrections, endogeneity and instrumental variables, generalized method of moments, and panel data techniques.</p>
-<p>Applications and empirical implementation are emphasized through examples and assignments.</p>
-<p>As a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&amp;A support and office hours.</p>
+<p>Powerful models should not be dropped into the real world with full freedom.</p>
+<p>They need a harness.</p>
+<p>A harness does not try to make the model magical.</p>
+<p>It keeps the model inside a safe frame, gives it room to help, and gives us the right to stop it when risk is too high.</p>
+<p>The key point is simple: safety should not rest only on prompts or hope.</p>
+<p>It should rest on a workflow with measurable guarantees.</p>
+<h2>Why a harness matters</h2>
+<p>Many failures come from a simple mismatch.</p>
+<p>The model is trained for broad prediction, but the task we care about is narrow, costly, and safety sensitive.</p>
+<p>If we let the model act directly, one bad output can become a bad action.</p>
+<p>A harness breaks that path.</p>
+<blockquote>
+<p>The real target is not “make the model never fail.”</p>
+<p>The real target is “keep failure inside a small and known region.”</p>
+</blockquote>
+<p>This view is natural for statistics.</p>
+<p>We often do not ask for certainty.</p>
+<p>We ask for a bound on risk, a clear error rate, or a coverage guarantee.</p>
+<p>That same way of thinking can be used for AI systems.</p>
+<h2>What the safe frame looks like</h2>
+<p>Start with a narrow action space.</p>
+<p>The model should not directly control the world.</p>
+<p>It should pick from a small set of allowed actions, or it should produce a draft that must pass a checker before release.</p>
+<p>In many settings, the best safe action is not “act.”</p>
+<p>It is “abstain,” “ask for human review,” or “collect more data.”</p>
+<ul>
+<li>Allowed action set: only a small list of actions can be taken.</li>
+<li>Guardrail checker: a second layer checks policy, format, and task rules.</li>
+<li>Human gate: high-risk cases move to review instead of auto-action.</li>
+<li>Audit trail: every decision keeps prompts, model output, scores, and final action.</li>
+</ul>
+<h2>Where the statistical guarantee enters</h2>
+<p>The harness becomes scientific when we define a bad event and control its rate.</p>
+<p>A bad event can be “unsafe action was released,” “hallucinated claim passed review,” or “false approval rate went above the budget.”</p>
+<p>Once that event is defined, we can track it with data.</p>
+<pre><code class="language-text">Target: P(bad event after the harness) ≤ α
+
+Design rule: only take action when the system score stays inside a region with estimated risk at most α.
+</code></pre>
+<p>This is a simple line, but it changes the design.</p>
+<p>The question is no longer “Does the demo look smart?”</p>
+<p>The question becomes “Can we show, from past data and ongoing checks, that the harmful event rate stays under the chosen level?”</p>
+<h2>Three practical tools</h2>
+<h3>1. Abstention</h3>
+<p>The model should be allowed to say “I am not safe enough to act.”</p>
+<p>This is often the easiest way to cut risk.</p>
+<p>A system that can defer is easier to control than a system that must always answer.</p>
+<h3>2. Calibration</h3>
+<p>Scores from the model should mean something.</p>
+<p>If the model says a case is low risk, that claim should be checked against data.</p>
+<p>Good calibration turns a raw score into a decision tool.</p>
+<h3>3. Sequential monitoring</h3>
+<p>Safety is not only an offline issue.</p>
+<p>After release, the system should keep testing whether the bad-event rate is still within budget.</p>
+<p>If the rate drifts up, the harness should tighten or stop the system.</p>
+<h2>A simple harness loop</h2>
+<ol>
+<li><strong>Propose</strong><br>
+The model gives an answer, a score, and a reason trace.</li>
+<li><strong>Check</strong><br>
+A rule layer checks task policy, format, evidence, and known risk signals.</li>
+<li><strong>Gate</strong><br>
+If risk is low, release.
+If risk is medium, ask for more evidence.
+If risk is high, abstain or send to human review.</li>
+<li><strong>Audit</strong><br>
+Log the case and update the risk estimate with new data.</li>
+</ol>
+<h2>What makes this different from prompt-only safety</h2>
+<p>Prompts can help.</p>
+<p>But prompts alone do not give a stable guarantee.</p>
+<p>They are soft instructions to the model.</p>
+<p>A harness is stronger because it changes the system around the model.</p>
+<p>It limits actions, adds independent checks, and makes safety measurable.</p>
+<p>In that sense, a harness is closer to classical control and classical statistics.</p>
+<p>We do not trust one black box with all power.</p>
+<p>We shape the feedback loop.</p>
+<h2>What I care about next</h2>
+<p>The next step is to make these ideas sharper.</p>
+<p>Can we design harnesses with finite-sample guarantees?</p>
+<p>Can we give online guarantees under drift?</p>
+<p>Can we trade off usefulness and safety in a clean way?</p>
+<p>These questions sit naturally at the meeting point of AI safety and statistical learning theory.</p>
+<p>My view is that this is a good place for statistics to help AI.</p>
+<p>We know how to talk about uncertainty, coverage, calibration, false discovery, and controlled risk.</p>
+<p>A safe AI system should use that language.</p>
 
           </div>
         </article>
         <aside class="aside">
-          <section class="meta-card">
-            <h3>Overview</h3>
-            <div class="meta-rows">
-              <div class="meta-row">
-                <div class="meta-key">Category</div>
-                <div class="meta-value">Teaching</div>
-              </div>
-              <div class="meta-row">
-                <div class="meta-key">Type</div>
-                <div class="meta-value">Postgraduate course</div>
-              </div>
-              <div class="meta-row">
-                <div class="meta-key">Role</div>
-                <div class="meta-value">Teaching asisteance</div>
-              </div>
-              <div class="meta-row">
-                <div class="meta-key">Venue</div>
-                <div class="meta-value">School of Economics, Xiamen University</div>
-              </div>
-              <div class="meta-row">
-                <div class="meta-key">Date</div>
-                <div class="meta-value">2019-09-01</div>
-              </div>
-            </div>
+
+          <section class="aside-card">
+            <h3>Key points</h3>
+            <ul>
+              <li>Control the action space before you control the model.</li>
+              <li>Let the system stop, defer, or ask for help when risk is high.</li>
+              <li>Use risk budgets that can be checked from data, not just from hope.</li>
+            </ul>
           </section>
 
           <section class="aside-card">
             <h3>Tags</h3>
             <div class="tag-list">
-              <span class="tag-chip">Econometrics</span>
-              <span class="tag-chip">Postgraduate</span>
-              <span class="tag-chip">Teaching Assistant</span>
+              <span class="tag-chip">AI Safety</span>
+              <span class="tag-chip">Statistical Learning</span>
+              <span class="tag-chip">Safe Systems</span>
             </div>
+          </section>
+          <section class="aside-card">
+            <h3>Source</h3>
+            <p>This page is generated from a Markdown file during the project build flow.</p>
           </section>
         </aside>
       </div>

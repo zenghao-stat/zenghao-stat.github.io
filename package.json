@@ -4,14 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "blog:build": "node scripts/build-blog.mjs",
+    "predev": "npm run blog:build",
     "dev": "vite",
+    "prebuild": "npm run blog:build",
     "build": "vite build",
+    "prepreview": "npm run blog:build",
     "preview": "vite preview --port 5173",
+    "prereadme:update": "npm run blog:build",
     "readme:update": "node scripts/update-readme.mjs",
+    "prereadme:check": "npm run blog:build",
     "readme:check": "node scripts/update-readme.mjs --check"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.474.0",
+    "markdown-it": "^14.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

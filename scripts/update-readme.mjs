@@ -123,21 +123,26 @@ const generateAutoMarkdown = async () => {
   const pubTypes = extractConstStringArrayAt(appText, "(['Journal'");
   const nightWindow = extractNightWindow(appText);
 
-  const publicationsCount = await listJsonCount(path.join('src', 'publications.json'));
-  const researchCount = await listJsonCount(path.join('src', 'research.json'));
+  const profileCount = await listJsonCount(path.join('content', 'profile.json'));
+  const newsCount = await listJsonCount(path.join('content', 'news.json'));
+  const publicationsCount = await listJsonCount(path.join('content', 'publications.json'));
+  const blogCount = await listJsonCount(path.join('src', 'blog.json'));
+  const researchCount = await listJsonCount(path.join('content', 'research.json'));
   const teachingCount = await listJsonCount(path.join('src', 'teaching.json'));
   const seminarsCount = await listJsonCount(path.join('src', 'seminars.json'));
   const talksCount = await listJsonCount(path.join('src', 'talks.json'));
-  const serviceCount = await listJsonCount(path.join('src', 'academic_service.json'));
+  const serviceCount = await listJsonCount(path.join('content', 'academic_service.json'));
 
   const images = await listDirSample(path.join('public', 'images'));
   const papers = await listDirSample(path.join('public', 'papers'));
+  const blogPages = await listDirSample(path.join('public', 'blog'));
   const teachingPages = await listDirSample(path.join('public', 'teaching-and-seminar'));
 
   const profileFields = extractInterfaceFields(contentText, 'Profile');
   const researchNarrativeItemFields = extractInterfaceFields(contentText, 'ResearchNarrativeItem');
   const researchContentFields = extractInterfaceFields(contentText, 'ResearchContent');
   const researchAreaFields = extractInterfaceFields(contentText, 'ResearchArea');
+  const blogPostFields = extractInterfaceFields(contentText, 'BlogPost');
   const publicationFields = extractInterfaceFields(contentText, 'Publication');
   const teachingFields = extractInterfaceFields(contentText, 'Teaching');
   const seminarFields = extractInterfaceFields(contentText, 'Seminar');
@@ -174,17 +179,21 @@ const generateAutoMarkdown = async () => {
   lines.push('- Publications Topics：Any（并集）/ All（交集）');
   lines.push('');
   lines.push('### 数据文件（统计条目数）');
-  lines.push(`- src/publications.json：${publicationsCount ?? 'unknown'} 条`);
-  lines.push(`- src/research.json：${researchCount ?? 'unknown'} 条 (Intro + Areas)`);
+  lines.push(`- content/profile.json：${profileCount ?? 'unknown'} 条`);
+  lines.push(`- content/news.json：${newsCount ?? 'unknown'} 条`);
+  lines.push(`- content/publications.json：${publicationsCount ?? 'unknown'} 条`);
+  lines.push(`- src/blog.json：${blogCount ?? 'unknown'} 条`);
+  lines.push(`- content/research.json：${researchCount ?? 'unknown'} 条 (Intro + Areas)`);
   lines.push(`- src/teaching.json：${teachingCount ?? 'unknown'} 条`);
   lines.push(`- src/seminars.json：${seminarsCount ?? 'unknown'} 条`);
   lines.push(`- src/talks.json：${talksCount ?? 'unknown'} 条`);
-  lines.push(`- src/academic_service.json：${serviceCount ?? 'unknown'} 个分组`);
-  lines.push('- src/content.ts：Profile/News 的内容入口 + 全站类型定义');
+  lines.push(`- content/academic_service.json：${serviceCount ?? 'unknown'} 个分组`);
+  lines.push('- src/content.ts：全站类型定义 + 数据聚合入口');
   lines.push('');
   lines.push('### 静态资源（public/）');
   lines.push(`- public/images：${images.count} 个文件${images.sample.length ? `（例：${images.sample.join(', ')}）` : ''}`);
   lines.push(`- public/papers：${papers.count} 个文件${papers.sample.length ? `（例：${papers.sample.join(', ')}）` : ''}`);
+  lines.push(`- public/blog：${blogPages.count} 个文件${blogPages.sample.length ? `（例：${blogPages.sample.join(', ')}）` : ''}`);
   lines.push(`- public/teaching-and-seminar：${teachingPages.count} 个文件${teachingPages.sample.length ? `（例：${teachingPages.sample.join(', ')}）` : ''}`);
   lines.push('');
   lines.push('### 字段速查（从 src/content.ts 的 interface 提取）');
@@ -203,6 +212,7 @@ const generateAutoMarkdown = async () => {
   renderFields('ResearchNarrativeItem', researchNarrativeItemFields);
   renderFields('ResearchContent', researchContentFields);
   renderFields('ResearchArea', researchAreaFields);
+  renderFields('BlogPost', blogPostFields);
   renderFields('Publication', publicationFields);
   renderFields('Teaching', teachingFields);
   renderFields('Seminar', seminarFields);

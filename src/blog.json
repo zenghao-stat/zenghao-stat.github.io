@@ -1,0 +1,22 @@
+[
+  {
+    "id": "harness-on-ai",
+    "title": "A statistical Harness for AI: Keeping Models Inside a Safe Frame",
+    "createdAt": "2026-03-31",
+    "updatedAt": "2026-03-31",
+    "topic": "AI Safety",
+    "tags": [
+      "AI Safety",
+      "Statistical Learning",
+      "Safe Systems"
+    ],
+    "excerpt": "A short note on how to place AI inside a checked action space, with abstention, review gates, and statistical guarantees on bad events.",
+    "readTime": "3,550 chars",
+    "highlights": [
+      "Control the action space before you control the model.",
+      "Let the system stop, defer, or ask for help when risk is high.",
+      "Use risk budgets that can be checked from data, not just from hope."
+    ],
+    "permalink": "/blog/harness-on-ai.html"
+  }
+]

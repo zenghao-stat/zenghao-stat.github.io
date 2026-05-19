@@ -10,8 +10,13 @@
     "semester": "",
     "excerpt": "Introductory probability course covering sample spaces, random variables, distributions, expectation, limit theorems, and basic statistical inference.",
     "location": "",
-    "body": "This course introduces fundamental concepts of probability, including sample spaces and events, conditional probability, independence, and Bayes’ theorem.\nIt covers discrete and continuous random variables, common distributions (Bernoulli, Binomial, Poisson, Normal), joint distributions, expectation, variance, covariance, and moment generating functions.\nFoundational limit theorems such as the Law of Large Numbers and Central Limit Theorem are discussed, with applications to basic statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
-    "permalink": "/teaching/2022-fall-probability-introduction"
+    "tags": [
+      "Probability",
+      "Undergraduate",
+      "Teaching Assistant"
+    ],
+    "body": "This course introduces fundamental concepts of probability, including sample spaces and events, conditional probability, independence, and Bayes’ theorem.\n\nIt covers discrete and continuous random variables, common distributions such as Bernoulli, Binomial, Poisson, and Normal, together with joint distributions, expectation, variance, covariance, and moment generating functions.\n\nFoundational limit theorems such as the Law of Large Numbers and the Central Limit Theorem are discussed, with applications to basic statistical inference.\n\nAs a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching-and-seminar/2022-fall-probability-introduction.html"
   },
   {
     "id": "2022-spring-real-analysis",
@@ -24,8 +29,13 @@
     "semester": "",
     "excerpt": "Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference.",
     "location": "",
-    "body": "This course provides a rigorous introduction to real functions and measure theory.  \nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.  \nThe focus is on developing the theoretical foundation essential for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
-    "permalink": "/teaching/2022-spring-real-analysis"
+    "tags": [
+      "Real Analysis",
+      "Measure Theory",
+      "Undergraduate"
+    ],
+    "body": "This course provides a rigorous introduction to real functions and measure theory.\n\nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.\n\nThe focus is on building the theoretical foundation needed for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching-and-seminar/2022-spring-real-analysis.html"
   },
   {
     "id": "2021-fall-advanced-probability-theory",
@@ -38,8 +48,13 @@
     "semester": "",
     "excerpt": "Measure-theoretic probability covering sigma-algebras, integration, modes of convergence, martingales, and limit theorems with statistical applications.",
     "location": "",
-    "body": "This course builds a measure-theoretic foundation for probability.\nTopics include sigma-algebras and probability measures, random variables as measurable functions, Lebesgue integration and expectations, various modes of convergence (almost sure, in probability, in Lp, in distribution), and convergence theorems.\nMartingale theory and key limit theorems are covered with emphasis on their use in statistics and stochastic processes.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
-    "permalink": "/teaching/2021-fall-advanced-probability-theory"
+    "tags": [
+      "Probability",
+      "Measure Theory",
+      "Postgraduate"
+    ],
+    "body": "This course builds a measure-theoretic foundation for probability.\n\nTopics include sigma-algebras and probability measures, random variables as measurable functions, Lebesgue integration and expectation, various modes of convergence, and key convergence theorems.\n\nMartingale theory and limit theorems are presented with an emphasis on their role in statistics and stochastic processes.\n\nAs a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching-and-seminar/2021-fall-advanced-probability-theory.html"
   },
   {
     "id": "2021-spring-real-analysis",
@@ -52,8 +67,13 @@
     "semester": "",
     "excerpt": "Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference.",
     "location": "",
-    "body": "This course provides a rigorous introduction to real functions and measure theory.  \nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.  \nThe focus is on developing the theoretical foundation essential for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
-    "permalink": "/teaching/2021-spring-real-analysis"
+    "tags": [
+      "Real Analysis",
+      "Measure Theory",
+      "Undergraduate"
+    ],
+    "body": "This course provides a rigorous introduction to real functions and measure theory.\n\nIt covers Lebesgue measure and integration, convergence theorems, Lp spaces, and the Radon–Nikodym theorem, together with the basic properties of measurable functions and sets.\n\nThe focus is on building the theoretical foundation needed for modern probability, stochastic processes, and advanced statistical inference.\n\nAs a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching-and-seminar/2021-spring-real-analysis.html"
   },
   {
     "id": "2019-fall-advanced-econometrics-i",
@@ -66,7 +86,12 @@
     "semester": "",
     "excerpt": "Graduate-level econometrics covering linear models, estimation and inference, heteroskedasticity and autocorrelation, endogeneity and instrumental variables, and panel data methods.",
     "location": "",
-    "body": "This course provides a rigorous treatment of econometric theory and practice.\nTopics include the classical linear regression model, properties of estimators, hypothesis testing, heteroskedasticity and autocorrelation corrections, endogeneity and instrumental variables, generalized method of moments, and panel data techniques.\nApplications and empirical implementation are emphasized through examples and assignments.\n\nAs a teaching assistant (TA), my responsibilities included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
-    "permalink": "/teaching/2019-fall-advanced-econometrics-i"
+    "tags": [
+      "Econometrics",
+      "Postgraduate",
+      "Teaching Assistant"
+    ],
+    "body": "This course provides a rigorous treatment of econometric theory and practice.\n\nTopics include the classical linear regression model, properties of estimators, hypothesis testing, heteroskedasticity and autocorrelation corrections, endogeneity and instrumental variables, generalized method of moments, and panel data techniques.\n\nApplications and empirical implementation are emphasized through examples and assignments.\n\nAs a teaching assistant, my work included grading assignments, leading exercise sessions and supplementary tutorials, grading midterm and final exams, and providing regular Q&A support and office hours.",
+    "permalink": "/teaching-and-seminar/2019-fall-advanced-econometrics-i.html"
   }
 ]
