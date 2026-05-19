@@ -12,6 +12,8 @@ import {
   Award,
   Tag,
   Palette,
+  Sun,
+  Moon,
   Check,
   ExternalLink,
   Combine,
@@ -25,7 +27,7 @@ import { HAO_DATA } from './content';
 
 const SHOW_BLOG_ENTRY = false;
 
-// 主题配置 - 保留原有的三种主题
+// 主题配置 - 菜单只展示白天四种主题；夜色由对应主题自动派生。
 const THEMES = {
   paper: {
     id: 'paper',
@@ -102,31 +104,91 @@ const THEMES = {
     badgeJournal: 'bg-emerald-500 text-black',
     badgePre: 'bg-red-500 text-white',
     badgeSoft: 'bg-blue-600 text-white',
-  },
-  night: {
-    id: 'night',
-    name: 'Night',
-    bg: 'bg-[#0F172A]',
-    bgAlt: 'bg-[#1E293B]',
-    text: 'text-slate-200',
-    textMuted: 'text-slate-400',
-    font: 'font-sans',
-    navBg: 'bg-[#0F172A]/90',
-    border: 'border-slate-700',
-    accent: 'text-sky-400',
-    accentBg: 'bg-sky-500',
-    cardBg: 'bg-[#1E293B]',
-    highlight: 'bg-indigo-500/20',
-    badgeConf: 'bg-sky-900 text-sky-200',
-    badgeJournal: 'bg-emerald-900 text-emerald-200',
-    badgePre: 'bg-amber-900 text-amber-200',
-    badgeSoft: 'bg-purple-900 text-purple-200',
   }
 };
 
 type ThemeKey = keyof typeof THEMES;
-type PubType = 'Conference' | 'Journal' | 'Preprint' | 'Software';
+type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
+
+const NIGHT_THEMES: Record<ThemeKey, typeof THEMES[ThemeKey]> = {
+  paper: {
+    id: 'paper',
+    name: 'Paper',
+    bg: 'bg-[#171A21]',
+    bgAlt: 'bg-[#22252D]',
+    text: 'text-stone-100',
+    textMuted: 'text-stone-400',
+    font: 'font-sans',
+    navBg: 'bg-[#171A21]/92',
+    border: 'border-stone-700',
+    accent: 'text-amber-300',
+    accentBg: 'bg-amber-400',
+    cardBg: 'bg-[#22252D]',
+    highlight: 'bg-amber-400/20',
+    badgeConf: 'bg-blue-900 text-blue-100',
+    badgeJournal: 'bg-emerald-900 text-emerald-100',
+    badgePre: 'bg-amber-900 text-amber-100',
+    badgeSoft: 'bg-purple-900 text-purple-100',
+  },
+  lab: {
+    id: 'lab',
+    name: 'Lab',
+    bg: 'bg-[#0B1120]',
+    bgAlt: 'bg-[#111827]',
+    text: 'text-slate-100',
+    textMuted: 'text-slate-400',
+    font: 'font-sans',
+    navBg: 'bg-[#0B1120]/92',
+    border: 'border-slate-700',
+    accent: 'text-sky-300',
+    accentBg: 'bg-sky-500',
+    cardBg: 'bg-[#111827]',
+    highlight: 'bg-sky-500/20',
+    badgeConf: 'bg-sky-900 text-sky-100',
+    badgeJournal: 'bg-emerald-900 text-emerald-100',
+    badgePre: 'bg-amber-900 text-amber-100',
+    badgeSoft: 'bg-violet-900 text-violet-100',
+  },
+  mint: {
+    id: 'mint',
+    name: 'Mint',
+    bg: 'bg-[#0D1F1A]',
+    bgAlt: 'bg-[#132923]',
+    text: 'text-emerald-50',
+    textMuted: 'text-emerald-200/70',
+    font: 'font-sans',
+    navBg: 'bg-[#0D1F1A]/92',
+    border: 'border-emerald-800',
+    accent: 'text-teal-300',
+    accentBg: 'bg-teal-400',
+    cardBg: 'bg-[#132923]',
+    highlight: 'bg-teal-400/20',
+    badgeConf: 'bg-slate-800 text-slate-100',
+    badgeJournal: 'bg-emerald-900 text-emerald-100',
+    badgePre: 'bg-amber-900 text-amber-100',
+    badgeSoft: 'bg-indigo-900 text-indigo-100',
+  },
+  brutal: {
+    id: 'brutal',
+    name: 'Brutal',
+    bg: 'bg-[#111111]',
+    bgAlt: 'bg-[#1B1B1B]',
+    text: 'text-zinc-50',
+    textMuted: 'text-zinc-300',
+    font: 'font-sans',
+    navBg: 'bg-[#111111]/92',
+    border: 'border-zinc-500',
+    accent: 'text-yellow-300',
+    accentBg: 'bg-yellow-300',
+    cardBg: 'bg-[#1B1B1B]',
+    highlight: 'bg-yellow-300/25',
+    badgeConf: 'bg-yellow-300 text-black',
+    badgeJournal: 'bg-emerald-400 text-black',
+    badgePre: 'bg-red-500 text-white',
+    badgeSoft: 'bg-blue-500 text-white',
+  },
+};
 
 const TOP_TAG_STYLES: Record<
   ThemeKey,
@@ -172,17 +234,77 @@ const TOP_TAG_STYLES: Record<
       icon: 'text-black',
     },
   },
-  night: {
+};
+
+const NIGHT_TOP_TAG_STYLES: typeof TOP_TAG_STYLES = {
+  paper: {
     ai: {
-      pill: 'bg-gradient-to-r from-sky-500/25 via-indigo-500/25 to-emerald-500/25 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      pill: 'bg-gradient-to-r from-amber-500/20 via-blue-500/20 to-stone-500/20 border-amber-300/60 text-stone-100 ring-1 ring-amber-200/30 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-amber-200',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-amber-500/20 via-teal-500/20 to-blue-500/20 border-amber-300/60 text-stone-100 ring-1 ring-amber-200/30 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-amber-200',
+    },
+  },
+  lab: {
+    ai: {
+      pill: 'bg-gradient-to-r from-sky-500/25 via-indigo-500/25 to-cyan-500/20 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
       icon: 'text-sky-300',
     },
     econometrics: {
-      pill: 'bg-gradient-to-r from-sky-500/25 via-teal-500/25 to-indigo-500/25 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      pill: 'bg-gradient-to-r from-sky-500/25 via-teal-500/25 to-indigo-500/20 border-sky-400/60 text-slate-100 ring-1 ring-sky-300/40 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
       icon: 'text-sky-300',
     },
   },
+  mint: {
+    ai: {
+      pill: 'bg-gradient-to-r from-teal-400/25 via-emerald-400/20 to-indigo-400/20 border-teal-300/60 text-emerald-50 ring-1 ring-teal-200/35 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-teal-200',
+    },
+    econometrics: {
+      pill: 'bg-gradient-to-r from-teal-400/25 via-lime-400/20 to-amber-400/20 border-teal-300/60 text-emerald-50 ring-1 ring-teal-200/35 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-teal-200',
+    },
+  },
+  brutal: {
+    ai: {
+      pill: 'bg-yellow-300 border-zinc-50 text-black shadow-[2px_2px_0_#fff] ring-0 animate-pulse motion-reduce:animate-none hover:shadow-[4px_4px_0_#fff] hover:-translate-y-0.5',
+      icon: 'text-black',
+    },
+    econometrics: {
+      pill: 'bg-yellow-200 border-zinc-50 text-black shadow-[2px_2px_0_#fff] ring-0 animate-pulse motion-reduce:animate-none hover:shadow-[4px_4px_0_#fff] hover:-translate-y-0.5',
+      icon: 'text-black',
+    },
+  },
 };
+
+type TopVenueRule = {
+  label: 'TOP AI' | 'TOP Econometrics';
+  type?: PubType;
+  patterns: RegExp[];
+};
+
+const TOP_VENUE_RULES: TopVenueRule[] = [
+  {
+    label: 'TOP AI',
+    type: 'Conference',
+    patterns: [
+      /\bICML\b/i,
+      /\bNeurIPS\b/i,
+      /\bICLR\b/i,
+      /\bCVPR\b/i,
+    ],
+  },
+  {
+    label: 'TOP Econometrics',
+    type: 'Journal',
+    patterns: [
+      /Journal of Business\s*&\s*Economic Statistics/i,
+      /\bJBES\b/i,
+    ],
+  },
+];
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -191,26 +313,23 @@ export default function App() {
     return hour >= 19 || hour < 7;
   };
 
-  const loadInitialTheme = (): { currentTheme: ThemeKey; preferredLightTheme: ThemeKey } => {
+  const loadInitialTheme = (): ThemeKey => {
     try {
       const stored = window.localStorage.getItem('haozeng_theme');
       if (!stored) {
-        const preferredLightTheme: ThemeKey = 'brutal';
-        return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+        return 'brutal';
       }
-      const parsed = JSON.parse(stored) as Partial<{ preferredLightTheme: ThemeKey }>;
-      const preferredLightTheme: ThemeKey = parsed.preferredLightTheme && parsed.preferredLightTheme in THEMES ? parsed.preferredLightTheme : 'brutal';
-      return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+      const parsed = JSON.parse(stored) as Partial<{ selectedTheme: ThemeKey; preferredLightTheme: ThemeKey }>;
+      const savedTheme = parsed.selectedTheme ?? parsed.preferredLightTheme;
+      return savedTheme && savedTheme in THEMES ? savedTheme : 'brutal';
     } catch {
-      const preferredLightTheme: ThemeKey = 'brutal';
-      return { currentTheme: isNightByTime() ? 'night' : preferredLightTheme, preferredLightTheme };
+      return 'brutal';
     }
   };
 
   const themeIds = Object.keys(THEMES) as ThemeKey[];
-  const initial = loadInitialTheme();
-  const [preferredLightTheme, setPreferredLightTheme] = useState<ThemeKey>(initial.preferredLightTheme);
-  const [currentTheme, setCurrentTheme] = useState<ThemeKey>(initial.currentTheme);
+  const [selectedTheme, setSelectedTheme] = useState<ThemeKey>(loadInitialTheme);
+  const [isNightTheme, setIsNightTheme] = useState(isNightByTime);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [selectedOnly, setSelectedOnly] = useState(true);
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
@@ -222,30 +341,26 @@ export default function App() {
   const [expandedAbstractIds, setExpandedAbstractIds] = useState<string[]>([]);
   const [canHover, setCanHover] = useState<boolean>(false);
   const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
+  const [highlightedPublicationId, setHighlightedPublicationId] = useState<string | null>(null);
 
-  const theme = THEMES[currentTheme];
-  const preferredLightThemeRef = useRef(preferredLightTheme);
+  const currentTheme = selectedTheme;
+  const theme = isNightTheme ? NIGHT_THEMES[selectedTheme] : THEMES[selectedTheme];
   const lastIsNightRef = useRef(isNightByTime());
 
   useEffect(() => {
-    preferredLightThemeRef.current = preferredLightTheme;
-  }, [preferredLightTheme]);
-
-  useEffect(() => {
-    if (currentTheme === 'night') return;
     try {
-      window.localStorage.setItem('haozeng_theme', JSON.stringify({ preferredLightTheme: currentTheme }));
+      window.localStorage.setItem('haozeng_theme', JSON.stringify({ selectedTheme }));
     } catch {
       // ignore
     }
-  }, [currentTheme]);
+  }, [selectedTheme]);
 
   useEffect(() => {
     const maybeSwitchTheme = () => {
       const isNightNow = isNightByTime();
       if (isNightNow === lastIsNightRef.current) return;
       lastIsNightRef.current = isNightNow;
-      setCurrentTheme(isNightNow ? 'night' : preferredLightThemeRef.current);
+      setIsNightTheme(isNightNow);
     };
 
     const id = window.setInterval(maybeSwitchTheme, 60 * 1000);
@@ -293,14 +408,19 @@ export default function App() {
     }
   }, [canHover]);
   const applyTheme = (nextTheme: ThemeKey) => {
-    setCurrentTheme(nextTheme);
-    if (nextTheme !== 'night') {
-      setPreferredLightTheme(nextTheme);
-    }
+    setSelectedTheme(nextTheme);
+  };
+
+  const toggleDayNightTheme = () => {
+    setIsNightTheme(prev => {
+      const next = !prev;
+      lastIsNightRef.current = next;
+      return next;
+    });
   };
 
   const cycleTheme = () => {
-    const currentIndex = themeIds.indexOf(currentTheme);
+    const currentIndex = themeIds.indexOf(selectedTheme);
     const nextTheme = themeIds[(currentIndex + 1) % themeIds.length];
     applyTheme(nextTheme);
   };
@@ -371,11 +491,12 @@ export default function App() {
       publications = publications.filter(p => p.selected);
     }
 
-    const counts: Record<'Journal' | 'Conference' | 'Preprint' | 'Software', number> = {
+    const counts: Record<PubType, number> = {
       Journal: 0,
       Conference: 0,
-      Preprint: 0,
+      'Working Paper': 0,
       Software: 0,
+      Patent: 0,
     };
 
     publications.forEach(p => {
@@ -460,6 +581,7 @@ export default function App() {
   }, [allPublicationsSorted]);
 
   const jumpToPublication = (publicationId: string) => {
+    setHighlightedPublicationId(null);
     setSelectedOnly(false);
     setActiveTypeFilter(null);
     setActiveYearFilter(null);
@@ -473,6 +595,10 @@ export default function App() {
         const id = `pub-${publicationId}`;
         window.location.hash = id;
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setHighlightedPublicationId(publicationId);
+        window.setTimeout(() => {
+          setHighlightedPublicationId(prev => (prev === publicationId ? null : prev));
+        }, 2200);
       });
     });
   };
@@ -508,6 +634,17 @@ export default function App() {
       parts.push(processedText.slice(lastIndex));
     }
     return parts;
+  };
+
+  const getPublicationTags = (pub: Publication) => {
+    const tags = [...(pub.tag ?? [])];
+    for (const rule of TOP_VENUE_RULES) {
+      if (rule.type && pub.type !== rule.type) continue;
+      if (rule.patterns.some(pattern => pattern.test(pub.venue))) {
+        tags.push(rule.label);
+      }
+    }
+    return Array.from(new Set(tags.map(tag => tag.trim()).filter(Boolean)));
   };
 
   const renderCitations = (publicationIds: string[], leading?: boolean) => {
@@ -693,6 +830,17 @@ export default function App() {
               )}
             </div>
 
+            <button
+              type="button"
+              onClick={toggleDayNightTheme}
+              className={`p-2 rounded-full hover:bg-slate-500/10 transition-colors ${theme.textMuted}`}
+              title={isNightTheme ? '切换到白天' : '切换到夜色'}
+              aria-label={isNightTheme ? '切换到白天' : '切换到夜色'}
+              aria-pressed={isNightTheme}
+            >
+              {isNightTheme ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
             {featuredBlogPost && (
               <>
                 <span className={`h-5 w-px border-l ${theme.border} opacity-70`} aria-hidden="true" />
@@ -712,8 +860,20 @@ export default function App() {
             <button
               onClick={cycleTheme}
               className={`p-2 ${theme.textMuted}`}
+              title="切换样式"
+              aria-label="切换样式"
             >
               <Palette size={20} />
+            </button>
+            <button
+              type="button"
+              onClick={toggleDayNightTheme}
+              className={`p-2 ${theme.textMuted}`}
+              title={isNightTheme ? '切换到白天' : '切换到夜色'}
+              aria-label={isNightTheme ? '切换到白天' : '切换到夜色'}
+              aria-pressed={isNightTheme}
+            >
+              {isNightTheme ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               className={`p-2 ${theme.textMuted}`}
@@ -786,7 +946,7 @@ export default function App() {
                     <span className={`text-2xl lg:text-3xl font-normal ${theme.textMuted}`}>{HAO_DATA.profile.cnName}</span>
                   </h1>
                   {/* 座右铭 - 弱化颜色 */}
-                  <p className={`text-base italic ${currentTheme === 'night' ? 'text-slate-500' : 'text-slate-400'} mb-3`}>
+                  <p className={`text-base italic ${isNightTheme ? 'text-slate-500' : 'text-slate-400'} mb-3`}>
                     Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.
                   </p>
                   <p className={`text-xl ${theme.textMuted} flex items-center gap-2`}>
@@ -800,7 +960,7 @@ export default function App() {
                 </div>
 
                 <p
-                  className={`text-lg leading-relaxed max-w-3xl text-justify-hyphen ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}
+                  className={`text-lg leading-relaxed max-w-3xl text-justify-hyphen ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}
                   dangerouslySetInnerHTML={{
                     __html: HAO_DATA.profile.description.replace(
                       /\*\*(.*?)\*\*/g,
@@ -863,18 +1023,24 @@ export default function App() {
             <div className={`space-y-0 border-l ${theme.border} ml-3`}>
               {HAO_DATA.news.map((item, i) => (
                 <div key={i} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
+                  <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${isNightTheme ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                     <span className={`text-sm font-bold ${theme.textMuted} min-w-[80px] font-sans`}>{item.date}</span>
-                    <p
-                      className={`text-base ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}
-                      dangerouslySetInnerHTML={{
-                        __html: item.content.replace(
-                          /\*\*(.*?)\*\*/g,
-                          `<strong class="font-bold ${theme.text} ${theme.highlight} px-1 rounded-sm">$1</strong>`
-                        )
-                      }}
-                    />
+                    <p className={`text-base ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: item.content.replace(
+                            /\*\*(.*?)\*\*/g,
+                            `<strong class="font-bold ${theme.text} ${theme.highlight} px-1 rounded-sm">$1</strong>`
+                          )
+                        }}
+                      />
+                      {item.publicationIds && item.publicationIds.length > 0 && (
+                        <span className="ml-2">
+                          {renderCitations(item.publicationIds)}
+                        </span>
+                      )}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -893,7 +1059,7 @@ export default function App() {
                 See full list in Publications →
               </a>
             </div>
-            <p className={`text-base leading-relaxed max-w-5xl ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+            <p className={`text-base leading-relaxed max-w-5xl ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
               {renderNarrativeInline(HAO_DATA.research.intro)}
             </p>
 
@@ -913,11 +1079,11 @@ export default function App() {
                     </div>
                   )}
                   <h3 className={`text-xl font-bold ${theme.text} leading-tight`}>{area.title}</h3>
-                  <p className={`mt-3 text-sm leading-relaxed ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  <p className={`mt-3 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
                     {area.summary}
                   </p>
 
-                  <p className={`mt-4 text-sm leading-relaxed ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  <p className={`mt-4 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
                     {renderNarrativeLeadingCitations(area.narrative)}
                   </p>
 
@@ -1044,11 +1210,11 @@ export default function App() {
 
                   {/* 筛选器 */}
                   <div className="flex flex-col gap-2">
-                    <div className="flex flex-wrap gap-2 font-sans items-center">
+                    <div className="flex gap-2 font-sans items-center overflow-x-auto pb-1">
                       <button
                         type="button"
                         onClick={() => setSelectedOnly(v => !v)}
-                        className={`relative inline-flex items-center rounded-full border ${theme.border} ${theme.cardBg} overflow-hidden transition-all`}
+                        className={`relative inline-flex shrink-0 items-center rounded-full border ${theme.border} ${theme.cardBg} overflow-hidden transition-all`}
                         aria-pressed={selectedOnly}
                       >
                         <span
@@ -1063,12 +1229,12 @@ export default function App() {
                         </span>
                       </button>
 
-                      {(['Journal', 'Conference', 'Preprint', 'Software'] as const).map(filter => (
+                      {(['Journal', 'Conference', 'Working Paper', 'Software', 'Patent'] as const).map(filter => (
                         <button
                           key={filter}
                           type="button"
                           onClick={() => setActiveTypeFilter(prev => (prev === filter ? null : filter))}
-                          className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all
+                          className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all
                             ${activeTypeFilter === filter
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
@@ -1080,7 +1246,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={clearFilters}
-                        className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 inline-flex items-center gap-2`}
+                        className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 inline-flex items-center gap-2`}
                         title="Clear filters"
                       >
                         <RotateCcw size={14} />
@@ -1111,7 +1277,10 @@ export default function App() {
                     <div
                       key={pub.id}
                       id={`pub-${pub.id}`}
-                      className={`group relative pl-4 border-l-2 ${theme.border} hover:border-current transition-colors duration-300`}
+                      className={`group relative pl-4 border-l-2 scroll-mt-24 transition-all duration-500 ${highlightedPublicationId === pub.id
+                        ? `${theme.accent} border-l-[6px] bg-current/5 ring-2 ring-current/30 rounded-r-lg py-3 pr-3`
+                        : `${theme.border} hover:border-current`
+                        }`}
                     >
                       <h3 className={`text-xl font-semibold ${theme.text} group-hover:${theme.accent} transition-colors`}>
                         <span
@@ -1134,7 +1303,7 @@ export default function App() {
                           pub.title
                         )}
                       </h3>
-                      <div className={`mt-1 ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'}`}>
+                      <div className={`mt-1 ${isNightTheme ? 'text-slate-300' : 'text-slate-600'}`}>
                         {pub.authors.split(',').map((rawAuthor, i, arr) => {
                           const author = rawAuthor.trim();
                           const isMe = author === 'Hao Zeng';
@@ -1166,24 +1335,24 @@ export default function App() {
                       <div className="flex flex-wrap items-center gap-3 mt-2 text-sm font-sans">
                         <span className={`px-2 py-0.5 rounded text-xs font-bold ${pub.type === 'Conference' ? theme.badgeConf :
                           pub.type === 'Journal' ? theme.badgeJournal :
-                            pub.type === 'Software' ? theme.badgeSoft : theme.badgePre
+                            pub.type === 'Software' || pub.type === 'Patent' ? theme.badgeSoft : theme.badgePre
                           }`}>
                           {pub.type}
                         </span>
                         <span className={`font-medium italic ${theme.textMuted}`}>{pub.venue}</span>
-                        <span className={theme.textMuted}>({pub.year})</span>
-                        {pub.tag && pub.tag.length > 0 && (
+                        <span className={theme.textMuted}>{pub.year}</span>
+                        {getPublicationTags(pub).length > 0 && (
                           <div className="flex flex-wrap gap-2">
-                            {pub.tag
-                              .map(t => t.trim())
-                              .filter(Boolean)
+                            {getPublicationTags(pub)
                               .map(tag => {
                                 const upper = tag.toUpperCase();
                                 const isTop = upper.startsWith('TOP');
                                 const isAi =
                                   isTop && (upper.includes('TOP AI') || upper.endsWith(' AI') || upper.endsWith('AI'));
                                 const topStyle = isTop
-                                  ? (isAi ? TOP_TAG_STYLES[currentTheme].ai : TOP_TAG_STYLES[currentTheme].econometrics)
+                                  ? (isAi
+                                    ? (isNightTheme ? NIGHT_TOP_TAG_STYLES[currentTheme].ai : TOP_TAG_STYLES[currentTheme].ai)
+                                    : (isNightTheme ? NIGHT_TOP_TAG_STYLES[currentTheme].econometrics : TOP_TAG_STYLES[currentTheme].econometrics))
                                   : null;
 
                                 return (
@@ -1264,13 +1433,13 @@ export default function App() {
                       {pub.abs && (
                         <>
                           <div className={`hidden ${canHover ? 'group-hover:block' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
-                            <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                            <p className={`text-sm ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
                               {pub.abs}
                             </p>
                           </div>
                           {expandedAbstractIds.includes(pub.id) && (
                             <div className={`${canHover ? 'hidden' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
-                              <p className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-700'}`}>
+                              <p className={`text-sm ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
                                 {pub.abs}
                               </p>
                             </div>
@@ -1319,7 +1488,7 @@ export default function App() {
                     </div>
                   </div>
                   {(teach.excerpt || teach.body) && (
-                    <p className={`mt-auto pt-4 border-t ${theme.border} ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'} text-sm leading-relaxed`}>
+                    <p className={`mt-auto pt-4 border-t ${theme.border} ${isNightTheme ? 'text-slate-300' : 'text-slate-600'} text-sm leading-relaxed`}>
                       {teach.excerpt ?? teach.body?.split('\n\n')[0]}
                     </p>
                   )}
@@ -1358,7 +1527,7 @@ export default function App() {
                     </div>
                   </div>
                   {(sem.excerpt || sem.body) && (
-                    <p className={`mt-auto pt-4 border-t ${theme.border} ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'} text-sm leading-relaxed`}>
+                    <p className={`mt-auto pt-4 border-t ${theme.border} ${isNightTheme ? 'text-slate-300' : 'text-slate-600'} text-sm leading-relaxed`}>
                       {sem.excerpt ?? sem.body?.split('\n\n')[0]}
                     </p>
                   )}
@@ -1375,7 +1544,7 @@ export default function App() {
             <div className={`space-y-0 border-l ${theme.border} ml-3`}>
               {HAO_DATA.talks.filter(talk => talk.show !== false).map((talk) => (
                 <div key={talk.id} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${currentTheme === 'night' ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
+                  <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${isNightTheme ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                     <span className={`text-sm font-bold ${theme.textMuted} min-w-[100px] font-sans`}>{talk.date.substring(0, 7)}</span>
                     <div>
@@ -1405,7 +1574,7 @@ export default function App() {
                   </h3>
                   <ul className="space-y-2">
                     {s.items.map((item, idx) => (
-                      <li key={idx} className={`text-sm ${currentTheme === 'night' ? 'text-slate-300' : 'text-slate-600'}`}>
+                      <li key={idx} className={`text-sm ${isNightTheme ? 'text-slate-300' : 'text-slate-600'}`}>
                         <div className="flex items-start gap-2">
                           <span className={`${theme.textMuted} mt-1`}>•</span>
                           {canHover || !item.note?.trim() ? (

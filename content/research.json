@@ -33,8 +33,6 @@
         {
           "text": "More broadly, we work on test-time valid selection and efficient conformal procedures.",
           "citations": [
-            "zeng-test-time-valid-2025",
-            "zeng-efficient-backward-2025",
             "zhou-semi-supervised-conformal-2025"
           ]
         }
@@ -50,7 +48,6 @@
           "text": "For fast reasoning, we design switching rules that save compute while controlling performance loss, and we study the limits of conditional guarantees in the distribution-free setting.",
           "citations": [
             "zeng-pac-reasoning-2025",
-            "zeng-pac-accelerate-2025",
             "zeng-a-note-2025",
             "huang-group-conditional-pac-2025"
           ]
@@ -75,8 +72,7 @@
         {
           "text": "We develop robust tools for heterogeneous and heavy-tailed data, including quantile-based integrative analysis and robust estimation for dependent time series.",
           "citations": [
-            "zeng-robust-integrative-2024",
-            "zhang-robust-estimation-2025"
+            "zeng-robust-integrative-2024"
           ]
         },
         {
@@ -94,9 +90,7 @@
         },
         {
           "text": "We also study selective inference for identified group structures.",
-          "citations": [
-            "zeng-selective-inference-2025"
-          ]
+          "citations": []
         }
       ]
     },
@@ -110,8 +104,7 @@
           "text": "We develop methods that combine spatial dependence with modern learning goals, and we focus on reliability and finite-sample guarantees.",
           "citations": [
             "zeng-transfer-learning-2025",
-            "zeng-tl-fcsar-a-2026",
-            "zhang-robust-estimation-2025"
+            "zeng-tl-fcsar-a-2026"
           ]
         },
         {

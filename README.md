@@ -56,7 +56,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
 - 导航：About(#about) / News(#news) / Research(#research) / Publications(#publications) / Teaching(#teaching) / Seminar(#seminar) / Talks(#talks) / Service(#service)
 - 主题：paper(Paper) / lab(Lab) / mint(Mint) / brutal(Brutal) / night(Night)
 - Night 自动切换：19:00–07:00（本地时间）
-- Publications Type：Journal / Conference / Preprint / Software
+- Publications Type：Journal / Conference / Working Paper / Software / Patent
 - Publications Year：2026 / 2025 / 2024 / before 2024
 - Publications Topics：Any（并集）/ All（交集）
 
@@ -131,7 +131,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
 - firstAuthors?: string[]
 - guidedStudents?: string[]
 - venue: string
-- type: 'Conference' | 'Journal' | 'Preprint' | 'Software'
+- type: 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent'
 - year: string
 - month?: string
 - abs?: string
@@ -222,13 +222,14 @@ npm run preview -- --host 0.0.0.0 --port 5173
 
 - 以时间线样式展示 `HAO_DATA.news`
 - `content` 同样支持 `**加粗**`，并带高亮底色
+- `publicationIds` 可关联 Publications 的 `id`，显示为可点击 citation 编号
 
 ### Publications（论文列表 + 多维筛选）
 
 - 展示排序：按 `year` 降序，其次按 `month` 降序（没有 `month` 视为 0），再按 `id` 降序
 - 筛选器：
   - Selected / All 切换（统计数随筛选动态更新）
-  - Type：Journal / Conference / Preprint / Software
+  - Type：Journal / Conference / Working Paper / Software / Patent
   - Year：2026 / 2025 / 2024 / before 2024（这是写死的按钮；更早年份会归入 “before 2024”）
   - Topics（由 `keywords` 自动汇总生成）：
     - Any：并集匹配（选中的任意关键词命中即可）
@@ -241,7 +242,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
     - `firstAuthors`：作者后显示 †
     - `correspondingAuthors`：作者后显示信封图标
     - `guidedStudents`：作者后显示学生帽图标
-  - 标签 `tag`：展示为小药丸；以 `TOP ...` 开头的标签会有更强视觉强调
+  - 标签 `tag`：展示为小药丸；顶会/顶刊标签由 `src/App.tsx` 中的 `TOP_VENUE_RULES` 根据 `venue` 自动生成
 
 ### Teaching / Seminar（卡片列表 + 静态详情页）
 
@@ -355,10 +356,11 @@ Profile 位于 `HAO_DATA.profile`，常用字段：
 - `avatarUrl`：头像图片地址（建议放 `public/images/`，然后写成 `./images/xxx.jpg` 或 `/images/xxx.jpg`）
 - `description`：About 段落，支持 `**加粗**`
 
-News 位于 `HAO_DATA.news: { date, content }[]`：
+News 位于 `HAO_DATA.news: { date, content, publicationIds? }[]`：
 
 - `date`：时间线左侧日期（展示为原字符串）
 - `content`：新闻内容，支持 `**加粗**`（会带高亮底色）
+- `publicationIds`：关联到 Publications 的 `id`，显示为可点击 citation 编号
 
 ### Publications（`content/publications.json`）
 
@@ -367,8 +369,8 @@ News 位于 `HAO_DATA.news: { date, content }[]`：
 - `id`：用于稳定排序（同年同月时作为最后的降序排序键），也作为 React key
 - `title`：论文标题
 - `authors`：作者字符串，按英文逗号 `,` 分割后逐个渲染；作者名需要与下述数组精确一致
-- `venue`：期刊/会议/平台名称
-- `type`：必须是 `Journal` / `Conference` / `Preprint` / `Software` 之一（用于 Type 筛选和徽章颜色）
+- `venue`：期刊/会议/平台名称；已发表 conference 默认写完整 proceedings 名称并在末尾加简称，但会议全称不写年份，例如 `Proceedings of the 43rd International Conference on Machine Learning (ICML)`；submitted conference 也写完整会议名和简称，例如 `Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)`
+- `type`：必须是 `Journal` / `Conference` / `Working Paper` / `Software` / `Patent` 之一（用于 Type 筛选和徽章颜色）
 - `year`：年份（字符串），用于排序与 Year 筛选
 - `month`：月份（字符串，如 `"09"`），用于同年内排序；缺省视为 0
 - `selected`：是否属于 Selected 列表（Selected/All 切换）
@@ -381,7 +383,7 @@ News 位于 `HAO_DATA.news: { date, content }[]`：
   - 会进入 Topics 下拉筛选（Any/All）
 - `tag`：标签（支持字符串或数组）
   - 会展示为小药丸
-  - `TOP ...` 标签会更醒目（例如 `TOP AI`、`TOP Econometrics`）
+  - 普通标签可手动维护；`TOP AI`、`TOP Econometrics` 这类顶会/顶刊标签由 `src/App.tsx` 中的 `TOP_VENUE_RULES` 根据 `venue` 自动生成
 - `firstAuthors`：作者名数组；命中者后显示 †
 - `correspondingAuthors`：作者名数组；命中者后显示信封图标
 - `guidedStudents`：作者名数组；命中者后显示学生帽图标

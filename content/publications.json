@@ -5,17 +5,12 @@
     "authors": "Hao Zeng, Wei Zhong, Xingbai Xu",
     "venue": "Journal of Business & Economic Statistics",
     "type": "Journal",
-    "year": "2025",
+    "year": "2026",
     "month": "09",
-    "url": "https://arxiv.org/abs/2405.15600",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/07350015.2026.2627302",
     "abs": "It is important to incorporate spatial geographic information into U.S. presidential election analysis, especially for swing states. The state-level analysis also faces significant challenges of limited spatial data availability. To address the challenges of spatial dependence and small sample sizes in predicting U.S. presidential election results using spatially dependent data, we propose a novel transfer learning framework within the SAR model, called as tranSAR. Classical SAR model estimation often loses accuracy with small target data samples. Our framework enhances estimation and prediction by leveraging information from similar source data. We introduce a two-stage algorithm, consisting of a transferring stage and a debiasing stage, to estimate parameters and establish theoretical convergence rates for the estimators. Additionally, if the informative source data are unknown, we propose a transferable source detection algorithm using spatial residual bootstrap to maintain spatial dependence and derive its detection consistency. Simulation studies show our algorithm substantially improves the classical two-stage least squares estimator. We demonstrate our method's effectiveness in predicting outcomes in U.S. presidential swing states, where it outperforms traditional methods. In addition, our tranSAR model predicts that the Democratic party will win the 2024 U.S. presidential election.",
     "pdf": "/papers/2405.15600.pdf",
     "selected": true,
-    "tag": [
-      "TOP Econometrics",
-      "theory",
-      "method"
-    ],
     "keywords": [
       "Transfer Learning",
       "Spatial Autoregressive Model"
@@ -36,8 +31,7 @@
     ],
     "abs": "Hyperspectral image (HSI) classification involves assigning unique labels to each pixel to identify various land cover categories. While deep classifiers have achieved high predictive accuracy in this field, they lack the ability to rigorously quantify confidence in their predictions. This limitation restricts their application in critical contexts where the cost of prediction errors is significant, as quantifying the uncertainty of model predictions is crucial for the safe deployment of predictive models. To address this limitation, a rigorous theoretical proof is presented first, which demonstrates the validity of Conformal Prediction, an emerging uncertainty quantification technique, in the context of HSI classification. Building on this foundation, a conformal procedure is designed to equip any pre-trained HSI classifier with trustworthy prediction sets, ensuring that the true labels are included with a user-defined probability (e.g., 95%). Furthermore, a novel framework of Conformal Prediction specifically designed for HSI data, called Spatial-Aware Conformal Prediction (SACP), is proposed. This framework integrates essential spatial information of HSI by aggregating the non-conformity scores of pixels with high spatial correlation, effectively improving the statistical efficiency of prediction sets. Both theoretical and empirical results validate the effectiveness of the proposed approaches.",
     "pdf": "/papers/2409.01236.pdf",
-    "selected": true,
-    "tag": "TOP AI"
+    "selected": true
   },
   {
     "id": "xi-exploring-the-2025",
@@ -46,7 +40,7 @@
     "guidedStudents": [
       "Huajun Xi"
     ],
-    "venue": "NeurIPS 2025",
+    "venue": "Advances in Neural Information Processing Systems 38 (NeurIPS)",
     "type": "Conference",
     "year": "2025",
     "month": "09",
@@ -56,8 +50,7 @@
     ],
     "abs": "Conformal prediction is an uncertainty quantification technique that constructs prediction sets guaranteed to contain the true label with a predefined probability. Recent work develops online conformal prediction methods that adaptively construct prediction sets to accommodate distribution shifts. However, existing algorithms typically assume perfect label accuracy, which rarely holds in practice. We investigate the robustness of online conformal prediction under uniform label noise with a known noise rate. We show that label noise causes a persistent gap between the actual mis-coverage rate and the desired rate alpha, leading to either overestimated or underestimated coverage guarantees. To address this issue, we propose a robust pinball loss, which provides an unbiased estimate of clean pinball loss without requiring ground-truth labels. We prove robust pinball loss eliminates the coverage gap under uniform label noise with a convergence rate of O(T^{-1/2}) for both empirical and expected coverage errors. Extensive experiments show improved noise robustness with precise coverage guarantees.",
     "pdf": "/papers/2501.18363.pdf",
-    "selected": true,
-    "tag": "TOP AI"
+    "selected": true
   },
   {
     "id": "zeng-parametric-scaling-2025",
@@ -67,7 +60,7 @@
       "Hao Zeng",
       "Kangdao Liu"
     ],
-    "venue": "ICML 2025",
+    "venue": "Proceedings of the 42nd International Conference on Machine Learning (ICML)",
     "type": "Conference",
     "year": "2025",
     "month": "06",
@@ -77,8 +70,7 @@
     ],
     "abs": "Conformal prediction constructs prediction sets with coverage guarantees. To uphold the exchangeability assumption, many conformal prediction methods need an additional hold-out set for parameter tuning. Yet the impact of violating this principle on coverage is unclear in practice. We empirically find the tuning bias, the coverage gap introduced by using the same dataset for tuning and calibration, is small for simple tuning in many methods. We observe a scaling law: the tuning bias increases with parameter space complexity and decreases with calibration set size. We provide a theoretical framework that quantifies tuning bias and derive an upper bound that explains this scaling law. We also discuss how to reduce tuning bias guided by the theory.",
     "pdf": "/papers/openreview-jnJLZXSOin.pdf",
-    "selected": true,
-    "tag": "TOP AI"
+    "selected": true
   },
   {
     "id": "liu-c-adapter-adapting-2025",
@@ -87,7 +79,7 @@
     "guidedStudents": [
       "Kangdao Liu"
     ],
-    "venue": "28th European Conference on Artificial Intelligence (ECAI 2025)",
+    "venue": "Proceedings of the 28th European Conference on Artificial Intelligence (ECAI)",
     "type": "Conference",
     "year": "2025",
     "month": "07",
@@ -167,7 +159,8 @@
     "selected": false,
     "keywords": [
       "Medicine"
-    ]
+    ],
+    "url": "https://linkinghub.elsevier.com/retrieve/pii/S088954062200542X"
   },
   {
     "id": "chen-match-of-2021",
@@ -181,33 +174,15 @@
     "selected": false,
     "keywords": [
       "Medicine"
-    ]
-  },
-  {
-    "id": "zhang-robust-estimation-2025",
-    "title": "Robust Estimation of Grouped Network Vector Autoregression: An Empirical Analysis Based on China Air Quality Data",
-    "authors": "Jingyi Zhang, Yang Yue, Wei Zhong, Hao Zeng",
-    "correspondingAuthors": [
-      "Hao Zeng"
     ],
-    "guidedStudents": [
-      "Jingyi Zhang"
-    ],
-    "venue": "Submitted to Statistical Research",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "00",
-    "selected": false,
-    "keywords": [
-      "Spatial Autoregressive Model"
-    ]
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1155/2021/9625893"
   },
   {
     "id": "zeng-tl-fcsar-a-2026",
     "title": "TL-FCSAR: A Transfer Learning Model for Heterogeneous Spatial Effects in U.S. Presidential Elections",
     "authors": "Hao Zeng, Chao Liu",
     "venue": "Under major revision at Spatial Statistics",
-    "type": "Preprint",
+    "type": "Working Paper",
     "year": "2026",
     "month": "02",
     "selected": false,
@@ -224,8 +199,8 @@
       "Wenqian Chen",
       "Hao Zeng"
     ],
-    "venue": "Submitted to Journal of Dentistry",
-    "type": "Preprint",
+    "venue": "Under review at Clinical Oral Investigations",
+    "type": "Working Paper",
     "year": "2025",
     "month": "12",
     "selected": false,
@@ -244,8 +219,8 @@
     "guidedStudents": [
       "Jianguo Huang"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
     "year": "2026",
     "month": "02",
     "url": "https://arxiv.org/abs/2510.09133",
@@ -260,8 +235,8 @@
     "id": "liu-st-bcp-2026",
     "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
     "authors": "Junxian Liu, Hao Zeng, Hongxin Wei",
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Proceedings of the 43rd International Conference on Machine Learning (ICML)",
+    "type": "Conference",
     "year": "2026",
     "month": "02",
     "url": "https://arxiv.org/abs/2602.01733",
@@ -276,31 +251,15 @@
     ]
   },
   {
-    "id": "gao-exploring-imbalanced-2025",
-    "title": "Exploring Imbalanced Annotations for Effective In-Context Learning",
-    "authors": "Hongfu Gao, Feipeng Zhang, Hao Zeng, Deyu Meng, Bingyi Jing, Hongxin Wei",
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "02",
-    "url": "https://arxiv.org/abs/2502.04037",
-    "abs": "In-context learning relies on demonstrations selected from annotated datasets. We show that imbalanced class distributions in annotated datasets can strongly hurt in-context learning across tasks and selection methods. Standard rebalancing methods do not fix this issue. We propose a method based on decomposing distribution differences between annotated and test datasets into class-wise weights and a conditional bias term. We estimate the conditional bias using a balanced validation set and use the two-component weights to adjust scoring functions during selection. This avoids selecting too many demonstrations from one class while keeping the strengths of existing selection methods. Experiments improve average accuracy on common benchmarks with imbalanced datasets.",
-    "pdf": "/papers/2502.04037.pdf",
-    "selected": false,
-    "keywords": [
-      "Large Language Models"
-    ]
-  },
-  {
     "id": "huang-selective-labeling-2025",
-    "title": "Model-agnostic selective labeling with provable statistical guarantees",
+    "title": "Selective Auto-Labeling with Provable Statistical Guarantees",
     "authors": "Huipeng Huang, Wenbo Liao, Huajun Xi, Hao Zeng, Mengchen Zhao, Hongxin Wei",
     "guidedStudents": [
       "Huipeng Huang"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
-    "year": "2025",
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
+    "year": "2026",
     "month": "10",
     "url": "https://arxiv.org/abs/2510.14581",
     "abs": "High-quality labels for large datasets are expensive. Using model predictions can save cost but introduces label errors. Selective labeling methods let AI label some items and humans label the rest, but they often lack guarantees on the error rate in the AI-labeled subset. We propose Conformal Labeling, which finds instances where model predictions can be trusted by controlling the false discovery rate (FDR), the fraction of incorrect labels in the selected subset. We build a conformal p-value for each test instance and select items using a data-dependent threshold. We provide theory showing FDR control at the target level, and experiments show tight control with high power across image, text, and LLM QA tasks.",
@@ -318,13 +277,29 @@
     "guidedStudents": [
       "Zhenlong Liu"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
-    "year": "2025",
+    "venue": "Proceedings of the 43rd International Conference on Machine Learning (ICML)",
+    "type": "Conference",
+    "year": "2026",
     "month": "10",
     "url": "https://arxiv.org/abs/2510.09717",
     "abs": "Identifying training data in large models matters for copyright, privacy auditing, and fair evaluation. Existing methods often treat it as a binary classification task without statistical guarantees. We propose Provable Training Data Identification (PTDI), which identifies a set of training data with strict false discovery rate (FDR) control. PTDI computes p-values using known unseen data, builds a conservative estimator for the data usage proportion, scales p-values accordingly, and selects points below a data-dependent threshold. This yields strict FDR control with higher power. Experiments across LLMs, VLMs, and datasets show strong FDR control and improved power.",
     "pdf": "/papers/2510.09717.pdf",
+    "selected": false,
+    "keywords": [
+      "Large Language Models"
+    ]
+  },
+  {
+    "id": "hao-racer-2026",
+    "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
+    "authors": "Sai Hao, Hao Zeng, Hongxin Wei, Bingyi Jing",
+    "guidedStudents": [
+      "Sai Hao"
+    ],
+    "venue": "Proceedings of the 43rd International Conference on Machine Learning (ICML)",
+    "type": "Conference",
+    "year": "2026",
+    "month": "03",
     "selected": false,
     "keywords": [
       "Large Language Models"
@@ -338,7 +313,7 @@
       "Xuanning Zhou",
       "Zihao Shi"
     ],
-    "venue": "CVPR 2026",
+    "venue": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
     "type": "Conference",
     "year": "2026",
     "month": "03",
@@ -346,36 +321,7 @@
     "keywords": [
       "Conformal Prediction"
     ],
-    "tag": [
-      "TOP AI"
-    ],
     "pdf": "/papers/2505.21147.pdf",
-    "selected": false
-  },
-  {
-    "id": "zeng-conditional-tuning-2025",
-    "title": "Conditional Tuning in Conformal Prediction",
-    "authors": "Hao Zeng, Huipeng Huang, Bingyi Jing, Hongxin Wei",
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "keywords": [
-      "Conformal Prediction"
-    ],
-    "selected": false
-  },
-  {
-    "id": "zeng-the-double-2025",
-    "title": "The Double Descent of Conformal Prediction",
-    "authors": "Hao Zeng, Bingyi Jing, Hongxin Wei",
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "keywords": [
-      "Conformal Prediction"
-    ],
     "selected": false
   },
   {
@@ -383,29 +329,13 @@
     "title": "On Tuning Bias in Conformal Prediction",
     "authors": "Hao Zeng, Kangdao Liu, Bingyi Jing, Hongxin Wei",
     "venue": "In preparation",
-    "type": "Preprint",
+    "type": "Working Paper",
     "year": "2025",
     "month": "12",
     "keywords": [
       "Conformal Prediction"
     ],
     "selected": false
-  },
-  {
-    "id": "zeng-pac-accelerate-2025",
-    "title": "PAC Accelerate: A Statistically Guaranteed Acceleration Method for Large Generative Models",
-    "authors": "Hao Zeng, Jianguo Huang",
-    "guidedStudents": [
-      "Jianguo Huang"
-    ],
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "selected": false,
-    "keywords": [
-      "Large Language Models"
-    ]
   },
   {
     "id": "huang-group-conditional-pac-2025",
@@ -418,8 +348,8 @@
     "guidedStudents": [
       "Jianguo Huang"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
     "year": "2026",
     "month": "01",
     "url": "https://arxiv.org/abs/2601.22790",
@@ -433,62 +363,17 @@
   {
     "id": "zeng-a-note-2025",
     "title": "A Note on the Impossibility of Conditional PAC-Efficient Reasoning in Large Language Models",
-    "authors": "Hao Zeng",
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "11",
+    "authors": "Hao Zeng, Bingyi Jing",
+    "venue": "Submitted to Biometrika",
+    "type": "Working Paper",
+    "year": "2026",
+    "month": "12",
     "url": "https://arxiv.org/abs/2512.03057",
     "abs": "We prove an impossibility result for conditional PAC-efficient reasoning in large language models. While marginal PAC efficiency guarantees can be achieved by composite methods that switch between an expensive expert model and a cheaper fast model, we show conditional (pointwise) guarantees are impossible in the distribution-free setting. For non-atomic input spaces, any method that achieves conditional PAC efficiency must be trivial: it must defer to the expert model with probability at least 1-α for almost every input.",
     "pdf": "/papers/2512.03057.pdf",
     "selected": true,
     "keywords": [
       "Large Language Models"
-    ]
-  },
-  {
-    "id": "zeng-test-time-valid-2025",
-    "title": "Test-time Valid Selection of Conformal Sets via Gaussian Stability",
-    "authors": "Hao Zeng, Jiajun Sun, Bingyi Jing, Wei Zhong",
-    "guidedStudents": [
-      "Jiajun Sun"
-    ],
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "keywords": [
-      "Conformal Prediction"
-    ],
-    "selected": false
-  },
-  {
-    "id": "zeng-efficient-backward-2025",
-    "title": "Efficient Backward Conformal Prediction",
-    "authors": "Hao Zeng, Junxian Liu, Bingyi Jing, Hongxin Wei",
-    "guidedStudents": [
-      "Junxian Liu"
-    ],
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "keywords": [
-      "Conformal Prediction"
-    ],
-    "selected": false
-  },
-  {
-    "id": "zeng-selective-inference-2025",
-    "title": "Selective Inference for the Identified Groups in Network Vector Autoregressive Model",
-    "authors": "Hao Zeng, Wei Zhong, Chuang Wan",
-    "venue": "In preparation",
-    "type": "Preprint",
-    "year": "2025",
-    "month": "12",
-    "selected": false,
-    "keywords": [
-      "High Dimensional Statistics"
     ]
   },
   {
@@ -503,8 +388,8 @@
       "Huipeng Huang",
       "Jianguo Huang"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Submitted to Journal of the American Statistical Association (JASA)",
+    "type": "Working Paper",
     "year": "2026",
     "month": "02",
     "url": "https://arxiv.org/abs/2602.02550",
@@ -526,8 +411,8 @@
     "guidedStudents": [
       "Xiaoqi Qiu"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
     "year": "2026",
     "month": "02",
     "url": "https://arxiv.org/abs/2602.00772",
@@ -540,10 +425,10 @@
   },
   {
     "id": "liao-distribution-informed-2026",
-    "title": "Distribution-Informed Efficient Conformal Prediction for Full Ranking",
+    "title": "RankMix: Conformal Prediction via Exact Latent-Rank Calibration",
     "authors": "Wenbo Liao, Huipeng Huang, Chen Jia, Huajun Xi, Hao Zeng, Hongxin Wei",
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
     "year": "2026",
     "month": "01",
     "url": "https://arxiv.org/abs/2601.23128",
@@ -565,8 +450,8 @@
     "guidedStudents": [
       "Chengyao Yu"
     ],
-    "venue": "Submitted to ICML 2026",
-    "type": "Preprint",
+    "venue": "Proceedings of the 43rd International Conference on Machine Learning (ICML)",
+    "type": "Conference",
     "year": "2026",
     "month": "02",
     "url": "https://arxiv.org/abs/2601.22446",
@@ -576,5 +461,52 @@
     "keywords": [
       "Large Language Models"
     ]
+  },
+  {
+    "id": "liu-pure-benchmark-2026",
+    "title": "Can We Select One Pure Benchmark for Multiple Audited Models?",
+    "authors": "Zhenlong Liu, Hao Zeng, Hongxin Wei",
+    "guidedStudents": [
+      "Zhenlong Liu"
+    ],
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
+    "year": "2026",
+    "month": "05",
+    "selected": false,
+    "keywords": [
+      "Large Language Models"
+    ]
+  },
+  {
+    "id": "liao-crbh-2026",
+    "title": "crBH: Conformal Top Selection with False Discovery Rate Control",
+    "authors": "Wenbo Liao, Huipeng Huang, Qingqiao Hu, Hao Zeng, Chen Jia, Guocheng Liao, Hongxin Wei",
+    "guidedStudents": [
+      "Wenbo Liao",
+      "Huipeng Huang"
+    ],
+    "venue": "Submitted to The 40th Annual Conference on Neural Information Processing Systems (NeurIPS)",
+    "type": "Working Paper",
+    "year": "2026",
+    "month": "05",
+    "selected": false,
+    "keywords": [
+      "Conformal Prediction"
+    ]
+  },
+  {
+    "id": "chen-bimaxillary-basal-bone-patent-2026",
+    "title": "A Method for Matching the Bimaxillary Basal Bone Arches and Predicting Their Variations among Individuals",
+    "authors": "Wenqian Chen, Hao Zeng, Jiawen Lei, Tianrong He, Yi Lin, Jing Guo, Chunchun Du",
+    "venue": "Chinese patent application, Publication No. CN121708039A",
+    "type": "Patent",
+    "year": "2026",
+    "month": "03",
+    "selected": false,
+    "keywords": [
+      "Medicine"
+    ],
+    "abs": "Application No. CN202511926070.4; applied on 12/19/2025 and published on 03/20/2026."
   }
 ]
