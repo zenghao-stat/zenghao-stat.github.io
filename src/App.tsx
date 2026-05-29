@@ -111,6 +111,49 @@ type ThemeKey = keyof typeof THEMES;
 type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
 
+const PUBLICATION_TYPE_FILTERS: Array<{ label: PubType; shortLabel: string }> = [
+  { label: 'Journal', shortLabel: 'J' },
+  { label: 'Conference', shortLabel: 'C' },
+  { label: 'Working Paper', shortLabel: 'WP' },
+  { label: 'Software', shortLabel: 'S' },
+  { label: 'Patent', shortLabel: 'P' },
+];
+
+const RESPONSIVE_FILTER_STYLES = `
+  .publication-filter-panel {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 760px) {
+    .publication-filter-full {
+      display: none;
+    }
+
+    .publication-filter-short {
+      display: inline;
+    }
+
+    .publication-filter-label {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .publication-filter-clear-text {
+      display: none;
+    }
+  }
+
+  @container (min-width: 761px) {
+    .publication-filter-full {
+      display: inline;
+    }
+
+    .publication-filter-short {
+      display: none;
+    }
+  }
+`;
+
 const NIGHT_THEMES: Record<ThemeKey, typeof THEMES[ThemeKey]> = {
   paper: {
     id: 'paper',
@@ -776,18 +819,19 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${theme.bg} ${theme.text} ${theme.font} transition-colors duration-500`}>
+      <style>{RESPONSIVE_FILTER_STYLES}</style>
       {/* 导航栏 - 参考项目的简洁风格 */}
       <nav className={`sticky top-0 z-40 w-full border-b ${theme.border} ${theme.navBg} backdrop-blur-md transition-colors duration-300`}>
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <a href="#about" className="flex items-center gap-2 group">
-            <span className={`text-lg font-bold font-serif ${theme.text}`}>
+          <a href="#about" className="flex min-w-0 items-center gap-2 group">
+            <span className={`whitespace-nowrap text-base sm:text-lg font-bold font-serif ${theme.text}`}>
               {HAO_DATA.profile.name} <span className={theme.textMuted}>{HAO_DATA.profile.cnName}</span>
             </span>
           </a>
 
           {/* 桌面导航 */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <div className="flex items-center gap-6">
               {navItems.map((item) => (
                 <a
@@ -856,7 +900,7 @@ export default function App() {
           </div>
 
           {/* 移动端菜单按钮 */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={cycleTheme}
               className={`p-2 ${theme.textMuted}`}
@@ -895,7 +939,7 @@ export default function App() {
 
         {/* 移动端菜单 */}
         {mobileMenuOpen && (
-          <div className={`md:hidden ${theme.bg} border-b ${theme.border} px-4 py-4 space-y-2`}>
+          <div className={`lg:hidden ${theme.bg} border-b ${theme.border} px-4 py-4 space-y-2`}>
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -1099,7 +1143,7 @@ export default function App() {
             <div>
               {/* 论文列表 */}
               <div className="space-y-8">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <h2 className={`text-3xl font-bold font-serif ${theme.text}`}>
                       Publications
@@ -1209,48 +1253,54 @@ export default function App() {
                   </div>
 
                   {/* 筛选器 */}
-                  <div className="flex flex-col gap-2">
-                    <div className="flex gap-2 font-sans items-center overflow-x-auto pb-1">
+                  <div className="publication-filter-panel flex flex-col gap-2 md:flex-1 md:items-end">
+                    <div className="flex flex-wrap gap-2 font-sans items-center justify-start sm:justify-end">
                       <button
                         type="button"
                         onClick={() => setSelectedOnly(v => !v)}
-                        className={`relative inline-flex shrink-0 items-center rounded-full border ${theme.border} ${theme.cardBg} overflow-hidden transition-all`}
+                        className={`relative inline-flex items-center rounded-full border ${theme.border} ${theme.cardBg} overflow-hidden transition-all`}
                         aria-pressed={selectedOnly}
+                        title={selectedOnly ? 'Showing selected publications' : 'Showing all publications'}
                       >
                         <span
-                          className={`px-4 py-1.5 text-xs font-bold tracking-wide uppercase transition-colors ${selectedOnly ? `${theme.accentBg} text-white` : theme.textMuted}`}
+                          className={`publication-filter-label px-3 sm:px-4 py-1.5 text-xs font-bold uppercase transition-colors ${selectedOnly ? `${theme.accentBg} text-white` : theme.textMuted}`}
                         >
-                          Selected ({selectedAllCounts.selected})
+                          <span className="publication-filter-full">Selected</span>
+                          <span className="publication-filter-short">Sel</span> ({selectedAllCounts.selected})
                         </span>
                         <span
-                          className={`px-4 py-1.5 text-xs font-bold tracking-wide uppercase transition-colors ${selectedOnly ? theme.textMuted : `${theme.accentBg} text-white`}`}
+                          className={`publication-filter-label px-3 sm:px-4 py-1.5 text-xs font-bold uppercase transition-colors ${selectedOnly ? theme.textMuted : `${theme.accentBg} text-white`}`}
                         >
                           All ({selectedAllCounts.all})
                         </span>
                       </button>
 
-                      {(['Journal', 'Conference', 'Working Paper', 'Software', 'Patent'] as const).map(filter => (
+                      {PUBLICATION_TYPE_FILTERS.map(({ label, shortLabel }) => (
                         <button
-                          key={filter}
+                          key={label}
                           type="button"
-                          onClick={() => setActiveTypeFilter(prev => (prev === filter ? null : filter))}
-                          className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all
-                            ${activeTypeFilter === filter
+                          onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
+                          className={`min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all
+                            ${activeTypeFilter === label
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
+                          title={`${label} (${typeCounts[label]})`}
+                          aria-label={`${label} publications, ${typeCounts[label]} items`}
                         >
-                          {filter} ({typeCounts[filter]})
+                          <span className="publication-filter-full">{label}</span>
+                          <span className="publication-filter-short">{shortLabel}</span> ({typeCounts[label]})
                         </button>
                       ))}
 
                       <button
                         type="button"
                         onClick={clearFilters}
-                        className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 inline-flex items-center gap-2`}
+                        className={`px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all border ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 inline-flex items-center gap-1.5 sm:gap-2`}
                         title="Clear filters"
+                        aria-label="Clear publication filters"
                       >
                         <RotateCcw size={14} />
-                        Clear
+                        <span className="publication-filter-clear-text">Clear</span>
                       </button>
                     </div>
 
