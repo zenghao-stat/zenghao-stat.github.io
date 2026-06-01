@@ -124,6 +124,20 @@ const RESPONSIVE_FILTER_STYLES = `
     container-type: inline-size;
   }
 
+  .publication-filter-type {
+    transform-origin: center;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .publication-filter-type:hover,
+  .publication-filter-type:focus-visible,
+  .publication-filter-type[data-expanded="true"] {
+    transform: translateY(-1px) scaleX(1.06) scaleY(0.96);
+  }
+
   @container (max-width: 760px) {
     .publication-filter-full {
       display: none;
@@ -141,6 +155,41 @@ const RESPONSIVE_FILTER_STYLES = `
     .publication-filter-clear-text {
       display: none;
     }
+
+    .publication-filter-type .publication-filter-short,
+    .publication-filter-type .publication-filter-full {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: bottom;
+      transition:
+        max-width 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 140ms ease;
+    }
+
+    .publication-filter-type .publication-filter-short {
+      max-width: 2rem;
+      opacity: 1;
+    }
+
+    .publication-filter-type .publication-filter-full {
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .publication-filter-type:hover .publication-filter-short,
+    .publication-filter-type:focus-visible .publication-filter-short,
+    .publication-filter-type[data-expanded="true"] .publication-filter-short {
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .publication-filter-type:hover .publication-filter-full,
+    .publication-filter-type:focus-visible .publication-filter-full,
+    .publication-filter-type[data-expanded="true"] .publication-filter-full {
+      max-width: 8.5rem;
+      opacity: 1;
+    }
   }
 
   @container (min-width: 761px) {
@@ -150,6 +199,20 @@ const RESPONSIVE_FILTER_STYLES = `
 
     .publication-filter-short {
       display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .publication-filter-type,
+    .publication-filter-type .publication-filter-short,
+    .publication-filter-type .publication-filter-full {
+      transition: none;
+    }
+
+    .publication-filter-type:hover,
+    .publication-filter-type:focus-visible,
+    .publication-filter-type[data-expanded="true"] {
+      transform: none;
     }
   }
 `;
@@ -381,6 +444,7 @@ export default function App() {
   const [keywordMatchMode, setKeywordMatchMode] = useState<'any' | 'all'>('any');
   const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
+  const [expandedTypeFilter, setExpandedTypeFilter] = useState<PubType | null>(null);
   const [expandedAbstractIds, setExpandedAbstractIds] = useState<string[]>([]);
   const [canHover, setCanHover] = useState<boolean>(false);
   const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
@@ -1280,7 +1344,14 @@ export default function App() {
                           key={label}
                           type="button"
                           onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
-                          className={`min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all
+                          onPointerEnter={() => setExpandedTypeFilter(label)}
+                          onPointerLeave={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
+                          onMouseEnter={() => setExpandedTypeFilter(label)}
+                          onMouseLeave={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
+                          onFocus={() => setExpandedTypeFilter(label)}
+                          onBlur={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
+                          data-expanded={expandedTypeFilter === label || activeTypeFilter === label}
+                          className={`publication-filter-type min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase
                             ${activeTypeFilter === label
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
