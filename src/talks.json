@@ -1,129 +1,607 @@
 [
   {
+    "id": "2026-07-01-caasa-data-ai",
+    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+    "type": "Invited Talk and Chair",
+    "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
+    "date": "2026-07-01",
+    "location": "Dongguan, China",
+    "show": true,
+    "summary": "Forthcoming invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University.",
+    "tags": [
+      "Forthcoming",
+      "Invited Talk",
+      "Chair",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+        "type": "Invited Talk and Chair",
+        "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
+        "location": "Dongguan, China",
+        "summary": "Forthcoming invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University."
+      },
+      "zh": {
+        "type": "邀请报告与主持",
+        "venue": "2026 年中国现场统计研究会数据科学与人工智能分会年会",
+        "location": "中国东莞",
+        "summary": "即将在大湾区大学作关于大语言模型高效推理的邀请报告并担任主持。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-01-poster-icml-anytime-safe",
+    "title": "Anytime Safe PAC Efficient Reasoning",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-01",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Forthcoming poster presentation at ICML 2026.",
+    "tags": [
+      "Forthcoming",
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Anytime Safe PAC Efficient Reasoning",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Forthcoming poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "即将在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-01-poster-icml-backward-conformal",
+    "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-01",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Forthcoming poster presentation at ICML 2026.",
+    "tags": [
+      "Forthcoming",
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Forthcoming poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "即将在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-01-poster-icml-training-data",
+    "title": "Provable Training Data Identification for Large Language Models",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-01",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Forthcoming poster presentation at ICML 2026.",
+    "tags": [
+      "Forthcoming",
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Provable Training Data Identification for Large Language Models",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Forthcoming poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "即将在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-01-poster-icml",
+    "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-01",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Forthcoming poster presentation at ICML 2026.",
+    "tags": [
+      "Forthcoming",
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Forthcoming poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "即将在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-01-talk-jcsds",
+    "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
+    "type": "Contributed Talk",
+    "venue": "The 4th Joint Conference on Statistics and Data Science (JCSDS)",
+    "date": "2026-07-01",
+    "location": "Guiyang, China",
+    "show": true,
+    "summary": "Forthcoming contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS.",
+    "tags": [
+      "Forthcoming",
+      "Talk",
+      "JCSDS",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
+        "type": "Contributed Talk",
+        "venue": "The 4th Joint Conference on Statistics and Data Science (JCSDS)",
+        "location": "Guiyang, China",
+        "summary": "Forthcoming contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS."
+      },
+      "zh": {
+        "type": "投稿报告",
+        "venue": "第四届统计与数据科学联合会议（JCSDS）",
+        "location": "中国贵阳",
+        "summary": "即将在第四届 JCSDS 作关于大语言模型 PAC 高效推理的投稿报告。"
+      }
+    }
+  },
+  {
+    "id": "2026-06-01-invited-talk-icsa",
+    "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
+    "type": "Invited Talk",
+    "venue": "2026 ICSA China Conference",
+    "date": "2026-06-01",
+    "location": "Shenzhen, China",
+    "show": true,
+    "summary": "Forthcoming invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology.",
+    "tags": [
+      "Forthcoming",
+      "Invited Talk",
+      "ICSA"
+    ],
+    "i18n": {
+      "en": {
+        "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
+        "type": "Invited Talk",
+        "venue": "2026 ICSA China Conference",
+        "location": "Shenzhen, China",
+        "summary": "Forthcoming invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2026 ICSA 中国会议",
+        "location": "中国深圳",
+        "summary": "即将在南方科技大学作关于大语言模型 PAC 高效推理的邀请报告。"
+      }
+    }
+  },
+  {
+    "id": "2026-06-01-invited-talk-jiuzhang",
+    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+    "type": "Invited Talk",
+    "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
+    "date": "2026-06-01",
+    "location": "Lanzhou, China",
+    "show": true,
+    "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics.",
+    "tags": [
+      "Past",
+      "Invited Talk",
+      "Applied Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+        "type": "Invited Talk",
+        "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
+        "location": "Lanzhou, China",
+        "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2026 年年会暨九章应用统计国际会议",
+        "location": "中国兰州",
+        "summary": "在 2026 年年会暨九章应用统计国际会议作关于大语言模型高效推理的邀请报告。"
+      }
+    }
+  },
+  {
+    "id": "2026-06-01-invited-talk-young-statisticians",
+    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+    "type": "Invited Talk",
+    "venue": "2026 Young Statisticians Workshop",
+    "date": "2026-06-01",
+    "location": "Beijing, China",
+    "show": true,
+    "summary": "Invited talk on efficient reasoning with statistical guarantees at Yau Mathematical Sciences Center, Tsinghua University.",
+    "tags": [
+      "Past",
+      "Invited Talk",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+        "type": "Invited Talk",
+        "venue": "2026 Young Statisticians Workshop",
+        "location": "Beijing, China",
+        "summary": "Invited talk on efficient reasoning with statistical guarantees at Yau Mathematical Sciences Center, Tsinghua University."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2026 年青年统计学者研讨会",
+        "location": "中国北京",
+        "summary": "在清华大学丘成桐数学科学中心作关于大语言模型高效推理的邀请报告。"
+      }
+    }
+  },
+  {
+    "id": "2026-05-01-invited-talk-frontiers-data-science",
+    "title": "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction",
+    "type": "Invited Talk",
+    "venue": "2026 International Conference on Frontiers of Data Science",
+    "date": "2026-05-01",
+    "location": "Hangzhou, China",
+    "show": true,
+    "summary": "Invited talk on transfer learning for spatial autoregressive models at the 2026 International Conference on Frontiers of Data Science.",
+    "tags": [
+      "Past",
+      "Invited Talk",
+      "Data Science"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction",
+        "type": "Invited Talk",
+        "venue": "2026 International Conference on Frontiers of Data Science",
+        "location": "Hangzhou, China",
+        "summary": "Invited talk on transfer learning for spatial autoregressive models at the 2026 International Conference on Frontiers of Data Science."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2026 年数据科学前沿国际会议",
+        "location": "中国杭州",
+        "summary": "在 2026 年数据科学前沿国际会议作关于空间自回归模型迁移学习的邀请报告。"
+      }
+    }
+  },
+  {
+    "id": "2025-12-01-talk-xmu-modern-statistics",
+    "title": "Talk",
+    "type": "Talk",
+    "venue": "Xiamen University 2025 Symposium on Modern Statistics",
+    "date": "2025-12-01",
+    "location": "Xiamen, China",
+    "show": true,
+    "summary": "Talk at Xiamen University 2025 Symposium on Modern Statistics.",
+    "tags": [
+      "Past",
+      "Talk",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Talk",
+        "type": "Talk",
+        "venue": "Xiamen University 2025 Symposium on Modern Statistics",
+        "location": "Xiamen, China",
+        "summary": "Talk at Xiamen University 2025 Symposium on Modern Statistics."
+      },
+      "zh": {
+        "type": "报告",
+        "venue": "厦门大学 2025 年现代统计研讨会",
+        "location": "中国厦门",
+        "summary": "在厦门大学 2025 年现代统计研讨会作报告。"
+      }
+    }
+  },
+  {
     "id": "2025-07-01-poster-icml",
     "title": "Parametric Scaling Law of Tuning Bias in Conformal Prediction",
     "type": "Poster",
-    "venue": "Forty-Second International Conference on Machine Learning (ICML)",
+    "venue": "The 42nd International Conference on Machine Learning (ICML)",
     "date": "2025-07-01",
     "location": "Vancouver, Canada",
     "show": true,
     "summary": "Poster presentation at ICML 2025.",
     "tags": [
+      "Past",
       "Conformal Prediction",
       "ICML",
       "Poster"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Parametric Scaling Law of Tuning Bias in Conformal Prediction",
+        "type": "Poster",
+        "venue": "The 42nd International Conference on Machine Learning (ICML)",
+        "location": "Vancouver, Canada",
+        "summary": "Poster presentation at ICML 2025."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 42 届国际机器学习会议（ICML）",
+        "location": "加拿大温哥华",
+        "summary": "在 ICML 2025 展示海报。"
+      }
+    }
   },
   {
     "id": "2025-07-01-poster",
-    "title": "第三届全国统计与数据科学联合会议",
+    "title": "Poster",
     "type": "Poster",
-    "venue": "第三届全国统计与数据科学联合会议",
+    "venue": "The 3rd Joint Conference on Statistics and Data Science (JCSDS)",
     "date": "2025-07-01",
     "location": "Hangzhou, China",
-    "show": false,
-    "summary": "Poster presentation at the third national statistics and data science joint meeting.",
+    "show": true,
+    "summary": "Poster presentation at the 3rd JCSDS.",
     "tags": [
+      "Past",
       "Poster",
+      "JCSDS",
       "Statistics"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Poster",
+        "type": "Poster",
+        "venue": "The 3rd Joint Conference on Statistics and Data Science (JCSDS)",
+        "location": "Hangzhou, China",
+        "summary": "Poster presentation at the 3rd JCSDS."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第三届统计与数据科学联合会议（JCSDS）",
+        "location": "中国杭州",
+        "summary": "在第三届 JCSDS 展示海报。"
+      }
+    }
   },
   {
     "id": "2024-11-01-talk",
     "title": "Talk",
     "type": "Talk",
-    "venue": "第十三届全国概率统计会议",
+    "venue": "The 13th Conference on Probability and Statistics",
     "date": "2024-11-01",
     "location": "Xiamen, China",
-    "show": false,
-    "summary": "Conference talk at the thirteenth national probability and statistics meeting.",
+    "show": true,
+    "summary": "Talk at the 13th Conference on Probability and Statistics.",
     "tags": [
+      "Past",
       "Talk",
       "Probability"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Talk",
+        "type": "Talk",
+        "venue": "The 13th Conference on Probability and Statistics",
+        "location": "Xiamen, China",
+        "summary": "Talk at the 13th Conference on Probability and Statistics."
+      },
+      "zh": {
+        "type": "报告",
+        "venue": "第十三届概率统计会议",
+        "location": "中国厦门",
+        "summary": "在第十三届概率统计会议作报告。"
+      }
+    }
   },
   {
     "id": "2024-07-01-invited-talk",
     "title": "Invited Talk",
     "type": "Invited Talk",
-    "venue": "第二届全国统计与数据科学联合会议",
+    "venue": "The 2nd Joint Conference on Statistics and Data Science (JCSDS)",
     "date": "2024-07-01",
     "location": "Kunming, China",
-    "show": false,
-    "summary": "Invited talk at the second national statistics and data science joint meeting.",
+    "show": true,
+    "summary": "Invited talk at the 2nd JCSDS.",
     "tags": [
+      "Past",
       "Invited Talk",
+      "JCSDS",
       "Statistics"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Invited Talk",
+        "type": "Invited Talk",
+        "venue": "The 2nd Joint Conference on Statistics and Data Science (JCSDS)",
+        "location": "Kunming, China",
+        "summary": "Invited talk at the 2nd JCSDS."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "第二届统计与数据科学联合会议（JCSDS）",
+        "location": "中国昆明",
+        "summary": "在第二届 JCSDS 作邀请报告。"
+      }
+    }
   },
   {
     "id": "2024-06-01-invited-talk",
     "title": "Invited Talk",
     "type": "Invited Talk",
-    "venue": "首届国科大与厦大经济管理统计优秀博士毕业生论坛",
+    "venue": "The 1st Outstanding PhD Forum in Economics and Management Statistics",
     "date": "2024-06-01",
     "location": "Xiamen, China",
-    "show": false,
-    "summary": "Invited talk at the first graduate forum linking UCAS and Xiamen University.",
+    "show": true,
+    "summary": "Invited talk at the 1st Outstanding PhD Forum in Economics and Management Statistics.",
     "tags": [
+      "Past",
       "Invited Talk",
       "Forum"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Invited Talk",
+        "type": "Invited Talk",
+        "venue": "The 1st Outstanding PhD Forum in Economics and Management Statistics",
+        "location": "Xiamen, China",
+        "summary": "Invited talk at the 1st Outstanding PhD Forum in Economics and Management Statistics."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "第一届经济与管理统计优秀博士论坛",
+        "location": "中国厦门",
+        "summary": "在第一届经济与管理统计优秀博士论坛作邀请报告。"
+      }
+    }
   },
   {
     "id": "2024-03-01-poster",
     "title": "Poster",
     "type": "Poster",
-    "venue": "全国工业统计学教学研究会青年统计学家协会2024年年会暨第二届中国青年统计学家论坛",
+    "venue": "Conference of the Youth Association of the Chinese Association for Industrial Statistics",
     "date": "2024-03-01",
     "location": "Xuzhou, China",
-    "show": false,
-    "summary": "Poster presentation at the 2024 youth statisticians forum.",
+    "show": true,
+    "summary": "Poster presentation at the Conference of the Youth Association of the Chinese Association for Industrial Statistics.",
     "tags": [
+      "Past",
       "Poster",
       "Youth Forum"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Poster",
+        "type": "Poster",
+        "venue": "Conference of the Youth Association of the Chinese Association for Industrial Statistics",
+        "location": "Xuzhou, China",
+        "summary": "Poster presentation at the Conference of the Youth Association of the Chinese Association for Industrial Statistics."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "中国工业统计学会青年协会会议",
+        "location": "中国徐州",
+        "summary": "在中国工业统计学会青年协会会议展示海报。"
+      }
+    }
   },
   {
     "id": "2023-11-01-invited-talk",
     "title": "Invited Talk",
     "type": "Invited Talk",
-    "venue": "NSFC'计量建模与经济政策研究'基础科学中心项目 2023 博士生年度论坛",
+    "venue": "2023 PhD Forum on Econometric Modeling and Economic Policy Research",
     "date": "2023-11-01",
     "location": "Beijing, China",
-    "show": false,
-    "summary": "Invited talk at the 2023 doctoral annual forum of the NSFC basic science center project.",
+    "show": true,
+    "summary": "Invited talk at the 2023 PhD Forum on Econometric Modeling and Economic Policy Research.",
     "tags": [
+      "Past",
       "Invited Talk",
       "NSFC"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Invited Talk",
+        "type": "Invited Talk",
+        "venue": "2023 PhD Forum on Econometric Modeling and Economic Policy Research",
+        "location": "Beijing, China",
+        "summary": "Invited talk at the 2023 PhD Forum on Econometric Modeling and Economic Policy Research."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2023 年计量建模与经济政策研究博士论坛",
+        "location": "中国北京",
+        "summary": "在 2023 年计量建模与经济政策研究博士论坛作邀请报告。"
+      }
+    }
   },
   {
     "id": "2021-12-01-invited-talk",
-    "title": "Invited Talk",
-    "type": "Invited Talk",
-    "venue": "2021年厦门大学现代统计学研讨会",
+    "title": "Talk",
+    "type": "Talk",
+    "venue": "Xiamen University 2021 Symposium on Modern Statistics",
     "date": "2021-12-01",
     "location": "Xiamen, China",
-    "show": false,
-    "summary": "Invited talk at the 2021 Xiamen University modern statistics workshop.",
+    "show": true,
+    "summary": "Talk at Xiamen University 2021 Symposium on Modern Statistics.",
     "tags": [
-      "Invited Talk",
+      "Past",
+      "Talk",
       "Statistics"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Talk",
+        "type": "Talk",
+        "venue": "Xiamen University 2021 Symposium on Modern Statistics",
+        "location": "Xiamen, China",
+        "summary": "Talk at Xiamen University 2021 Symposium on Modern Statistics."
+      },
+      "zh": {
+        "type": "报告",
+        "venue": "厦门大学 2021 年现代统计研讨会",
+        "location": "中国厦门",
+        "summary": "在厦门大学 2021 年现代统计研讨会作报告。"
+      }
+    }
   },
   {
     "id": "2021-12-01-talk",
     "title": "Talk",
     "type": "Talk",
-    "venue": "2021年全国数量经济学博士生学术论坛",
+    "venue": "The 2021 Forum for Doctoral Students in Quantitative Economics",
     "date": "2021-12-01",
     "location": "Xiamen, China",
-    "show": false,
-    "summary": "Talk at the 2021 national doctoral forum on quantitative economics.",
+    "show": true,
+    "summary": "Talk at the 2021 Forum for Doctoral Students in Quantitative Economics.",
     "tags": [
+      "Past",
       "Talk",
       "Econometrics"
-    ]
+    ],
+    "i18n": {
+      "en": {
+        "title": "Talk",
+        "type": "Talk",
+        "venue": "The 2021 Forum for Doctoral Students in Quantitative Economics",
+        "location": "Xiamen, China",
+        "summary": "Talk at the 2021 Forum for Doctoral Students in Quantitative Economics."
+      },
+      "zh": {
+        "type": "报告",
+        "venue": "2021 年数量经济学博士生论坛",
+        "location": "中国厦门",
+        "summary": "在 2021 年数量经济学博士生论坛作报告。"
+      }
+    }
   }
 ]

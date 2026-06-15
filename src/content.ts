@@ -100,6 +100,17 @@ export interface Talk {
   summary?: string;
   tags?: string[];
   show?: boolean;
+  i18n?: {
+    en?: TalkLocale;
+    zh?: TalkLocale;
+  };
+}
+
+export interface TalkLocale {
+  type?: string;
+  venue?: string;
+  location?: string;
+  summary?: string;
 }
 
 export interface AcademicServiceItem {

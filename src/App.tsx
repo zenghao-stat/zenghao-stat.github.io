@@ -111,108 +111,34 @@ type ThemeKey = keyof typeof THEMES;
 type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
 
-const PUBLICATION_TYPE_FILTERS: Array<{ label: PubType; shortLabel: string }> = [
-  { label: 'Journal', shortLabel: 'J' },
-  { label: 'Conference', shortLabel: 'C' },
-  { label: 'Working Paper', shortLabel: 'WP' },
-  { label: 'Software', shortLabel: 'S' },
-  { label: 'Patent', shortLabel: 'P' },
-];
-
 const RESPONSIVE_FILTER_STYLES = `
   .publication-filter-panel {
     container-type: inline-size;
   }
 
-  .publication-filter-type {
-    transform-origin: center;
-    transition:
-      border-color 160ms ease,
-      box-shadow 160ms ease,
-      transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .publication-filter-type:hover,
-  .publication-filter-type:focus-visible,
-  .publication-filter-type[data-expanded="true"] {
-    transform: translateY(-1px) scaleX(1.06) scaleY(0.96);
-  }
-
   @container (max-width: 760px) {
-    .publication-filter-full {
-      display: none;
-    }
-
-    .publication-filter-short {
-      display: inline;
-    }
-
     .publication-filter-label {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
 
+    .publication-filter-selected-full,
     .publication-filter-clear-text {
       display: none;
     }
 
-    .publication-filter-type .publication-filter-short,
-    .publication-filter-type .publication-filter-full {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      vertical-align: bottom;
-      transition:
-        max-width 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 140ms ease;
-    }
-
-    .publication-filter-type .publication-filter-short {
-      max-width: 2rem;
-      opacity: 1;
-    }
-
-    .publication-filter-type .publication-filter-full {
-      max-width: 0;
-      opacity: 0;
-    }
-
-    .publication-filter-type:hover .publication-filter-short,
-    .publication-filter-type:focus-visible .publication-filter-short,
-    .publication-filter-type[data-expanded="true"] .publication-filter-short {
-      max-width: 0;
-      opacity: 0;
-    }
-
-    .publication-filter-type:hover .publication-filter-full,
-    .publication-filter-type:focus-visible .publication-filter-full,
-    .publication-filter-type[data-expanded="true"] .publication-filter-full {
-      max-width: 8.5rem;
-      opacity: 1;
+    .publication-filter-selected-short {
+      display: inline;
     }
   }
 
   @container (min-width: 761px) {
-    .publication-filter-full {
-      display: inline;
-    }
-
-    .publication-filter-short {
+    .publication-filter-selected-short {
       display: none;
     }
-  }
 
-  @media (prefers-reduced-motion: reduce) {
-    .publication-filter-type,
-    .publication-filter-type .publication-filter-short,
-    .publication-filter-type .publication-filter-full {
-      transition: none;
-    }
-
-    .publication-filter-type:hover,
-    .publication-filter-type:focus-visible,
-    .publication-filter-type[data-expanded="true"] {
-      transform: none;
+    .publication-filter-selected-full {
+      display: inline;
     }
   }
 `;
@@ -444,11 +370,11 @@ export default function App() {
   const [keywordMatchMode, setKeywordMatchMode] = useState<'any' | 'all'>('any');
   const [topicsMenuOpen, setTopicsMenuOpen] = useState(false);
   const topicsMenuRef = useRef<HTMLDivElement | null>(null);
-  const [expandedTypeFilter, setExpandedTypeFilter] = useState<PubType | null>(null);
   const [expandedAbstractIds, setExpandedAbstractIds] = useState<string[]>([]);
   const [canHover, setCanHover] = useState<boolean>(false);
   const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
   const [highlightedPublicationId, setHighlightedPublicationId] = useState<string | null>(null);
+  const [showAllPastTalks, setShowAllPastTalks] = useState(false);
 
   const currentTheme = selectedTheme;
   const theme = isNightTheme ? NIGHT_THEMES[selectedTheme] : THEMES[selectedTheme];
@@ -880,6 +806,41 @@ export default function App() {
     { label: 'Talks', href: '#talks' },
     { label: 'Service', href: '#service' },
   ];
+
+  const todayKey = (() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  })();
+
+  const visibleTalks = HAO_DATA.talks.filter(talk => talk.show !== false);
+  const upcomingTalks = visibleTalks.filter(talk => talk.date >= todayKey || talk.tags?.includes('Forthcoming'));
+  const pastTalks = visibleTalks.filter(talk => !upcomingTalks.includes(talk));
+  const visiblePastTalks = showAllPastTalks ? pastTalks : pastTalks.slice(0, 5);
+  const hiddenPastTalkCount = Math.max(0, pastTalks.length - visiblePastTalks.length);
+
+  const renderTalkTimeline = (talks: typeof visibleTalks) => (
+    <div className={`space-y-0 border-l ${theme.border} ml-3`}>
+      {talks.map((talk) => (
+        <div key={talk.id} className="relative pl-8 pb-8 last:pb-0">
+          <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${isNightTheme ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+            <span className={`text-sm font-bold ${theme.textMuted} min-w-[100px] font-sans`}>{talk.date.substring(0, 7)}</span>
+            <div>
+              <h4 className={`text-lg font-bold ${theme.text}`}>{talk.title}</h4>
+              <div className={`flex flex-wrap gap-x-4 gap-y-1 mt-1 text-sm ${theme.textMuted}`}>
+                <span>{talk.type}</span>
+                <span>@ {talk.venue}</span>
+                <span className="flex items-center gap-1"><MapPin size={12} /> {talk.location}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className={`min-h-screen ${theme.bg} ${theme.text} ${theme.font} transition-colors duration-500`}>
@@ -1329,8 +1290,8 @@ export default function App() {
                         <span
                           className={`publication-filter-label px-3 sm:px-4 py-1.5 text-xs font-bold uppercase transition-colors ${selectedOnly ? `${theme.accentBg} text-white` : theme.textMuted}`}
                         >
-                          <span className="publication-filter-full">Selected</span>
-                          <span className="publication-filter-short">Sel</span> ({selectedAllCounts.selected})
+                          <span className="publication-filter-selected-full">Selected</span>
+                          <span className="publication-filter-selected-short">Sel</span> ({selectedAllCounts.selected})
                         </span>
                         <span
                           className={`publication-filter-label px-3 sm:px-4 py-1.5 text-xs font-bold uppercase transition-colors ${selectedOnly ? theme.textMuted : `${theme.accentBg} text-white`}`}
@@ -1339,27 +1300,19 @@ export default function App() {
                         </span>
                       </button>
 
-                      {PUBLICATION_TYPE_FILTERS.map(({ label, shortLabel }) => (
+                      {(['Journal', 'Conference', 'Working Paper', 'Software', 'Patent'] as const).map(label => (
                         <button
                           key={label}
                           type="button"
                           onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
-                          onPointerEnter={() => setExpandedTypeFilter(label)}
-                          onPointerLeave={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
-                          onMouseEnter={() => setExpandedTypeFilter(label)}
-                          onMouseLeave={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
-                          onFocus={() => setExpandedTypeFilter(label)}
-                          onBlur={() => setExpandedTypeFilter(prev => (prev === label ? null : prev))}
-                          data-expanded={expandedTypeFilter === label || activeTypeFilter === label}
-                          className={`publication-filter-type min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase
+                          className={`min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all
                             ${activeTypeFilter === label
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
                           title={`${label} (${typeCounts[label]})`}
                           aria-label={`${label} publications, ${typeCounts[label]} items`}
                         >
-                          <span className="publication-filter-full">{label}</span>
-                          <span className="publication-filter-short">{shortLabel}</span> ({typeCounts[label]})
+                          {label} ({typeCounts[label]})
                         </button>
                       ))}
 
@@ -1662,23 +1615,34 @@ export default function App() {
         <section id="talks" className={`py-16 ${theme.bg} border-t ${theme.border} transition-colors duration-300`}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className={`text-3xl font-bold font-serif ${theme.text} mb-10`}>Talks and Presentations</h2>
-            <div className={`space-y-0 border-l ${theme.border} ml-3`}>
-              {HAO_DATA.talks.filter(talk => talk.show !== false).map((talk) => (
-                <div key={talk.id} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${isNightTheme ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                    <span className={`text-sm font-bold ${theme.textMuted} min-w-[100px] font-sans`}>{talk.date.substring(0, 7)}</span>
-                    <div>
-                      <h4 className={`text-lg font-bold ${theme.text}`}>{talk.title}</h4>
-                      <div className={`flex flex-wrap gap-x-4 gap-y-1 mt-1 text-sm ${theme.textMuted}`}>
-                        <span>{talk.type}</span>
-                        <span>@ {talk.venue}</span>
-                        <span className="flex items-center gap-1"><MapPin size={12} /> {talk.location}</span>
-                      </div>
-                    </div>
+            <div className="space-y-12">
+              {upcomingTalks.length > 0 && (
+                <div>
+                  <div className="mb-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className={`text-xl font-bold font-serif ${theme.text}`}>Forthcoming</h3>
                   </div>
+                  {renderTalkTimeline(upcomingTalks)}
                 </div>
-              ))}
+              )}
+
+              {pastTalks.length > 0 && (
+                <div>
+                  <div className="mb-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className={`text-xl font-bold font-serif ${theme.text}`}>Past</h3>
+                  </div>
+                  {renderTalkTimeline(visiblePastTalks)}
+                  {pastTalks.length > 5 && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllPastTalks(prev => !prev)}
+                      className={`ml-3 mt-1 inline-flex items-center rounded-full border px-4 py-2 text-xs font-bold uppercase transition-all ${theme.border} ${theme.cardBg} ${theme.textMuted} hover:border-slate-400 hover:${theme.text}`}
+                      aria-expanded={showAllPastTalks}
+                    >
+                      {showAllPastTalks ? 'Show fewer' : `Show ${hiddenPastTalkCount} more`}
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </section>

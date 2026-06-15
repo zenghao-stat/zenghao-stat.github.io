@@ -659,6 +659,10 @@ const parseTalkEntry = async (fileName) => {
   const show = ensureBoolean(parsed.data.show, true);
   const summary = ensureOptionalString(parsed.data.summary);
   const tags = ensureStringArray(parsed.data.tags);
+  const typeZh = ensureOptionalString(parsed.data.type_zh);
+  const venueZh = ensureOptionalString(parsed.data.venue_zh);
+  const locationZh = ensureOptionalString(parsed.data.location_zh);
+  const summaryZh = ensureOptionalString(parsed.data.summary_zh);
 
   return {
     id,
@@ -670,6 +674,21 @@ const parseTalkEntry = async (fileName) => {
     show,
     summary,
     tags,
+    i18n: {
+      en: {
+        title,
+        type,
+        venue,
+        location,
+        summary,
+      },
+      zh: {
+        type: typeZh,
+        venue: venueZh,
+        location: locationZh,
+        summary: summaryZh,
+      },
+    },
   };
 };
 
