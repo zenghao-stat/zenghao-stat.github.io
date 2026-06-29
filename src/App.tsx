@@ -112,6 +112,14 @@ type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
 type AuthorRoleFilter = 'first' | 'corresponding';
 
+const PUB_TYPE_LABELS: Record<PubType, string> = {
+  Conference: 'Conference',
+  Journal: 'Journal',
+  'Working Paper': 'Upcoming Papers',
+  Software: 'Software',
+  Patent: 'Patent',
+};
+
 const RESPONSIVE_FILTER_STYLES = `
   .publication-filter-panel {
     container-type: inline-size;
@@ -1397,15 +1405,21 @@ export default function App() {
                         <button
                           key={label}
                           type="button"
-                          onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
+                          onClick={() => {
+                            const nextType = activeTypeFilter === label ? null : label;
+                            setActiveTypeFilter(nextType);
+                            if (nextType) {
+                              setActiveYearFilter(null);
+                            }
+                          }}
                           className={`min-w-9 whitespace-nowrap px-2.5 py-1.5 rounded-full text-xs font-bold uppercase leading-none transition-all
                             ${activeTypeFilter === label
                               ? `${theme.accentBg} text-white shadow-md`
                               : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
-                          title={`${label} (${typeCounts[label]})`}
-                          aria-label={`${label} publications, ${typeCounts[label]} items`}
+                          title={`${PUB_TYPE_LABELS[label]} (${typeCounts[label]})`}
+                          aria-label={`${PUB_TYPE_LABELS[label]} publications, ${typeCounts[label]} items`}
                         >
-                          {label} ({typeCounts[label]})
+                          {PUB_TYPE_LABELS[label]} ({typeCounts[label]})
                         </button>
                       ))}
                     </div>
@@ -1493,7 +1507,7 @@ export default function App() {
                           pub.type === 'Journal' ? theme.badgeJournal :
                             pub.type === 'Software' || pub.type === 'Patent' ? theme.badgeSoft : theme.badgePre
                           }`}>
-                          {pub.type}
+                          {PUB_TYPE_LABELS[pub.type]}
                         </span>
                         <span className={`font-medium italic ${theme.textMuted}`}>{pub.venue}</span>
                         <span className={theme.textMuted}>{pub.year}</span>
