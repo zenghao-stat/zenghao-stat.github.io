@@ -110,6 +110,7 @@ const THEMES = {
 type ThemeKey = keyof typeof THEMES;
 type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
+type AuthorRoleFilter = 'first' | 'corresponding';
 
 const RESPONSIVE_FILTER_STYLES = `
   .publication-filter-panel {
@@ -364,6 +365,7 @@ export default function App() {
   const [isNightTheme, setIsNightTheme] = useState(isNightByTime);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [selectedOnly, setSelectedOnly] = useState(true);
+  const [activeAuthorRoleFilters, setActiveAuthorRoleFilters] = useState<AuthorRoleFilter[]>([]);
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
   const [activeYearFilter, setActiveYearFilter] = useState<YearFilter | null>(null);
   const [activeKeywords, setActiveKeywords] = useState<string[]>([]);
@@ -415,6 +417,7 @@ export default function App() {
 
   const clearFilters = () => {
     setSelectedOnly(true);
+    setActiveAuthorRoleFilters([]);
     setActiveTypeFilter(null);
     setActiveYearFilter(null);
     setActiveKeywords([]);
@@ -458,8 +461,34 @@ export default function App() {
     applyTheme(nextTheme);
   };
 
+  const publicationMatchesAuthorRole = (
+    pub: typeof HAO_DATA.publications[number],
+    role: AuthorRoleFilter
+  ) => {
+    if (role === 'first') {
+      return pub.firstAuthors?.includes('Hao Zeng') ?? false;
+    }
+    return pub.correspondingAuthors?.includes('Hao Zeng') ?? false;
+  };
+
+  const filterPublicationsByAuthorRoles = (
+    publications: typeof HAO_DATA.publications
+  ) => {
+    if (activeAuthorRoleFilters.length === 0) {
+      return publications;
+    }
+    return publications.filter(pub =>
+      activeAuthorRoleFilters.some(role => publicationMatchesAuthorRole(pub, role))
+    );
+  };
+
+  const publicationsAfterAuthorRoles = useMemo(
+    () => filterPublicationsByAuthorRoles(HAO_DATA.publications),
+    [activeAuthorRoleFilters, HAO_DATA.publications]
+  );
+
   const publicationsAfterRightFilters = useMemo(() => {
-    let publications = HAO_DATA.publications;
+    let publications = publicationsAfterAuthorRoles;
 
     if (selectedOnly) {
       publications = publications.filter(p => p.selected);
@@ -478,10 +507,10 @@ export default function App() {
     }
 
     return publications;
-  }, [selectedOnly, activeTypeFilter, activeYearFilter]);
+  }, [publicationsAfterAuthorRoles, selectedOnly, activeTypeFilter, activeYearFilter]);
 
   const publicationsAfterYearAndTopics = useMemo(() => {
-    let publications = HAO_DATA.publications;
+    let publications = publicationsAfterAuthorRoles;
 
     if (activeYearFilter) {
       if (activeYearFilter === 'before 2024') {
@@ -502,7 +531,32 @@ export default function App() {
     }
 
     return publications;
-  }, [activeYearFilter, activeKeywords, keywordMatchMode]);
+  }, [publicationsAfterAuthorRoles, activeYearFilter, activeKeywords, keywordMatchMode]);
+
+  const authorRoleCounts = useMemo(() => {
+    let publications = HAO_DATA.publications;
+
+    if (activeYearFilter) {
+      if (activeYearFilter === 'before 2024') {
+        publications = publications.filter(p => Number(p.year) < 2024);
+      } else {
+        publications = publications.filter(p => p.year === activeYearFilter);
+      }
+    }
+
+    if (activeTypeFilter) {
+      publications = publications.filter(p => p.type === activeTypeFilter);
+    }
+
+    if (selectedOnly) {
+      publications = publications.filter(p => p.selected);
+    }
+
+    return {
+      first: publications.filter(p => publicationMatchesAuthorRole(p, 'first')).length,
+      corresponding: publications.filter(p => publicationMatchesAuthorRole(p, 'corresponding')).length,
+    };
+  }, [HAO_DATA.publications, activeYearFilter, activeTypeFilter, selectedOnly]);
 
   const selectedAllCounts = useMemo(() => {
     let publications = publicationsAfterYearAndTopics;
@@ -618,6 +672,7 @@ export default function App() {
     setSelectedOnly(false);
     setActiveTypeFilter(null);
     setActiveYearFilter(null);
+    setActiveAuthorRoleFilters([]);
     setActiveKeywords([]);
     setKeywordMatchMode('any');
     setTopicsMenuOpen(false);
@@ -1169,7 +1224,7 @@ export default function App() {
               {/* 论文列表 */}
               <div className="space-y-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="space-y-1">
+                  <div className="space-y-1 md:flex-[0_0_360px]">
                     <h2 className={`text-3xl font-bold font-serif ${theme.text}`}>
                       Publications
                     </h2>
@@ -1278,8 +1333,33 @@ export default function App() {
                   </div>
 
                   {/* 筛选器 */}
-                  <div className="publication-filter-panel flex flex-col gap-2 md:flex-1 md:items-end">
+                  <div className="publication-filter-panel flex min-w-0 flex-col gap-2 md:flex-[1_1_auto] md:items-end">
                     <div className="flex flex-wrap gap-2 font-sans items-center justify-start sm:justify-end">
+                      {([
+                        { id: 'first', label: 'First / Co-first', count: authorRoleCounts.first },
+                        { id: 'corresponding', label: 'Corresponding', count: authorRoleCounts.corresponding },
+                      ] as const).map(filter => {
+                        const active = activeAuthorRoleFilters.includes(filter.id);
+                        return (
+                          <button
+                            key={filter.id}
+                            type="button"
+                            onClick={() =>
+                              setActiveAuthorRoleFilters(prev =>
+                                active ? prev.filter(x => x !== filter.id) : [...prev, filter.id]
+                              )
+                            }
+                            className={`inline-flex items-center px-2.5 py-1.5 rounded-full text-xs font-bold uppercase transition-colors border whitespace-nowrap
+                              ${active
+                                ? `${theme.accentBg} text-white ${theme.border}`
+                                : `${theme.cardBg} ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
+                            aria-pressed={active}
+                          >
+                            {filter.label} ({filter.count})
+                          </button>
+                        );
+                      })}
+
                       <button
                         type="button"
                         onClick={() => setSelectedOnly(v => !v)}
@@ -1300,22 +1380,6 @@ export default function App() {
                         </span>
                       </button>
 
-                      {(['Journal', 'Conference', 'Working Paper', 'Software', 'Patent'] as const).map(label => (
-                        <button
-                          key={label}
-                          type="button"
-                          onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
-                          className={`min-w-9 px-2 sm:px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all
-                            ${activeTypeFilter === label
-                              ? `${theme.accentBg} text-white shadow-md`
-                              : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
-                          title={`${label} (${typeCounts[label]})`}
-                          aria-label={`${label} publications, ${typeCounts[label]} items`}
-                        >
-                          {label} ({typeCounts[label]})
-                        </button>
-                      ))}
-
                       <button
                         type="button"
                         onClick={clearFilters}
@@ -1326,6 +1390,24 @@ export default function App() {
                         <RotateCcw size={14} />
                         <span className="publication-filter-clear-text">Clear</span>
                       </button>
+                    </div>
+
+                    <div className="flex flex-nowrap gap-2 font-sans items-center justify-start sm:justify-end">
+                      {(['Journal', 'Conference', 'Working Paper', 'Software', 'Patent'] as const).map(label => (
+                        <button
+                          key={label}
+                          type="button"
+                          onClick={() => setActiveTypeFilter(prev => (prev === label ? null : label))}
+                          className={`min-w-9 whitespace-nowrap px-2.5 py-1.5 rounded-full text-xs font-bold uppercase leading-none transition-all
+                            ${activeTypeFilter === label
+                              ? `${theme.accentBg} text-white shadow-md`
+                              : `${theme.cardBg} border ${theme.border} ${theme.textMuted} hover:border-slate-400`}`}
+                          title={`${label} (${typeCounts[label]})`}
+                          aria-label={`${label} publications, ${typeCounts[label]} items`}
+                        >
+                          {label} ({typeCounts[label]})
+                        </button>
+                      ))}
                     </div>
 
                     <div className="flex flex-wrap gap-2 font-sans items-center justify-end">
