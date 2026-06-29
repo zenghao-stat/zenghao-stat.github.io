@@ -699,6 +699,17 @@ export default function App() {
     });
   };
 
+  const abstractPanelClass = isNightTheme
+    ? 'bg-slate-900/70'
+    : currentTheme === 'brutal'
+      ? 'bg-yellow-50'
+      : currentTheme === 'mint'
+        ? 'bg-emerald-50/80'
+        : currentTheme === 'lab'
+          ? 'bg-sky-50/80'
+          : 'bg-stone-50';
+  const abstractTextClass = isNightTheme ? 'text-slate-300' : 'text-slate-600';
+
   const renderTextWithBold = (text: string, lowerCaseFirst = false) => {
     const parts: Array<string | JSX.Element> = [];
     const re = /\*\*(.*?)\*\*/g;
@@ -1602,14 +1613,14 @@ export default function App() {
                       </div>
                       {pub.abs && (
                         <>
-                          <div className={`hidden ${canHover ? 'group-hover:block' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
-                            <p className={`text-sm ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                          <div className={`hidden ${canHover ? 'group-hover:block' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${abstractPanelClass} shadow-sm`}>
+                            <p className={`text-sm ${abstractTextClass}`}>
                               {pub.abs}
                             </p>
                           </div>
                           {expandedAbstractIds.includes(pub.id) && (
-                            <div className={`${canHover ? 'hidden' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${theme.cardBg} shadow-sm`}>
-                              <p className={`text-sm ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                            <div className={`${canHover ? 'hidden' : ''} mt-3 p-3 rounded-lg border ${theme.border} ${abstractPanelClass} shadow-sm`}>
+                              <p className={`text-sm ${abstractTextClass}`}>
                                 {pub.abs}
                               </p>
                             </div>
