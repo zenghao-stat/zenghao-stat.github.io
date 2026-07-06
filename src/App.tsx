@@ -890,8 +890,8 @@ export default function App() {
   })();
 
   const visibleTalks = HAO_DATA.talks.filter(talk => talk.show !== false);
-  const upcomingTalks = visibleTalks.filter(talk => talk.date >= todayKey || talk.tags?.includes('Forthcoming'));
-  const pastTalks = visibleTalks.filter(talk => !upcomingTalks.includes(talk));
+  const upcomingTalks = visibleTalks.filter(talk => talk.date >= todayKey);
+  const pastTalks = visibleTalks.filter(talk => talk.date < todayKey);
   const visiblePastTalks = showAllPastTalks ? pastTalks : pastTalks.slice(0, 5);
   const hiddenPastTalkCount = Math.max(0, pastTalks.length - visiblePastTalks.length);
 

@@ -9,7 +9,6 @@ location: Beijing, China
 location_zh: 中国北京
 show: true
 tags:
-  - Past
   - Invited Talk
   - NSFC
 summary: Invited talk at the 2023 PhD Forum on Econometric Modeling and Economic Policy Research.

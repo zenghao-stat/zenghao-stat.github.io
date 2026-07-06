@@ -9,7 +9,6 @@ location: Beijing, China
 location_zh: 中国北京
 show: true
 tags:
-  - Past
   - Invited Talk
   - Statistics
 summary: Invited talk on efficient reasoning with statistical guarantees at Yau Mathematical Sciences Center, Tsinghua University.

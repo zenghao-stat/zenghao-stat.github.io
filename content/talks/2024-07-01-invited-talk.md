@@ -9,7 +9,6 @@ location: Kunming, China
 location_zh: 中国昆明
 show: true
 tags:
-  - Past
   - Invited Talk
   - JCSDS
   - Statistics

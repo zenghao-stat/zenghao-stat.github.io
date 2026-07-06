@@ -9,7 +9,6 @@ location: Xiamen, China
 location_zh: 中国厦门
 show: true
 tags:
-  - Past
   - Talk
   - Statistics
 summary: Talk at Xiamen University 2021 Symposium on Modern Statistics.

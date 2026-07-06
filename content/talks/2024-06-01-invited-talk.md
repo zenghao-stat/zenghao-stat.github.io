@@ -9,7 +9,6 @@ location: Xiamen, China
 location_zh: 中国厦门
 show: true
 tags:
-  - Past
   - Invited Talk
   - Forum
 summary: Invited talk at the 1st Outstanding PhD Forum in Economics and Management Statistics.

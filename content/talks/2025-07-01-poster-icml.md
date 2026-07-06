@@ -9,7 +9,6 @@ location: Vancouver, Canada
 location_zh: 加拿大温哥华
 show: true
 tags:
-  - Past
   - Conformal Prediction
   - ICML
   - Poster

@@ -437,7 +437,7 @@ Research 区块现在推荐直接维护 `content/research.json`。
 - `show`：`false` 时不展示（缺省或 `true` 会展示）
 - `date`：时间线左侧展示为 `YYYY-MM`（取 `date.substring(0, 7)`）
 - 其余字段：`title/type/venue/location` 直接展示
-- `summary`、`tags`：当前主要作为内容元数据保留，便于后续扩展
+- `summary`、`tags`：当前主要作为内容元数据保留，便于后续扩展；Past / Forthcoming 分组只按 `date` 与当前日期判断
 
 ### Academic Service（`content/academic_service.json`）
 

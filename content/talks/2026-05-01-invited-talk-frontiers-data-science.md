@@ -9,7 +9,6 @@ location: Hangzhou, China
 location_zh: 中国杭州
 show: true
 tags:
-  - Past
   - Invited Talk
   - Data Science
 summary: Invited talk on transfer learning for spatial autoregressive models at the 2026 International Conference on Frontiers of Data Science.

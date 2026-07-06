@@ -9,7 +9,6 @@ location: Lanzhou, China
 location_zh: 中国兰州
 show: true
 tags:
-  - Past
   - Invited Talk
   - Applied Statistics
 summary: Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics.
