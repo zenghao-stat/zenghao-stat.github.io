@@ -1,7 +1,7 @@
 ---
 title: Advanced Econometrics I
 type: Postgraduate course
-role: Teaching asisteance
+teaching_role: Teaching Assistant
 venue: School of Economics, Xiamen University
 date: 2019-09-01
 excerpt: Graduate-level econometrics covering linear models, estimation and inference, heteroskedasticity and autocorrelation, endogeneity and instrumental variables, and panel data methods.

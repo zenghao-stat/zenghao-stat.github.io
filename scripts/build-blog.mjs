@@ -620,7 +620,9 @@ const parseAcademicEntry = async (fileName, category) => {
   const type = ensureString(parsed.data.type, 'type', fileName);
   const venue = ensureString(parsed.data.venue, 'venue', fileName);
   const date = ensureDateString(parsed.data.date, 'date', fileName);
-  const role = ensureOptionalString(parsed.data.role) || '';
+  const role = category === 'Teaching'
+    ? ensureString(parsed.data.teaching_role, 'teaching_role', fileName)
+    : ensureOptionalString(parsed.data.role) || '';
   const semester = ensureOptionalString(parsed.data.semester) || '';
   const location = ensureOptionalString(parsed.data.location) || '';
   const tags = ensureStringArray(parsed.data.tags);

@@ -416,7 +416,8 @@ Research 区块现在推荐直接维护 `content/research.json`。
 - `category`：生成时用于区分 Teaching / Seminar
 - `title`：卡片标题与详情页标题
 - `type`：卡片信息行
-- `role`：Teaching 卡片会展示（Seminar 卡片目前不展示 role）
+- `teaching_role`：Teaching 源文件的角色字段；构建时映射为 `role` 并在 Teaching 卡片展示
+- `role`：Seminar 源文件可选字段；当前 Seminar 卡片不展示，但详情页生成器仍会读取
 - `venue`：地点/单位行
 - `location`：Seminar 卡片会在地点后追加展示（`venue • location`）
 - `date`：卡片右上角只展示年份（取 `date.split('-')[0]`）

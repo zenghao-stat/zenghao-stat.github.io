@@ -1,7 +1,7 @@
 ---
 title: Probability Introduction
 type: Undergraduate course
-role: Teaching asisteance
+teaching_role: Teaching Assistant
 venue: School of Economics, Xiamen University
 date: 2022-09-01
 excerpt: Introductory probability course covering sample spaces, random variables, distributions, expectation, limit theorems, and basic statistical inference.

@@ -1,7 +1,7 @@
 ---
 title: Real Analysis
 type: Undergraduate course
-role: Teaching asisteance
+teaching_role: Teaching Assistant
 venue: School of Economics, Xiamen University
 date: 2022-03-01
 excerpt: Rigorous introduction to Lebesgue measure and integration, Lp spaces, and convergence theorems, with foundations for modern probability and statistical inference.

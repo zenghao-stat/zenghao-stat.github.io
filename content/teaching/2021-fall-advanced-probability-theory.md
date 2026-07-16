@@ -1,7 +1,7 @@
 ---
 title: Advanced Probability Theory
 type: Postgraduate course
-role: Teaching asisteance
+teaching_role: Teaching Assistant
 venue: School of Economics, Xiamen University
 date: 2021-09-01
 excerpt: Measure-theoretic probability covering sigma-algebras, integration, modes of convergence, martingales, and limit theorems with statistical applications.
