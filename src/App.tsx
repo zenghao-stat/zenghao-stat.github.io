@@ -421,13 +421,13 @@ export default function App() {
     try {
       const stored = window.localStorage.getItem('haozeng_theme');
       if (!stored) {
-        return 'brutal';
+        return 'zine';
       }
       const parsed = JSON.parse(stored) as Partial<{ selectedTheme: ThemeKey; preferredLightTheme: ThemeKey }>;
       const savedTheme = parsed.selectedTheme ?? parsed.preferredLightTheme;
-      return savedTheme && savedTheme in THEMES ? savedTheme : 'brutal';
+      return savedTheme && savedTheme in THEMES ? savedTheme : 'zine';
     } catch {
-      return 'brutal';
+      return 'zine';
     }
   };
 
