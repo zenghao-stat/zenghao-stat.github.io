@@ -26,8 +26,13 @@ import {
 import { HAO_DATA } from './content';
 
 const SHOW_BLOG_ENTRY = false;
+const ZINE_HERO_IMAGES = {
+  light: '/images/hero/zine-light.png',
+  dark: '/images/hero/zine-dark.png',
+};
+const STATISTICS_QUOTE = 'Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.';
 
-// 主题配置 - 菜单只展示白天四种主题；夜色由对应主题自动派生。
+// 主题配置 - 菜单只展示白天主题；夜色由对应主题自动派生。
 const THEMES = {
   paper: {
     id: 'paper',
@@ -104,6 +109,25 @@ const THEMES = {
     badgeJournal: 'bg-emerald-500 text-black',
     badgePre: 'bg-red-500 text-white',
     badgeSoft: 'bg-blue-600 text-white',
+  },
+  zine: {
+    id: 'zine',
+    name: 'Zine',
+    bg: 'bg-[#F3EAD7]',
+    bgAlt: 'bg-[#E8DCC5]',
+    text: 'text-[#25231F]',
+    textMuted: 'text-[#5F574C]',
+    font: 'font-sans',
+    navBg: 'bg-[#F3EAD7]/90',
+    border: 'border-[#B9AA8F]',
+    accent: 'text-[#0B56B8]',
+    accentBg: 'bg-[#0B56B8]',
+    cardBg: 'bg-[#FFF8E9]',
+    highlight: 'bg-[#0B56B8]/10',
+    badgeConf: 'bg-[#0B56B8] text-white',
+    badgeJournal: 'bg-[#396F58] text-white',
+    badgePre: 'bg-[#A96F1F] text-white',
+    badgeSoft: 'bg-[#574C8B] text-white',
   }
 };
 
@@ -229,6 +253,25 @@ const NIGHT_THEMES: Record<ThemeKey, typeof THEMES[ThemeKey]> = {
     badgePre: 'bg-red-500 text-white',
     badgeSoft: 'bg-blue-500 text-white',
   },
+  zine: {
+    id: 'zine',
+    name: 'Zine',
+    bg: 'bg-[#211F1A]',
+    bgAlt: 'bg-[#2C2922]',
+    text: 'text-[#F2E7D4]',
+    textMuted: 'text-[#C5B79E]',
+    font: 'font-sans',
+    navBg: 'bg-[#211F1A]/90',
+    border: 'border-[#6C6252]',
+    accent: 'text-[#5F9DFF]',
+    accentBg: 'bg-[#0B56B8]',
+    cardBg: 'bg-[#2C2922]',
+    highlight: 'bg-[#0B56B8]/25',
+    badgeConf: 'bg-[#0B56B8] text-white',
+    badgeJournal: 'bg-[#396F58] text-white',
+    badgePre: 'bg-[#A96F1F] text-white',
+    badgeSoft: 'bg-[#574C8B] text-white',
+  },
 };
 
 const TOP_TAG_STYLES: Record<
@@ -275,6 +318,16 @@ const TOP_TAG_STYLES: Record<
       icon: 'text-black',
     },
   },
+  zine: {
+    ai: {
+      pill: 'bg-[#0B56B8]/10 border-[#0B56B8]/45 text-[#25231F] ring-1 ring-[#0B56B8]/15 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-[#0B56B8]',
+    },
+    econometrics: {
+      pill: 'bg-[#0B56B8]/10 border-[#0B56B8]/45 text-[#25231F] ring-1 ring-[#0B56B8]/15 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-[#0B56B8]',
+    },
+  },
 };
 
 const NIGHT_TOP_TAG_STYLES: typeof TOP_TAG_STYLES = {
@@ -316,6 +369,16 @@ const NIGHT_TOP_TAG_STYLES: typeof TOP_TAG_STYLES = {
     econometrics: {
       pill: 'bg-yellow-200 border-zinc-50 text-black shadow-[2px_2px_0_#fff] ring-0 animate-pulse motion-reduce:animate-none hover:shadow-[4px_4px_0_#fff] hover:-translate-y-0.5',
       icon: 'text-black',
+    },
+  },
+  zine: {
+    ai: {
+      pill: 'bg-[#0B56B8]/25 border-[#5F9DFF]/50 text-[#F2E7D4] ring-1 ring-[#5F9DFF]/25 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-[#5F9DFF]',
+    },
+    econometrics: {
+      pill: 'bg-[#0B56B8]/25 border-[#5F9DFF]/50 text-[#F2E7D4] ring-1 ring-[#5F9DFF]/25 shadow-sm animate-pulse motion-reduce:animate-none hover:shadow-md hover:-translate-y-0.5',
+      icon: 'text-[#5F9DFF]',
     },
   },
 };
@@ -388,6 +451,8 @@ export default function App() {
 
   const currentTheme = selectedTheme;
   const theme = isNightTheme ? NIGHT_THEMES[selectedTheme] : THEMES[selectedTheme];
+  const isZineTheme = currentTheme === 'zine';
+  const zineHeroImage = isNightTheme ? ZINE_HERO_IMAGES.dark : ZINE_HERO_IMAGES.light;
   const lastIsNightRef = useRef(isNightByTime());
 
   useEffect(() => {
@@ -1055,55 +1120,158 @@ export default function App() {
 
       <main>
         {/* Hero 区域 - 参考项目的左右布局 */}
-        <section id="about" className="pt-12 pb-16 lg:pt-24 lg:pb-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row gap-12 items-start">
-              {/* 头像列 */}
-              <div className="w-full lg:w-1/3 flex justify-center lg:justify-start">
-                <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-                  {currentTheme === 'brutal' ? (
-                    <>
-                      <div className="absolute inset-0 bg-blue-600 border-4 border-black rounded-2xl -rotate-6 transform translate-x-2 translate-y-2"></div>
-                      <div className="absolute inset-0 bg-red-500 border-4 border-black rounded-2xl rotate-3 transform -translate-x-2 translate-y-1"></div>
-                      <div className="absolute inset-0 bg-yellow-300 border-4 border-black rounded-2xl -rotate-1 transform"></div>
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span className="text-4xl font-black text-black">*</span>
-                      </div>
-                    </>
-                  ) : (
-                    <div className={`absolute inset-0 ${theme.bgAlt} rounded-2xl rotate-3 transform`}></div>
-                  )}
-                  <img
-                    src={HAO_DATA.profile.avatarUrl}
-                    alt={HAO_DATA.profile.name}
-                    className={`relative w-full h-full object-cover rounded-2xl shadow-lg border ${theme.border}`}
+        {isZineTheme ? (
+          <section id="about" className={`relative overflow-hidden border-b ${theme.border} pt-12 pb-16 lg:pt-24 lg:pb-20`}>
+            <>
+              <img
+                src={zineHeroImage}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div
+                className={`absolute inset-0 ${isNightTheme
+                  ? 'bg-gradient-to-r from-[#211F1A]/28 via-[#211F1A]/12 to-transparent'
+                  : 'bg-gradient-to-r from-[#F3EAD7]/18 via-[#F3EAD7]/8 to-transparent'
+                  }`}
+                aria-hidden="true"
+              />
+              <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-3xl space-y-6 lg:max-w-[52rem]">
+                  <div className="flex items-start gap-5 sm:gap-6">
+                    <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-40 lg:w-40">
+                      <div className={`absolute inset-0 rounded-full ${theme.cardBg} border ${theme.border}`}></div>
+                      <img
+                        src={HAO_DATA.profile.avatarUrl}
+                        alt={HAO_DATA.profile.name}
+                        className={`relative h-full w-full rounded-full border-2 ${theme.border} object-cover shadow-lg`}
+                      />
+                    </div>
+                    <div className="min-w-0 pt-1">
+                      <h1 className={`text-3xl lg:text-4xl font-bold font-serif ${theme.text} tracking-tight mb-2 flex flex-col gap-1`}>
+                        <span>{HAO_DATA.profile.name}</span>
+                        <span className={`text-xl lg:text-2xl font-normal ${theme.textMuted}`}>{HAO_DATA.profile.cnName}</span>
+                      </h1>
+                      <p className={`text-base sm:text-lg ${theme.textMuted} flex items-center gap-2`}>
+                        <GraduationCap size={18} />
+                        {HAO_DATA.profile.title}
+                      </p>
+                      <p className={`text-sm sm:text-base ${theme.textMuted} flex items-start gap-2 mt-1`}>
+                        <MapPin size={18} className="mt-0.5 shrink-0" />
+                        {HAO_DATA.profile.university}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p
+                    className={`max-w-3xl text-base leading-relaxed text-justify-hyphen ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}
+                    dangerouslySetInnerHTML={{
+                      __html: HAO_DATA.profile.description.replace(
+                        /\*\*(.*?)\*\*/g,
+                        `<strong class="font-bold ${theme.text}">$1</strong>`
+                      )
+                    }}
                   />
+
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <a
+                      href={HAO_DATA.profile.googleScholar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-4 py-2 ${theme.cardBg} border ${theme.border} rounded-lg text-sm font-medium ${theme.textMuted} hover:${theme.text} hover:border-slate-400 transition-all`}
+                    >
+                      <BookOpen size={16} /> Google Scholar
+                    </a>
+                    <a
+                      href={HAO_DATA.profile.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-4 py-2 ${theme.cardBg} border ${theme.border} rounded-lg text-sm font-medium ${theme.textMuted} hover:${theme.text} hover:border-slate-400 transition-all`}
+                    >
+                      <Github size={16} /> GitHub
+                    </a>
+                    <a
+                      href={`mailto:${HAO_DATA.profile.email}`}
+                      className={`inline-flex items-center gap-2 px-4 py-2 ${theme.cardBg} border ${theme.border} rounded-lg text-sm font-medium ${theme.textMuted} hover:${theme.text} hover:border-slate-400 transition-all`}
+                    >
+                      <Mail size={16} /> Email
+                    </a>
+                  </div>
+
+                  <div className={`pt-6 border-t ${theme.border}`}>
+                    <h3 className={`text-sm font-semibold ${theme.textMuted} uppercase tracking-wider mb-4 font-sans`}>
+                      Research Interests
+                    </h3>
+                    <div className="space-y-2 font-sans">
+                      <div className={`text-sm ${theme.textMuted}`}>
+                        <span className={`font-semibold ${theme.text}`}>Statistical Machine Learning:</span>{' '}
+                        Model Free Predictive Inference, Conformal Prediction, Transfer Learning
+                      </div>
+                      <div className={`text-sm ${theme.textMuted}`}>
+                        <span className={`font-semibold ${theme.text}`}>Interdisciplinary Research:</span>{' '}
+                        Large Language Models, Spatial Statistics, Econometrics, and Biostatistics
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <p className={`pointer-events-none absolute bottom-8 right-8 z-10 hidden max-w-md text-right text-sm italic leading-relaxed lg:block ${isNightTheme ? 'text-[#F2E7D4]/35' : 'text-[#25231F]/35'}`}>
+                {STATISTICS_QUOTE}
+              </p>
+            </>
+          </section>
+        ) : (
+          <section id="about" className="pt-12 pb-16 lg:pt-24 lg:pb-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col lg:flex-row gap-12 items-start">
+                {/* 头像列 */}
+                <div className="w-full lg:w-1/3 flex justify-center lg:justify-start">
+                  <div className="relative w-64 h-64 lg:w-80 lg:h-80">
+                    {currentTheme === 'brutal' ? (
+                      <>
+                        <div className="absolute inset-0 bg-blue-600 border-4 border-black rounded-2xl -rotate-6 transform translate-x-2 translate-y-2"></div>
+                        <div className="absolute inset-0 bg-red-500 border-4 border-black rounded-2xl rotate-3 transform -translate-x-2 translate-y-1"></div>
+                        <div className="absolute inset-0 bg-yellow-300 border-4 border-black rounded-2xl -rotate-1 transform"></div>
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <span className="text-4xl font-black text-black">*</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className={`absolute inset-0 ${theme.bgAlt} rounded-2xl rotate-3 transform`}></div>
+                    )}
+                    <img
+                      src={HAO_DATA.profile.avatarUrl}
+                      alt={HAO_DATA.profile.name}
+                      className={`relative w-full h-full object-cover rounded-2xl shadow-lg border ${theme.border}`}
+                    />
+                  </div>
+                </div>
 
-              {/* 信息列 */}
-              <div className="w-full lg:w-2/3 space-y-6">
-                <div>
-                  <h1 className={`text-4xl lg:text-5xl font-bold font-serif ${theme.text} tracking-tight mb-2 flex flex-col gap-1`}>
+                {/* 信息列 */}
+                <div className="w-full lg:w-2/3 space-y-6">
+                  <div>
+                  <h1 className={`${isZineTheme ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'} font-bold font-serif ${theme.text} tracking-tight mb-2 flex flex-col gap-1`}>
                     <span>{HAO_DATA.profile.name}</span>
-                    <span className={`text-2xl lg:text-3xl font-normal ${theme.textMuted}`}>{HAO_DATA.profile.cnName}</span>
+                    <span className={`${isZineTheme ? 'text-xl lg:text-2xl' : 'text-2xl lg:text-3xl'} font-normal ${theme.textMuted}`}>{HAO_DATA.profile.cnName}</span>
                   </h1>
                   {/* 座右铭 - 弱化颜色 */}
-                  <p className={`text-base italic ${isNightTheme ? 'text-slate-500' : 'text-slate-400'} mb-3`}>
-                    Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.
-                  </p>
-                  <p className={`text-xl ${theme.textMuted} flex items-center gap-2`}>
-                    <GraduationCap size={20} />
+                  {!isZineTheme && (
+                    <p className={`text-base italic ${isNightTheme ? 'text-slate-500' : 'text-slate-400'} mb-3`}>
+                      {STATISTICS_QUOTE}
+                    </p>
+                  )}
+                  <p className={`${isZineTheme ? 'text-base sm:text-lg' : 'text-xl'} ${theme.textMuted} flex items-center gap-2`}>
+                    <GraduationCap size={isZineTheme ? 18 : 20} />
                     {HAO_DATA.profile.title}
                   </p>
-                  <p className={`text-lg ${theme.textMuted} flex items-center gap-2 mt-1`}>
-                    <MapPin size={18} />
+                  <p className={`${isZineTheme ? 'text-sm sm:text-base' : 'text-lg'} ${theme.textMuted} flex items-start gap-2 mt-1`}>
+                    <MapPin size={18} className="mt-0.5 shrink-0" />
                     {HAO_DATA.profile.university}
                   </p>
                 </div>
 
                 <p
-                  className={`text-lg leading-relaxed max-w-3xl text-justify-hyphen ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}
+                  className={`${isZineTheme ? 'basis-full text-base max-w-3xl' : 'text-lg max-w-3xl'} leading-relaxed text-justify-hyphen ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}
                   dangerouslySetInnerHTML={{
                     __html: HAO_DATA.profile.description.replace(
                       /\*\*(.*?)\*\*/g,
@@ -1113,7 +1281,7 @@ export default function App() {
                 />
 
                 {/* 社交链接按钮 */}
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className={`${isZineTheme ? 'basis-full' : ''} flex flex-wrap gap-3 pt-2`}>
                   <a
                     href={HAO_DATA.profile.googleScholar}
                     target="_blank"
@@ -1139,7 +1307,7 @@ export default function App() {
                 </div>
 
                 {/* 研究兴趣标签 */}
-                <div className={`pt-6 border-t ${theme.border}`}>
+                <div className={`${isZineTheme ? 'basis-full' : ''} pt-6 border-t ${theme.border}`}>
                   <h3 className={`text-sm font-semibold ${theme.textMuted} uppercase tracking-wider mb-4 font-sans`}>
                     Research Interests
                   </h3>
@@ -1158,6 +1326,7 @@ export default function App() {
             </div>
           </div>
         </section>
+        )}
 
         {/* News 区域 - 参考项目的时间线风格 */}
         <section id="news" className={`py-16 ${theme.bgAlt} transition-colors duration-300`}>
