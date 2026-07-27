@@ -61,6 +61,13 @@
         "year": [
           "2026"
         ]
+      },
+      {
+        "name": "NeurIPS",
+        "note": "Conference on Neural Information Processing Systems",
+        "year": [
+          "2026"
+        ]
       }
     ]
   }

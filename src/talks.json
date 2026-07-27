@@ -1,166 +1,14 @@
 [
   {
-    "id": "2026-07-01-caasa-data-ai",
-    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
-    "type": "Invited Talk and Chair",
-    "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
-    "date": "2026-07-01",
-    "location": "Dongguan, China",
-    "show": true,
-    "summary": "Forthcoming invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University.",
-    "tags": [
-      "Forthcoming",
-      "Invited Talk",
-      "Chair",
-      "Statistics"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
-        "type": "Invited Talk and Chair",
-        "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
-        "location": "Dongguan, China",
-        "summary": "Forthcoming invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University."
-      },
-      "zh": {
-        "type": "邀请报告与主持",
-        "venue": "2026 年中国现场统计研究会数据科学与人工智能分会年会",
-        "location": "中国东莞",
-        "summary": "即将在大湾区大学作关于大语言模型高效推理的邀请报告并担任主持。"
-      }
-    }
-  },
-  {
-    "id": "2026-07-01-poster-icml-anytime-safe",
-    "title": "Anytime Safe PAC Efficient Reasoning",
-    "type": "Poster",
-    "venue": "The 43rd International Conference on Machine Learning (ICML)",
-    "date": "2026-07-01",
-    "location": "Seoul, South Korea",
-    "show": true,
-    "summary": "Forthcoming poster presentation at ICML 2026.",
-    "tags": [
-      "Forthcoming",
-      "Poster",
-      "ICML"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Anytime Safe PAC Efficient Reasoning",
-        "type": "Poster",
-        "venue": "The 43rd International Conference on Machine Learning (ICML)",
-        "location": "Seoul, South Korea",
-        "summary": "Forthcoming poster presentation at ICML 2026."
-      },
-      "zh": {
-        "type": "海报",
-        "venue": "第 43 届国际机器学习会议（ICML）",
-        "location": "韩国首尔",
-        "summary": "即将在 ICML 2026 展示海报。"
-      }
-    }
-  },
-  {
-    "id": "2026-07-01-poster-icml-backward-conformal",
-    "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
-    "type": "Poster",
-    "venue": "The 43rd International Conference on Machine Learning (ICML)",
-    "date": "2026-07-01",
-    "location": "Seoul, South Korea",
-    "show": true,
-    "summary": "Forthcoming poster presentation at ICML 2026.",
-    "tags": [
-      "Forthcoming",
-      "Poster",
-      "ICML"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
-        "type": "Poster",
-        "venue": "The 43rd International Conference on Machine Learning (ICML)",
-        "location": "Seoul, South Korea",
-        "summary": "Forthcoming poster presentation at ICML 2026."
-      },
-      "zh": {
-        "type": "海报",
-        "venue": "第 43 届国际机器学习会议（ICML）",
-        "location": "韩国首尔",
-        "summary": "即将在 ICML 2026 展示海报。"
-      }
-    }
-  },
-  {
-    "id": "2026-07-01-poster-icml-training-data",
-    "title": "Provable Training Data Identification for Large Language Models",
-    "type": "Poster",
-    "venue": "The 43rd International Conference on Machine Learning (ICML)",
-    "date": "2026-07-01",
-    "location": "Seoul, South Korea",
-    "show": true,
-    "summary": "Forthcoming poster presentation at ICML 2026.",
-    "tags": [
-      "Forthcoming",
-      "Poster",
-      "ICML"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Provable Training Data Identification for Large Language Models",
-        "type": "Poster",
-        "venue": "The 43rd International Conference on Machine Learning (ICML)",
-        "location": "Seoul, South Korea",
-        "summary": "Forthcoming poster presentation at ICML 2026."
-      },
-      "zh": {
-        "type": "海报",
-        "venue": "第 43 届国际机器学习会议（ICML）",
-        "location": "韩国首尔",
-        "summary": "即将在 ICML 2026 展示海报。"
-      }
-    }
-  },
-  {
-    "id": "2026-07-01-poster-icml",
-    "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
-    "type": "Poster",
-    "venue": "The 43rd International Conference on Machine Learning (ICML)",
-    "date": "2026-07-01",
-    "location": "Seoul, South Korea",
-    "show": true,
-    "summary": "Forthcoming poster presentation at ICML 2026.",
-    "tags": [
-      "Forthcoming",
-      "Poster",
-      "ICML"
-    ],
-    "i18n": {
-      "en": {
-        "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
-        "type": "Poster",
-        "venue": "The 43rd International Conference on Machine Learning (ICML)",
-        "location": "Seoul, South Korea",
-        "summary": "Forthcoming poster presentation at ICML 2026."
-      },
-      "zh": {
-        "type": "海报",
-        "venue": "第 43 届国际机器学习会议（ICML）",
-        "location": "韩国首尔",
-        "summary": "即将在 ICML 2026 展示海报。"
-      }
-    }
-  },
-  {
-    "id": "2026-07-01-talk-jcsds",
+    "id": "2026-07-12-talk-jcsds",
     "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
     "type": "Contributed Talk",
     "venue": "The 4th Joint Conference on Statistics and Data Science (JCSDS)",
-    "date": "2026-07-01",
+    "date": "2026-07-12",
     "location": "Guiyang, China",
     "show": true,
-    "summary": "Forthcoming contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS.",
+    "summary": "Contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS.",
     "tags": [
-      "Forthcoming",
       "Talk",
       "JCSDS",
       "Statistics"
@@ -171,27 +19,172 @@
         "type": "Contributed Talk",
         "venue": "The 4th Joint Conference on Statistics and Data Science (JCSDS)",
         "location": "Guiyang, China",
-        "summary": "Forthcoming contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS."
+        "summary": "Contributed talk on PAC-efficient reasoning for large language models at the 4th JCSDS."
       },
       "zh": {
         "type": "投稿报告",
         "venue": "第四届统计与数据科学联合会议（JCSDS）",
         "location": "中国贵阳",
-        "summary": "即将在第四届 JCSDS 作关于大语言模型 PAC 高效推理的投稿报告。"
+        "summary": "在第四届 JCSDS 作关于大语言模型 PAC 高效推理的投稿报告。"
       }
     }
   },
   {
-    "id": "2026-06-01-invited-talk-icsa",
+    "id": "2026-07-09-poster-icml-training-data",
+    "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-09",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Poster presentation at ICML 2026.",
+    "tags": [
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-08-poster-icml-anytime-safe",
+    "title": "Anytime Safe PAC Efficient Reasoning",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-08",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Poster presentation at ICML 2026.",
+    "tags": [
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Anytime Safe PAC Efficient Reasoning",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-08-poster-icml-racer",
+    "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-08",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Poster presentation at ICML 2026.",
+    "tags": [
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "RACER: Risk-Aware Calibrated Efficient Routing for Large Language Models",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-08-poster-icml-st-bcp",
+    "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+    "type": "Poster",
+    "venue": "The 43rd International Conference on Machine Learning (ICML)",
+    "date": "2026-07-08",
+    "location": "Seoul, South Korea",
+    "show": true,
+    "summary": "Poster presentation at ICML 2026.",
+    "tags": [
+      "Poster",
+      "ICML"
+    ],
+    "i18n": {
+      "en": {
+        "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+        "type": "Poster",
+        "venue": "The 43rd International Conference on Machine Learning (ICML)",
+        "location": "Seoul, South Korea",
+        "summary": "Poster presentation at ICML 2026."
+      },
+      "zh": {
+        "type": "海报",
+        "venue": "第 43 届国际机器学习会议（ICML）",
+        "location": "韩国首尔",
+        "summary": "在 ICML 2026 展示海报。"
+      }
+    }
+  },
+  {
+    "id": "2026-07-06-caasa-data-ai",
+    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+    "type": "Invited Talk and Chair",
+    "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
+    "date": "2026-07-06",
+    "location": "Dongguan, China",
+    "show": true,
+    "summary": "Invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University.",
+    "tags": [
+      "Invited Talk",
+      "Chair",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+        "type": "Invited Talk and Chair",
+        "venue": "2026 Annual Conference of the Data Science and Artificial Intelligence Branch of the Chinese Association for Applied Statistics",
+        "location": "Dongguan, China",
+        "summary": "Invited talk and chair service on efficient reasoning with statistical guarantees at Great Bay University."
+      },
+      "zh": {
+        "type": "邀请报告与主持",
+        "venue": "2026 年中国现场统计研究会数据科学与人工智能分会年会",
+        "location": "中国东莞",
+        "summary": "在大湾区大学作关于大语言模型高效推理的邀请报告并担任主持。"
+      }
+    }
+  },
+  {
+    "id": "2026-06-27-invited-talk-icsa",
     "title": "PAC-Efficient Reasoning for Large Language Models: Marginal Guarantees, Conditional Extensions, and Anytime Validity",
     "type": "Invited Talk",
     "venue": "2026 ICSA China Conference",
-    "date": "2026-06-01",
+    "date": "2026-06-27",
     "location": "Shenzhen, China",
     "show": true,
-    "summary": "Forthcoming invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology.",
+    "summary": "Invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology.",
     "tags": [
-      "Forthcoming",
       "Invited Talk",
       "ICSA"
     ],
@@ -201,51 +194,22 @@
         "type": "Invited Talk",
         "venue": "2026 ICSA China Conference",
         "location": "Shenzhen, China",
-        "summary": "Forthcoming invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology."
+        "summary": "Invited talk on PAC-efficient reasoning for large language models at Southern University of Science and Technology."
       },
       "zh": {
         "type": "邀请报告",
         "venue": "2026 ICSA 中国会议",
         "location": "中国深圳",
-        "summary": "即将在南方科技大学作关于大语言模型 PAC 高效推理的邀请报告。"
+        "summary": "在南方科技大学作关于大语言模型 PAC 高效推理的邀请报告。"
       }
     }
   },
   {
-    "id": "2026-06-01-invited-talk-jiuzhang",
-    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
-    "type": "Invited Talk",
-    "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
-    "date": "2026-06-01",
-    "location": "Lanzhou, China",
-    "show": true,
-    "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics.",
-    "tags": [
-      "Invited Talk",
-      "Applied Statistics"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
-        "type": "Invited Talk",
-        "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
-        "location": "Lanzhou, China",
-        "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics."
-      },
-      "zh": {
-        "type": "邀请报告",
-        "venue": "2026 年年会暨九章应用统计国际会议",
-        "location": "中国兰州",
-        "summary": "在 2026 年年会暨九章应用统计国际会议作关于大语言模型高效推理的邀请报告。"
-      }
-    }
-  },
-  {
-    "id": "2026-06-01-invited-talk-young-statisticians",
+    "id": "2026-06-13-invited-talk-young-statisticians",
     "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
     "type": "Invited Talk",
     "venue": "2026 Young Statisticians Workshop",
-    "date": "2026-06-01",
+    "date": "2026-06-13",
     "location": "Beijing, China",
     "show": true,
     "summary": "Invited talk on efficient reasoning with statistical guarantees at Yau Mathematical Sciences Center, Tsinghua University.",
@@ -270,11 +234,40 @@
     }
   },
   {
-    "id": "2026-05-01-invited-talk-frontiers-data-science",
+    "id": "2026-06-06-invited-talk-jiuzhang",
+    "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+    "type": "Invited Talk",
+    "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
+    "date": "2026-06-06",
+    "location": "Lanzhou, China",
+    "show": true,
+    "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics.",
+    "tags": [
+      "Invited Talk",
+      "Applied Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Efficient Reasoning with Statistical Guarantees for Large Language Models",
+        "type": "Invited Talk",
+        "venue": "2026 Annual Conference and Jiuzhang International Conference on Applied Statistics",
+        "location": "Lanzhou, China",
+        "summary": "Invited talk on efficient reasoning with statistical guarantees at the 2026 annual conference and Jiuzhang International Conference on Applied Statistics."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "2026 年年会暨九章应用统计国际会议",
+        "location": "中国兰州",
+        "summary": "在 2026 年年会暨九章应用统计国际会议作关于大语言模型高效推理的邀请报告。"
+      }
+    }
+  },
+  {
+    "id": "2026-05-16-invited-talk-frontiers-data-science",
     "title": "Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction",
     "type": "Invited Talk",
     "venue": "2026 International Conference on Frontiers of Data Science",
-    "date": "2026-05-01",
+    "date": "2026-05-16",
     "location": "Hangzhou, China",
     "show": true,
     "summary": "Invited talk on transfer learning for spatial autoregressive models at the 2026 International Conference on Frontiers of Data Science.",

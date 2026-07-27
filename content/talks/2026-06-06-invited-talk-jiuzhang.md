@@ -4,7 +4,7 @@ type: Invited Talk
 type_zh: 邀请报告
 venue: 2026 Annual Conference and Jiuzhang International Conference on Applied Statistics
 venue_zh: 2026 年年会暨九章应用统计国际会议
-date: 2026-06-01
+date: 2026-06-06
 location: Lanzhou, China
 location_zh: 中国兰州
 show: true

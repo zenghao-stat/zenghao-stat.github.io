@@ -4,7 +4,7 @@ type: Invited Talk
 type_zh: 邀请报告
 venue: 2026 Young Statisticians Workshop
 venue_zh: 2026 年青年统计学者研讨会
-date: 2026-06-01
+date: 2026-06-13
 location: Beijing, China
 location_zh: 中国北京
 show: true

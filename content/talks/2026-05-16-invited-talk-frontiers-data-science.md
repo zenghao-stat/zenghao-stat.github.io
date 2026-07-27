@@ -4,7 +4,7 @@ type: Invited Talk
 type_zh: 邀请报告
 venue: 2026 International Conference on Frontiers of Data Science
 venue_zh: 2026 年数据科学前沿国际会议
-date: 2026-05-01
+date: 2026-05-16
 location: Hangzhou, China
 location_zh: 中国杭州
 show: true
