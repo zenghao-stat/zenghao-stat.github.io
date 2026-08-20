@@ -23,7 +23,7 @@ import {
   ChevronUp
 } from 'lucide-react';
 
-import { HAO_DATA } from './content';
+import { HAO_DATA, type Publication } from './content';
 
 const SHOW_BLOG_ENTRY = false;
 const ZINE_HERO_IMAGES = {

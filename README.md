@@ -54,7 +54,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
 
 ### 站点结构（从 src/App.tsx 提取）
 - 导航：About(#about) / News(#news) / Research(#research) / Publications(#publications) / Teaching(#teaching) / Seminar(#seminar) / Talks(#talks) / Service(#service)
-- 主题：paper(Paper) / lab(Lab) / mint(Mint) / brutal(Brutal) / night(Night)
+- 主题：paper(Paper) / lab(Lab) / mint(Mint) / brutal(Brutal) / zine(Zine)
 - Night 自动切换：19:00–07:00（本地时间）
 - Publications Type：Journal / Conference / Working Paper / Software / Patent
 - Publications Year：2026 / 2025 / 2024 / before 2024
@@ -62,18 +62,18 @@ npm run preview -- --host 0.0.0.0 --port 5173
 
 ### 数据文件（统计条目数）
 - content/profile.json：1 条
-- content/news.json：5 条
-- content/publications.json：32 条
+- content/news.json：6 条
+- content/publications.json：28 条
 - src/blog.json：1 条
 - content/research.json：1 条 (Intro + Areas)
 - src/teaching.json：5 条
 - src/seminars.json：1 条
-- src/talks.json：9 条
+- src/talks.json：20 条
 - content/academic_service.json：2 个分组
 - src/content.ts：全站类型定义 + 数据聚合入口
 
 ### 静态资源（public/）
-- public/images：2 个文件（例：profile.jpeg, research）
+- public/images：3 个文件（例：hero, profile.jpeg, research）
 - public/papers：18 个文件（例：2024_Wan et al._Data‐driven estimation for multithreshold accelerated failure time model.pdf, 2025 - Zeng et al. - Robust Integrative Analysis via Quantile Regression with Homogeneity and Sparsity - Journal of Statistical Planning and Inference.pdf, 2405.15600.pdf, 2409.01236.pdf, 2501.18363.pdf, 2502.04037.pdf）
 - public/blog：2 个文件（例：harness-on-ai.html, list.html）
 - public/teaching-and-seminar：7 个文件（例：2019-fall-advanced-econometrics-i.html, 2021-fall-advanced-probability-theory.html, 2021-spring-real-analysis.html, 2022-fall-probability-introduction.html, 2022-spring-real-analysis.html, 2024-07-18-ml-theory-study-group.html）
@@ -182,6 +182,9 @@ npm run preview -- --host 0.0.0.0 --port 5173
 - summary?: string
 - tags?: string[]
 - show?: boolean
+- i18n?: {
+    en?: TalkLocale
+- zh?: TalkLocale
 
 #### AcademicServiceItem
 - name: string

@@ -499,7 +499,7 @@
     "id": "chen-bimaxillary-basal-bone-patent-2026",
     "title": "A Method for Matching the Bimaxillary Basal Bone Arches and Predicting Their Variations among Individuals",
     "authors": "Wenqian Chen, Hao Zeng, Jiawen Lei, Tianrong He, Yi Lin, Jing Guo, Chunchun Du",
-    "venue": "Chinese patent application, Publication No. CN121708039A",
+    "venue": "Chinese patent, Patent No. CN121708039B",
     "type": "Patent",
     "year": "2026",
     "month": "03",
@@ -507,6 +507,6 @@
     "keywords": [
       "Medicine"
     ],
-    "abs": "Application No. CN202511926070.4; applied on 12/19/2025 and published on 03/20/2026."
+    "abs": "The invention is about medical image analysis and dentistry. It gives a method to fit the basal bone contours of the jaws and to predict their variations among people. Existing methods lack automatic fitting algorithms for basal bone contours and prediction models for population variation. The method works as follows: get CBCT images and take the landmark points of the basal bone contours; use Generalized Procrustes Analysis to align the shapes and normalize their forms; set a 2 mm relative position offset between the upper and lower jaw basal bones; use factor analysis to keep the main factors that explain most of the cumulative variance; use Principal Component Analysis to predict shape changes of the basal bone; make the predicted contours symmetric and smooth; and create clinical reference files. The method automatically fits the bimaxillary basal bone contours and finds the main variation patterns, and the results keep biological symmetry and continuity. It gives a scientific base for judging the boundary of tooth movement and for safety checks in orthodontic treatment."
   }
 ]
