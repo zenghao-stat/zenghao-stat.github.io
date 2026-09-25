@@ -62,7 +62,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
 
 ### 数据文件（统计条目数）
 - content/profile.json：1 条
-- content/news.json：6 条
+- content/news.json：8 条
 - content/publications.json：28 条
 - src/blog.json：1 条
 - content/research.json：1 条 (Intro + Areas)

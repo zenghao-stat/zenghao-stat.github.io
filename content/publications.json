@@ -210,7 +210,7 @@
   },
   {
     "id": "zeng-pac-reasoning-2025",
-    "title": "On the provable performance guarantee of efficient reasoning models",
+    "title": "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning",
     "authors": "Hao Zeng, Jianguo Huang, Bingyi Jing, Hongxin Wei, Bo An",
     "firstAuthors": [
       "Hao Zeng",
@@ -219,11 +219,11 @@
     "guidedStudents": [
       "Jianguo Huang"
     ],
-    "venue": "Under Review",
-    "type": "Working Paper",
+    "venue": "Advances in Neural Information Processing Systems 39 (NeurIPS)",
+    "type": "Conference",
     "year": "2026",
-    "month": "02",
-    "url": "https://arxiv.org/abs/2510.09133",
+    "month": "09",
+    "url": "https://openreview.net/forum?id=52BT1Jih6O",
     "abs": "Large reasoning models can solve hard tasks but are expensive at test time. A common idea is to switch between thinking and nonthinking modes, but it can introduce errors and lacks statistical guarantees. We propose Probably Approximately Correct (PAC) reasoning, which controls performance loss under a user-specified tolerance. We build an upper confidence bound for the performance loss as a monotone function of an uncertainty score, and use it to pick a switching threshold. This yields distribution-free guarantees on bounded performance loss. Experiments show the method saves compute while controlling performance loss.",
     "pdf": "/papers/2510.09133.pdf",
     "selected": true,
@@ -252,16 +252,16 @@
   },
   {
     "id": "huang-selective-labeling-2025",
-    "title": "Selective Auto-Labeling with Provable Statistical Guarantees",
+    "title": "Provable Selective Auto-labeling with Reliability Guarantees",
     "authors": "Huipeng Huang, Wenbo Liao, Huajun Xi, Hao Zeng, Mengchen Zhao, Hongxin Wei",
     "guidedStudents": [
       "Huipeng Huang"
     ],
-    "venue": "Under Review",
-    "type": "Working Paper",
+    "venue": "Advances in Neural Information Processing Systems 39 (NeurIPS)",
+    "type": "Conference",
     "year": "2026",
-    "month": "10",
-    "url": "https://arxiv.org/abs/2510.14581",
+    "month": "09",
+    "url": "https://openreview.net/forum?id=EEhIsOCdWt",
     "abs": "High-quality labels for large datasets are expensive. Using model predictions can save cost but introduces label errors. Selective labeling methods let AI label some items and humans label the rest, but they often lack guarantees on the error rate in the AI-labeled subset. We propose Conformal Labeling, which finds instances where model predictions can be trusted by controlling the false discovery rate (FDR), the fraction of incorrect labels in the selected subset. We build a conformal p-value for each test instance and select items using a data-dependent threshold. We provide theory showing FDR control at the target level, and experiments show tight control with high power across image, text, and LLM QA tasks.",
     "pdf": "/papers/2510.14581.pdf",
     "selected": false,
@@ -464,15 +464,16 @@
   },
   {
     "id": "liu-pure-benchmark-2026",
-    "title": "Can We Select One Pure Benchmark for Multiple Audited Models?",
+    "title": "Provable Joint Decontamination for Benchmarking Multiple Large Language Models",
     "authors": "Zhenlong Liu, Hao Zeng, Hongxin Wei",
     "guidedStudents": [
       "Zhenlong Liu"
     ],
-    "venue": "Under Review",
-    "type": "Working Paper",
+    "venue": "Advances in Neural Information Processing Systems 39 (NeurIPS)",
+    "type": "Conference",
     "year": "2026",
-    "month": "05",
+    "month": "09",
+    "url": "https://openreview.net/forum?id=B7LVM4t8mA",
     "selected": false,
     "keywords": [
       "Large Language Models"

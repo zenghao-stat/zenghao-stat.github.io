@@ -1,6 +1,15 @@
 [
   {
     "date": "2026/09",
+    "content": "3 papers accepted by NeurIPS 2026.",
+    "publicationIds": [
+      "zeng-pac-reasoning-2025",
+      "huang-selective-labeling-2025",
+      "liu-pure-benchmark-2026"
+    ]
+  },
+  {
+    "date": "2026/09",
     "content": "I will join the School of Mathematical Sciences at the University of Electronic Science and Technology of China in September 2026."
   },
   {
