@@ -31,6 +31,8 @@ const ZINE_HERO_IMAGES = {
   dark: '/images/hero/zine-dark.png',
 };
 const STATISTICS_QUOTE = 'Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.';
+// 悬浮窗的最大宽度，与下方 max-w-2xl（42rem = 672px）保持一致，用于判断展开方向。
+const TIP_MAX_WIDTH = 672;
 
 // 主题配置 - 菜单只展示白天主题；夜色由对应主题自动派生。
 const THEMES = {
@@ -448,6 +450,7 @@ export default function App() {
   const [openServiceNoteKey, setOpenServiceNoteKey] = useState<string | null>(null);
   const [highlightedPublicationId, setHighlightedPublicationId] = useState<string | null>(null);
   const [showAllPastTalks, setShowAllPastTalks] = useState(false);
+  const [tooltipAlign, setTooltipAlign] = useState<'left' | 'right'>('left');
 
   const currentTheme = selectedTheme;
   const theme = isNightTheme ? NIGHT_THEMES[selectedTheme] : THEMES[selectedTheme];
@@ -819,6 +822,15 @@ export default function App() {
     return Array.from(new Set(tags.map(tag => tag.trim()).filter(Boolean)));
   };
 
+  // 悬浮窗较宽时，若右侧空间不足则改为向左展开，避免溢出视口。
+  const updateTooltipAlign = (element: HTMLElement) => {
+    if (!canHover) return;
+    const rect = element.getBoundingClientRect();
+    const fitsLeft = window.innerWidth - rect.left >= TIP_MAX_WIDTH + 16;
+    const fitsRight = rect.right >= TIP_MAX_WIDTH + 16;
+    setTooltipAlign(!fitsLeft && fitsRight ? 'right' : 'left');
+  };
+
   const renderCitations = (publicationIds: string[], leading?: boolean) => {
     const pubs = publicationIds
       .map((pid) => {
@@ -868,13 +880,14 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => jumpToPublication(targetId)}
+                  onMouseEnter={(event) => updateTooltipAlign(event.currentTarget)}
                   className={`text-sm font-semibold ${theme.textMuted} hover:${theme.accent} transition-colors font-sans`}
                 >
                   {label}
                 </button>
                 {canHover && (
                   <span
-                    className={`pointer-events-none absolute left-0 top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[280px] max-w-md whitespace-normal`}
+                    className={`pointer-events-none absolute ${tooltipAlign === 'right' ? 'right-0' : 'left-0'} top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[280px] max-w-2xl whitespace-normal`}
                   >
                     {seg.pubs.map((x) => (
                       <span key={x.pid} className="block space-y-0.5">
@@ -1939,7 +1952,10 @@ export default function App() {
                         <div className="flex items-start gap-2">
                           <span className={`${theme.textMuted} mt-1`}>•</span>
                           {canHover || !item.note?.trim() ? (
-                            <span className={item.note?.trim() ? 'group relative inline-flex' : undefined}>
+                            <span
+                              className={item.note?.trim() ? 'group relative inline-flex' : undefined}
+                              onMouseEnter={item.note?.trim() ? (event) => updateTooltipAlign(event.currentTarget) : undefined}
+                            >
                               <span
                                 className={
                                   item.note?.trim()
@@ -1952,7 +1968,7 @@ export default function App() {
                               </span>
                               {item.note?.trim() && (
                                 <span
-                                  className={`pointer-events-none absolute left-0 top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[240px] max-w-md whitespace-normal`}
+                                  className={`pointer-events-none absolute ${tooltipAlign === 'right' ? 'right-0' : 'left-0'} top-full mt-2 hidden group-hover:block z-20 ${theme.cardBg} border ${theme.border} shadow-sm rounded-xl px-4 py-3 text-sm leading-relaxed ${theme.text} min-w-[280px] max-w-2xl whitespace-normal`}
                                 >
                                   {item.note}
                                 </span>
