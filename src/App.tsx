@@ -12,6 +12,7 @@ import {
   Award,
   Tag,
   Palette,
+  Type,
   Sun,
   Moon,
   Check,
@@ -137,6 +138,15 @@ type ThemeKey = keyof typeof THEMES;
 type PubType = 'Conference' | 'Journal' | 'Working Paper' | 'Software' | 'Patent';
 type YearFilter = '2026' | '2025' | '2024' | 'before 2024';
 type AuthorRoleFilter = 'first' | 'corresponding';
+type FontMode = 'sans' | 'serif';
+
+// 字体字族：无衬线模式全站使用 Inter；衬线模式下 font-serif 元素改用系统衬线栈。
+const FONT_SANS_STACK = "'Inter', -apple-system, sans-serif";
+const FONT_SERIF_STACK = "ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif";
+const FONT_OPTIONS: { id: FontMode; name: string }[] = [
+  { id: 'sans', name: 'Sans Serif' },
+  { id: 'serif', name: 'Serif' },
+];
 
 const PUB_TYPE_LABELS: Record<PubType, string> = {
   Conference: 'Conference',
@@ -433,10 +443,21 @@ export default function App() {
     }
   };
 
+  const loadInitialFontMode = (): FontMode => {
+    try {
+      const stored = window.localStorage.getItem('haozeng_font');
+      return stored === 'serif' || stored === 'sans' ? stored : 'sans';
+    } catch {
+      return 'sans';
+    }
+  };
+
   const themeIds = Object.keys(THEMES) as ThemeKey[];
   const [selectedTheme, setSelectedTheme] = useState<ThemeKey>(loadInitialTheme);
   const [isNightTheme, setIsNightTheme] = useState(isNightByTime);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
+  const [fontMode, setFontMode] = useState<FontMode>(loadInitialFontMode);
+  const [fontMenuOpen, setFontMenuOpen] = useState(false);
   const [selectedOnly, setSelectedOnly] = useState(true);
   const [activeAuthorRoleFilters, setActiveAuthorRoleFilters] = useState<AuthorRoleFilter[]>([]);
   const [activeTypeFilter, setActiveTypeFilter] = useState<PubType | null>(null);
@@ -465,6 +486,14 @@ export default function App() {
       // ignore
     }
   }, [selectedTheme]);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('haozeng_font', fontMode);
+    } catch {
+      // ignore
+    }
+  }, [fontMode]);
 
   useEffect(() => {
     const maybeSwitchTheme = () => {
@@ -535,6 +564,10 @@ export default function App() {
     const currentIndex = themeIds.indexOf(selectedTheme);
     const nextTheme = themeIds[(currentIndex + 1) % themeIds.length];
     applyTheme(nextTheme);
+  };
+
+  const cycleFontMode = () => {
+    setFontMode(prev => (prev === 'sans' ? 'serif' : 'sans'));
   };
 
   const publicationMatchesAuthorRole = (
@@ -1051,6 +1084,37 @@ export default function App() {
               )}
             </div>
 
+            {/* 字体切换 */}
+            <div
+              className="relative"
+              onMouseEnter={() => setFontMenuOpen(true)}
+              onMouseLeave={() => setFontMenuOpen(false)}
+            >
+              <button
+                onClick={cycleFontMode}
+                className={`p-2 rounded-full hover:bg-slate-500/10 transition-colors ${theme.textMuted}`}
+                title="切换字体"
+                aria-label="切换字体"
+              >
+                <Type size={18} />
+              </button>
+              {fontMenuOpen && (
+                <div className={`absolute top-full right-0 mt-2 w-32 ${theme.cardBg} border ${theme.border} rounded-lg shadow-xl p-1 z-50`}>
+                  {FONT_OPTIONS.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => { setFontMode(option.id); setFontMenuOpen(false); }}
+                      className={`w-full text-left px-3 py-2 text-sm rounded-md flex items-center justify-between
+                        ${fontMode === option.id ? `${theme.highlight} ${theme.text}` : `${theme.textMuted} hover:bg-slate-500/5`}`}
+                    >
+                      {option.name}
+                      {fontMode === option.id && <Check size={14} />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <button
               type="button"
               onClick={toggleDayNightTheme}
@@ -1085,6 +1149,14 @@ export default function App() {
               aria-label="切换样式"
             >
               <Palette size={20} />
+            </button>
+            <button
+              onClick={cycleFontMode}
+              className={`p-2 ${theme.textMuted}`}
+              title="切换字体"
+              aria-label="切换字体"
+            >
+              <Type size={20} />
             </button>
             <button
               type="button"
@@ -2023,7 +2095,7 @@ export default function App() {
       {/* 全局样式 */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-        :root { --font-sans: 'Inter', -apple-system, sans-serif; --font-serif: var(--font-sans); }
+        :root { --font-sans: ${FONT_SANS_STACK}; --font-serif: ${fontMode === 'serif' ? FONT_SERIF_STACK : 'var(--font-sans)'}; }
         body { font-family: var(--font-sans); }
         .font-sans { font-family: var(--font-sans); }
         .font-serif { font-family: var(--font-serif); }
