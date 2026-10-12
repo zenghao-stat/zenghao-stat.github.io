@@ -7,6 +7,7 @@ import teachingData from './teaching.json';
 import seminarsData from './seminars.json';
 import talksData from './talks.json';
 import academicServiceData from '../content/academic_service.json';
+import awardsData from '../content/awards.json';
 
 export interface Profile {
   name: string;
@@ -124,6 +125,11 @@ export interface AcademicServiceGroup {
   items: AcademicServiceItem[];
 }
 
+export interface AwardItem {
+  name: string;
+  year?: string;
+}
+
 export interface ResearchNarrativeItem {
   text: string;
   citations?: string[];
@@ -152,6 +158,7 @@ export interface Content {
   seminars: Seminar[];
   talks: Talk[];
   services: AcademicServiceGroup[];
+  awards: AwardItem[];
 }
 
 export const HAO_DATA: Content = {
@@ -171,4 +178,5 @@ export const HAO_DATA: Content = {
   seminars: seminarsData as Seminar[],
   talks: talksData as Talk[],
   services: academicServiceData as AcademicServiceGroup[],
+  awards: awardsData as AwardItem[],
 };

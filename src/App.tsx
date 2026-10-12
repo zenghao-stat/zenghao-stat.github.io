@@ -990,6 +990,7 @@ export default function App() {
     { label: 'Seminar', href: '#seminar' },
     { label: 'Talks', href: '#talks' },
     { label: 'Service', href: '#service' },
+    { label: 'Awards', href: '#awards' },
   ];
 
   const todayKey = (() => {
@@ -2074,6 +2075,23 @@ export default function App() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+        {/* Awards 区域 */}
+        <section id="awards" className={`py-16 ${theme.bg} border-t ${theme.border} transition-colors duration-300`}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className={`text-3xl font-bold font-serif ${theme.text} mb-10`}>Awards</h2>
+            <ul className="space-y-4">
+              {HAO_DATA.awards.map((award) => (
+                <li key={`${award.name}-${award.year ?? ''}`} className={`flex items-start gap-3 ${theme.text}`}>
+                  <Award size={20} className={`mt-0.5 shrink-0 ${theme.accent}`} aria-hidden="true" />
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    <span className="font-medium">{award.name}</span>
+                    {award.year && <span className={`text-sm ${theme.textMuted}`}>{award.year}</span>}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
