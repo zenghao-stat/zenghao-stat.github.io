@@ -469,11 +469,11 @@
     }
   },
   {
-    "id": "2024-03-01-poster",
+    "id": "2024-04-20-poster",
     "title": "Poster",
     "type": "Poster",
     "venue": "Conference of the Youth Association of the Chinese Association for Industrial Statistics",
-    "date": "2024-03-01",
+    "date": "2024-04-20",
     "location": "Xuzhou, China",
     "show": true,
     "summary": "Poster presentation at the Conference of the Youth Association of the Chinese Association for Industrial Statistics.",
@@ -491,9 +491,9 @@
       },
       "zh": {
         "type": "海报",
-        "venue": "中国工业统计学会青年协会会议",
+        "venue": "全国工业统计学教学研究会青年统计学家协会2024年年会暨第二届中国青年统计学家论坛",
         "location": "中国徐州",
-        "summary": "在中国工业统计学会青年协会会议展示海报。"
+        "summary": "在全国工业统计学教学研究会青年统计学家协会2024年年会暨第二届中国青年统计学家论坛展示海报。"
       }
     }
   },
@@ -527,40 +527,11 @@
     }
   },
   {
-    "id": "2021-12-01-invited-talk",
-    "title": "Talk",
-    "type": "Talk",
-    "venue": "Xiamen University 2021 Symposium on Modern Statistics",
-    "date": "2021-12-01",
-    "location": "Xiamen, China",
-    "show": true,
-    "summary": "Talk at Xiamen University 2021 Symposium on Modern Statistics.",
-    "tags": [
-      "Talk",
-      "Statistics"
-    ],
-    "i18n": {
-      "en": {
-        "title": "Talk",
-        "type": "Talk",
-        "venue": "Xiamen University 2021 Symposium on Modern Statistics",
-        "location": "Xiamen, China",
-        "summary": "Talk at Xiamen University 2021 Symposium on Modern Statistics."
-      },
-      "zh": {
-        "type": "报告",
-        "venue": "厦门大学 2021 年现代统计研讨会",
-        "location": "中国厦门",
-        "summary": "在厦门大学 2021 年现代统计研讨会作报告。"
-      }
-    }
-  },
-  {
-    "id": "2021-12-01-talk",
+    "id": "2021-12-25-talk",
     "title": "Talk",
     "type": "Talk",
     "venue": "The 2021 Forum for Doctoral Students in Quantitative Economics",
-    "date": "2021-12-01",
+    "date": "2021-12-25",
     "location": "Xiamen, China",
     "show": true,
     "summary": "Talk at the 2021 Forum for Doctoral Students in Quantitative Economics.",
@@ -578,9 +549,38 @@
       },
       "zh": {
         "type": "报告",
-        "venue": "2021 年数量经济学博士生论坛",
+        "venue": "2021 年全国数量经济学博士生学术论坛",
         "location": "中国厦门",
-        "summary": "在 2021 年数量经济学博士生论坛作报告。"
+        "summary": "在 2021 年全国数量经济学博士生学术论坛作报告。"
+      }
+    }
+  },
+  {
+    "id": "2021-12-18-invited-talk",
+    "title": "Invited Talk",
+    "type": "Invited Talk",
+    "venue": "Xiamen University 2021 Symposium on Modern Statistics",
+    "date": "2021-12-18",
+    "location": "Xiamen, China",
+    "show": true,
+    "summary": "Invited talk at Xiamen University 2021 Symposium on Modern Statistics.",
+    "tags": [
+      "Invited Talk",
+      "Statistics"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Invited Talk",
+        "type": "Invited Talk",
+        "venue": "Xiamen University 2021 Symposium on Modern Statistics",
+        "location": "Xiamen, China",
+        "summary": "Invited talk at Xiamen University 2021 Symposium on Modern Statistics."
+      },
+      "zh": {
+        "type": "邀请报告",
+        "venue": "厦门大学 2021 年现代统计研讨会",
+        "location": "中国厦门",
+        "summary": "在厦门大学 2021 年现代统计研讨会作邀请报告。"
       }
     }
   }
