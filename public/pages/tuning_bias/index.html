@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <title>Parametric Scaling Law of Tuning Bias · ICML 2025</title>
+  <meta name="description" content="How does reusing calibration data for tuning affect conformal prediction? Explore tuning bias, its scaling laws, and the ICML 2025 results.">
+  <meta property="og:title" content="Parametric Scaling Law of Tuning Bias in Conformal Prediction">
+  <meta property="og:description" content="An interactive guide to calibration data reuse, tuning complexity, and coverage gaps. ICML 2025.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zenghao-stat.github.io/pages/tuning_bias/">
+  <link rel="canonical" href="https://zenghao-stat.github.io/pages/tuning_bias/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try { if (localStorage.getItem('tuning-bias-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch {}
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'local' }, startup: { typeset: false } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-svg.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="paper-header wrap">
+    <a class="venue" href="https://icml.cc/Conferences/2025" aria-label="ICML 2025"><img src="icml-logo.svg" width="139" height="48" alt="ICML"><span>2025</span></a>
+    <h1>Parametric Scaling Law of Tuning Bias in Conformal Prediction</h1>
+    <p class="authors"><span><a href="https://zenghao-stat.github.io/">Hao Zeng</a><sup>1,*</sup></span><span>Kangdao Liu<sup>1,2,*</sup></span><span>Bingyi Jing<sup>1</sup></span><span>Hongxin Wei<sup>1,†</sup></span></p>
+    <p class="affiliations"><span>¹ Southern University of Science and Technology</span><span>² University of Macau</span></p>
+    <p class="author-notes">* Equal contribution · † Corresponding author: <a href="mailto:weihx@sustech.edu.cn">weihx@sustech.edu.cn</a></p>
+  </header>
+  <nav class="paper-links wrap" aria-label="Paper resources">
+    <a href="/papers/openreview-jnJLZXSOin.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+    <a href="https://github.com/ml-stat-Sustech/Parametric-Scaling-Law-CP-Tuning"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg>Code</a>
+    <a href="#citation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v6H4zm10 0h6v6h-6zM10 11c0 5-2 7-6 7m16-7c0 5-2 7-6 7"/></svg>BibTeX</a>
+    <button id="theme-toggle" type="button" aria-label="Switch to dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z"/></svg></button>
+  </nav>
+  <main id="main">
+    <aside class="tldr wrap" aria-label="TL;DR"><h2>TL;DR</h2><ol>
+      <li>Using the same data for tuning and calibration can add a <em>tuning bias</em>: an extra coverage gap relative to using a separate tuning set.</li>
+      <li>The paper finds small bias for many simple tuning methods, but larger gaps for flexible methods. Its bounds link tuning bias to the complexity of tuning and the amount of calibration data.</li>
+      <li>More calibration data and simpler tuning can help. The experiments also study weight sharing and order-preserving constraints.</li>
+    </ol></aside>
+    <section class="abstract wrap"><h2>Abstract</h2><p id="paper-abstract">Conformal prediction is a popular framework of uncertainty quantification that constructs prediction sets with coverage guarantees. To uphold the exchangeability assumption, many conformal prediction methods necessitate an additional hold-out set for parameter tuning. Yet, the impact of violating this principle on coverage remains underexplored, making it ambiguous in practical applications. In this work, we empirically find that the tuning bias - the coverage gap introduced by leveraging the same dataset for tuning and calibration, is negligible for simple parameter tuning in many conformal prediction methods. In particular, we observe the scaling law of the tuning bias: this bias increases with parameter space complexity and decreases with calibration set size. Formally, we establish a theoretical framework to quantify the tuning bias and provide rigorous proof for the scaling law of the tuning bias by deriving its upper bound. In the end, we discuss how to reduce the tuning bias, guided by the theories we developed.</p></section>
+    <nav class="section-nav wrap" aria-label="Page sections"><a href="#problem">01 The question</a><a href="#scaling">02 Explore the law</a><a href="#evidence">03 The evidence</a><a href="#practice">04 In practice</a><a href="#citation">Citation</a></nav>
+
+    <section id="problem" class="wrap section-rule">
+      <p class="eyebrow">01 / The question</p>
+      <h2>What happens when we reuse the data?</h2>
+      <p>Split conformal prediction turns a model’s scores into prediction sets. If the score has parameters to tune, the usual approach uses a separate hold-out set. Reusing calibration data saves a split, but makes the tuned score depend on the data used to set its threshold.</p>
+      <div class="protocols">
+        <article><p class="protocol-label"><span class="swatch blue"></span>Separate data</p><div class="flow"><span>Tuning set<strong>Choose score parameters</strong></span><b aria-hidden="true">→</b><span>Calibration set<strong>Set the quantile</strong></span></div><p>The score is fixed before calibration.</p></article>
+        <article><p class="protocol-label"><span class="swatch orange"></span>Reuse the same data</p><div class="flow"><span class="shared">One shared set<strong>Tune the score → Set the quantile</strong></span></div><p>The score and threshold both depend on the shared set.</p></article>
+      </div>
+      <div class="definition">
+        <p class="eyebrow">Definition 2.3 / Tuning bias</p>
+        <div class="equation">\[\operatorname{TuningBias}(\mathcal C)=\operatorname{CovGap}(\mathcal C)-\operatorname{CovGap}(\mathcal C_{\mathrm{hold\text{-}out}}).\]</div>
+        <p>Here \(\operatorname{CovGap}(\mathcal C)=|(1-\alpha)-\mathbb P\{Y\in\mathcal C(X)\}|\). Tuning bias is the <strong>difference between two coverage gaps</strong>, rather than the error rate of the classifier or the gap of a single method.</p>
+      </div>
+      <figure class="original-figure"><a href="figure1.svg" target="_blank" rel="noopener"><img src="figure1.svg" width="650" height="400" alt="Figure 1: hold-out and same-data coverage gaps for RAPS, SAPS, score aggregation, temperature scaling, vector scaling, C-Adapter, and ConfTr. Vector scaling and ConfTr show the largest increases."></a><figcaption><strong>Small for some methods; large for others.</strong> Original Figure 1. ResNet-18, CIFAR-100, calibration size 1,000, target error rate 0.1. Open the figure to enlarge it.</figcaption></figure>
+    </section>
+
+    <section id="scaling" class="wrap section-rule">
+      <div class="section-top"><p class="eyebrow">02 / Explore the law</p><h2>Complexity and data pull in opposite directions</h2><p>Theory connects tuning bias to a uniform empirical-process bound over the family of thresholded scores. Explore a finite-candidate bound or the shape of the parametric rate.</p></div>
+      <div class="tabs" role="group" aria-label="Theory illustration"><button type="button" data-theory="finite" aria-pressed="true">Finite candidates</button><button type="button" data-theory="parametric" aria-pressed="false">Parametric trend</button></div>
+      <div class="explorer">
+        <div class="controls">
+          <label for="sample-size">Calibration samples <output id="sample-size-value" for="sample-size">1,000</output></label>
+          <input id="sample-size" type="range" min="250" max="10000" step="250" value="1000">
+          <label for="complexity"><span id="complexity-label">Number of candidates</span><output id="complexity-value" for="complexity">50</output></label>
+          <input id="complexity" type="range" min="1" max="500" step="1" value="50">
+          <p class="theory-readout" id="theory-readout" aria-live="polite"></p>
+          <p class="small" id="theory-caption"></p>
+        </div>
+        <div class="chart-holder"><svg id="theory-chart" role="img" aria-label="Theoretical scaling illustration"></svg><p class="legend"><span><i class="swatch blue"></i>Selected complexity</span><span><i class="line-key"></i>Reference complexity</span></p></div>
+      </div>
+      <div class="equation" id="finite-equation">\[\operatorname{TuningBias}(\mathcal C)\leq\sqrt{\frac{\log(2M)}{2n}}+\frac{1}{\sqrt{2n}\sqrt{\log(2M)}}.\]</div>
+      <div class="equation" id="parametric-equation" hidden>\[\text{Rate shape: }\sqrt{\frac{d+1}{n}}.\]</div>
+      <p class="source-note" id="theory-note">Proposition 4.2: M is the number of fixed candidate score functions; n is the calibration size. This is a theoretical upper bound, not a measured bias.</p>
+      <details><summary>How the bound relates to score complexity</summary><p>The paper’s general framework uses the class \(\mathcal H_\Lambda=\{\mathbf 1\{S^\lambda(x,y)\leq t\}:\lambda\in\Lambda,t\in\mathbb R\}\). The finite-candidate result accounts for all thresholds within each candidate.</p><p>Proposition 4.6 presents a parametric rate \(C\sqrt{(d+1)/n}\). The explorer displays its relative shape, without choosing the unknown constant \(C\). Interpreting dimension as a complexity measure requires control of the thresholded score class for the family under study; a parameter count alone does not describe an arbitrary score family.</p><a class="text-link" href="/papers/openreview-jnJLZXSOin.pdf#page=6">Read Section 4 and the proofs ↗</a></details>
+    </section>
+
+    <section id="evidence" class="wrap section-rule">
+      <div class="section-top"><p class="eyebrow">03 / The evidence</p><h2>The scaling law in the experiments</h2><p>Figure 2 varies one factor at a time: the number of tunable parameters or the amount of calibration data. Both experiments use vector scaling with APS on ImageNet.</p></div>
+      <div class="toolbar"><div class="tabs" role="group" aria-label="Figure 2 experiment"><button type="button" data-experiment="parameters" aria-pressed="true">Parameter count</button><button type="button" data-experiment="samples" aria-pressed="false">Calibration size</button></div><label class="check"><input type="checkbox" id="figure-sd" checked> Show ±1 SD</label></div>
+      <p class="chart-context" id="experiment-context"></p>
+      <svg id="experiment-chart" role="group" aria-label="Figure 2 results"></svg>
+      <div class="legend"><span><i class="swatch orange"></i>Same data</span><span><i class="swatch blue"></i>Separate hold-out</span><span class="hint">Hover, tap, or use Tab to inspect a point.</span></div>
+      <div id="experiment-detail" class="selection-detail" aria-live="polite"></div>
+      <p class="source-note">Source: Figure 2 and the authors’ plotting data, checked against the published vector curves. Values are means ± standard deviations (SD) over 30 runs. Bands show variability, not confidence intervals; negative lower band endpoints are clipped at zero.</p>
+      <details><summary>Inspect Figure 2 values</summary><div class="table-scroll"><table><caption id="experiment-table-caption"></caption><thead><tr><th scope="col" id="experiment-x-heading">Parameters</th><th scope="col">Same data (%)</th><th scope="col">Hold-out (%)</th><th scope="col">Difference (pp)</th></tr></thead><tbody id="experiment-table"></tbody></table></div><a class="text-link" href="results.json" download>Download all numerical data (JSON) ↓</a></details>
+    </section>
+
+    <section id="practice" class="wrap section-rule">
+      <div class="section-top"><p class="eyebrow">04 / In practice</p><h2>Use fewer parameters. Preserve useful structure.</h2><p>The paper studies two ways to limit tuning complexity: weight sharing, as in temperature scaling, and an order-preserving (OP) constraint for ConfTr.</p></div>
+      <div class="toolbar"><div class="tabs" role="group" aria-label="Table 1 dataset"><button type="button" data-dataset="cifar100" aria-pressed="true">CIFAR-100</button><button type="button" data-dataset="imagenet" aria-pressed="false">ImageNet</button></div><label class="check"><input type="checkbox" id="table-sd" checked> Show ±1 SD</label></div>
+      <p class="chart-context" id="table-context"></p>
+      <svg id="comparison-chart" role="group" aria-label="Table 1 tuning bias comparison"></svg>
+      <div class="legend"><span><i class="swatch blue"></i>Weight sharing / OP constraint</span><span><i class="swatch orange"></i>More flexible tuning</span></div>
+      <div id="comparison-detail" class="selection-detail" aria-live="polite"></div>
+      <p class="source-note">Source: Table 1, APS score. Values are tuning bias in percentage points, reported as mean ± SD. The two datasets use different calibration sizes; compare methods within each dataset.</p>
+      <details><summary>Inspect Table 1 values</summary><div class="table-scroll"><table><caption>Table 1 · Tuning bias, mean ± SD (percentage points)</caption><thead><tr><th scope="col">Method</th><th scope="col">CIFAR-100</th><th scope="col">ImageNet</th></tr></thead><tbody id="comparison-table"></tbody></table></div></details>
+      <div class="takeaways"><article><span class="eyebrow">Weight sharing</span><h3>Keep the tuning task small</h3><p>Temperature scaling uses one shared temperature, while vector scaling uses class-specific parameters. Their observed tuning biases differ sharply in Table 1.</p></article><article><span class="eyebrow">Order preservation</span><h3>Constrain what tuning can change</h3><p>ConfTr with the OP constraint has smaller reported bias than unconstrained ConfTr. These results motivate tuning methods that keep useful prediction structure.</p></article></div>
+      <p class="small">These experiments study data reuse in the paper’s setting. A small observed bias is useful evidence, but does not by itself certify coverage for a new model or dataset.</p>
+    </section>
+
+    <section class="wrap section-rule resources" id="resources">
+      <p class="eyebrow">Read &amp; build</p><h2>Paper and resources</h2>
+      <a href="/papers/openreview-jnJLZXSOin.pdf"><strong>Full paper</strong><span>ICML 2025 · 24 pages · PDF ↗</span></a>
+      <a href="https://github.com/ml-stat-Sustech/Parametric-Scaling-Law-CP-Tuning"><strong>Reproducibility code</strong><span>Parametric-Scaling-Law-CP-Tuning ↗</span></a>
+      <a href="results.json" download><strong>Interactive chart data</strong><span>Figure 2 and Table 1 · JSON ↓</span></a>
+      <a href="https://proceedings.mlr.press/v267/zeng25e.html"><strong>Publication record</strong><span>PMLR 267:74133–74156 ↗</span></a>
+    </section>
+    <section class="wrap section-rule citation" id="citation">
+      <div class="citation-heading"><h2>Citation</h2><button id="copy-citation" type="button">Copy BibTeX</button></div>
+      <pre id="citation-text">@InProceedings{pmlr-v267-zeng25e,
+  title = {Parametric Scaling Law of Tuning Bias in Conformal Prediction},
+  author = {Zeng, Hao and Liu, Kangdao and Jing, Bingyi and Wei, Hongxin},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning},
+  pages = {74133--74156},
+  year = {2025},
+  volume = {267},
+  series = {Proceedings of Machine Learning Research},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v267/zeng25e.html}
+}</pre><p id="copy-status" role="status"></p>
+    </section>
+  </main>
+  <footer class="wrap"><a href="https://zenghao-stat.github.io/">Hao Zeng ↗</a><span>Parametric Scaling Law of Tuning Bias · ICML 2025</span><a href="#">Back to top ↑</a></footer>
+  <noscript><p class="wrap">Interactive charts need JavaScript. The paper, original Figure 1, and downloadable numerical data remain available above.</p></noscript>
+</body>
+</html>

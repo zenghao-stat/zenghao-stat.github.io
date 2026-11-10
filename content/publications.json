@@ -64,7 +64,8 @@
     "type": "Conference",
     "year": "2025",
     "month": "06",
-    "url": "https://openreview.net/forum?id=jnJLZXSOin",
+    "url": "/pages/tuning_bias/",
+    "code": "https://github.com/ml-stat-Sustech/Parametric-Scaling-Law-CP-Tuning",
     "keywords": [
       "Conformal Prediction"
     ],

@@ -1,0 +1,195 @@
+{
+  "publication": "https://proceedings.mlr.press/v267/zeng25e.html",
+  "units": {
+    "coverage_gap": "percent",
+    "tuning_bias": "percentage points",
+    "uncertainty": "standard deviation, not confidence interval"
+  },
+  "provenance": {
+    "figure2": "Author plotting notebook, cells 12 and 8; mean and SD curves verified against the published PDF vector coordinates.",
+    "table1": "Transcribed from published Table 1, page 8.",
+    "figure1": "Original figure asset retained; no numeric reconstruction from the older six-method notebook cell."
+  },
+  "figure2": {
+    "parameters": {
+      "x": [
+        1200,
+        1400,
+        1600,
+        1800,
+        2000
+      ],
+      "same": [
+        [
+          4.21,
+          0.48
+        ],
+        [
+          4.77,
+          0.49
+        ],
+        [
+          5.32,
+          0.48
+        ],
+        [
+          5.79,
+          0.53
+        ],
+        [
+          6.47,
+          0.57
+        ]
+      ],
+      "holdout": [
+        [
+          0.31,
+          0.27
+        ],
+        [
+          0.35,
+          0.32
+        ],
+        [
+          0.37,
+          0.32
+        ],
+        [
+          0.33,
+          0.31
+        ],
+        [
+          0.32,
+          0.26
+        ]
+      ],
+      "title": "Figure 2(a): parameter-space complexity",
+      "xLabel": "Tunable parameters",
+      "context": "ImageNet · ResNet-18 · APS · calibration size 6,000 · 30 runs"
+    },
+    "samples": {
+      "x": [
+        6000,
+        7000,
+        8000,
+        9000,
+        10000
+      ],
+      "same": [
+        [
+          5.83,
+          0.49
+        ],
+        [
+          4.81,
+          0.59
+        ],
+        [
+          4.01,
+          0.41
+        ],
+        [
+          3.44,
+          0.45
+        ],
+        [
+          3.19,
+          0.28
+        ]
+      ],
+      "holdout": [
+        [
+          0.33,
+          0.29
+        ],
+        [
+          0.33,
+          0.28
+        ],
+        [
+          0.3,
+          0.23
+        ],
+        [
+          0.32,
+          0.2
+        ],
+        [
+          0.29,
+          0.16
+        ]
+      ],
+      "title": "Figure 2(b): calibration set size",
+      "xLabel": "Calibration samples",
+      "context": "ImageNet · ResNet-18 · APS · full vector scaling · 30 runs"
+    }
+  },
+  "datasets": {
+    "cifar100": {
+      "name": "CIFAR-100",
+      "n": 2500
+    },
+    "imagenet": {
+      "name": "ImageNet",
+      "n": 5000
+    }
+  },
+  "table1": [
+    {
+      "id": "ts",
+      "method": "Temperature scaling",
+      "short": "Temperature scaling",
+      "constrained": true,
+      "cifar100": [
+        0.14,
+        0.01
+      ],
+      "imagenet": [
+        0.04,
+        0.01
+      ]
+    },
+    {
+      "id": "vs",
+      "method": "Vector scaling",
+      "short": "Vector scaling",
+      "constrained": false,
+      "cifar100": [
+        1.13,
+        0.02
+      ],
+      "imagenet": [
+        6.63,
+        0.03
+      ]
+    },
+    {
+      "id": "op",
+      "method": "ConfTr (ft.) with OP",
+      "short": "ConfTr with OP",
+      "constrained": true,
+      "cifar100": [
+        0.52,
+        0.37
+      ],
+      "imagenet": [
+        0.4,
+        0.31
+      ]
+    },
+    {
+      "id": "conftr",
+      "method": "ConfTr (ft.) without OP",
+      "short": "ConfTr without OP",
+      "constrained": false,
+      "cifar100": [
+        6.15,
+        0.86
+      ],
+      "imagenet": [
+        21.68,
+        0.58
+      ]
+    }
+  ]
+}
