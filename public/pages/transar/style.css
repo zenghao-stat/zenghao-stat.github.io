@@ -56,14 +56,31 @@ strong { font-weight: 600; }
 .equation { text-align: center; overflow-x: auto; font-size: 22px; padding: 8px 0; }
 .equation mjx-container[display='true'] { margin: .6em 0; }
 .equation-caption { color: var(--muted); font: 12px/1.7 var(--sans); text-align: center; }
-.model-parts, .theory-notes, .evidence-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin-top: 25px; }
-.model-parts p, .theory-notes p:not(.eyebrow), .evidence-notes p:not(.eyebrow) { font-size: 17px; margin-bottom: 0; }
+.model-parts, .evidence-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin-top: 25px; }
+.model-parts p, .evidence-notes p:not(.eyebrow) { font-size: 17px; margin-bottom: 0; }
 .method-flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 29px; padding: 24px 0; border-block: 1px solid var(--line); margin: 25px 0 15px; }
 .flow-index { display: block; font: 12px/1.5 var(--sans); color: var(--accent); margin-bottom: 11px; }
 .method-flow h3 { font-size: 20px; }
 .method-flow p { font-size: 16px; line-height: 1.6; }
 .flow-label { display: block; color: var(--muted); font: 12px/1.6 var(--sans); }
-.theory-notes { border-top: 1px solid var(--line); padding-top: 25px; }
+.theory-notation { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 38px; border-block: 1px solid var(--line); padding-block: 23px; margin: 26px 0 0; }
+.theory-notation > div { min-width: 0; }
+.theory-notation dt { color: var(--muted); font: 10px/1.6 var(--sans); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 7px; }
+.theory-notation dd { margin: 0; font-size: 16px; line-height: 1.7; }
+.theorem-result { min-width: 0; padding-top: 26px; }
+.theorem-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 14px; margin-bottom: 10px; }
+.theorem-heading .eyebrow { margin: 0; color: var(--accent); }
+.theorem-heading .text-link { white-space: nowrap; font-size: 10px; }
+.theorem-result h3 { font-size: 24px; margin: 0 0 14px; }
+.theory .equation { font-size: clamp(14px, 2.3vw, 20px); padding-block: 10px; }
+.theory .theory-reading { color: var(--muted); font-size: 15px; line-height: 1.75; }
+.theory-special-case { margin-top: 22px; padding-bottom: 24px; }
+.theory-special-case p { font-size: 16px; }
+.theory-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; border-top: 1px solid var(--line); }
+.theory-pair .theorem-result p { font-size: 16px; }
+.theory-pair .theory-reading { font-size: 14px; }
+.theory-pair .equation { font-size: 17px; min-height: 90px; display: grid; align-items: center; }
+.theory-pair .theorem-result > p:last-child { margin-bottom: 0; }
 details { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 25px; }
 summary { cursor: pointer; font: 13px/1.6 var(--sans); }
 details[open] summary { margin-bottom: 18px; }
@@ -126,7 +143,12 @@ footer a { text-decoration: none; }
   .authors { font-size: 16px; gap: 6px 19px; }.affiliations { font-size: 12px; }.author-notes { font-size: 11px; }
   .paper-links { gap: 24px; font-size: 12px; }.tldr { padding: 18px; margin-top: 24px; }
   .section-nav { justify-content: flex-start; gap: 9px 19px; }.section-rule { padding-block: 28px; }.equation { font-size: 18px; }
-  .model-parts, .theory-notes, .evidence-notes, .method-flow { grid-template-columns: 1fr; gap: 24px; }
+  .model-parts, .evidence-notes, .method-flow { grid-template-columns: 1fr; gap: 24px; }
+  .theory-notation, .theory-pair { grid-template-columns: 1fr; gap: 20px; }
+  .theory-notation { padding-block: 20px; }.theory-notation dd { font-size: 15px; }
+  .theorem-result h3 { font-size: 22px; }.theory-pair { gap: 0; }
+  .theory-pair .theorem-result + .theorem-result { border-top: 1px solid var(--line); margin-top: 24px; }
+  .theory-pair .equation { font-size: clamp(13px, 3.6vw, 17px); min-height: 0; }
   .flow-index { margin-bottom: 5px; }.method-flow p { margin-bottom: 8px; }
   .paper-figure > a { padding: 5px; }.tabs { gap: 15px; }.tabs button { font-size: 11px; }
   .legend { gap: 8px 19px; }.hint { margin-left: 0; flex-basis: 100%; font-size: 10px; }
