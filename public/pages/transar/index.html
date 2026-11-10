@@ -44,10 +44,10 @@
       <li>In the reported 2020 election evaluation, tranSAR has lower county-level RMSE in five of six swing states. The interactive comparison below also shows where transfer does not improve a result.</li>
     </ol></aside>
     <section class="wrap abstract"><h2>Abstract</h2><p id="paper-abstract">It is important to incorporate spatial geographic information into U.S. presidential election analysis, especially for swing states. The state-level analysis also faces significant challenges of limited spatial data availability. To address the challenges of spatial dependence and small sample sizes in predicting U.S. presidential election results using spatially dependent data, we propose a novel transfer learning framework within the SAR model, called as tranSAR. Classical SAR model estimation often loses accuracy with small target data samples. Our framework enhances estimation and prediction by leveraging information from similar source data. We introduce a two-stage algorithm, consisting of a transferring stage and a debiasing stage, to estimate parameters and establish theoretical convergence rates for the estimators. Additionally, if the informative source data are unknown, we propose a transferable source detection algorithm using spatial residual bootstrap to maintain spatial dependence and derive its detection consistency. Simulation studies show our algorithm substantially improves the classical two-stage least squares estimator. We demonstrate our method’s effectiveness in predicting outcomes in U.S. presidential swing states, where it outperforms traditional methods. In addition, our tranSAR model predicts that the Republican Party would win the 2024 U.S. presidential election.</p><p class="source-note">Abstract from the published JBES article. The 2024 election prediction is a historical application reported in that paper.</p></section>
-    <nav class="wrap section-nav" aria-label="Page sections"><a href="#idea">01 The idea</a><a href="#method">02 The method</a><a href="#theory">03 Theory</a><a href="#simulation">04 Simulations</a><a href="#elections">05 Election results</a><a href="#sources">06 Source selection</a><a href="#citation">Citation</a></nav>
+    <nav class="wrap section-nav" aria-label="Page sections"><a href="#idea">01 Model</a><a href="#method">02 Method</a><a href="#theory">03 Theory</a><a href="#simulation">04 Simulations</a><a href="#elections">05 Election results</a><a href="#sources">06 Source selection</a><a href="#citation">Citation</a></nav>
 
     <section id="idea" class="wrap section-rule">
-      <p class="eyebrow">01 / The idea</p><h2>Borrow strength, without losing the spatial structure</h2>
+      <p class="eyebrow">01 / Model</p><h2>Spatial autoregressive model</h2>
       <p>A target state may have too few counties for precise estimation. Other states can provide useful information, but their demographic effects and spatial dependence need not match the target. Pooling every source can introduce negative transfer.</p>
       <div class="model-equation equation">\[Y^{(k)}=\sum_{l=1}^{p}\lambda_l^{(k)}W_l^{(k)}Y^{(k)}+X^{(k)}\beta^{(k)}+V^{(k)}.\]</div>
       <p class="equation-caption">Each domain has its own spatial weights and coefficients; \(k=0\) denotes the target.</p>
@@ -55,7 +55,7 @@
     </section>
 
     <section id="method" class="wrap section-rule">
-      <p class="eyebrow">02 / The method</p><h2>Transfer first. Correct toward the target.</h2>
+      <p class="eyebrow">02 / Method</p><h2>Source screening and two-stage estimation</h2>
       <p>With an informative source set \(\mathcal A\), the estimator has two stages. When the source set is unknown, a spatial residual bootstrap procedure screens it before the final fit.</p>
       <div class="method-flow" aria-label="Screen source domains, fit a pooled estimator, then correct it with target data">
         <article><span class="flow-index">A</span><h3>Screen sources</h3><p>Use spatial residual bootstrap to assess source usefulness while preserving the spatial dependence structure.</p><span class="flow-label">Selected set \(\widehat{\mathcal A}\)</span></article>
