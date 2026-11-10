@@ -1,0 +1,348 @@
+{
+  "source": {
+    "paper": "PAC Reasoning: Controlling the Performance Loss for Efficient Reasoning",
+    "version": "NeurIPS 2026 camera-ready, archived 2026-11-07",
+    "table": 1,
+    "pdf": "paper.pdf#page=9",
+    "model_pair": [
+      "Qwen3-4B-Thinking-2507",
+      "Qwen3-4B-Instruct-2507"
+    ],
+    "repeated_runs": 100,
+    "alpha": 0.05,
+    "dispersion": "standard deviation, not confidence interval"
+  },
+  "datasets": {
+    "math": {
+      "name": "MATH-500",
+      "epsilon": 0.03,
+      "success": {
+        "count": 89,
+        "runs": 100,
+        "interval": [
+          81.17,
+          94.38
+        ]
+      },
+      "cost": {
+        "latency_s": [
+          266400,
+          82200
+        ],
+        "dollars": [
+          1.71,
+          0.78
+        ]
+      }
+    },
+    "zebra": {
+      "name": "ZebraLogic",
+      "epsilon": 0.08,
+      "success": {
+        "count": 85,
+        "runs": 100,
+        "interval": [
+          76.47,
+          91.35
+        ]
+      },
+      "cost": {
+        "latency_s": [
+          59800,
+          43800
+        ],
+        "dollars": [
+          4.64,
+          1.98
+        ]
+      }
+    }
+  },
+  "methods": [
+    {
+      "id": "m0",
+      "method": "Naive threshold",
+      "score": "Logits-based",
+      "math": {
+        "error": [
+          0.0179,
+          0.0068
+        ],
+        "ecp": [
+          14.44,
+          2.02
+        ],
+        "stp": [
+          43.58,
+          4.78
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0062,
+          0.0026
+        ],
+        "ecp": [
+          77.28,
+          1.36
+        ],
+        "stp": [
+          -34.78,
+          1.26
+        ]
+      }
+    },
+    {
+      "id": "m1",
+      "method": "Naive threshold",
+      "score": "Verbalized",
+      "math": {
+        "error": [
+          0.0346,
+          0.0095
+        ],
+        "ecp": [
+          2.83,
+          0.94
+        ],
+        "stp": [
+          66.67,
+          4.91
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0631,
+          0.0074
+        ],
+        "ecp": [
+          12.49,
+          1.07
+        ],
+        "stp": [
+          32.7,
+          2.11
+        ]
+      }
+    },
+    {
+      "id": "m2",
+      "method": "Naive control",
+      "score": "Logits-based",
+      "math": {
+        "error": [
+          0.0351,
+          0.0098
+        ],
+        "ecp": [
+          6.04,
+          2.75
+        ],
+        "stp": [
+          61.52,
+          6.1
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0959,
+          0.0099
+        ],
+        "ecp": [
+          5.47,
+          1.63
+        ],
+        "stp": [
+          46.59,
+          2.43
+        ]
+      }
+    },
+    {
+      "id": "m3",
+      "method": "Naive control",
+      "score": "Verbalized",
+      "math": {
+        "error": [
+          0.0351,
+          0.0098
+        ],
+        "ecp": [
+          6.04,
+          2.75
+        ],
+        "stp": [
+          61.52,
+          6.1
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0948,
+          0.0093
+        ],
+        "ecp": [
+          6.56,
+          0.92
+        ],
+        "stp": [
+          42.75,
+          1.95
+        ]
+      }
+    },
+    {
+      "id": "m4",
+      "method": "PAC Reasoning",
+      "score": "Logits-based",
+      "math": {
+        "error": [
+          0.0206,
+          0.0126
+        ],
+        "ecp": [
+          21.48,
+          17.85
+        ],
+        "stp": [
+          37.61,
+          23.19
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0618,
+          0.0181
+        ],
+        "ecp": [
+          22.5,
+          7.47
+        ],
+        "stp": [
+          23.13,
+          9.09
+        ]
+      }
+    },
+    {
+      "id": "m5",
+      "method": "PAC Reasoning",
+      "score": "Verbalized",
+      "math": {
+        "error": [
+          0.0209,
+          0.0141
+        ],
+        "ecp": [
+          24.59,
+          20.48
+        ],
+        "stp": [
+          36.13,
+          26.44
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.053,
+          0.0246
+        ],
+        "ecp": [
+          26.95,
+          20.68
+        ],
+        "stp": [
+          21.21,
+          17.2
+        ]
+      }
+    },
+    {
+      "id": "m6",
+      "method": "Router",
+      "score": "—",
+      "math": {
+        "error": [
+          0.0435,
+          0.0107
+        ],
+        "ecp": [
+          1.97,
+          0.74
+        ],
+        "stp": [
+          74.73,
+          2.59
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0781,
+          0.0082
+        ],
+        "ecp": [
+          23.77,
+          1.39
+        ],
+        "stp": [
+          39.81,
+          1.06
+        ]
+      }
+    },
+    {
+      "id": "m7",
+      "method": "CoD",
+      "score": "—",
+      "math": {
+        "error": [
+          0.3548,
+          0.0604
+        ],
+        "ecp": null,
+        "stp": [
+          -1.33,
+          0.82
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0492,
+          0.0071
+        ],
+        "ecp": null,
+        "stp": [
+          0.03,
+          0.62
+        ]
+      }
+    },
+    {
+      "id": "m8",
+      "method": "NoThinking",
+      "score": "—",
+      "math": {
+        "error": [
+          0.4445,
+          0.0583
+        ],
+        "ecp": null,
+        "stp": [
+          -4.51,
+          1.0
+        ]
+      },
+      "zebra": {
+        "error": [
+          0.0392,
+          0.0066
+        ],
+        "ecp": null,
+        "stp": [
+          -0.52,
+          0.69
+        ]
+      }
+    }
+  ]
+}

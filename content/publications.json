@@ -223,9 +223,10 @@
     "type": "Conference",
     "year": "2026",
     "month": "09",
-    "url": "https://openreview.net/forum?id=52BT1Jih6O",
-    "abs": "Large reasoning models can solve hard tasks but are expensive at test time. A common idea is to switch between thinking and nonthinking modes, but it can introduce errors and lacks statistical guarantees. We propose Probably Approximately Correct (PAC) reasoning, which controls performance loss under a user-specified tolerance. We build an upper confidence bound for the performance loss as a monotone function of an uncertainty score, and use it to pick a switching threshold. This yields distribution-free guarantees on bounded performance loss. Experiments show the method saves compute while controlling performance loss.",
-    "pdf": "/papers/2510.09133.pdf",
+    "url": "/pages/pac_reasoning/",
+    "abs": "PAC Reasoning switches between thinking and non-thinking models to save computation while controlling performance loss relative to the thinking model. It tests a fixed grid of thresholds in increasing order and stops at the first upper confidence bound above the user-specified tolerance. Under the stated pointwise validity and sampling conditions, the selected policy has a PAC guarantee. The guarantee is asymptotic for the CLT construction and finite-sample under the conditions of the Hoeffding construction. Experiments measure performance loss, token savings, latency, and cost.",
+    "pdf": "/pages/pac_reasoning/paper.pdf",
+    "code": "https://github.com/Jianguo99/PAC-Reasoning",
     "selected": true,
     "keywords": [
       "Large Language Models"
