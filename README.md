@@ -240,6 +240,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
 - 条目效果：
   - 标题：当 `url` 存在且不为 `#` 时，标题变为外链
   - PDF / Code：当 `pdf` / `code` 存在且不为 `#` 时显示按钮
+  - Pages：当 `url` 指向站内 `/pages/` 项目页面时，与 PDF / Code 并列显示独立入口
   - Abstract：桌面端支持悬停展开；移动端显示 “Abstract” 按钮点开
   - 作者标记（依赖作者名精确匹配）：
     - 署名第一的作者自动显示 †；`firstAuthors` 中显式列出的共同一作也显示 †

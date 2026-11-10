@@ -1820,7 +1820,7 @@ export default function App() {
 
                         {/* 链接按钮 */}
                         <div className="flex gap-2 ml-auto">
-                          {pub.url && pub.url !== '#' && (
+                          {pub.url && pub.url !== '#' && !pub.url.startsWith('/pages/') && (
                             <a
                               href={pub.url}
                               target="_blank"
@@ -1829,6 +1829,16 @@ export default function App() {
                             >
                               <ExternalLink size={16} />
                               Link
+                            </a>
+                          )}
+                          {pub.url?.startsWith('/pages/') && (
+                            <a
+                              href={pub.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flex items-center gap-1 ${theme.textMuted} hover:${theme.accent} transition-colors`}
+                            >
+                              <BookOpen size={14} /> Pages
                             </a>
                           )}
                           {pub.pdf && pub.pdf !== '#' && (
