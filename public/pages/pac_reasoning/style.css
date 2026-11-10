@@ -76,7 +76,7 @@ output { color: var(--accent); font-variant-numeric: tabular-nums; }
 input[type='range'] { width: 100%; accent-color: var(--ink); display: block; margin: 13px 0; cursor: pointer; }
 input[type='checkbox'] { accent-color: var(--ink); width: 14px; height: 14px; }
 .calibration-state { font: 12px/1.6 var(--sans); margin-top: 16px; color: var(--accent); }
-.calibration-lab svg { display: block; width: 100%; height: auto; }
+#calibration-chart { display: block; width: 100%; height: auto; }
 svg text { font-family: var(--sans); }
 .legend { display: flex; flex-wrap: wrap; gap: 9px 18px; align-items: center; font: 11px/1.6 var(--sans); color: var(--muted); margin-top: 4px; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
@@ -85,9 +85,9 @@ svg text { font-family: var(--sans); }
 .source-note { font: 12px/1.65 var(--sans); color: var(--muted); margin: 15px 0 0; }
 .lab-note { grid-column: 1/-1; margin-top: 3px; }
 .guarantee { border-top: 1px solid var(--line); }
-.equation { text-align: center; font: 28px/1.5 var(--serif); padding: 15px 0 6px; margin: 6px 0; }
-.equation sub { font-size: .6em; }
-.math-bracket { padding-inline: 4px; }
+.equation { text-align: center; font-size: clamp(18px, 2.5vw, 25px); padding: 15px 0 6px; margin: 6px 0; overflow-x: auto; }
+.equation mjx-container[display='true'] { margin: .5em 0; }
+.math-label { pointer-events: none; }
 .equation-caption { font: 11px/1.7 var(--sans); color: var(--muted); text-align: center; margin-bottom: 24px; }
 details { border-top: 1px solid var(--line); padding-top: 13px; margin-top: 20px; }
 summary { font: 13px/1.6 var(--sans); }

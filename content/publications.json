@@ -224,7 +224,7 @@
     "year": "2026",
     "month": "09",
     "url": "/pages/pac_reasoning/",
-    "abs": "PAC Reasoning switches between thinking and non-thinking models to save computation while controlling performance loss relative to the thinking model. It tests a fixed grid of thresholds in increasing order and stops at the first upper confidence bound above the user-specified tolerance. Under the stated pointwise validity and sampling conditions, the selected policy has a PAC guarantee. The guarantee is asymptotic for the CLT construction and finite-sample under the conditions of the Hoeffding construction. Experiments measure performance loss, token savings, latency, and cost.",
+    "abs": "PAC Reasoning calibrates selective thinking, which switches between thinking and non-thinking models to save computation while controlling performance loss relative to the thinking model. It tests a fixed grid of thresholds in increasing order and stops at the first upper confidence bound above the user-specified tolerance. Under the stated pointwise validity and sampling conditions, the selected policy has a PAC guarantee. The guarantee is asymptotic for the CLT construction and finite-sample under the conditions of the Hoeffding construction. Experiments measure performance loss, token savings, latency, and cost.",
     "pdf": "/pages/pac_reasoning/paper.pdf",
     "code": "https://github.com/Jianguo99/PAC-Reasoning",
     "selected": true,

@@ -1,4 +1,4 @@
-/* 数据来自 CR 表 1；校准示意单独使用合成数值。 */
+/* 数据来自论文表 1；校准示意单独使用合成数值。 */
 const $ = (selector) => document.querySelector(selector);
 const NS = 'http://www.w3.org/2000/svg';
 const colors = {};
@@ -18,6 +18,35 @@ function svgNode(tag, attrs = {}, text = '') {
 }
 function add(parent, tag, attrs, text) { const node = svgNode(tag, attrs, text); parent.append(node); return node; }
 function label(parent, x, y, text, attrs = {}) { return add(parent, 'text', { x, y, fill: colors.muted, 'font-size': 12, ...attrs }, text); }
+
+// 正文与交互图共用 MathJax；缓存转换结果，避免滑杆重复排版同一公式。
+const mathReady = window.MathJax.startup.promise;
+const mathCache = new Map();
+function mathSVG(tex) {
+  if (!mathCache.has(tex)) mathCache.set(tex, mathReady.then(() => MathJax.tex2svgPromise(tex, { display: false })));
+  return mathCache.get(tex).then((node) => node.cloneNode(true));
+}
+function setMath(node, tex) {
+  node.dataset.math = tex;
+  node.textContent = `\\(${tex}\\)`;
+  mathSVG(tex).then((math) => { if (node.isConnected && node.dataset.math === tex) node.replaceChildren(math); });
+}
+function mathLabel(parent, x, y, tex, attrs = {}) {
+  const group = add(parent, 'g', { class: 'math-label', color: attrs.fill || colors.muted });
+  mathSVG(tex).then((math) => {
+    if (!group.isConnected) return;
+    const svg = math.querySelector('svg');
+    const [, minY, width, height] = svg.getAttribute('viewBox').split(/\s+/).map(Number);
+    const scale = (attrs['font-size'] || 12) / 1000;
+    const offset = attrs['text-anchor'] === 'end' ? width * scale : attrs['text-anchor'] === 'middle' ? width * scale / 2 : 0;
+    svg.setAttribute('x', x - offset); svg.setAttribute('y', y + minY * scale);
+    svg.setAttribute('width', width * scale); svg.setAttribute('height', height * scale);
+    group.append(svg);
+  });
+  return group;
+}
+// 只扫描静态区域；交互区域由 setMath 更新，避免已移除节点进入排版队列。
+mathReady.then(() => MathJax.typesetPromise([...document.querySelectorAll('.tldr, .routing-figure, .lab-copy p:not(.eyebrow), .equation, .results-section > .source-note')]));
 
 // 示意中的上界有意不单调，展示首个失败后的点不可重新加入。
 const demoUCB = [0.014, 0.023, 0.036, 0.052, 0.043, 0.065, 0.082, 0.074];
@@ -40,20 +69,32 @@ function renderCalibration() {
   }
   label(svg, left, 18, 'Upper confidence bound (synthetic)', { 'font-size': 11 });
   add(svg, 'line', { x1: left, x2: right, y1: y(eps), y2: y(eps), stroke: colors.rust, 'stroke-dasharray': '5 4', 'stroke-width': 1.5 });
-  label(svg, right, y(eps) - 9, `ε = ${eps.toFixed(3)}`, { fill: colors.rust, 'text-anchor': 'end', 'font-size': 11 });
+  mathLabel(svg, right, y(eps) - 9, `\\epsilon = ${eps.toFixed(3)}`, { fill: colors.rust, 'text-anchor': 'end', 'font-size': 11 });
   demoUCB.forEach((value, i) => {
     const color = i < passed ? colors.green : i === failedIndex ? colors.rust : '#aeb4aa';
     add(svg, 'line', { x1: x(i), x2: x(i), y1: bottom, y2: y(value), stroke: color, 'stroke-width': 2, opacity: i > failedIndex && failedIndex >= 0 ? .45 : 1 });
     add(svg, 'circle', { cx: x(i), cy: y(value), r: 6, fill: color });
-    label(svg, x(i), bottom + 23, `u${i + 1}`, { 'text-anchor': 'middle', 'font-size': 12 });
+    mathLabel(svg, x(i), bottom + 23, `u_{${i + 1}}`, { 'text-anchor': 'middle', 'font-size': 12 });
     if (i === passed - 1) {
       add(svg, 'circle', { cx: x(i), cy: y(value), r: 12, stroke: colors.green, fill: 'none', 'stroke-width': 1.5 });
       label(svg, x(i), y(value) - 19, 'selected', { 'text-anchor': 'middle', fill: colors.green, 'font-size': 11 });
     }
   });
   label(svg, (left + right) / 2, 328, width < 450 ? 'Pre-specified thresholds →' : 'Pre-specified thresholds, tested in increasing order →', { 'text-anchor': 'middle', 'font-size': 11 });
-  $('#epsilon-value').textContent = `ε = ${eps.toFixed(3)}`;
-  $('#calibration-state').textContent = passed === 0 ? 'The first test fails. Fall back to u₀: always use the thinking model.' : failedIndex < 0 ? 'All tests pass. Select u₈, the final grid point.' : `Stop at u${failedIndex + 1}. Select u${passed}, the preceding threshold.`;
+  setMath($('#epsilon-value'), `\\epsilon = ${eps.toFixed(3)}`);
+  const state = $('#calibration-state'); state.replaceChildren();
+  const threshold = document.createElement('span');
+  if (passed === 0) {
+    state.append('The first test fails. Fall back to ', threshold, ': always use the thinking model.');
+    setMath(threshold, 'u_0');
+  } else if (failedIndex < 0) {
+    state.append('All tests pass. Select ', threshold, ', the final grid point.');
+    setMath(threshold, 'u_8');
+  } else {
+    const preceding = document.createElement('span');
+    state.append('Stop at ', threshold, '. Select ', preceding, ', the preceding threshold.');
+    setMath(threshold, `u_{${failedIndex + 1}}`); setMath(preceding, `u_{${passed}}`);
+  }
 }
 $('#epsilon').addEventListener('input', renderCalibration);
 renderCalibration();
@@ -96,8 +137,10 @@ function showDetail(row) {
   const status = document.createElement('p');
   const over = values.error[0] > meta.epsilon;
   status.className = `mean-status${over ? ' over' : ''}`;
-  status.textContent = `${over ? 'Mean loss above' : 'Mean loss within'} ε = ${meta.epsilon.toFixed(2)}`;
+  status.append(`${over ? 'Mean loss above' : 'Mean loss within'} `);
+  const tolerance = document.createElement('span'); status.append(tolerance);
   detail.append(status);
+  setMath(tolerance, `\\epsilon = ${meta.epsilon.toFixed(2)}`);
   const note = document.createElement('p'); note.className = 'detail-instruction'; note.textContent = '100 runs · mean ± SD. Means describe this experiment; statistical guarantees require the conditions in the paper.'; detail.append(note);
   document.querySelectorAll('.plot-point').forEach((p) => { p.classList.toggle('selected', p.dataset.id === selected); });
 }
@@ -118,7 +161,7 @@ function renderResults() {
   const clampX = (v) => Math.max(left, Math.min(right, x(v)));
   const clampY = (v) => Math.max(top, Math.min(bottom, y(v)));
   add(svg, 'title', {}, `${meta.name}: binary loss versus ${metric === 'stp' ? 'tokens saved' : 'expert calls'}`);
-  add(svg, 'desc', {}, `CR Table 1. Tolerance ${meta.epsilon}. Each focusable point is a method's mean over 100 runs. Error bars are one standard deviation, clipped at the chart edges. Use Tab to inspect points, or tap or hover.`);
+  add(svg, 'desc', {}, `Table 1. Tolerance ${meta.epsilon}. Each focusable point is a method's mean over 100 runs. Error bars are one standard deviation, clipped at the chart edges. Use Tab to inspect points, or tap or hover.`);
   add(svg, 'rect', { x: left, y: top, width: x(meta.epsilon) - left, height: bottom - top, fill: colors.lightGreen, opacity: .6 });
   for (const tick of metric === 'stp' ? [-40, 0, 40, 80] : [0, 25, 50, 75, 100]) {
     add(svg, 'line', { x1: left, x2: right, y1: y(tick), y2: y(tick), stroke: colors.line, 'stroke-width': tick === 0 ? 1.4 : 1 });
@@ -129,7 +172,7 @@ function renderResults() {
     label(svg, x(value), bottom + 25, value.toFixed(3), { 'text-anchor': 'middle', 'font-size': 12 });
   }
   add(svg, 'line', { x1: x(meta.epsilon), x2: x(meta.epsilon), y1: top, y2: bottom, stroke: colors.green, 'stroke-dasharray': '5 5', 'stroke-width': 1.4 });
-  label(svg, x(meta.epsilon) + 8, top + 16, `ε = ${meta.epsilon}`, { fill: colors.green, 'font-size': 12 });
+  mathLabel(svg, x(meta.epsilon) + 8, top + 16, `\\epsilon = ${meta.epsilon}`, { fill: colors.green, 'font-size': 12 });
   label(svg, left, 17, metric === 'stp' ? 'Tokens saved (%) ↑' : 'Expert calls (%) ↓', { 'font-size': 12 });
   label(svg, (left + right) / 2, height - 19, width < 450 ? 'Mean binary loss ↓' : 'Mean binary loss relative to thinking ↓', { 'text-anchor': 'middle', 'font-size': 13 });
   const pacRows = rows.filter(isPAC), baselineRows = rows.filter((r) => !isPAC(r));
@@ -156,8 +199,8 @@ function renderResults() {
     group.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showDetail(row); } });
   }
   $('#plot-title').textContent = `${meta.name} · binary loss`;
-  $('#tolerance-label').textContent = `ε = ${meta.epsilon} · α = 0.05`;
-  $('#table-caption').textContent = `CR Table 1 · ${meta.name} · mean ± SD over 100 runs`;
+  setMath($('#tolerance-label'), `\\epsilon = ${meta.epsilon},\\quad \\alpha = 0.05`);
+  $('#table-caption').textContent = `Table 1 · ${meta.name} · mean ± SD over 100 runs`;
   const table = $('#results-table'); table.replaceChildren();
   for (const row of data.methods) {
     const tr = document.createElement('tr'); if (isPAC(row)) tr.className = 'pac-row';
@@ -172,7 +215,7 @@ function renderResults() {
   $('#success-detail').textContent = `PAC Reasoning with the logits score meets the empirical test-loss tolerance of ${meta.epsilon} in ${meta.success.count} runs on ${meta.name}. Exact 95% binomial interval: ${meta.success.interval[0]}–${meta.success.interval[1]}%.`;
   const costReduction = (1 - meta.cost.dollars[1] / meta.cost.dollars[0]) * 100;
   $('#cost-heading').textContent = `${Math.round(costReduction)}% lower dollar cost`;
-  $('#cost-detail').textContent = `${meta.name}: reported test-set cost drops from $${meta.cost.dollars[0].toFixed(2)} to $${meta.cost.dollars[1].toFixed(2)}, and total latency from ${(meta.cost.latency_s[0] / 1000).toFixed(1)}k s to ${(meta.cost.latency_s[1] / 1000).toFixed(1)}k s. Prices and setup are those used in the CR.`;
+  $('#cost-detail').textContent = `${meta.name}: reported test-set cost drops from $${meta.cost.dollars[0].toFixed(2)} to $${meta.cost.dollars[1].toFixed(2)}, and total latency from ${(meta.cost.latency_s[0] / 1000).toFixed(1)}k s to ${(meta.cost.latency_s[1] / 1000).toFixed(1)}k s. Prices and setup are those used in the paper.`;
   showDetail(rows.find((r) => r.id === selected));
 }
 
@@ -192,7 +235,7 @@ fetch('results.json').then((response) => {
   $('#metric').addEventListener('change', renderResults);
   $('#all-methods').addEventListener('change', renderResults);
 }).catch(() => {
-  $('#point-detail').textContent = 'The chart data could not load. Please reload, or use the full numerical table in the camera-ready PDF.';
+  $('#point-detail').textContent = 'The chart data could not load. Please reload, or use the full numerical table in the paper PDF.';
   $('#plot-title').textContent = 'Chart data unavailable';
 });
 
