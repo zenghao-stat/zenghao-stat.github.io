@@ -242,7 +242,7 @@ npm run preview -- --host 0.0.0.0 --port 5173
   - PDF / Code：当 `pdf` / `code` 存在且不为 `#` 时显示按钮
   - Abstract：桌面端支持悬停展开；移动端显示 “Abstract” 按钮点开
   - 作者标记（依赖作者名精确匹配）：
-    - `firstAuthors`：作者后显示 †
+    - 署名第一的作者自动显示 †；`firstAuthors` 中显式列出的共同一作也显示 †
     - `correspondingAuthors`：作者后显示信封图标
     - `guidedStudents`：作者后显示学生帽图标
   - 标签 `tag`：展示为小药丸；顶会/顶刊标签由 `src/App.tsx` 中的 `TOP_VENUE_RULES` 根据 `venue` 自动生成
@@ -387,11 +387,11 @@ News 位于 `HAO_DATA.news: { date, content, publicationIds? }[]`：
 - `tag`：标签（支持字符串或数组）
   - 会展示为小药丸
   - 普通标签可手动维护；`TOP AI`、`TOP Econometrics` 这类顶会/顶刊标签由 `src/App.tsx` 中的 `TOP_VENUE_RULES` 根据 `venue` 自动生成
-- `firstAuthors`：作者名数组；命中者后显示 †
+- `firstAuthors`：显式一作／共同一作的作者名数组；署名第一的作者由 `authors` 顺序自动识别，无需重复填写。`First / Co-first` 筛选与 † 标记均采用两者的并集。
 - `correspondingAuthors`：作者名数组；命中者后显示信封图标
 - `guidedStudents`：作者名数组；命中者后显示学生帽图标
 
-作者标记的一个关键点：页面会对 `authors` 中逗号分割得到的作者名 `trim()` 后，直接与 `firstAuthors/correspondingAuthors/guidedStudents` 内的字符串做全等比较，所以名字必须完全一致（空格、大小写都要一致）。
+作者标记的一个关键点：页面先按英文逗号拆分 `authors` 并对姓名执行 `trim()`，以第一位识别署名第一的作者，再与 `firstAuthors/correspondingAuthors/guidedStudents` 内的字符串做全等比较。显式名单中的名字必须完全一致（空格、大小写都要一致）；共同一作须依据论文声明填写。
 
 ### Research（`content/research.json`）
 

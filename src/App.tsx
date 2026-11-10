@@ -575,7 +575,9 @@ export default function App() {
     role: AuthorRoleFilter
   ) => {
     if (role === 'first') {
-      return pub.firstAuthors?.includes('Hao Zeng') ?? false;
+      // 署名第一由作者顺序确定；其他共同一作以显式名单为准。
+      return pub.authors.split(',')[0].trim() === 'Hao Zeng'
+        || (pub.firstAuthors?.includes('Hao Zeng') ?? false);
     }
     return pub.correspondingAuthors?.includes('Hao Zeng') ?? false;
   };
@@ -1743,7 +1745,7 @@ export default function App() {
                         {pub.authors.split(',').map((rawAuthor, i, arr) => {
                           const author = rawAuthor.trim();
                           const isMe = author === 'Hao Zeng';
-                          const isFirstAuthor = pub.firstAuthors?.includes(author);
+                          const isFirstAuthor = i === 0 || pub.firstAuthors?.includes(author);
                           const isGuidedStudent = pub.guidedStudents?.includes(author);
                           const isCorrespondingAuthor = pub.correspondingAuthors?.includes(author);
 
