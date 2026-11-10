@@ -108,10 +108,11 @@ function showDetail(row) {
   const values = row[dataset], meta = data.datasets[dataset];
   const detail = $('#point-detail');
   detail.replaceChildren();
-  const p = document.createElement('p'); p.className = 'eyebrow'; p.textContent = 'Selected operating point'; detail.append(p);
-  const h = document.createElement('h3'); h.textContent = row.method; detail.append(h);
-  const score = document.createElement('span'); score.className = 'score-name'; score.textContent = row.score === '—' ? 'No uncertainty-score variant' : `${row.score} uncertainty`; detail.append(score);
-  const pickerLabel = document.createElement('label'); pickerLabel.className = 'method-picker'; pickerLabel.textContent = 'Inspect a method'; pickerLabel.htmlFor = 'method-picker';
+  const identity = document.createElement('div'); identity.className = 'detail-identity'; detail.append(identity);
+  const p = document.createElement('p'); p.className = 'eyebrow'; p.textContent = 'Inspect a method'; identity.append(p);
+  const h = document.createElement('h3'); h.textContent = row.method; identity.append(h);
+  const score = document.createElement('span'); score.className = 'score-name'; score.textContent = row.score === '—' ? 'No uncertainty-score variant' : `${row.score} uncertainty`; identity.append(score);
+  const pickerLabel = document.createElement('label'); pickerLabel.className = 'method-picker'; pickerLabel.textContent = 'Choose a method'; pickerLabel.htmlFor = 'method-picker';
   const picker = document.createElement('select'); picker.id = 'method-picker';
   for (const item of data.methods.filter((r) => ($('#all-methods').checked || !['CoD', 'NoThinking'].includes(r.method)) && r[dataset][$('#metric').value])) {
     const option = document.createElement('option'); option.value = item.id; option.textContent = `${item.method}${item.score === '—' ? '' : ` · ${item.score}`}`; picker.append(option);
@@ -121,7 +122,7 @@ function showDetail(row) {
     const id = picker.value; showDetail(data.methods.find((item) => item.id === id));
     $('#method-picker').focus({ preventScroll: true });
   });
-  detail.append(pickerLabel, picker);
+  identity.append(pickerLabel, picker);
   const dl = document.createElement('dl'); dl.className = 'detail-stats';
   for (const [key, title, digits, suffix] of [['error', 'Binary loss', 4, ''], ['stp', 'Tokens saved', 2, '%'], ['ecp', 'Expert calls', 2, '%']]) {
     const div = document.createElement('div'); div.className = 'detail-stat';
@@ -139,10 +140,12 @@ function showDetail(row) {
   status.className = `mean-status${over ? ' over' : ''}`;
   status.append(`${over ? 'Mean loss above' : 'Mean loss within'} `);
   const tolerance = document.createElement('span'); status.append(tolerance);
-  detail.append(status);
+  identity.append(status);
   setMath(tolerance, `\\epsilon = ${meta.epsilon.toFixed(2)}`);
-  const note = document.createElement('p'); note.className = 'detail-instruction'; note.textContent = '100 runs · mean ± SD. Means describe this experiment; statistical guarantees require the conditions in the paper.'; detail.append(note);
-  document.querySelectorAll('.plot-point').forEach((p) => { p.classList.toggle('selected', p.dataset.id === selected); });
+  document.querySelectorAll('.plot-point').forEach((point) => {
+    point.classList.toggle('selected', point.dataset.id === selected);
+    point.setAttribute('aria-pressed', String(point.dataset.id === selected));
+  });
 }
 
 function renderResults() {
@@ -150,48 +153,63 @@ function renderResults() {
   const meta = data.datasets[dataset], metric = $('#metric').value, all = $('#all-methods').checked;
   const rows = data.methods.filter((row) => (all || !['CoD', 'NoThinking'].includes(row.method)) && row[dataset][metric]);
   if (!rows.some((r) => r.id === selected)) selected = 'm4';
-  const width = Math.max(300, Math.min(760, svg.clientWidth || 760));
-  const height = width < 450 ? 370 : 450;
+  const width = Math.max(300, svg.clientWidth || 864);
+  const compact = width < 500, height = compact ? 340 : 410;
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  const left = width < 450 ? 48 : 68, right = width - 24, top = 37, bottom = height - 74;
-  const xmax = dataset === 'math' ? all ? .52 : .06 : .13;
-  const ymin = metric === 'stp' ? -45 : 0, ymax = metric === 'stp' ? 110 : 105;
+  svg.classList.toggle('show-all-sd', $('#show-uncertainty').checked);
+  const left = compact ? 43 : 53, right = width - 20, top = 43, bottom = height - 59;
+  // 使用易读刻度与数据对应的范围；均值和标准差均保持论文原值。
+  const xmax = dataset === 'math' ? all ? .55 : .06 : .12;
+  const xstep = dataset === 'math' ? all ? .1 : .01 : .02;
+  const ymin = metric === 'stp' ? dataset === 'math' ? -10 : -40 : 0;
+  const ymax = metric === 'stp' ? dataset === 'math' ? 90 : 60 : 100;
+  const yticks = metric === 'stp' ? dataset === 'math' ? [0, 20, 40, 60, 80] : [-40, -20, 0, 20, 40, 60] : [0, 20, 40, 60, 80, 100];
   const x = (v) => left + v / xmax * (right - left);
   const y = (v) => bottom - (v - ymin) / (ymax - ymin) * (bottom - top);
   const clampX = (v) => Math.max(left, Math.min(right, x(v)));
   const clampY = (v) => Math.max(top, Math.min(bottom, y(v)));
+  const familyColor = (row) => isPAC(row) ? colors.green : row.method === 'Naive control' ? colors.rust : row.method === 'Naive threshold' ? colors.gray : colors.ink;
   add(svg, 'title', {}, `${meta.name}: binary loss versus ${metric === 'stp' ? 'tokens saved' : 'expert calls'}`);
-  add(svg, 'desc', {}, `Table 1. Tolerance ${meta.epsilon}. Each focusable point is a method's mean over 100 runs. Error bars are one standard deviation, clipped at the chart edges. Use Tab to inspect points, or tap or hover.`);
-  add(svg, 'rect', { x: left, y: top, width: x(meta.epsilon) - left, height: bottom - top, fill: colors.lightGreen, opacity: .6 });
-  for (const tick of metric === 'stp' ? [-40, 0, 40, 80] : [0, 25, 50, 75, 100]) {
-    add(svg, 'line', { x1: left, x2: right, y1: y(tick), y2: y(tick), stroke: colors.line, 'stroke-width': tick === 0 ? 1.4 : 1 });
-    label(svg, left - 12, y(tick) + 4, `${tick}%`, { 'text-anchor': 'end', 'font-size': 12 });
+  add(svg, 'desc', {}, `Table 1. Tolerance ${meta.epsilon}. Points are means over 100 runs. By default, capped bars show one standard deviation for the selected point. Toggle All SD bars to show the remaining bars. Bars are clipped at chart edges. Use Tab, tap, or hover to select.`);
+  add(svg, 'rect', { x: left, y: top, width: x(meta.epsilon) - left, height: bottom - top, fill: colors.lightGreen, opacity: .5 });
+  label(svg, left + 10, top + 17, 'Below tolerance', { fill: colors.green, 'font-size': compact ? 10 : 11 });
+  for (const tick of yticks) {
+    add(svg, 'line', { x1: left, x2: right, y1: y(tick), y2: y(tick), stroke: colors.line, 'stroke-width': tick === 0 ? 1.2 : .7 });
+    label(svg, left - 10, y(tick) + 4, `${tick}`, { 'text-anchor': 'end', 'font-size': 11 });
   }
-  for (let i = 0; i <= 5; i++) {
-    const value = i * xmax / 5;
-    label(svg, x(value), bottom + 25, value.toFixed(3), { 'text-anchor': 'middle', 'font-size': 12 });
+  const tickCount = Math.floor(xmax / xstep + .001);
+  for (let i = 0; i <= tickCount; i++) {
+    if (compact && i % 2 && i !== tickCount) continue;
+    const value = i * xstep;
+    add(svg, 'line', { x1: x(value), x2: x(value), y1: bottom, y2: bottom + 4, stroke: colors.line });
+    label(svg, x(value), bottom + 22, value.toFixed(all && dataset === 'math' ? 1 : 2), { 'text-anchor': 'middle', 'font-size': 11 });
   }
-  add(svg, 'line', { x1: x(meta.epsilon), x2: x(meta.epsilon), y1: top, y2: bottom, stroke: colors.green, 'stroke-dasharray': '5 5', 'stroke-width': 1.4 });
-  mathLabel(svg, x(meta.epsilon) + 8, top + 16, `\\epsilon = ${meta.epsilon}`, { fill: colors.green, 'font-size': 12 });
-  label(svg, left, 17, metric === 'stp' ? 'Tokens saved (%) ↑' : 'Expert calls (%) ↓', { 'font-size': 12 });
-  label(svg, (left + right) / 2, height - 19, width < 450 ? 'Mean binary loss ↓' : 'Mean binary loss relative to thinking ↓', { 'text-anchor': 'middle', 'font-size': 13 });
+  add(svg, 'line', { x1: x(meta.epsilon), x2: x(meta.epsilon), y1: top, y2: bottom, stroke: colors.green, 'stroke-dasharray': '4 5', 'stroke-width': 1.2 });
+  mathLabel(svg, x(meta.epsilon) + 8, top + 18, `\\epsilon = ${meta.epsilon}`, { fill: colors.green, 'font-size': 12 });
+  label(svg, left, 17, metric === 'stp' ? 'Tokens saved (%) ↑' : 'Expert calls (%) ↓', { 'font-size': 12, fill: colors.ink });
+  label(svg, (left + right) / 2, height - 8, compact ? 'Mean binary loss ↓' : 'Mean binary loss relative to the thinking model ↓', { 'text-anchor': 'middle', 'font-size': 12 });
   const pacRows = rows.filter(isPAC), baselineRows = rows.filter((r) => !isPAC(r));
   for (const row of [...baselineRows, ...pacRows]) {
     const values = row[dataset], xv = x(values.error[0]), yv = y(values[metric][0]);
-    const color = isPAC(row) ? colors.green : colors.gray;
+    const color = familyColor(row);
     const group = add(svg, 'g', { class: 'plot-point', tabindex: '0', role: 'button', 'aria-label': `${row.method}, ${row.score}. Mean loss ${values.error[0]}, ${metric === 'stp' ? 'tokens saved' : 'expert calls'} ${values[metric][0]} percent. Select for standard deviations.`, 'data-id': row.id });
-    add(group, 'line', { x1: clampX(values.error[0] - values.error[1]), x2: clampX(values.error[0] + values.error[1]), y1: yv, y2: yv, stroke: color, opacity: .4 });
-    add(group, 'line', { x1: xv, x2: xv, y1: clampY(values[metric][0] - values[metric][1]), y2: clampY(values[metric][0] + values[metric][1]), stroke: color, opacity: .4 });
+    const bars = add(group, 'g', { class: 'uncertainty', stroke: color, 'stroke-width': 1.2, 'pointer-events': 'none' });
+    const xlo = clampX(values.error[0] - values.error[1]), xhi = clampX(values.error[0] + values.error[1]);
+    const ylo = clampY(values[metric][0] - values[metric][1]), yhi = clampY(values[metric][0] + values[metric][1]);
+    add(bars, 'path', { d: `M${xlo},${yv}H${xhi}M${xlo},${yv - 3}v6M${xhi},${yv - 3}v6M${xv},${ylo}V${yhi}M${xv - 3},${ylo}h6M${xv - 3},${yhi}h6`, fill: 'none' });
     add(group, 'circle', { cx: xv, cy: yv, r: 15, fill: 'transparent' });
-    add(group, 'circle', { cx: xv, cy: yv, r: 12, fill: 'none', stroke: color, 'stroke-width': 1.5, class: 'point-ring' });
-    if (row.score === 'Verbalized') add(group, 'rect', { x: xv - 5, y: yv - 5, width: 10, height: 10, fill: color, stroke: colors.paper, 'stroke-width': 1.5 });
-    else add(group, 'circle', { cx: xv, cy: yv, r: isPAC(row) ? 7 : 5, fill: color, stroke: colors.paper, 'stroke-width': 1.5 });
+    add(group, 'circle', { cx: xv, cy: yv, r: 13, fill: color, 'fill-opacity': .1, stroke: color, 'stroke-opacity': .4, 'stroke-width': 1, class: 'point-ring' });
+    if (row.score === 'Verbalized') add(group, 'rect', { x: xv - 4.5, y: yv - 4.5, width: 9, height: 9, fill: color, stroke: colors.paper, 'stroke-width': 1.5 });
+    else if (row.score === '—') add(group, 'path', { d: `M${xv},${yv - 6}l6,6 -6,6 -6,-6Z`, fill: color, stroke: colors.paper, 'stroke-width': 1.5 });
+    else add(group, 'circle', { cx: xv, cy: yv, r: isPAC(row) ? 6 : 4.5, fill: color, stroke: colors.paper, 'stroke-width': 1.5 });
     add(group, 'title', {}, `${row.method} · ${row.score}`);
     if (isPAC(row)) {
-      const dx = row.score === 'Verbalized' ? -12 : 12;
-      const dy = row.score === 'Verbalized' ? 25 : -15;
-      const text = width < 450 ? (row.score === 'Verbalized' ? 'PAC · V' : 'PAC · L') : (row.score === 'Verbalized' ? 'PAC · verbalized' : 'PAC · logits');
-      label(group, xv + dx, yv + dy, text, { fill: colors.green, 'font-size': 11, 'font-weight': 600, 'text-anchor': dx < 0 ? 'end' : 'start' });
+      const verbal = row.score === 'Verbalized';
+      const text = compact ? (verbal ? 'PAC · V' : 'PAC · L') : (verbal ? 'PAC · verbalized' : 'PAC · logits');
+      const labelWidth = text.length * (compact ? 5.5 : 6);
+      const placeLeft = verbal && xv - labelWidth - 12 >= left;
+      const labelX = placeLeft ? xv - 12 : Math.min(right - labelWidth, xv + 12);
+      label(group, labelX, yv + (verbal ? 23 : -14), text, { fill: color, 'font-size': 11, 'font-weight': 600, 'text-anchor': placeLeft ? 'end' : 'start', stroke: colors.paper, 'stroke-width': 4, 'stroke-linejoin': 'round', 'paint-order': 'stroke' });
     }
     group.addEventListener('mouseenter', () => showDetail(row));
     group.addEventListener('focus', () => showDetail(row));
@@ -234,6 +252,9 @@ fetch('results.json').then((response) => {
   });
   $('#metric').addEventListener('change', renderResults);
   $('#all-methods').addEventListener('change', renderResults);
+  $('#show-uncertainty').addEventListener('change', () => {
+    $('#results-chart').classList.toggle('show-all-sd', $('#show-uncertainty').checked);
+  });
 }).catch(() => {
   $('#point-detail').textContent = 'The chart data could not load. Please reload, or use the full numerical table in the paper PDF.';
   $('#plot-title').textContent = 'Chart data unavailable';
