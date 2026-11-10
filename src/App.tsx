@@ -864,7 +864,7 @@ export default function App() {
     setTooltipAlign(!fitsLeft && fitsRight ? 'right' : 'left');
   };
 
-  const renderCitations = (publicationIds: string[], leading?: boolean) => {
+  const renderCitations = (publicationIds: string[], leading?: boolean, individual = false) => {
     const pubs = publicationIds
       .map((pid) => {
         const pub = pubById.get(pid);
@@ -885,7 +885,7 @@ export default function App() {
         segments.push({ startNo: item.no, endNo: item.no, pubs: [item] });
         continue;
       }
-      if (item.no === last.endNo + 1) {
+      if (!individual && item.no === last.endNo + 1) {
         last.endNo = item.no;
         last.pubs.push(item);
         continue;
@@ -894,10 +894,10 @@ export default function App() {
     }
 
     return (
-      <span className={`${leading ? '' : 'ml-2 '}inline-flex flex-wrap items-baseline`}>
-        <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>[</span>
+      <span className={`${leading ? '' : 'ml-2 '}inline-flex flex-wrap items-baseline ${individual ? 'gap-1' : ''}`}>
+        {!individual && <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>[</span>}
         {segments.map((seg, i) => {
-          const label = seg.startNo === seg.endNo ? `${seg.startNo}` : `${seg.startNo}-${seg.endNo}`;
+          const label = individual ? `[${seg.startNo}]` : seg.startNo === seg.endNo ? `${seg.startNo}` : `${seg.startNo}-${seg.endNo}`;
           const targetId = pubIdByNo.get(seg.startNo) ?? seg.pubs[0]?.pid;
           if (!targetId) return null;
 
@@ -905,7 +905,7 @@ export default function App() {
 
           return (
             <span key={`${seg.startNo}-${seg.endNo}`} className="inline-flex items-baseline">
-              {i > 0 && <span className={`text-sm font-semibold ${theme.textMuted} font-sans mr-1`}>,</span>}
+              {i > 0 && !individual && <span className={`text-sm font-semibold ${theme.textMuted} font-sans mr-1`}>,</span>}
               <span
                 className={canHover ? 'group relative inline-flex' : undefined}
                 title={!canHover ? fallbackTitle : undefined}
@@ -940,7 +940,7 @@ export default function App() {
             </span>
           );
         })}
-        <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>]</span>
+        {!individual && <span className={`text-sm font-semibold ${theme.textMuted} font-sans`}>]</span>}
       </span>
     );
   };
@@ -1435,7 +1435,7 @@ export default function App() {
                       />
                       {item.publicationIds && item.publicationIds.length > 0 && (
                         <span className="ml-2">
-                          {renderCitations(item.publicationIds)}
+                          {renderCitations(item.publicationIds, true, true)}
                         </span>
                       )}
                     </p>
