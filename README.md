@@ -360,9 +360,10 @@ Profile 位于 `HAO_DATA.profile`，常用字段：
 - `avatarUrl`：头像图片地址（建议放 `public/images/`，然后写成 `./images/xxx.jpg` 或 `/images/xxx.jpg`）
 - `description`：About 段落，支持 `**加粗**`
 
-News 位于 `HAO_DATA.news: { date, content, publicationIds? }[]`：
+News 位于 `HAO_DATA.news: NewsItem[]`：
 
 - `date`：时间线左侧日期（展示为原字符串）
+- `type`：`publication`（论文图标）、`career`（工作图标）或 `education`（学位帽图标），决定时间线节点图标
 - `content`：新闻内容，支持 `**加粗**`（会带高亮底色）
 - `publicationIds`：关联到 Publications 的 `id`，显示为可点击 citation 编号
 

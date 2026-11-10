@@ -148,9 +148,16 @@ export interface ResearchContent {
   areas: ResearchArea[];
 }
 
+export interface NewsItem {
+  date: string;
+  type: 'publication' | 'career' | 'education';
+  content: string;
+  publicationIds?: string[];
+}
+
 export interface Content {
   profile: Profile;
-  news: { date: string; content: string; publicationIds?: string[] }[];
+  news: NewsItem[];
   research: ResearchContent;
   blog: BlogPost[];
   publications: Publication[];
@@ -163,7 +170,7 @@ export interface Content {
 
 export const HAO_DATA: Content = {
   profile: profileData as Profile,
-  news: newsData as { date: string; content: string; publicationIds?: string[] }[],
+  news: newsData as NewsItem[],
   research: researchData as ResearchContent,
   blog: blogData as BlogPost[],
   publications: (

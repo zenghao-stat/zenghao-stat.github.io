@@ -1,6 +1,7 @@
 [
   {
     "date": "2026/09",
+    "type": "publication",
     "content": "3 papers accepted by NeurIPS 2026.",
     "publicationIds": [
       "zeng-pac-reasoning-2025",
@@ -10,10 +11,12 @@
   },
   {
     "date": "2026/09",
+    "type": "career",
     "content": "I joined the School of Mathematical Sciences at the University of Electronic Science and Technology of China (UESTC) as a Lecturer."
   },
   {
     "date": "2026/05",
+    "type": "publication",
     "content": "4 papers accepted by ICML 2026.",
     "publicationIds": [
       "yu-anytime-safe-2026",
@@ -24,6 +27,7 @@
   },
   {
     "date": "2025/11",
+    "type": "publication",
     "content": "Our paper \"Transfer Learning for Spatial Autoregressive Models with Application to U.S. Presidential Election Prediction\" has been accepted to Journal of Business & Economic Statistics!",
     "publicationIds": [
       "zeng-transfer-learning-2025"
@@ -31,6 +35,7 @@
   },
   {
     "date": "2025/09",
+    "type": "publication",
     "content": "Our paper \"Robust Online Conformal Prediction under Uniform Label Noise\" has been accepted to NeurIPS 2025!",
     "publicationIds": [
       "xi-exploring-the-2025"
@@ -38,6 +43,7 @@
   },
   {
     "date": "2025/05",
+    "type": "publication",
     "content": "Our paper \"Parametric Scaling Law of Tuning Bias in Conformal Prediction\" has been accepted to ICML 2025!",
     "publicationIds": [
       "zeng-parametric-scaling-2025"
@@ -45,10 +51,12 @@
   },
   {
     "date": "2024/07",
+    "type": "career",
     "content": "Started postdoctoral position at the Department of Statistics and Data Science, SUSTech under the SUSTech-NUS Joint Research Program."
   },
   {
     "date": "2024/06",
+    "type": "education",
     "content": "Graduated with a Ph.D. in Statistics from Gregory and Paula Chow Institute for Studies in Economics, Xiamen University."
   }
 ]

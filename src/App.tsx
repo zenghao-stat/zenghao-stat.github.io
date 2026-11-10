@@ -5,6 +5,7 @@ import {
   Mail,
   Github,
   FileText,
+  BriefcaseBusiness,
   Menu,
   X,
   MapPin,
@@ -27,6 +28,11 @@ import {
 import { HAO_DATA, type Publication } from './content';
 
 const SHOW_BLOG_ENTRY = false;
+const NEWS_ICONS = {
+  publication: { icon: FileText, label: 'Paper news' },
+  career: { icon: BriefcaseBusiness, label: 'Career update' },
+  education: { icon: GraduationCap, label: 'Education update' },
+};
 const ZINE_HERO_IMAGES = {
   light: '/images/hero/zine-light.png',
   dark: '/images/hero/zine-dark.png',
@@ -1421,29 +1427,39 @@ export default function App() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className={`text-3xl font-bold font-serif ${theme.text} mb-10`}>News</h2>
             <div className={`space-y-0 border-l ${theme.border} ml-3`}>
-              {HAO_DATA.news.map((item, i) => (
-                <div key={i} className="relative pl-8 pb-8 last:pb-0">
-                  <div className={`absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full ${theme.accentBg} ring-4 ${isNightTheme ? 'ring-[#1E293B]' : currentTheme === 'lab' ? 'ring-slate-100' : currentTheme === 'mint' ? 'ring-[#EDF3FF]' : currentTheme === 'brutal' ? 'ring-white' : 'ring-[#F5F3ED]'}`}></div>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                    <span className={`text-sm font-bold ${theme.textMuted} min-w-[80px] font-sans`}>{item.date}</span>
-                    <p className={`text-base ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: item.content.replace(
-                            /\*\*(.*?)\*\*/g,
-                            `<strong class="font-bold ${theme.text} ${theme.highlight} px-1 rounded-sm">$1</strong>`
-                          )
-                        }}
-                      />
-                      {item.publicationIds && item.publicationIds.length > 0 && (
-                        <span className="ml-2">
-                          {renderCitations(item.publicationIds, true, true)}
-                        </span>
-                      )}
-                    </p>
+              {HAO_DATA.news.map((item, i) => {
+                const { icon: NewsIcon, label } = NEWS_ICONS[item.type];
+                return (
+                  <div key={i} className="relative pl-8 pb-8 last:pb-0">
+                    <span
+                      className={`absolute -left-3.5 -top-0.5 flex h-7 w-7 items-center justify-center rounded-full ${theme.bgAlt} ${theme.accent}`}
+                      role="img"
+                      aria-label={label}
+                      title={label}
+                    >
+                      <NewsIcon size={18} strokeWidth={1.8} aria-hidden="true" />
+                    </span>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                      <span className={`text-sm font-bold ${theme.textMuted} min-w-[80px] font-sans`}>{item.date}</span>
+                      <p className={`text-base ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: item.content.replace(
+                              /\*\*(.*?)\*\*/g,
+                              `<strong class="font-bold ${theme.text} ${theme.highlight} px-1 rounded-sm">$1</strong>`
+                            )
+                          }}
+                        />
+                        {item.publicationIds && item.publicationIds.length > 0 && (
+                          <span className="ml-2">
+                            {renderCitations(item.publicationIds, true, true)}
+                          </span>
+                        )}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
