@@ -135,12 +135,17 @@ export interface ResearchNarrativeItem {
   citations?: string[];
 }
 
+export interface ResearchImageSet {
+  light: string;
+  dark: string;
+}
+
 export interface ResearchArea {
   id: string;
   title: string;
   summary: string;
   narrative: ResearchNarrativeItem[];
-  imageUrl?: string;
+  imageUrl?: ResearchImageSet;
 }
 
 export interface ResearchContent {

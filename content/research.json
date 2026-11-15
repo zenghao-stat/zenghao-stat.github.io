@@ -15,7 +15,10 @@
       "id": "predictive-inference",
       "title": "Distribution-Free Predictive Inference",
       "summary": "We design prediction sets with finite-sample guarantees, and study key effects in conformal prediction such as tuning bias and test-time validity.",
-      "imageUrl": "/images/research/predictive_inference_zine_v2.png",
+      "imageUrl": {
+        "light": "/images/research/predictive_inference_zine_v2.png",
+        "dark": "/images/research/predictive_inference_zine_dark_v1.png"
+      },
       "narrative": [
         {
           "text": "We study why conformal prediction can drift when tuning and calibration are not separated, and we build theory that explains a clear scaling pattern in tuning bias.",
@@ -42,7 +45,10 @@
       "id": "llm-systems",
       "title": "Reliable LLM Systems",
       "summary": "We connect distribution-free inference with large-model systems for fast reasoning and cost-efficient data work, with clear statistical guarantees on risk and quality.",
-      "imageUrl": "/images/research/llm_systems_zine_v2.png",
+      "imageUrl": {
+        "light": "/images/research/llm_systems_zine_v2.png",
+        "dark": "/images/research/llm_systems_zine_dark_v1.png"
+      },
       "narrative": [
         {
           "text": "For fast reasoning, we design switching rules that save compute while controlling performance loss, and we study the limits of conditional guarantees in the distribution-free setting.",
@@ -67,7 +73,10 @@
       "id": "high-dim-transfer-survival",
       "title": "High-Dimensional Statistics",
       "summary": "We develop robust and efficient methods for high-dimensional and heterogeneous data, including transfer learning, quantile-based tools, and survival models with structural change.",
-      "imageUrl": "/images/research/high_dim_stats_zine_v3.png",
+      "imageUrl": {
+        "light": "/images/research/high_dim_stats_zine_v3.png",
+        "dark": "/images/research/high_dim_stats_zine_dark_v1.png"
+      },
       "narrative": [
         {
           "text": "We develop robust tools for heterogeneous and heavy-tailed data, including quantile-based integrative analysis and robust estimation for dependent time series.",
@@ -98,7 +107,10 @@
       "id": "spatial-statistics",
       "title": "Spatial Statistics",
       "summary": "We work on spatial dependence and heterogeneity, with a focus on reliable inference for real prediction tasks.",
-      "imageUrl": "/images/research/spatial_statistics_zine_v2.png",
+      "imageUrl": {
+        "light": "/images/research/spatial_statistics_zine_v2.png",
+        "dark": "/images/research/spatial_statistics_zine_dark_v1.png"
+      },
       "narrative": [
         {
           "text": "We develop methods that combine spatial dependence with modern learning goals, and we focus on reliability and finite-sample guarantees.",

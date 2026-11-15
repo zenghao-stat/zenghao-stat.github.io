@@ -1480,31 +1480,35 @@ export default function App() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 mt-10">
-              {HAO_DATA.research.areas.map(area => (
-                <div
-                  key={area.id}
-                  className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
-                >
-                  {area.imageUrl && (
-                    <div className="mb-4 overflow-hidden rounded-lg border border-slate-200/50">
-                      <img
-                        src={area.imageUrl}
-                        alt={area.title}
-                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
-                  <h3 className={`text-xl font-bold ${theme.text} leading-tight`}>{area.title}</h3>
-                  <p className={`mt-3 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
-                    {area.summary}
-                  </p>
+              {HAO_DATA.research.areas.map(area => {
+                const researchImageUrl = area.imageUrl?.[isNightTheme ? 'dark' : 'light'];
 
-                  <p className={`mt-4 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
-                    {renderNarrativeLeadingCitations(area.narrative)}
-                  </p>
+                return (
+                  <div
+                    key={area.id}
+                    className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
+                  >
+                    {researchImageUrl && (
+                      <div className={`mb-4 aspect-video overflow-hidden rounded-lg border ${theme.border}`}>
+                        <img
+                          src={researchImageUrl}
+                          alt={area.title}
+                          className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <h3 className={`text-xl font-bold ${theme.text} leading-tight`}>{area.title}</h3>
+                    <p className={`mt-3 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                      {area.summary}
+                    </p>
 
-                </div>
-              ))}
+                    <p className={`mt-4 text-sm leading-relaxed ${isNightTheme ? 'text-slate-300' : 'text-slate-700'}`}>
+                      {renderNarrativeLeadingCitations(area.narrative)}
+                    </p>
+
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
