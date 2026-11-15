@@ -482,8 +482,17 @@ export default function App() {
   const currentTheme = selectedTheme;
   const theme = isNightTheme ? NIGHT_THEMES[selectedTheme] : THEMES[selectedTheme];
   const isZineTheme = currentTheme === 'zine';
-  const zineHeroImage = isNightTheme ? ZINE_HERO_IMAGES.dark : ZINE_HERO_IMAGES.light;
   const lastIsNightRef = useRef(isNightByTime());
+
+  useEffect(() => {
+    if (!isZineTheme) return;
+
+    Object.values(ZINE_HERO_IMAGES).forEach(src => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = src;
+    });
+  }, [isZineTheme]);
 
   useEffect(() => {
     try {
@@ -1217,12 +1226,21 @@ export default function App() {
         {isZineTheme ? (
           <section id="about" className={`relative overflow-hidden border-b ${theme.border} pt-12 pb-16 lg:pt-24 lg:pb-20`}>
             <>
-              <img
-                src={zineHeroImage}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
+              <div className="absolute inset-0" aria-hidden="true">
+                {(Object.entries(ZINE_HERO_IMAGES) as Array<[keyof typeof ZINE_HERO_IMAGES, string]>).map(([mode, src]) => (
+                  <img
+                    key={mode}
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    decoding="async"
+                    loading="eager"
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300 ${
+                      (isNightTheme ? 'dark' : 'light') === mode ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
+              </div>
               <div
                 className={`absolute inset-0 ${isNightTheme
                   ? 'bg-gradient-to-r from-[#211F1A]/28 via-[#211F1A]/12 to-transparent'
