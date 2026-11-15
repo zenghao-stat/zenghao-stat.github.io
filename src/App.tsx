@@ -34,8 +34,8 @@ const NEWS_ICONS = {
   education: { icon: GraduationCap, label: 'Education update' },
 };
 const ZINE_HERO_IMAGES = {
-  light: '/images/hero/zine-light.png',
-  dark: '/images/hero/zine-dark.png',
+  light: '/images/hero/zine-light-v2.png',
+  dark: '/images/hero/zine-dark-v2.png',
 };
 const STATISTICS_QUOTE = 'Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.';
 // 悬浮窗的最大宽度，与下方 max-w-2xl（42rem = 672px）保持一致，用于判断展开方向。
