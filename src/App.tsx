@@ -37,6 +37,7 @@ const ZINE_HERO_IMAGES = {
   light: '/images/hero/zine-light-v2.png',
   dark: '/images/hero/zine-dark-v2.png',
 };
+const RESEARCH_IMAGE_MODES = ['light', 'dark'] as const;
 const STATISTICS_QUOTE = 'Heterogeneity nourishes statistics; independence begets probability; uncertainty is eternal.';
 // 悬浮窗的最大宽度，与下方 max-w-2xl（42rem = 672px）保持一致，用于判断展开方向。
 const TIP_MAX_WIDTH = 672;
@@ -1499,20 +1500,34 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               {HAO_DATA.research.areas.map(area => {
-                const researchImageUrl = area.imageUrl?.[isNightTheme ? 'dark' : 'light'];
+                const activeResearchImageMode = isNightTheme ? 'dark' : 'light';
 
                 return (
                   <div
                     key={area.id}
                     className={`${theme.cardBg} border ${theme.border} p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}
                   >
-                    {researchImageUrl && (
-                      <div className={`mb-4 aspect-video overflow-hidden rounded-lg border ${theme.border}`}>
-                        <img
-                          src={researchImageUrl}
-                          alt={area.title}
-                          className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
-                        />
+                    {area.imageUrl && (
+                      <div className={`relative mb-4 aspect-video overflow-hidden rounded-lg border ${theme.border}`}>
+                        {RESEARCH_IMAGE_MODES.map(mode => {
+                          const imageUrl = area.imageUrl?.[mode];
+                          const isActive = mode === activeResearchImageMode;
+
+                          return (
+                            <img
+                              key={mode}
+                              src={imageUrl}
+                              alt={isActive ? area.title : ''}
+                              aria-hidden={!isActive}
+                              decoding="async"
+                              loading="eager"
+                              fetchPriority="low"
+                              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 motion-reduce:transition-none ${
+                                isActive ? 'opacity-100' : 'opacity-0'
+                              }`}
+                            />
+                          );
+                        })}
                       </div>
                     )}
                     <h3 className={`text-xl font-bold ${theme.text} leading-tight`}>{area.title}</h3>
