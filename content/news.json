@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026/10",
+    "type": "career",
+    "content": "I joined the School of Mathematical Sciences at the University of Electronic Science and Technology of China (UESTC) as a Lecturer on October 9, 2026."
+  },
+  {
     "date": "2026/09",
     "type": "publication",
     "content": "3 papers accepted by NeurIPS 2026.",
@@ -8,11 +13,6 @@
       "huang-selective-labeling-2025",
       "liu-pure-benchmark-2026"
     ]
-  },
-  {
-    "date": "2026/09",
-    "type": "career",
-    "content": "I joined the School of Mathematical Sciences at the University of Electronic Science and Technology of China (UESTC) as a Lecturer."
   },
   {
     "date": "2026/05",
