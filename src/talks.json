@@ -31,7 +31,7 @@
   },
   {
     "id": "2026-07-09-poster-icml-training-data",
-    "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
+    "title": "Provable Training Data Identification for Large Language Models",
     "type": "Poster",
     "venue": "The 43rd International Conference on Machine Learning (ICML)",
     "date": "2026-07-09",
@@ -44,7 +44,7 @@
     ],
     "i18n": {
       "en": {
-        "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
+        "title": "Provable Training Data Identification for Large Language Models",
         "type": "Poster",
         "venue": "The 43rd International Conference on Machine Learning (ICML)",
         "location": "Seoul, South Korea",
@@ -118,7 +118,7 @@
   },
   {
     "id": "2026-07-08-poster-icml-st-bcp",
-    "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+    "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
     "type": "Poster",
     "venue": "The 43rd International Conference on Machine Learning (ICML)",
     "date": "2026-07-08",
@@ -131,7 +131,7 @@
     ],
     "i18n": {
       "en": {
-        "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+        "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
         "type": "Poster",
         "venue": "The 43rd International Conference on Machine Learning (ICML)",
         "location": "Seoul, South Korea",

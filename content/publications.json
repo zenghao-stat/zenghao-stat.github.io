@@ -50,7 +50,7 @@
       "Conformal Prediction"
     ],
     "abs": "Conformal prediction is an uncertainty quantification technique that constructs prediction sets guaranteed to contain the true label with a predefined probability. Recent work develops online conformal prediction methods that adaptively construct prediction sets to accommodate distribution shifts. However, existing algorithms typically assume perfect label accuracy, which rarely holds in practice. We investigate the robustness of online conformal prediction under uniform label noise with a known noise rate. We show that label noise causes a persistent gap between the actual mis-coverage rate and the desired rate alpha, leading to either overestimated or underestimated coverage guarantees. To address this issue, we propose a robust pinball loss, which provides an unbiased estimate of clean pinball loss without requiring ground-truth labels. We prove robust pinball loss eliminates the coverage gap under uniform label noise with a convergence rate of O(T^{-1/2}) for both empirical and expected coverage errors. Extensive experiments show improved noise robustness with precise coverage guarantees.",
-    "pdf": "/papers/2501.18363.pdf",
+    "pdf": "https://arxiv.org/pdf/2501.18363",
     "selected": true
   },
   {
@@ -238,7 +238,7 @@
   },
   {
     "id": "liu-st-bcp-2026",
-    "title": "ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation",
+    "title": "Improving Backward Conformal Prediction via Non-Conformity Score Transformation",
     "authors": "Junxian Liu, Hao Zeng, Hongxin Wei",
     "venue": "Proceedings of the 43rd International Conference on Machine Learning (ICML)",
     "type": "Conference",
@@ -246,7 +246,7 @@
     "month": "02",
     "url": "https://arxiv.org/abs/2602.01733",
     "abs": "Conformal Prediction (CP) provides a statistical framework for uncertainty quantification that constructs prediction sets with coverage guarantees. While CP yields uncontrolled prediction set sizes, Backward Conformal Prediction (BCP) inverts this paradigm by enforcing a predefined upper bound on set size and estimating the resulting coverage guarantee. However, the looseness induced by Markov's inequality within the BCP framework causes a significant gap between the estimated coverage bound and the empirical coverage. In this work, we introduce ST-BCP, a novel method that introduces a data-dependent transformation of nonconformity scores to narrow the coverage gap. In particular, we develop a computable transformation and prove that it outperforms the baseline identity transformation. Extensive experiments demonstrate the effectiveness of our method, reducing the average coverage gap from 4.20% to 1.12% on common benchmarks.",
-    "pdf": "/papers/2602.01733.pdf",
+    "pdf": "https://arxiv.org/pdf/2602.01733",
     "selected": false,
     "keywords": [
       "Conformal Prediction"
@@ -268,7 +268,7 @@
     "month": "09",
     "url": "https://openreview.net/forum?id=EEhIsOCdWt",
     "abs": "High-quality labels for large datasets are expensive. Using model predictions can save cost but introduces label errors. Selective labeling methods let AI label some items and humans label the rest, but they often lack guarantees on the error rate in the AI-labeled subset. We propose Conformal Labeling, which finds instances where model predictions can be trusted by controlling the false discovery rate (FDR), the fraction of incorrect labels in the selected subset. We build a conformal p-value for each test instance and select items using a data-dependent threshold. We provide theory showing FDR control at the target level, and experiments show tight control with high power across image, text, and LLM QA tasks.",
-    "pdf": "/papers/2510.14581.pdf",
+    "pdf": "https://arxiv.org/pdf/2510.14581",
     "selected": false,
     "keywords": [
       "Conformal Prediction",
@@ -277,7 +277,7 @@
   },
   {
     "id": "liu-high-power-training-2025",
-    "title": "High-Power Training Data Identification with Provable Statistical Guarantees",
+    "title": "Provable Training Data Identification for Large Language Models",
     "authors": "Zhenlong Liu, Hao Zeng, Weiran Huang, Hongxin Wei",
     "guidedStudents": [
       "Zhenlong Liu"
@@ -288,7 +288,7 @@
     "month": "10",
     "url": "https://arxiv.org/abs/2510.09717",
     "abs": "Identifying training data in large models matters for copyright, privacy auditing, and fair evaluation. Existing methods often treat it as a binary classification task without statistical guarantees. We propose Provable Training Data Identification (PTDI), which identifies a set of training data with strict false discovery rate (FDR) control. PTDI computes p-values using known unseen data, builds a conservative estimator for the data usage proportion, scales p-values accordingly, and selects points below a data-dependent threshold. This yields strict FDR control with higher power. Experiments across LLMs, VLMs, and datasets show strong FDR control and improved power.",
-    "pdf": "/papers/2510.09717.pdf",
+    "pdf": "https://arxiv.org/pdf/2510.09717",
     "selected": false,
     "keywords": [
       "Large Language Models"
@@ -370,7 +370,7 @@
   },
   {
     "id": "zeng-a-note-2025",
-    "title": "A Note on the Impossibility of Conditional PAC-Efficient Reasoning in Large Language Models",
+    "title": "A note on conditional PAC-efficient reasoning in large language model routing",
     "authors": "Hao Zeng, Bingyi Jing",
     "venue": "Under Review",
     "type": "Working Paper",
@@ -378,7 +378,7 @@
     "month": "12",
     "url": "https://arxiv.org/abs/2512.03057",
     "abs": "We prove an impossibility result for conditional PAC-efficient reasoning in large language models. While marginal PAC efficiency guarantees can be achieved by composite methods that switch between an expensive expert model and a cheaper fast model, we show conditional (pointwise) guarantees are impossible in the distribution-free setting. For non-atomic input spaces, any method that achieves conditional PAC efficiency must be trivial: it must defer to the expert model with probability at least 1-α for almost every input.",
-    "pdf": "/papers/2512.03057.pdf",
+    "pdf": "https://arxiv.org/pdf/2512.03057v2",
     "selected": true,
     "keywords": [
       "Large Language Models"
@@ -433,7 +433,7 @@
   },
   {
     "id": "liao-distribution-informed-2026",
-    "title": "RankMix: Conformal Prediction via Exact Latent-Rank Calibration",
+    "title": "Distribution-informed Efficient Conformal Prediction for Full Ranking",
     "authors": "Wenbo Liao, Huipeng Huang, Chen Jia, Huajun Xi, Hao Zeng, Hongxin Wei",
     "venue": "Under Review",
     "type": "Working Paper",
@@ -490,7 +490,7 @@
   },
   {
     "id": "liao-crbh-2026",
-    "title": "crBH: Conformal Top Selection with False Discovery Rate Control",
+    "title": "crBH: Conformal Top-k Selection with False Discovery Rate Control",
     "abs": "Selecting candidates that truly belong to the top-k of a large pool is important in scientific screening and information retrieval, but their outcomes are unavailable at selection time. Existing conformal selection rules address fixed outcome thresholds; top-k membership instead depends on the other items in the test pool. Calibration and test ranks also live on different scales when their pool sizes differ. We formulate inductive top-k selection with false discovery rate (FDR) as its error criterion and propose crBH to address this rank-space mismatch. An exact rank projection supplies calibration-item probabilities of falling outside the test top-k; projected conformal statistics combine these probabilities with trained ranking scores. A null-proportion-adjusted BH step-up rule then selects a score-ordered subset. We characterize the asymptotic FDR and power of crBH and connect its power to the quality and ordering induced by the ranking model. Although the guarantee is asymptotic, controlled and application benchmarks show empirical FDR close to the nominal level at the studied finite sample sizes when the method makes substantial discoveries, while retaining substantial power. For applications requiring an exact finite-sample guarantee, we additionally give a conservative certified variant under joint calibration/test exchangeability.",
     "authors": "Wenbo Liao, Huipeng Huang, Qingqiao Hu, Hao Zeng, Chen Jia, Guocheng Liao, Hongxin Wei",
     "guidedStudents": [

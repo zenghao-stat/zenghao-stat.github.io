@@ -1,5 +1,5 @@
 ---
-title: High-Power Training Data Identification with Provable Statistical Guarantees
+title: Provable Training Data Identification for Large Language Models
 type: Poster
 type_zh: 海报
 venue: The 43rd International Conference on Machine Learning (ICML)

@@ -36,7 +36,7 @@
   {
     "date": "2025/09",
     "type": "publication",
-    "content": "Our paper \"Robust Online Conformal Prediction under Uniform Label Noise\" has been accepted to NeurIPS 2025!",
+    "content": "Our paper \"Exploring the Noise Robustness of Online Conformal Prediction\" has been accepted to NeurIPS 2025!",
     "publicationIds": [
       "xi-exploring-the-2025"
     ]

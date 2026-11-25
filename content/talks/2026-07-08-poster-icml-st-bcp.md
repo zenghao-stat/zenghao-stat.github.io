@@ -1,5 +1,5 @@
 ---
-title: 'ST-BCP: Tightening Coverage Bound for Backward Conformal Prediction via Non-Conformity Score Transformation'
+title: Improving Backward Conformal Prediction via Non-Conformity Score Transformation
 type: Poster
 type_zh: 海报
 venue: The 43rd International Conference on Machine Learning (ICML)
